@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Request as REQ;
 
 class CoordinatorController extends Controller
 {
+    public function viewProjectProgress()
+    {
+        return view('admin.progress',);
+    }
+    public function viewNotification()
+    {
+        return view('welcome',);
+    }
+    public function viewPublication()
+    {
+        return view('admin.publication',);
+    }
     public function getCoordinators()
     {
         $Coordinator = Coordinator::all();

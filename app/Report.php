@@ -35,5 +35,5 @@ class Report extends Model
     {
         return $this->morphMany('App\Comment', 'commentable');
     }
-    
+
 }

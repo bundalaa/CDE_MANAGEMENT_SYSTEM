@@ -11,7 +11,7 @@ class Visitor extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'company_name', 'phone', 'email',
+        'name', 'company_name', 'email',
     ];
 
     protected $dates = [

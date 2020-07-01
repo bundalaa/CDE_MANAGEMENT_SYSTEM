@@ -24,24 +24,27 @@ class UserTableSeeder extends Seeder
         $challengeOwnerRole = Role::where('name' , 'challengeOwner')->first();
 
         $admin = User::create([
-            'name'=>'admin Eliza',
-            'email'=>'admin@admin.com',
-            'password' => Hash::make('password123')
+            'name'=>'admin Elizabeth',
+            'email'=>'admin@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' =>1
         ]);
         $admin->roles()->attach($adminRole);
 
 
         $student = User::create([
-            'name'=>'student John',
-            'email'=>'student@student.com',
-            'password' => Hash::make('student@student.com')
+            'name'=>'John Mdoe',
+            'email'=>'student@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' =>2
         ]);
         $student->roles()->attach($studentRole);
 
         $supervisor = User::create([
-            'name'=>'supervisor Rahma',
-            'email'=>'supervisor@supervisor.com',
-            'password' => Hash::make('supervisor@supervisor.com')
+            'name'=>'miss Rahma',
+            'email'=>'supervisor@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' =>3
         ]);
 
 
@@ -49,13 +52,11 @@ class UserTableSeeder extends Seeder
 
 
         $challengeOwner = User::create([
-            'name'=>'challengeOwner',
-            'email'=>'challengeOwner@c.com',
-            'password' => Hash::make('challengeOwner@c.com')
+            'name'=>'DAWASA comp',
+            'email'=>'challengeOwner@gmail.com',
+            'password' => Hash::make('12345678'),
+            'role_id' =>4
         ]);
         $challengeOwner->roles()->attach($challengeOwnerRole);
-
-
-
     }
 }

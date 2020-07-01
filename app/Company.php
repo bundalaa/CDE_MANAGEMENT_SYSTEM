@@ -11,24 +11,19 @@ class Company extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description',
+        'name','emailAddress','description',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
 
-
-
+//relationships
     public function suggestions()
     {
         return $this->hasMany(Suggestion::class);
     }
     public function challenges()
-    {
-        return $this->hasMany(Challenge::class);
-    }
-    public function students()
     {
         return $this->hasMany(Challenge::class);
     }

@@ -10,17 +10,17 @@ class Suggestion extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'category_id','company_id', 'description',
+        'company_id', 'challengeOwner_id','description',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
 
-
-    public function category()
+    //relationships
+    public function challengeOwner()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(ChallengeOwner::class);
     }
 
     public function company()

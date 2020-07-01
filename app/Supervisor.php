@@ -17,25 +17,22 @@ class Supervisor extends Model
         'deleted_at'
     ];
 
-    //relations
-
-    public function schedules()
+    //relationships
+    public function teams()
     {
-        return $this->hasMany(Schedule::class);
-    }
-
-    public function team()
-    {
-        return $this->hasOne(Team::class);
+        return $this->hasMany(Team::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    public function report()
+    public function Reports()
     {
         return $this->hasMany(Report::class);
+    }
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
     }
 }

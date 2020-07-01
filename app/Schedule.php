@@ -11,7 +11,7 @@ class Schedule extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','description', 'taskdate',
+        'name','description', 'taskdate','supervisor_id'
     ];
 
     protected $dates = [
@@ -23,10 +23,5 @@ class Schedule extends Model
     public function supervisor()
     {
         return $this->belongsTo(Supervisor::class);
-    }
-
-    public function teams()
-    {
-        return $this->hasMany(Team::class);
     }
 }

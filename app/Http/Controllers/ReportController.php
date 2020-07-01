@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ReportController extends Controller
 {
+    public function viewReport()
+    {
+        return view('supervisor.reports',);
+    }
+
     public function getReports()
     {
         $report = Report::all();

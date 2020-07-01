@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -44,10 +45,14 @@ class LoginController extends Controller
              $this->redirectTo = route('admin.index.index');
              return $this->redirectTo;
         }
-        elseif(Auth::user()-> hasRole('student')){
-            $this->redirectTo = route('student.index.index');
+        elseif(Auth::user()-> hasRole('supervisor')){
+            $this->redirectTo = route('supervisor.index.supervisorHome');
              return $this->redirectTo;
         }
 
     }
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
+      }
 }

@@ -4,42 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Support\Facades\Validator;
 
 class ScheduleController extends Controller
 {
+    public function viewSchedule()
+    {
+       return view('admin.schedule');
+     }
     public function getSchedules()
     {
 
-         $schedules = Schedule::all();
+         $schedules = Schedule::get();
         //for web route
-       return view('admin-pages.schedule_screen',compact('schedules'));
+       return view('admin.schedule',['schedules'=> $schedules]);
      }
 
     public function postSchedule(Request $request)
     {
-         return dd('hey');
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'taskdate' => 'required',
+        //dd($request);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'taskdate' => 'required',
+        ]);
 
-        // ]);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
 
-        // if ($validator->fails()) {
-        //         return redirect();
-        // }
+        $schedule = new Schedule();
 
-        // $schedule = new Schedule();
+        $schedule->name = $request->input('name');
+        $schedule->description = $request->input('description');
+         $schedule->taskdate = $request->input('taskdate');
 
-        // $schedule->name = $request->input('name');
-        // $schedule->description = $request->input('description');
-        //  $schedule->taskdate = $request->input('taskdate');
+        $schedule->save();
 
-        // $schedule->save();
-        // //for web route
-        // return view('admin-pages/schedule_screen');
+        //for web route
+        return view('admin/schedule');
     }
 
     public function putSchedule(Request $request, $scheduleId)

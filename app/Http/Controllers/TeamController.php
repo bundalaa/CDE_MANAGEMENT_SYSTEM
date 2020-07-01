@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
+    public function createTeam()
+    {
+        return view('supervisor.createteam',);
+    }
+    public function viewTeam()
+    {
+        return view('supervisor.teams',);
+    }
+    public function getTeamDetail()
+    {
+        return view('supervisor.teamDetail',);
+    }
     public function getTeams()
     {
         $team = Team::all();

@@ -10,22 +10,18 @@ class Challenge extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'description', 'company_id'
+        'company_id','name', 'description',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
 
+//relationships
 
     public function company()
     {
         return $this->belongsTo(Company::class);
-    }
-
-    public function segments()
-    {
-        return $this->hasMany(Segment::class);
     }
 
     public function feedbacks()

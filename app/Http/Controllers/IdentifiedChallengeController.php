@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class IdentifiedChallengeController extends Controller
 {
+    public function viewIdentifiedChallenge()
+    {
+      return view('admin.challenge');
+    }
+
     public function getIdentifiedChallenges()
     {
         $identifiedChallenge = IdentifiedChallenge::all();
