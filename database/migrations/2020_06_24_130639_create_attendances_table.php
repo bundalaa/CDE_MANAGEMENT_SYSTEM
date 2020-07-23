@@ -15,10 +15,9 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('student_id');
-            $table->string('name');
+            $table->string('student_id');
+            $table->bigInteger('attendance_date_report_id');
             $table->boolean('status');
-            $table->date('date');
             $table->softDeletes();
             $table->timestamps();
         });

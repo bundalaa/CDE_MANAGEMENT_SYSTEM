@@ -15,7 +15,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return view('admin-pages.schedule_screen',['tasks'=>$tasks]);
+        return view('supervisor.projectProgress',['tasks'=>$tasks]);
     }
 
     /**
@@ -36,8 +36,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
-        return redirect()->route('/admnhome');
+
     }
 
     /**

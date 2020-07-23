@@ -25,14 +25,17 @@ class AuthServiceProvider extends ServiceProvider
     {
 
         //geti la kuangalia user kama ni admin
-        Gate::define('isAdmin' ,function($user){
+        Gate::define('isAdmin', function ($user) {
             $user->hasRole('admin');
         });
 
-
+        //geti la kuangalia user kama ni supervisor
+        Gate::define('isSupervisor', function ($user) {
+            $user->hasRole('supervisor');
+        });
 
         //geti la kuangalia user kama ni admin
-        Gate::define('isStudent' ,function($user){
+        Gate::define('isStudent', function ($user) {
             $user->hasRole('student');
         });
 

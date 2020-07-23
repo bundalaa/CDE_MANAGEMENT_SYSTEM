@@ -1,17 +1,17 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
 @php
     use App\User;
-    use App\ChallengeOwner;
     use App\Student;
+    use App\Coordinator;
     use App\Supervisor;
 @endphp
-    <header id="dashboard" class="pt-3 pb-3">
-        <div class="container  pb-0">
+    <header id="dashboard" class="pt-5 pb-3">
+        <div class="container  pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
-                        <i class="fas fa-cog text-dark"></i> Dashboard
+                        <i  class="fa fa-home text-dark" style="font-size: 30px;"></i> Home
                     </h1>
                 </div>
             </div>
@@ -23,9 +23,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('createuser')}}" class="btn btn-outline-info btn-block">
+                            <a href="{{route('createuser')}}" class="btn btn-outline-info btn-block">
                                 <i class="fas fa-plus text-dark"></i> Create user
                             </a>
+                        </div>
+                        <div class="col-md-3">
+                            {{-- <a href="{{route('usermanagement')}}" class="btn btn-outline-info btn-block">
+                                <i class="fas fa-plus text-dark"></i> User management
+                            </a> --}}
                         </div>
                     </div>
                 </div>
@@ -54,6 +59,7 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -65,7 +71,10 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                                <a href="{{ url("editUser", [$user->id]) }}" class="btn btn-secondary">
+                                             {{$user->roles[0]->name}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">
                                                     <i class="fas fa-angle-double-right"></i> Details
                                                 </a>
                                             </td>
@@ -74,6 +83,13 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
+                                    <nav class="ml-4">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                {{$latestusers->links()}}
+                                            </div>
+                                        </div>
+                                       </nav>
                                 </table>
                             </div>
                         </div>
@@ -84,11 +100,11 @@
                                     <h4 class="display-4 text-info">
                                         <i class="fas fa-users"></i>
                                          @php
-                                             $user=User::get();
+                                          $user=User::get();
                                            echo count($user);
                                         @endphp
                                     </h4>
-                                <a href="{{url('/user-screen')}}" class="btn btn-outline-info">View</a>
+                                <a href="{{route('user-screen')}}" class="btn btn-outline-info">View</a>
                                 </div>
                             </div>
                             <div class="card mb-3 bg-light text-center">
@@ -97,24 +113,24 @@
                                     <h4 class="display-4 text-info">
                                         <i class="fas fa-users"></i>
                                         @php
-                                        $supervisor=Supervisor::get();
+                               $supervisor= Supervisor::get();
                                       echo count($supervisor);
                                    @endphp
                                     </h4>
-                                <a href="{{url('supervisors')}}" class="btn btn-outline-info">View</a>
+                                <a href="{{route('viewsupervisorsscreen')}}" class="btn btn-outline-info">View</a>
                                 </div>
                             </div>
                             <div class="card mb-3 bg-info text-light text-center">
                                 <div class="card-body">
-                                    <h3>Challenge Owners</h3>
+                                    <h3>Coordinators</h3>
                                     <h4 class="display-4">
                                         <i class="fas fa-users"></i>
                                         @php
-                                        $challengeowner=ChallengeOwner::get();
-                                      echo count($challengeowner);
+                                        $coordinator=Coordinator::get();
+                                      echo count($coordinator);
                                    @endphp
                                     </h4>
-                                <a href="{{url('challengeowners')}}" class="btn btn-outline-light">View</a>
+                                <a href="{{route('viewcoordinatorscreen')}}" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
                             <div class="card mb-3 bg-light text-center border-info">
@@ -127,7 +143,7 @@
                                       echo count($student);
                                    @endphp
                                     </h4>
-                                <a href="{{url('students')}}" class="btn btn-secondary">View</a>
+                                <a href="{{route('viewstudentsscreen')}}" class="btn btn-secondary">View</a>
                                 </div>
                             </div>
                     </div>

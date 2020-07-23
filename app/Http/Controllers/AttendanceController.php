@@ -3,46 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\AttendanceDateReport;
 use App\Student;
 use App\Supervisor;
-use Facade\FlareClient\View;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Request as REQ;
+
 
 class AttendanceController extends Controller
 {
     public function viewAttendancePage()
     {
-        return view('admin.attendance');
-    }
-    public function getAttendances()
-    {
-        $attendances = Attendance::get();
-        return view('admin.attendance',['attendances'=>$attendances]);
-
+        $students = Student::all();
+        return view('supervisor.studentAttendance', ['students' => $students]);
     }
 
     public function postAttendance(Request $request)
     {
-  $request->validate([
-            'name' => 'required',
+        $request->validate([
             'status' => 'required',
-            'date' => 'required'
+            'student_id' => 'required',
+            'attendance_date_report_id'=>'required'
         ]);
-        $attendance = new Attendance();
-        $attendance->name = $request['name'];
-        $attendance->status = $request['status'];
-        $attendance->date = $request['date'];
-
-        $attendance->save();
-        return redirect('addAttendance')
-        ->with('message','Attendance created successfully');
+    //  dd($request->all()['status'][0]);
+    //dd($request['attendance_date_report_id']);
+    $report =  AttendanceDateReport::create([
+        'attendance_date'=>$request['attendance_date_report_id']
+    ]);
+      foreach($request->all()['student_id'] as $index=>$student_id){
+                 Attendance::create([
+                     'attendance_date_report_id'=>$report->id,
+                     'student_id'=>$student_id,
+                     'status'=>$request->all()['status'][$index]
+                 ]);
+      }
+        return back()
+            ->with('message', 'Attendance created successfully');
     }
 
-    public function putAttendance(Request $request, $attendanceId)
+    public function getAttendanceDateReport()
     {
-
+        return view('admin.attendanceDateReport',);
     }
 
+    public function getAttendanceReport()
+    {
+        $reports = AttendanceDateReport::all();
+        $report = AttendanceDateReport::get()->last()->load(['attendance', 'attendance.student','attendance.student.user']);
+
+
+        return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
+    }
+
+    public function getReport($id)
+    {
+        $reports = AttendanceDateReport::all();
+        $report = AttendanceDateReport::find($id)->load(['attendance', 'attendance.student','attendance.student.user']);
+        return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
+    }
 }

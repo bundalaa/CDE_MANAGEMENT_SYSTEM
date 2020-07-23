@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
 <header id="dashboard" class="pt-4 pb-3">
     <div class="container pt-5 pb-0">

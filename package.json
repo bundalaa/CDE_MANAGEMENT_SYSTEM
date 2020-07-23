@@ -22,5 +22,12 @@
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@fullcalendar/core": "^5.1.0",
+        "@fullcalendar/daygrid": "^5.1.0",
+        "fullcalendar": "^5.1.0",
+        "fullcalendar-scheduler": "^5.1.0",
+        "funding": "^1.0.9"
     }
 }

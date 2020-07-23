@@ -10,7 +10,7 @@ class Supervisor extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'title', 'bio'
+        'user_id','bio'
     ];
 
     protected $dates = [
@@ -22,7 +22,6 @@ class Supervisor extends Model
     {
         return $this->hasMany(Team::class);
     }
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,9 +29,5 @@ class Supervisor extends Model
     public function Reports()
     {
         return $this->hasMany(Report::class);
-    }
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class);
     }
 }

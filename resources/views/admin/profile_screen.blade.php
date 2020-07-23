@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
     <header id="dashboard" class="pt-3 pb-3">
         <div class="container pt-5 pb-0">
@@ -17,12 +17,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="index.html" class="btn btn-muted btn-block">
+                            <a href="/" class="btn btn-muted btn-block">
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="{{url('changepass')}}" class="btn btn-success btn-block">
+                            <a href="{{url('getchangepassword')}}" class="btn btn-success btn-block">
                                 <i class="fas fa-lock text-light"></i> Change Password
                             </a>
                         </div>
@@ -87,8 +87,14 @@
                             </div>
                         </div>
                         <div class="col-md-3 pl-5">
+                            @if(Auth::User()->avatar!='/images/default-avatar.png')
+                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:100px;margin-left:10px;height:100px;border-radius:50%">
+
+                            @else
                             <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:100px;margin-left:10px;height:100px;border-radius:50%">
-                        <form action="{{url('')}}" method="post" enctype="multipart/form-data">
+
+                            @endif
+                        <form action="{{url('update-avatar')}}" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                     <label for="img">Select image:</label>
                           <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">

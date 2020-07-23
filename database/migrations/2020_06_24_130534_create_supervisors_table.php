@@ -16,6 +16,7 @@ class CreateSupervisorsTable extends Migration
         Schema::create('supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
+            $table->string('bio')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

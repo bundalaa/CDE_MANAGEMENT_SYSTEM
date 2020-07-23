@@ -17,6 +17,11 @@ class ReportController extends Controller
         return view('supervisor.reports',);
     }
 
+        public function downloadReport($file)
+        {
+          return response()->download('public/storage/files/'.$file);
+        }
+
     public function getReports()
     {
         $report = Report::all();
@@ -45,32 +50,27 @@ class ReportController extends Controller
 
     public function postReport(Request $request)
     {
+        // $validator = Validator::make($request->all(), [
+        //     'supervisor_id' => 'required',
+        //     'team_id' => 'required',
+        //     'status' => 'required',
+        //     'content' => 'required',
+        // ]);
+        $data=new Report;
+        if ($request->file('file')) {
+            $file=$request->file('file');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $request->file->move('public/storage/files',$filename);
 
-        $validator = Validator::make($request->all(), [
-            'supervisor_id' => 'required',
-            'team_id' => 'required',
-            'status' => 'required',
-            'content' => 'required',
-        ]);
+            $data->file=$filename;
+        }
+        $data->title=$request->title;
+        $data->subtitle=$request->subtitle;
+        $data->description=$request->description;
 
-        $team = Team::find($request->team_id);
-        if (!$team)
-            return response()->json(['error' => 'team not found'], 404);
-        $report = new Report();
+        $data->save();
 
-        $report->content = $request->input('content');
-        $report->supervisor_id = $request->input('supervisor_id');
-        $report->team_id = $request->input('team_id');
-        $report->status = $request->input('status');
-
-
-        $team->report()->save($report);
-
-        if (REQ::is('api/*'))
-            return response()->json(['Report' => $report]);
-
-        //for web route
-        return view();
+        return redirect()->back();
     }
 
     public function putReport(Request $request, $reportId)
@@ -141,4 +141,5 @@ class ReportController extends Controller
         if (REQ::is('api/*'))
             return response()->json(['Comment' => $comment]);
     }
+
 }

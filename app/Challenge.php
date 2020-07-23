@@ -10,7 +10,7 @@ class Challenge extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'company_id','name', 'description',
+        'name', 'description',
     ];
 
     protected $dates = [
@@ -19,13 +19,8 @@ class Challenge extends Model
 
 //relationships
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    public function feedbacks()
-    {
-        return $this->hasMany(Feedback::class);
-    }
+public function Identifiedchallenge()
+{
+    return $this->hasMany(IdentifiedChallenge::class);
+}
 }

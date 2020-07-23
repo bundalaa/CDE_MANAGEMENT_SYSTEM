@@ -118,22 +118,14 @@ body {
     display: inline-block;
     border-radius: 2px;
   }
-
-  #notification:hover {
-    background: #555;
-  }
-
   #notification .badge {
     position: absolute;
     top: -10px;
     right: -10px;
     padding: 5px 10px;
     border-radius: 50%;
-    background-color: #555;
+    background-color: red;
     color: white;
-  }
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
   }
 /* =====================================
 # Footer
@@ -177,4 +169,17 @@ footer .fab:hover {
     border-radius: 60%;
     padding-left: 5px;
 }
-/* #more {display: none;} */
+#line{
+    display: block;
+    margin-left:50px;
+    margin-right: 50px;
+    border-style: inset;
+    border-width: 2px;
+    background-color: skyblue;
+}
+.mycard{
+background-color:#87CEEB;
+padding: 20px;
+text-align: center;
+width: 100%;
+}

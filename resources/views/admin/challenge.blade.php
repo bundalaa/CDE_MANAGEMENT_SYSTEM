@@ -1,7 +1,7 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
-<header id="dashboard" class="pt-3 pb-3">
-    <div class="container  pb-0">
+<header id="dashboard" class="pt-5 pb-1">
+    <div class="container pt-2 pb-0">
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
@@ -13,31 +13,35 @@
 </header>
     <div id="page-container">
         <div id="content-wrap">
-
-            <table class="table">
-                <thead>
+            <table class="table table-striped m-0 p-0">
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($identifiedChallenges as $category)
+                    @foreach ($challenges as $challenge)
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $challenge->id }}</td>
+                        <td>{{ $challenge->name }}</td>
                         <p>
-                        <td>{{ $category->description }}
+                        <td>{{ $challenge->description }}
                             <span id="dots">...</span><span id="more"></span></p>
-<button onclick="myFunction()" id="myBtn" class="bg-info rounded-pill">Read more</button>
+             <button onclick="myFunction()" id="myBtn" class="bg-info rounded-pill">Read more</button>
+                        </td>
+                        <td>
+                            <a href="{{ route('getidentifiedchallenges',[$challenge->id])}}" class="btn btn-secondary">
+                                <i class="fas fa-angle-double-right"></i> Details
+                            </a>
                         </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
               </table>
         </div>
-    </div>
             @endsection
     {{-- <script>
         function myFunction() {

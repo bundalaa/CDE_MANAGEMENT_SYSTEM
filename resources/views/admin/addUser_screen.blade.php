@@ -1,7 +1,7 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
-    <header id="dashboard" class="pt-4 pb-3">
-        <div class="container pt-1 pb-0">
+    <header id="dashboard" class="pt-5 pb-3">
+        <div class="container pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <a href="{{url('/')}}" class="btn btn-muted btn-block">
-                        <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                        <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                     </a>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         </div>
     </div>
 @endif
-                                <form action="{{url('createnewuser')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('createnewuser')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name"></label>
@@ -103,18 +103,13 @@
                                                         Role
                                                     </button>
                                                 </div>
-                                                <select style="color: #000;" name="role" class="form-control" id="">
-                                                    <option selected value="1">Admin</option>
-                                                    <option value="2"> Supervisor</option>
-                                                    <option value="3">Student</option>
-                                                    <option value="4">Challenge owner</option>
+                                                <select style="color: #000;" name="role_id" class="form-control">
+                                                    @foreach($roles as $role)
+                                                <option selected value={{$role['id']}}>{{$role['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
-                                        {{-- <div class="form-group">
-                                            <label for="img">Select image:</label>
-                                  <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">
-                                    </div> --}}
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
                                                 class="form-control btn-info"><i class="fas fa-check-circle"></i>

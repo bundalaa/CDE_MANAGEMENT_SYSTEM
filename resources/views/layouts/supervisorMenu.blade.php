@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark py-0 fixed-top">
         <div class="container">
             <a href="{{url('supervisorHome')}}" class="navbar-brand">
-                <img src="{{URL::asset('/images/logo.png')}}" alt="udsm logo" height="40" width="45">
+                <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="40" width="45">
             </a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <i class="navbar-toggler-icon"></i>
@@ -38,45 +38,109 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="{{url('supervisorHome')}}" class="nav-link">Dashboard</a>
+                        <a href="{{route('supervisorHome')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{url('viewteam')}}" class="nav-link">Teams</a>
+                        <a href="{{route('viewteam')}}" class="nav-link">Teams</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{url('category-screen')}}" class="nav-link">Categories</a>
+                        <a href="{{route('challenge-screen')}}" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{url('viewreport')}}" class="nav-link">Reports</a>
+                        <a href="{{route('view-report')}}" class="nav-link">Reports</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{url('view-attendance')}}" class="nav-link">Attendance</a>
+                        <a href="{{route('view-attendance')}}" class="nav-link">Attendance</a>
                     </li>
-                </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown mr-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-user-alt"></i> Welcome Elizabeth
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="profile" class="dropdown-item">
-                                <i class="fas fa-user-circle"></i> Profile
-                            </a>
-                            <hr class="solid">
+                    <li class="nav-item px-2">
+                        <a href="{{route('view-projectProgressForm')}}" class="nav-link">Project Progress Form</a>
+                    </li>
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Messages Dropdown Menu -->
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i id="notification" class="far fa-comments">
+                              <span class="badge navbar-badge">3</span>
+                            </i>
+                            {{-- <span class="badge badge-danger">3</span> --}}
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <a href="#" class="dropdown-item">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                              <!-- Message Start -->
+                              <div class="media">
+                                <div class="media-body">
+                                  <h3 class="dropdown-item-title">
+                                    MORUWASA company
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                  </h3>
+                                  <p class="text-sm">Got some problem...</p>
+                                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                              </div>
+                              <!-- Message End -->
                             </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                          </div>
+                        </li>
+                        <!-- Notifications Dropdown Menu -->
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i id="notification" class="far fa-bell">
+                              <span class="badge navbar-badge">15</span>
+                            </i>
+                            {{-- <span class="badge badge-danger navbar-badge">15</span> --}}
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-item dropdown-header">15 Notifications</span>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                              <i class="fas fa-envelope mr-2"></i> 4 new messages
+                              <span class="float-right text-muted text-sm">3 mins</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                              <i class="fas fa-file mr-2"></i> 3 new reports
+                              <span class="float-right text-muted text-sm">2 days</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                          </div>
+                        </li>
+                        <li class="nav-item dropdown ml-5" >
+                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                              @if (auth()->user())
+                              @if(Auth::User()->avatar!='/images/default-avatar.png')
+                              <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+
+                              @else
+                              <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+
+                              @endif
+                               Welcome {{auth()->user()->name}}
+                              @endif
+                          </a>
+                          <div class="dropdown-menu">
+                          <a href="{{url('profile')}}" class="dropdown-item">
+                                  <i class="fas fa-user-circle"></i> Profile
+                              </a>
+                              <hr class="solid">
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                              <i class="fas fa-sign-out-alt    "></i> {{ __('Logout') }}
+                           </a>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                               @csrf
+                           </form>
+                          </div>
+                      </li>
+                      </ul>
     </nav>
     @yield('content')
     <footer id="footer" class="bg-dark">
         <div class="py-3 text-center">
-            <p class="col-md-4"> &copy; Copyright Udsm <span id="year"></span>, All rights reserved</>
+            <p> &copy; Copyright Udsm <span id="year"></span>, All rights reserved</>
         </div>
     </footer>
 </div>
@@ -92,5 +156,4 @@
     $('#year').text(new Date().getFullYear());
 </script>
 </body>
-
 </html>

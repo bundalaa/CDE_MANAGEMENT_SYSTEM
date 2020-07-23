@@ -10,7 +10,7 @@ class Coordinator extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id'
+        'user_id','bio'
     ];
 
     protected $dates = [
@@ -19,7 +19,7 @@ class Coordinator extends Model
 
 
     //relations
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);

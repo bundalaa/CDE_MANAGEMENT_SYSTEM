@@ -1,8 +1,5 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
-@php
-    use App\Role;
-@endphp
 <header id="dashboard" class="pt-3 pb-3">
     <div class="container pt-5 pb-0">
         <div class="row">
@@ -30,8 +27,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('/')}}" class="btn btn-muted btn-block">
-                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                            <a href="{{route('/')}}" class="btn btn-muted btn-block">
+                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
                         <div class="col-md-6 ml-auto">
@@ -69,14 +66,12 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-
-                                            @php
-                                                $role = Role::where('id',$user->role_id)->first();
-                                            @endphp
-                                            <td>{{ $role['name'] }}</td>
                                             <td>
-                                                <a href="{{ url("editUser", [$user->id]) }}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> Details
+                                        {{$user->roles[0]->name}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> Update User
                                                 </a>
                                             </td>
                                         </tr>

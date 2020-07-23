@@ -21,32 +21,11 @@ class CoordinatorController extends Controller
     {
         return view('admin.publication',);
     }
-    public function getCoordinators()
+    public function viewCoordinators()
     {
-        $Coordinator = Coordinator::all();
-
-        if (REQ::is('api/*'))
-            return response()->json(['Coordinator' => $Coordinator], 201);
-        //for web route
-        return view('welcome',);
+        $coordinators = Coordinator::get();
+        return view('admin.users.coordinator',['coordinators'=>$coordinators]);
     }
-
-    public function getCoordinator($coordinatorId)
-    {
-        $Coordinator = Coordinator::find($coordinatorId);
-
-        if (!$Coordinator) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Coordinator not found']);
-        }
-
-        if (REQ::is('api/*'))
-            return response()->json(['Coordinator' => $Coordinator]);
-
-        ///web route
-        return view();
-    }
-
     public function postCoordinator(Request $request)
     {
 

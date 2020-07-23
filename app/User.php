@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id'
+        'name', 'email', 'password','team_id'
     ];
 
     /**
@@ -65,20 +65,19 @@ public function setPasswordAttribute($password)
       return false;
   }
 
-  # Relationships
   public function coordinator()
   {
-      return $this->hasOne(Coordinator::class, 'user_id', 'id');
+      return $this->hasOne(Coordinator::class,'user_id');
   }
 
   public function supervisor()
   {
-      return $this->hasOne(Supervisor::class, 'user_id', 'id');
+      return $this->hasOne(Supervisor::class,'user_id');
   }
 
   public function student()
   {
-      return $this->hasOne(Student::class, 'user_id', 'id');
+      return $this->hasOne(Student::class,'user_id');
   }
-  
+
 }

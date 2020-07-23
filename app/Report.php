@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,7 +16,6 @@ class Report extends Model
     protected $dates = [
         'deleted_at'
     ];
-
 
 
     //Relationships

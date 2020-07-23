@@ -15,9 +15,7 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('supervisor_id');
             $table->string('name');
-            $table->string('description')->nullable();
             $table->string('taskdate');
 
             $table->softDeletes();

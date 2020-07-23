@@ -10,7 +10,7 @@ class ChallengeOwner extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','emailAddress','description',
+        'name','emailAddress','description','identified_id'
     ];
 
     protected $dates = [

@@ -14,88 +14,99 @@
 
     <div id="page-container">
         <div id="content-wrap">
-            <section id="add" class="py-4 bg-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 ml-auto">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Attendance per day...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-info">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section id="admin-panel" class="py-4">
                 <div class="container">
                     <div class="row pb-3">
                         <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
                             <div class="card" id="card-table">
+                                <form action="{{route('addAttendance')}}" method="post" enctype="multipart/form-data">
+                                                @csrf
                                 <div class="card-header">
-                                    <h4>Class Attendance | <span class="text-info">Monday</span></h1>
+                                    <div class="row">
+                                       <div class="3"> <h4>Class Attendance |  </h4></div>
+                                            <div class='col-sm-3'>
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                    <input readonly type='text' class="form-control" name="attendance_date_report_id" value="{{\Carbon\Carbon::now()->isoFormat('DD-MM-YYYY')}}"/>
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
                                 </div>
+
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Student</th>
-                                            <th>Present</th>
-                                            <th>Absent</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Prosper Mbuma</td>
+                                            @php
+                                            $number = 1;
+                                            $status = isset($_POST['status']) ? $_POST['status'] : array();
+                                        @endphp
+
+                                            @foreach($students as $index=>$student)
+                                            <tr>
+                                                <td>
+                                                    {{$number}}
+                                                </td>
+                                                 <td>{{ $student->user->name }}</td>
+                                                 @php
+                                                 $number++;
+                                             @endphp
                                             <td>
-                                                <form action="" method="post">
-                                                    <div class="form-group">
-                                                        <input type="checkbox" name="" id="">
+                                                <input type="text" name="student_id[]" value="{{$student->id}}" hidden>
+                                                <div class="form-group">
+                                                    <select id="cars" name="status[]">
+                                                        <option value="0">Absent</option>
+                                                        <option value="1">Present</option>
+                                                        </select>
+                                                        {{-- <input type="checkbox" name="status[]" value="off"> --}}
                                                     </div>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="" method="post">
-                                                    <div class="form-group">
-                                                        <input type="checkbox" name="" id="">
-                                                    </div>
-                                                </form>
+
                                             </td>
                                         </tr>
+                                        @endforeach
+
+
+
                                     </tbody>
                                 </table>
-
-                                <!-- Pagination -->
-                                <nav class="ml-4">
-                                    <ul class="pagination">
-                                        <li class="page-item-disabled">
-                                            <a href="#" class="page-link">Prev</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <div class="ml-auto mr-3 mb-3">
-                                    <button class="btn btn-secondary px-3"><i class="fas fa-print"></i> Print</button>
+                                  <div class="ml-auto mr-3 mb-3">
+                                    <button class="btn btn-info px-3" type="submit"><i class="fas fa-save"></i> Save</button>
                                 </div>
+
+
+                             <!-- Pagination -->
+                             {{-- <nav class="ml-4">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        {{$students->links()}}
+                                    </div>
+                                </div>
+                               </nav> --}}
+                               </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
+        <script>
+            function checkFunction(){
+                var checkBox=document.getElementById('check').checked;
+                if(ckeckBox){
+                    document.getElementById('link').href = '{{url('showheader/'.'true')}}';
+                }
+                else{
+                    document.getElementById("link").href = '{{url('showheader/'.'false')}}';
+                }
+            }
+        </script>
       @endsection

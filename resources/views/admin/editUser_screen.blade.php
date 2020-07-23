@@ -1,10 +1,7 @@
-@extends('layouts.menu')
+@extends('layouts.adminmenu')
 @section('content')
-@php
-    use App\Role;
-@endphp
-    <header id="dashboard" class="pt-3 pb-3">
-        <div class="container pt-1 pb-0">
+    <header id="dashboard" class="pt-5 pb-3">
+        <div class="container pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
@@ -20,8 +17,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('/')}}" class="btn btn-muted btn-block">
-                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                            <a href="{{route('/')}}" class="btn btn-muted btn-block">
+                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
                         <div class="col-md-3">
@@ -37,10 +34,10 @@
         <div class="modal-body"> Do you want to delete this user? </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-        <form action="{{url('deleteUser', [$user['id']])}}" method="POST">
+        <form action="{{route('deleteUser', [$user['id']])}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="button" class="btn btn-secondary">YES</button>
+            <button type="submit" class="btn btn-secondary">YES</button>
         </form>
       </div>
       </div>
@@ -59,9 +56,8 @@
                                     <h4>Edit User</h4>
                                 </div>
                                 <div class="card-body px-5">
-                                <form action="{{url('editUser', [$user['id']])}}" method="PUT">
+                                <form action="{{route('editUserSave')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
                                         <div class="form-group">
                                             <label for="Username"></label>
                                             <div class="input-group">
@@ -82,6 +78,7 @@
                                                     <button class="btn btn-secondary">
                                                         <i class="far fa-envelope"></i>
                                                     </button>
+                                                    <input type="text" name="id" value="{{$user['id']}}" hidden>
                                                 </div>
                                                 <input type="email" name="email" id="email" class="form-control p-4"
                                             placeholder="Email address" value="{{ $user['email'] }}" required>
@@ -95,21 +92,18 @@
                                                         Role
                                                     </button>
                                                 </div>
-                                                @php
+                                                {{-- @php
                                                     $role=Role::where('id',$user['role_id'])->first();
-                                                @endphp
-                                                <select style="color: #000;" name="role" class="form-control" id="">
-                                                    <option selected
-                                                    value="{{$role['id']}}">{{$role['name']}}</option>
-                                                    <option value="1">Admin</option>
-                                                    <option value="2"> Supervisor</option>
-                                                    <option value="3">Student</option>
-                                                    <option value="4">Challenge owner</option>
+                                                @endphp --}}
+                                                <select style="color: #000;" name="role" class="form-control">
+                                                    @foreach($roles as $role)
+                                                    <option selected value="{{$role->id}}">{{$role['name']}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" name="submit" id="submit"
+                                            <button type="submit" name="submit"
                                                 class="form-control btn-info"><i class="fas fa-check-circle"></i> Save
                                                 Changes
                                             </button>
@@ -122,6 +116,4 @@
                 </div>
             </section>
         </div>
-
-
 @endsection

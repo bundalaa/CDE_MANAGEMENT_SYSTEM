@@ -10,7 +10,7 @@ class Team extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'team_id', 'supervisor_id', 'schedule_id'
+         'identified_challenge_id','supervisor_id'
     ];
 
     protected $dates = [
@@ -24,28 +24,20 @@ class Team extends Model
         return $this->hasMany(Student::class);
     }
 
-    public function challengeSegments()
-    {
-        return $this->hasMany(ChallengeSegment::class);
-    }
-
     public function report()
     {
         return $this->hasMany(Report::class);
     }
 
-    public function IdentifiedChallenge()
+    public function identifiedChallenge()
     {
-        return $this->hasOne(IdentifiedChallenge::class);
+        return $this->belongsTo(IdentifiedChallenge::class);
     }
 
     public function supervisor()
     {
         return $this->belongsTo(Supervisor::class);
     }
-    public function challengeOwner()
-    {
-        return $this->belongsTo(ChallengeOwner::class);
-    }
+
 
 }

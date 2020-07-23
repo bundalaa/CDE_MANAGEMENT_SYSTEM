@@ -1,5 +1,9 @@
 @extends('layouts.supervisorMenu')
 @section('content')
+@php
+    use App\IdentifiedChallenge;
+    use App\User;
+@endphp
     <header id="dashboard" class="pt-4 pb-3">
         <div class="container pt-5 pb-0">
             <div class="row">
@@ -28,6 +32,16 @@
                     </div>
                 </div>
             </section>
+            @if (session('message'))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {{ session('message') }}
+                    </div>
+                </div>
+            </div>
+        @endif
             <section id="admin-panel" class="py-4">
                 <div class="container">
                     <div class="row pb-3">
@@ -41,43 +55,41 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Category</th>
+                                            <th>Supervisor</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($teams as $teams)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Soprano</td>
-                                            <td>Musical</td>
-                                            <td>
-                                                <a href="viewteamDetail" class="btn btn-secondary">
+                                        <td>{{ $teams->id }}</td>
+                                        <td>
+                                            @php
+                                                $challenge = IdentifiedChallenge::where('id',$teams->identified_challenge_id )->first();
+                                                $supervisor = User::where('id',$teams->supervisor_id )->first();
+                                            @endphp
+                                            {{ $challenge['name'] }}</td>
+                                        <td>{{ $supervisor['name']}}</td>
+                                        <td>
+                                            <a href="{{route('viewaddstudentpage',[$teams->id])}}" class="btn btn-secondary">
+                                                <i class="fas fa-angle-double-right"></i> Add Students
+                                            </a>
+                                        {{-- <a href="{{route('viewteamDetail',[$teams->id])}}" class="btn btn-secondary">
                                                     <i class="fas fa-angle-double-right"></i> Details
-                                                </a>
+                                                </a> --}}
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <!-- Pagination -->
-                                <nav class="ml-4">
-                                    <ul class="pagination">
-                                        <li class="page-item-disabled">
-                                            <a href="#" class="page-link">Prev</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a href="#" class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a href="#" class="page-link">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                {{-- <nav class="ml-4">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            {{$teams->links()}}
+                                        </div>
+                                    </div>
+                                   </nav> --}}
                             </div>
                         </div>
                     </div>

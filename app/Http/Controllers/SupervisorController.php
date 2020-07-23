@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\IdentifiedChallenge;
 use App\Supervisor;
 use Illuminate\Http\Request;
 use App\User;
@@ -18,14 +19,8 @@ class SupervisorController extends Controller
     public function index(){
             return view('supervisor.supervisorHome');
     }
-    public function viewCategory(){
-        return view('supervisor.category-screen');
-}
-    public function viewCategoryDetail(){
-    return view('supervisor.categoryDetail');
-}
-public function createCategory(){
-    return view('supervisor.createcategory');
-}
+
+
+
 
 }
