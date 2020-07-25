@@ -10,7 +10,7 @@ class Report extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'content', 'team_id', 'supervisor_id', 'status'
+        'title','subtitle','description','file',
     ];
 
     protected $dates = [

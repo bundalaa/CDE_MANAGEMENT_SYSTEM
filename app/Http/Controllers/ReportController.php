@@ -14,7 +14,11 @@ class ReportController extends Controller
 {
     public function viewReport()
     {
-        return view('supervisor.reports',);
+        $reports=Report::all();
+
+        return view('supervisor.reports',[
+            'reports'=>$reports
+        ]);
     }
 
         public function downloadReport($file)
@@ -50,17 +54,23 @@ class ReportController extends Controller
 
     public function postReport(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'supervisor_id' => 'required',
-        //     'team_id' => 'required',
-        //     'status' => 'required',
-        //     'content' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            // 'supervisor_id' => 'required',
+            // 'team_id' => 'required',
+            'title' => 'required',
+            'subtitle'=>'required',
+            'description' => 'required',
+            'file' => 'required|mimes:doc,docx,pdf,txt|max:20400',
+        ]);
+        if($validator->fails())
+        {
+         return Redirect()->back()->withInput()->withErrors($validator);
+        }
         $data=new Report;
         if ($request->file('file')) {
             $file=$request->file('file');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file->move('public/storage/files',$filename);
+            $request->file->move('public/storage/reports',$filename);
 
             $data->file=$filename;
         }
@@ -70,7 +80,8 @@ class ReportController extends Controller
 
         $data->save();
 
-        return redirect()->back();
+        return  redirect()->back()->withSuccess('Great! file has been successfully uploaded.');
+
     }
 
     public function putReport(Request $request, $reportId)
@@ -141,5 +152,12 @@ class ReportController extends Controller
         if (REQ::is('api/*'))
             return response()->json(['Comment' => $comment]);
     }
+
+    // student module
+    public function stunUpload()
+    {
+     return view('student.studentReport');
+    }
+
 
 }

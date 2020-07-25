@@ -27,6 +27,7 @@ body {
     }
 }
 
+
 /* =====================================
 # Navigation
 ======================================*/
@@ -43,6 +44,7 @@ body {
     font-family: 'Philosopher', sans-serif;
     margin-top: 4px;
 }
+
 
 /* =====================================
 # Header Dashboard
@@ -66,6 +68,7 @@ body {
     }
 }
 
+
 /* =====================================
 # Section Add
 ======================================*/
@@ -85,6 +88,7 @@ body {
     }
 }
 
+
 /* =====================================
 # Section Admin-Panel
 ======================================*/
@@ -102,23 +106,29 @@ body {
 }
 
 @media (max-width: 360px) {
-    tr, th, td {
+    tr,
+    th,
+    td {
         display: flex;
         justify-content: center;
         flex-flow: wrap column;
         flex-basis: 100%;
     }
 }
+
+
 /*badge in messages and notifications*/
+
 #notification {
     color: white;
     text-decoration: none;
-    padding:5px 0px 5px 10px;
+    padding: 5px 0px 5px 10px;
     position: relative;
     display: inline-block;
     border-radius: 2px;
-  }
-  #notification .badge {
+}
+
+#notification .badge {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -126,7 +136,9 @@ body {
     border-radius: 50%;
     background-color: red;
     color: white;
-  }
+}
+
+
 /* =====================================
 # Footer
 ======================================*/
@@ -162,24 +174,29 @@ footer .fab:hover {
     color: #808080;
     transition: all 1s;
 }
-  /* profile pic */
-  .profile-pic{
+
+
+/* profile pic */
+
+.profile-pic {
     width: 100px;
     height: 190px;
     border-radius: 60%;
     padding-left: 5px;
 }
-#line{
+
+#line {
     display: block;
-    margin-left:50px;
+    margin-left: 50px;
     margin-right: 50px;
     border-style: inset;
     border-width: 2px;
     background-color: skyblue;
 }
-.mycard{
-background-color:#87CEEB;
-padding: 20px;
-text-align: center;
-width: 100%;
+
+.mycard {
+    background-color: #87CEEB;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
 }
