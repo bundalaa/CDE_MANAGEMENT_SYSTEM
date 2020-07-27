@@ -8,11 +8,20 @@ class Attendance extends Model
 {
 
     protected $fillable = [
-        'student_id', 'date', 'status'
+        'student_id','status','attendance_date_report_id'
+    ];
+    protected $casts = [
+        'status' => 'boolean',
     ];
 
     public function student()
     {
         return $this->belongsTo(Student::class);
     }
+    public function report()
+    {
+        return $this->belongsTo(AttendanceDateReport::class);
+    }
+   
+
 }

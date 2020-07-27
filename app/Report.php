@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,13 +10,12 @@ class Report extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'content', 'team_id', 'supervisor_id', 'status'
+        'title','subtitle','description','file',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
-
 
 
     //Relationships
@@ -35,5 +32,5 @@ class Report extends Model
     {
         return $this->morphMany('App\Comment', 'commentable');
     }
-    
+
 }

@@ -2,99 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\IdentifiedChallenge;
 use App\Student;
+use App\Supervisor;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as REQ;
-use Illuminate\Support\Facades\Validator;
-
 
 class TeamController extends Controller
 {
-    public function getTeams()
+    public function viewaddstudentpage($id)
     {
-        $team = Team::all();
+        $students = Student::where('team_id',$id)->get();
 
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team], 201);
-        //for web route
-        return view('welcome',);
+        return view('supervisor.addStudentToTeam',['id'=> $id,'students'=>$students]);
+    }
+    public function viewCreateTeam()
+    {
+        $challenges=IdentifiedChallenge::all();
+        $supervisors=Supervisor::all();
+        return view('supervisor.createteam',['challenges'=>$challenges,'supervisors'=>$supervisors]);
     }
 
-    public function getTeam($teamId)
+    public function teamTeamDetails($id)
     {
-        $team = Team::find($teamId);
-
-        if (!$team) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Team not found']);
-        }
-
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team]);
-
-        ///web route
-        return view();
+        $students = Student::where('team_id',$id)->first();
+        // dd($students);
+        return view('supervisor.teamDetails', ['id' => $id, 'students' => $students]);
     }
 
-    public function postTeam(Request $request)
+    public function viewTeam()
     {
-
-        $validator = Validator::make($request->all(), [
+        $teams = Team::all();
+        return view('supervisor.teams', ['teams' => $teams]);
+    }
+    public function getEditTeam()
+    {
+        return view('supervisor.teamDetail',);
+    }
+    public function createTeam(Request $request)
+    {
+        $request->validate([
             'supervisor_id' => 'required',
-            'category_id' => 'required',
+            'identified_challenge_id' => 'required'
         ]);
-
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 404);
-        }
-
         $team = new Team();
-        $team->supervisor_id = $request->supervisor_id;
-        $team->category_id = $request->category_id;
-
+        $team->supervisor_id = $request['supervisor_id'];
+        $team->identified_challenge_id = $request['identified_challenge_id'];
         $team->save();
-
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team]);
-
-        //for web route
-        return view();
-    }
-
-    public function putTeam(Request $request, $teamId)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'supervisor_id' => 'required',
-            'category_id' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-
-        $team = Team::find($teamId);
-
-        if (!$team) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Team not found']);
-        }
-
-
-        $team->update([
-            'supervisor_id' => $request->input('supervisor_id'),
-            'category_id' => $request->input('category_id'),
-        ]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team]);
-
-        //for web route
-        return view();
+        return redirect('viewteam')
+            ->with('message', 'Team created successfully');
     }
 
     public function deleteTeam($teamId)
@@ -113,59 +70,21 @@ class TeamController extends Controller
         ///web route
         return view();
     }
-    public function addStudentToTeam(Request $request){
-        $validator = Validator::make($request->all(), [
-            'student_id' => 'required',
+
+    public function addStudentToTeam(Request $request)
+    {
+        $request->validate([
             'team_id' => 'required',
+            'student_id' => 'required'
         ]);
+        $student = Student::where('user_id', $request->student_id)->first();
+            // $student->team_id = $request['team'];
 
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-        $student = Student::find($request->student_id);
+        $student->update(['team_id' => $request->team_id]);
 
-        if (!$student) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Student not found']);
-        }
-        $team = Team::find($request->team_id);
-
-        if (!$team) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Team not found']);
-        }
-        $student->update(['team_id' => $request->input('team_id'),
-        'student_id' => $request->input('student_id'),]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team]);
-    }
-    public function addChallengeToTeam(Request $request){
-        $validator = Validator::make($request->all(), [
-            'team_id' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-        $student = Student::find($request->student_id);
-
-        if (!$student) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Student not found']);
-        }
-        $team = Team::find($request->team_id);
-
-        if (!$team) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Team not found']);
-        }
-        $student->update(['team_id' => $request->input('team_id'),
-        'student_id' => $request->input('student_id'),]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['Team' => $team]);
+        $student->save();
+        //dd($student);
+        return redirect('viewteamDetail/{id}')
+            ->with('message', 'student added successfully');
     }
 }

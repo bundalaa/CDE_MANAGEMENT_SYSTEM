@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f8f9fa;
+    /* background-image: url("../images/stun.jpg"); */
+}
+
+
+/* Navigation */
+
+nav .navbar-brand {
+    /* font-family: 'Advent Pro', sans-serif; */
+    font-family: 'Marmelad', sans-serif;
+}
+
+nav .collapse {
+    font-family: 'Philosopher', sans-serif;
+    margin-top: 4px;
+}
+
+
+/* Dashboard */
+
+#dashboard {
+    background: #d3d3d3;
+    --info: #87CEEB;
+}
+
+@media (max-width: 567px) {
+    #dashboard .fa-cog {
+        font-size: 20px;
+    }
+    #dashboard .display-4 {
+        font-size: 20px;
+    }
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Philosopher', sans-serif;
+}
+
+#content-wrap {
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 760x) {
+    #content-wrap {
+        padding-bottom: 9rem;
+    }
+}
+
+footer {
+    color: #908e8e;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 3rem;
+}
+
+@media (max-width: 760px) {
+    footer {
+        height: 9rem;
+    }
+    footer .fab {
+        padding-top: 12px;
+    }
+}
+
+footer {
+    font-family: 'Marvel', 'sans-serif';
+    font-size: 17px;
+}
+
+footer .fab {
+    color: #767676;
+    transition: all 1s;
+}
+
+footer .fab:browser {
+    color: #808080;
+    transition: all 1s;
+}
+
+#top {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    font-size: 17px;
+}
+
+#calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 10px;
+}

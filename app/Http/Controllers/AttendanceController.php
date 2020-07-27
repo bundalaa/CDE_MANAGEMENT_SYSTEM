@@ -3,127 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\AttendanceDateReport;
 use App\Student;
 use App\Supervisor;
-use Facade\FlareClient\View;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Request as REQ;
+
 
 class AttendanceController extends Controller
 {
-    public function getAttendances()
+    public function viewAttendancePage()
     {
-        $attendances = Attendance::all();
-
-        if (REQ::is('api/*'))
-            return response()->json(['attendance' => $attendances], 201);
-        //for web route
-        return view('welcome',);
+        $students = Student::all();
+        return view('supervisor.studentAttendance', ['students' => $students]);
     }
-    public function getAttendance($attendanceId)
-    {
-        $attendance = Attendance::find($attendanceId);
 
-       if (!$attendance) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Attendance not found']);
-       }
-
-        if (REQ::is('api/*'))
-          return response()->json(['Attendance' => $attendance]);
-
-   //    web route
-        return view();
-    }
     public function postAttendance(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
+        $request->validate([
+            'status' => 'required',
             'student_id' => 'required',
-            'supervisor_id' => 'required',
-            'status' => 'required',
-            'date' => 'required'
+            'attendance_date_report_id'=>'required'
         ]);
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-        $student = Student::find($request->input('student_id'));
-
-        if (!$student) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Student not found']);
-        }
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-        $supervisor = Supervisor::find($request->input('supervisor_id'));
-
-        if (!$supervisor) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Supervisor not found']);
-        }
-        $attendance = new Attendance();
-
-        $attendance->date = $request->input('date');
-        $attendance->status = $request->input('status');
-
-        $student->attendances()->save($attendance);
-
-        if (REQ::is('api/*'))
-            return response()->json(['attendance' => $attendance]);
-
-        //for web route
-        return view();
+    //  dd($request->all()['status'][0]);
+    //dd($request['attendance_date_report_id']);
+    $report =  AttendanceDateReport::create([
+        'attendance_date'=>$request['attendance_date_report_id']
+    ]);
+      foreach($request->all()['student_id'] as $index=>$student_id){
+                 Attendance::create([
+                     'attendance_date_report_id'=>$report->id,
+                     'student_id'=>$student_id,
+                     'status'=>$request->all()['status'][$index]
+                 ]);
+      }
+        return back()
+            ->with('message', 'Attendance created successfully');
     }
 
-    public function putAttendance(Request $request, $attendanceId)
+    public function getAttendanceDateReport()
     {
-
-        $validator = Validator::make($request->all(), [
-            'status' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-
-        $attendance = Attendance::find($attendanceId);
-
-        if (!$attendance) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Attendance not found']);
-        }
-
-        $attendance->update([
-            'status' => $request->input('status')
-        ]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['attendance' => $attendance]);
-
-        //for web route
-        return view();
+        return view('admin.attendanceDateReport',);
     }
-    public function deleteAttendance($attendanceId)
+
+    public function getAttendanceReport()
     {
-        $attendance = Attendance::find($attendanceId);
+        $reports = AttendanceDateReport::all();
+        $report = AttendanceDateReport::get()->last()->load(['attendance', 'attendance.student','attendance.student.user']);
 
-        if (!$attendance) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Attendance not found']);
-        }
 
-        $attendance->delete();
-        if (REQ::is('api/*'))
-            return response()->json(['message' => 'Attendance deleted successfully']);
-
-        ///web route
-        return view();
+        return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
     }
 
+    public function getReport($id)
+    {
+        $reports = AttendanceDateReport::all();
+        $report = AttendanceDateReport::find($id)->load(['attendance', 'attendance.student','attendance.student.user']);
+        return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
+    }
 }

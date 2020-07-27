@@ -10,7 +10,7 @@ class Coordinator extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'username', 'password'
+        'user_id','bio'
     ];
 
     protected $dates = [
@@ -19,11 +19,6 @@ class Coordinator extends Model
 
 
     //relations
-
-    public function teams()
-    {
-        return $this->hasMany(Team::class);
-    }
 
     public function user()
     {

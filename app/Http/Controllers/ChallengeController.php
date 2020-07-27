@@ -3,117 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Challenge;
+use App\IdentifiedChallenge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
 
 class ChallengeController extends Controller
 {
-    public function getChallenges()
+    public function getChallenge()
     {
-        $challenge = Challenge::all();
-
-        if (REQ::is('api/*'))
-            return response()->json(['challenge' => $challenge], 201);
-        //for web route
-        return view('welcome',);
+        $challenges = Challenge::get();
+      return view('admin.challenge',['challenges'=>$challenges]);
     }
 
-    public function getChallenge($challengeId)
+    public function getIdentifiedChallenges($id)
     {
-        $challenge = Challenge::find($challengeId);
-
-        if (!$challenge) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Challenge not found']);
-        }
-
-        if (REQ::is('api/*'))
-            return response()->json(['challenge' => $challenge]);
-
-        ///web route
-        return view();
+        $challenge = Challenge::where('id', $id)->first();
+        $identifiedChallenges = IdentifiedChallenge::get();
+      return view('admin.viewIdentifiedChallenge-screen',['challenge'=>$challenge,'identifiedChallenges'=>$identifiedChallenges]);
     }
 
-    public function postChallenge(Request $request)
+    public function viewChallenge()
     {
+        $challenges = Challenge::get();
+      return view('supervisor.challenge-screen',['challenges'=>$challenges]);
+    }
 
-        $validator = Validator::make($request->all(), [
+    public function viewChallengeDetails($id){
+        $challenge = Challenge::where('id', $id)->first();
+        return view('supervisor.challengeDetails',['challenge'=>$challenge]);
+    }
+
+    public function viewcreateChallenges(){
+        return view('supervisor.createChallenge');
+    }
+
+    public function getChallengesScreen(){
+        $challenges = Challenge::get();
+        return view('supervisor.challenge-screen',['challenges'=>$challenges]);
+    }
+
+    public function viewaddidentifiedchallenge($id){
+         $challenge = IdentifiedChallenge::where('challenge_id',$id)->first();;
+        return view('supervisor.addIdentifiedChallenge',['id'=>$id,'challenge'=>$challenge]);
+    }
+
+    public function addChallenges(Request $request){
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
         ]);
+            $challenge = new Challenge();
+            $challenge->name = $request['name'];
+            $challenge->description = $request['description'];;
+            $challenge->save();
+        return redirect('supervisorHome')
+        ->with('message','Challenge created successfully');
+    }
 
-
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-
-
-
-
-        $challenge = new Challenge();
-
-        $challenge->name = $request->input('name');
-        $challenge->description = $request->input('description');
-
+    public function updateChallenge(Request $request){
+        $challenge = Challenge::where('id',$request['id'])->first();
+        $challenge->name=$request['name'];
+        $challenge->description = $request['description'];
         $challenge->save();
-
-        if (REQ::is('api/*'))
-            return response()->json(['challenge' => $challenge]);
-
-        //for web route
-        return view();
-    }
-
-    public function putChallenge(Request $request, $challengeId)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-
-        $challenge = Challenge::find($challengeId);
-
-        if (!$challenge) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Challenge not found']);
-        }
-
-
-        $challenge->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-        ]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['challenge' => $challenge]);
-
-        //for web route
-        return view();
+return redirect('supervisorHome')->with('message','Challenge updated successfully');
     }
 
     public function deleteChallenge($challengeId)
     {
-        $challenge = Challenge::find($challengeId);
+       $challenge = Challenge::find($challengeId);
 
         if (!$challenge) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Challenge not found']);
-        }
-
+               return back()->withErrors('Challenge not found');
+       }
         $challenge->delete();
-        if (REQ::is('api/*'))
-            return response()->json(['message' => 'Challenge deleted successfully']);
-
-        ///web route
-        return view();
+            return redirect('viewchallenge')->with('Challenge deleted successfuly');
     }
 }

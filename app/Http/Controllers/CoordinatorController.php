@@ -9,32 +9,23 @@ use Illuminate\Support\Facades\Request as REQ;
 
 class CoordinatorController extends Controller
 {
-    public function getCoordinators()
+    public function viewProjectProgress()
     {
-        $Coordinator = Coordinator::all();
-
-        if (REQ::is('api/*'))
-            return response()->json(['Coordinator' => $Coordinator], 201);
-        //for web route
+        return view('admin.progress',);
+    }
+    public function viewNotification()
+    {
         return view('welcome',);
     }
-
-    public function getCoordinator($coordinatorId)
+    public function viewPublication()
     {
-        $Coordinator = Coordinator::find($coordinatorId);
-
-        if (!$Coordinator) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Coordinator not found']);
-        }
-
-        if (REQ::is('api/*'))
-            return response()->json(['Coordinator' => $Coordinator]);
-
-        ///web route
-        return view();
+        return view('admin.publication',);
     }
-
+    public function viewCoordinators()
+    {
+        $coordinators = Coordinator::get();
+        return view('admin.users.coordinator',['coordinators'=>$coordinators]);
+    }
     public function postCoordinator(Request $request)
     {
 

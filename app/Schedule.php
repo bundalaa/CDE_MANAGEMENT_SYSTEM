@@ -11,22 +11,10 @@ class Schedule extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','description', 'taskdate',
+        'name','taskdate',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
-
-    //relations
-
-    public function supervisor()
-    {
-        return $this->belongsTo(Supervisor::class);
-    }
-
-    public function teams()
-    {
-        return $this->hasMany(Team::class);
-    }
 }

@@ -11,35 +11,15 @@ class ScheduleController extends Controller
 {
     public function getSchedules()
     {
-
-         $schedules = Schedule::all();
-        //for web route
-       return view('admin-pages.schedule_screen',compact('schedules'));
+         $schedules = Schedule::get();
+       return view('admin.schedule',['schedules'=> $schedules]);
      }
 
     public function postSchedule(Request $request)
     {
-         return dd('hey');
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'taskdate' => 'required',
-
-        // ]);
-
-        // if ($validator->fails()) {
-        //         return redirect();
-        // }
-
-        // $schedule = new Schedule();
-
-        // $schedule->name = $request->input('name');
-        // $schedule->description = $request->input('description');
-        //  $schedule->taskdate = $request->input('taskdate');
-
-        // $schedule->save();
-        // //for web route
-        // return view('admin-pages/schedule_screen');
+        Schedule::create($request->all());
+        return redirect('view-schedule')
+    ->with('message','schedule successfully updated');
     }
 
     public function putSchedule(Request $request, $scheduleId)

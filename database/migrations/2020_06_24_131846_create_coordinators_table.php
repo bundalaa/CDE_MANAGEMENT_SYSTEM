@@ -15,8 +15,8 @@ class CreateCoordinatorsTable extends Migration
     {
         Schema::create('coordinators', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('password');
+            $table->bigInteger('user_id');
+            $table->string('bio')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

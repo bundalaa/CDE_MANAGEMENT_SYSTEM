@@ -14,7 +14,11 @@ class CreateAttendancesTable extends Migration
     public function up()
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('student_id');
+            $table->bigInteger('attendance_date_report_id');
+            $table->boolean('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

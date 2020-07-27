@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','team_id'
     ];
 
     /**
@@ -37,9 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+// Only accept a valid password and
+// hash a password before saving
+public function setPasswordAttribute($password)
+{
+    if ( $password !== null & $password !== "" )
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+}
 
     public function roles(){
-    return $this->belongsToMany(Role::class);}
+    return $this->belongsToMany(Role::class);
+}
 
     public function hasAnyRoles($roles){
     if($this->roles()->whereIn('name' , $roles)->first())
@@ -54,4 +64,20 @@ class User extends Authenticatable
 
       return false;
   }
+
+  public function coordinator()
+  {
+      return $this->hasOne(Coordinator::class,'user_id');
+  }
+
+  public function supervisor()
+  {
+      return $this->hasOne(Supervisor::class,'user_id');
+  }
+
+  public function student()
+  {
+      return $this->hasOne(Student::class,'user_id');
+  }
+
 }

@@ -10,7 +10,7 @@ class Team extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'segment_id', 'coordinator_id', 'supervisor_id', 'schedule_id'
+         'identified_challenge_id','supervisor_id'
     ];
 
     protected $dates = [
@@ -24,18 +24,14 @@ class Team extends Model
         return $this->hasMany(Student::class);
     }
 
-    public function segment()
-    {
-        return $this->belongsTo(Segment::class);
-    }
-
     public function report()
     {
         return $this->hasMany(Report::class);
     }
-    public function category()
+
+    public function identifiedChallenge()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(IdentifiedChallenge::class);
     }
 
     public function supervisor()
@@ -43,8 +39,5 @@ class Team extends Model
         return $this->belongsTo(Supervisor::class);
     }
 
-    public function schedule()
-    {
-        return $this->belongsTo(Schedule::class);
-    }
+
 }

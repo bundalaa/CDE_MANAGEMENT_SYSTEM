@@ -1,0 +1,202 @@
+/* =====================================
+# General
+======================================*/
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#content-wrap {
+    padding-bottom: 3rem;
+    /* footer height */
+}
+
+@media (max-width: 760px) {
+    #content-wrap {
+        padding-bottom: 9rem;
+    }
+}
+
+
+/* =====================================
+# Navigation
+======================================*/
+
+.navbar-brand {
+    font-family: 'Marmelad', sans-serif;
+}
+
+.navbar-brand img {
+    width: 50px;
+}
+
+.navbar .collapse {
+    font-family: 'Philosopher', sans-serif;
+    margin-top: 4px;
+}
+
+
+/* =====================================
+# Header Dashboard
+======================================*/
+
+#dashboard {
+    background: #d3d3d3;
+    font-weight: bold;
+}
+
+#dashboard h1 {
+    font-family: 'Philosopher', sans-serif;
+}
+
+@media (max-width: 567px) {
+    #dashboard .fa-cog {
+        font-size: 2.5rem;
+    }
+    #dashboard .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+
+/* =====================================
+# Section Add
+======================================*/
+
+#add .fa-plus {
+    font-size: 12px;
+}
+
+#add .btn {
+    /* font-family: 'Advent Pro', sans-serif; */
+    font-family: 'Philosopher', sans-serif;
+}
+
+@media (max-width: 768px) {
+    #add .btn {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* =====================================
+# Section Admin-Panel
+======================================*/
+
+#admin-panel .card {
+    /* font-family: 'Advent Pro', sans-serif; */
+    font-family: 'Philosopher', sans-serif;
+}
+
+@media (max-width:760px) {
+    #admin-panel #card-table {
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 360px) {
+    tr,
+    th,
+    td {
+        display: flex;
+        justify-content: center;
+        flex-flow: wrap column;
+        flex-basis: 100%;
+    }
+}
+
+
+/*badge in messages and notifications*/
+
+#notification {
+    color: white;
+    text-decoration: none;
+    padding: 5px 0px 5px 10px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+#notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+
+/* =====================================
+# Footer
+======================================*/
+
+footer {
+    color: #908e8e;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+}
+
+@media (max-width: 760px) {
+    footer {
+        height: 9rem;
+    }
+    footer .fab {
+        padding-top: 12px;
+    }
+}
+
+footer p {
+    font-family: 'Marvel', sans-serif;
+    font-size: 17px;
+}
+
+footer .fab {
+    color: #767676;
+    transition: all 1s;
+}
+
+footer .fab:hover {
+    color: #808080;
+    transition: all 1s;
+}
+
+
+/* profile pic */
+
+.profile-pic {
+    width: 100px;
+    height: 190px;
+    border-radius: 60%;
+    padding-left: 5px;
+}
+
+#line {
+    display: block;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-style: inset;
+    border-width: 2px;
+    background-color: skyblue;
+}
+
+.mycard {
+    background-color: #87CEEB;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}

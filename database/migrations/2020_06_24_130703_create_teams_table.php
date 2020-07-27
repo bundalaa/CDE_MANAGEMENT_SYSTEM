@@ -15,8 +15,8 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('supervisor_id')->nullable();
-            $table->bigInteger('category_id');
+            $table->bigInteger('supervisor_id');
+            $table->bigInteger('identified_challenge_id');
             $table->softDeletes();
             $table->timestamps();
         });

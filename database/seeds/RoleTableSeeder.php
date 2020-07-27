@@ -15,19 +15,23 @@ class RoleTableSeeder extends Seeder
         Role::truncate();
         Role::create([
             'name'=> 'admin',
-            'description'=>'mtaalam'
+            'description'=>'coordinator',
+            'permission' =>''
         ]);
          Role::create([
             'name'=> 'student',
-            'description'=>'mtaalam'
+            'description'=>'student',
+            'permission' =>''
         ]);
          Role::create([
             'name'=> 'supervisor',
-            'description'=>'mtaalam'
+            'description'=>'supervisor',
+            'permission' =>''
         ]);
-         Role::create([
-            'name'=> 'challengeOwner',
-            'description'=>'mtaalam'
-        ]);
+        //  Role::create([
+        //     'name'=> 'challengeOwner',
+        //     'description'=>'challenge owner',
+        //     'permission' =>''
+        // ]);
     }
 }
