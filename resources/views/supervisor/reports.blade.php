@@ -43,6 +43,16 @@
                                 </div>
                             </div>
                           </a> --}}
+                          @foreach ($reports as $data)
+                          <h2>{{$data->title}}</h2>
+                          <h3>{{$data->subtitle}}</h3>
+                          <h3>{{$data->description}}</h3>
+
+            <p>
+            <iframe src="{{url('public/storage/reports/'.$data->file)}}" style="width: 600px;height: 500px;"></iframe>
+            </p>
+                          @endforeach
+
                         </div>
                 </div>
             </section>

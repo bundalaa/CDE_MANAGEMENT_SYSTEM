@@ -15,11 +15,46 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('AboutUS', function () {
+    return view('AboutUS');
+});
 
-Auth::routes();
+Route::get('/', function () {
+    return view('homePg');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('publication', function () {
+    return view('publication');
+});
+Route::get('feedback', function () {
+    return view('feedback');
+});
 
+Route::get('contact-us', 'ContactUSController@contactUS');
+
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+
+Route::get('chart-js', 'ChartController@index');
+
+// Create file upload form
+Route::get('/upload-file', 'FileUpload@createForm');
+
+// Store file
+Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
+
+Route::get('login', 'AuthController@index');
+Route::post('post-login', 'AuthController@postLogin');
+Route::get('registration', 'AuthController@registration');
+Route::post('post-registration', 'AuthController@postRegistration');
+Route::get('dashboard', 'AuthController@dashboard');
+Route::get('logout', 'AuthController@logout');
+
+Route::get('file', 'MultipleFileController@index');
+
+Route::post('save', 'MultipleFileController@save')->name('file.save');
+
+
+////admn and supervisor routes
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('/index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
@@ -131,6 +166,17 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 // Route::post('/permission', 'PermissionController@assignPermission');
 
 
+//// student module
+Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
+Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
+Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
+Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
+Route::get('FypConfirm', 'StudentController@confirm')->name('FypConfirm');
+Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProjectView');
 
+Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
+Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
+
+////End of admin and supervisor routes
 
 

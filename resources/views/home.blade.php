@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 @extends('layouts.adminmenu')
+=======
+ @extends('layouts.menu')
+
+>>>>>>> aeb2e6ac2ec5468a2989584863524a0137f66cc5
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

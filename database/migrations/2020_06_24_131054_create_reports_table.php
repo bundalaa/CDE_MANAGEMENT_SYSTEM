@@ -14,11 +14,13 @@ class CreateReportsTable extends Migration
     public function up()
     {
         Schema::create('reports', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('content');
-            $table->bigInteger('team_id');
-            $table->bigInteger('supervisor_id');
-            $table->string('status');
+            $table->increments('id');
+            // $table->bigInteger('team_id');
+            // $table->bigInteger('supervisor_id');
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('description');
+            $table->string('file');
             $table->softDeletes();
             $table->timestamps();
         });
