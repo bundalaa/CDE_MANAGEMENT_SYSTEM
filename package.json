@@ -28,6 +28,7 @@
         "@fullcalendar/daygrid": "^5.1.0",
         "fullcalendar": "^5.1.0",
         "fullcalendar-scheduler": "^5.1.0",
-        "funding": "^1.0.9"
+        "funding": "^1.0.9",
+        "jquery-datetimepicker": "^2.5.21"
     }
 }

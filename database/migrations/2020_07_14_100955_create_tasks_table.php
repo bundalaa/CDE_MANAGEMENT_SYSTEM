@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('identified_challenge_id');
-            $table->string('status');
+            $table->string('status_id');
 
             $table->softDeletes();
             $table->timestamps();

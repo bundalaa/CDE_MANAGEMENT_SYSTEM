@@ -12,9 +12,14 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function viewStatus()
     {
-        //
+       $status = Status::all();
+       if (REQ::is('api/*'))
+       return response()->json(['status' => $Visitor], 201);
+   //for web route
+      // return view('supervisor.fillProgress',['status'=>$status,]);
+
     }
 
     /**

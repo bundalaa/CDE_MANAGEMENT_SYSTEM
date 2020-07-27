@@ -3,15 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Coordinator;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
 
 class CoordinatorController extends Controller
 {
+    public function inboxMessageA()
+    {
+        return view('admin.inboxmessageA');
+    }
+    public function composeMessageA()
+    {
+        return view('admin.composeA');
+    }
+    public function readMessageA()
+    {
+        return view('admin.readmessageA');
+    }
     public function viewProjectProgress()
     {
-        return view('admin.progress',);
+        $tasks = Task::all();
+        return view('admin.progress', ['tasks' => $tasks]);
     }
     public function viewNotification()
     {
@@ -24,7 +38,7 @@ class CoordinatorController extends Controller
     public function viewCoordinators()
     {
         $coordinators = Coordinator::get();
-        return view('admin.users.coordinator',['coordinators'=>$coordinators]);
+        return view('admin.users.coordinator', ['coordinators' => $coordinators]);
     }
     public function postCoordinator(Request $request)
     {
@@ -34,16 +48,16 @@ class CoordinatorController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-           redirect('/');
-        $Coordinator = new Coordinator();
-        $Coordinator->username = $request->input('username');
-        $Coordinator->password = $request->input('password');
-        $Coordinator->save();
+            redirect('/');
+            $Coordinator = new Coordinator();
+            $Coordinator->username = $request->input('username');
+            $Coordinator->password = $request->input('password');
+            $Coordinator->save();
 
-        //for web route
-        return view('/home');
+            //for web route
+            return view('/home');
+        }
     }
-}
 
     public function putCoordinator(Request $request, $coordinatorId)
     {

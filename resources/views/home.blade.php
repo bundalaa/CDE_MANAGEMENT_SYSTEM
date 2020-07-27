@@ -1,5 +1,4 @@
-@extends('layouts.menu')
-
+@extends('layouts.adminmenu')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -21,17 +21,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('/')}}" class="btn btn-muted btn-block">
-                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                            <a href="{{url('adminIndex')}}" class="btn btn-muted btn-block">
+                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
-                        </div>
-                        <div class="col-md-6 ml-auto">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Users...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-info">Search</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,13 +34,14 @@
                         <div class="col-md-12">
                             <div class="card" id="card-table">
                                 <div class="card-header">
-                                    <h4>Latest supervisorss</h1>
+                                    <h4>Latest supervisors</h1>
                                 </div>
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
+                                            <th>Biography</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -65,6 +58,8 @@
                                              @php
                                              $number++;
                                          @endphp
+                                         <td></td>
+                                         <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

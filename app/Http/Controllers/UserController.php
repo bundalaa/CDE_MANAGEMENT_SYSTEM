@@ -35,7 +35,7 @@ class UserController extends Controller
     public function viewCoordinators()
     {
         $coordinators = User::whereHas('roles', function ($role) {
-            $role->where('name', 'coordinator');
+            $role->where('name', 'admin');
         })->get();
         return view('admin.coordinators_screen', ['coordinators' => $coordinators]);
     }
@@ -158,10 +158,12 @@ class UserController extends Controller
     //update user
     public function updateUser(Request $request)
     {
-        $users = User::where('id', $request['id'])->first();
-        $users->name = $request['name'];
-        $users->role_id = $request['role'];
-        $users->save();
+        $user = User::where('id', $request['id'])->first();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+
+        $user->save();
+
         return redirect('/')->with('message', 'user updated successfully');
     }
 

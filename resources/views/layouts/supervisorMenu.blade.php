@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <!-- Bootstrap CSS LOCAL -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <!--external css link-->
@@ -52,9 +53,6 @@
                     <li class="nav-item px-2">
                         <a href="{{route('view-attendance')}}" class="nav-link">Attendance</a>
                     </li>
-                    <li class="nav-item px-2">
-                        <a href="{{route('view-projectProgressForm')}}" class="nav-link">Project Progress Form</a>
-                    </li>
                     <ul class="navbar-nav ml-auto">
                         <!-- Messages Dropdown Menu -->
                         <li class="nav-item dropdown">
@@ -65,7 +63,7 @@
                             {{-- <span class="badge badge-danger">3</span> --}}
                           </a>
                           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <a href="#" class="dropdown-item">
+                          <a href="#" class="dropdown-item">
                               <!-- Message Start -->
                               <div class="media">
                                 <div class="media-body">
@@ -80,7 +78,7 @@
                               <!-- Message End -->
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                            <a href="{{route('inboxmessage')}}" class="dropdown-item dropdown-footer">See All Messages</a>
                           </div>
                         </li>
                         <!-- Notifications Dropdown Menu -->

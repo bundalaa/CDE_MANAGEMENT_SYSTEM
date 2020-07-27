@@ -35,28 +35,28 @@ class CommentController extends Controller
         return view();
     }
 
-    // public function postComment(Request $request)
-    // {
+    public function postComment(Request $request)
+    {
 
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required',
-    //         'description' => 'required',
-    //         'commentable_id'=>'commentable_id',
-    //         'commentable_type'=>'commentable_type'
-    //     ]);
-    //     if ($validator->fails()) {
-    //         if (REQ::is('api/*'))
-    //             return response()->json(['errors' => $validator->errors(),], 400);
-    //     }
-    //     $comment = new Comment();
-    //     $comment->name = $request->input('name');
-    //     $comment->description = $request->input('description');
-    //     $comment->save();
-    //     if (REQ::is('api/*'))
-    //         return response()->json(['Comment' => $comment]);
-    //     //for web route
-    //     return view();
-    // }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'commentable_id'=>'commentable_id',
+            'commentable_type'=>'commentable_type'
+        ]);
+        if ($validator->fails()) {
+            if (REQ::is('api/*'))
+                return response()->json(['errors' => $validator->errors(),], 400);
+        }
+        $comment = new Comment();
+        $comment->name = $request->input('name');
+        $comment->description = $request->input('description');
+        $comment->save();
+        if (REQ::is('api/*'))
+            return response()->json(['Comment' => $comment]);
+        //for web route
+        return view();
+    }
 
     public function putComment(Request $request, $commentId)
     {

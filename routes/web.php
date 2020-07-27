@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::view('progress','admin/progress');
-
 
 Auth::routes();
 
@@ -36,7 +34,7 @@ Route::prefix('supervisor')->name('supervisor.')->group(function(){
 });
 
 // User Routes
-Route::get('/','UserController@getLatestUsers')->name('/');
+Route::get('adminIndex','UserController@getLatestUsers')->name('adminIndex');
 Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
 Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
@@ -58,10 +56,18 @@ Route::get('view-publication', 'CoordinatorController@viewPublication')->name('v
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
-
+Route::get('inboxmessageA','CoordinatorController@InboxMessageA')->name('inboxmessageA');
+Route::get('composemessageA','CoordinatorController@ComposeMessageA')->name('composemessageA');
+Route::get('readmessageA','CoordinatorController@ReadMessageA')->name('readmessageA');
 
 //supervisor route
 Route::get('viewsupervisorsscreen','UserController@viewSupervisors')->name('viewsupervisorsscreen');
+Route::get('supervisorHome','SupervisorController@index')->name('supervisorHome');
+Route::get('inboxmessage','SupervisorController@InboxMessage')->name('inboxmessage');
+Route::get('composemessage','SupervisorController@ComposeMessage')->name('composemessage');
+Route::get('readmessage','SupervisorController@ReadMessage')->name('readmessage');
+
+
 
 //challenge controller
 Route::post('addChallenge','ChallengeController@addChallenges')->name('addChallenge');
@@ -69,18 +75,19 @@ Route::get('viewchallengedetail/{id}','ChallengeController@viewChallengeDetails'
 Route::get('challenge-screen','ChallengeController@getChallengesScreen')->name('challenge-screen');
 Route::get('viewcreatechallenge','ChallengeController@viewcreateChallenges')->name('viewcreatechallenge');
 Route::get('viewaddidentifiedchallenge/{id}','ChallengeController@viewaddidentifiedchallenge')->name('viewaddidentifiedchallenge');
-Route::post('editchallenge-screen','ChallengeController@updateChallenge')->name('editchallenge-screen');
+Route::post('editchallenge-screen/{id}','ChallengeController@updateChallenge')->name('editchallenge-screen');
 Route::delete('deleteChallenge/{id}','ChallengeController@deleteChallenge')->name('deleteChallenge');
 Route::get('getidentifiedchallenges/{id}','ChallengeController@getIdentifiedChallenges')->name('getidentifiedchallenges');
+Route::get('viewFillProgress/{id}','IdentifiedChallengeController@viewFillProgress')->name('viewFillProgress');
 
 //IdentifiedChallenge controller
 Route::post('addidentifiedchallenges','IdentifiedChallengeController@addIdentifiedChallenges')->name('addidentifiedchallenges');
 Route::get('supervisorHome','IdentifiedChallengeController@index')->name('supervisorHome');
 Route::delete('deleteSubChallenge/{id}','IdentifiedChallengeController@deleteIdentifiedChallenge')->name('deleteSubChallenge');
-Route::post('editidentifiedchallenge-screen','IdentifiedChallengeController@updateidentifiedChallenge')->name('editidentifiedchallenge-screen');
+Route::post('editidentifiedchallenge-screen/{id}','IdentifiedChallengeController@updateidentifiedChallenge')->name('editidentifiedchallenge-screen');
 Route::get('viewidentifiedchallenges','IdentifiedChallengeController@viewIdentifiedChallenges')->name('viewidentifiedchallenges');
 Route::get('viewidentifiedchallengedetail/{id}','IdentifiedChallengeController@viewIdentifiedChallengeDetail')->name('viewidentifiedchallengedetail');
-
+Route::post('postFillProgress','IdentifiedChallengeController@postFillProgress')->name('postFillProgress');
 
 //challenge Owner route
 Route::get('challengeowners','ChallengeOwnerController@index')->name('challengeowners');
@@ -91,7 +98,7 @@ Route::get('viewstudentsscreen','UserController@viewStudents')->name('viewstuden
 //team route
 Route::get('viewcreateteam','TeamController@viewCreateTeam')->name('viewcreateteam');
 Route::get('viewteam','TeamController@viewTeam')->name('viewteam');
-Route::get('viewteamDetail/{id}','TeamController@teamTeamDetails')->name('viewteamDetail');
+Route::get('viewteamDetail/{id}','TeamController@teamDetails')->name('viewteamDetail');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
 Route::get('editteam/{id}','TeamController@getEditTeam')->name('editteam');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
@@ -102,8 +109,8 @@ Route::get('viewaddstudentpage/{id}','TeamController@viewaddstudentpage')->name(
 
 // Task/Schedule route
 Route::get('view-schedule', 'ScheduleController@getSchedules')->name('view-schedule');
-Route::post('schedule','ScheduleController@postSchedule')->name('schedule');
-Route::post('schedules','ScheduleController@editSchedule')->name('schedules');
+Route::post('add-schedule','ScheduleController@postSchedule')->name('add-schedule');
+Route::get('deleteSchedule/{id}','ScheduleController@deleteSchedule')->name('deleteSchedule');
 
 // Attendance route
 Route::get('view-attendance', 'AttendanceController@viewAttendancePage')->name('view-attendance');
@@ -122,6 +129,7 @@ Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadR
 //Permission route
 Route::get('permission', 'PermissionController@assign')->name('permission');
 // Route::post('/permission', 'PermissionController@assignPermission');
+
 
 
 

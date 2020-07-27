@@ -24,9 +24,10 @@ class TeamController extends Controller
         return view('supervisor.createteam',['challenges'=>$challenges,'supervisors'=>$supervisors]);
     }
 
-    public function teamTeamDetails($id)
+    public function teamDetails($id)
     {
-        $students = Student::where('team_id',$id)->first();
+        // return $id;
+        $students = Student::where('team_id',$id)->get();
         // dd($students);
         return view('supervisor.teamDetails', ['id' => $id, 'students' => $students]);
     }
@@ -50,6 +51,11 @@ class TeamController extends Controller
         $team->supervisor_id = $request['supervisor_id'];
         $team->identified_challenge_id = $request['identified_challenge_id'];
         $team->save();
+
+        // $challenge = IdentifiedChallenge::where('id',$request['identified_challenge_id'])->first();
+        // $challenge->update([
+        //     'status'=>'1',
+        // ]);
         return redirect('viewteam')
             ->with('message', 'Team created successfully');
     }
@@ -84,7 +90,7 @@ class TeamController extends Controller
 
         $student->save();
         //dd($student);
-        return redirect('viewteamDetail/{id}')
+        return redirect()->route('viewteamDetail',$request->team_id)
             ->with('message', 'student added successfully');
     }
 }

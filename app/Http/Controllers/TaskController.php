@@ -14,8 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        return view('supervisor.projectProgress',['tasks'=>$tasks]);
+        // $tasks = Task::all();
+        // return view('admin.progress',['tasks'=>$tasks]);
     }
 
     /**

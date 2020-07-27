@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
-                    <i class="fa fa-user" aria-hidden="true"></i> Users
+                    <i class="fa fa-users" aria-hidden="true"></i> Users
                 </h1>
             </div>
         </div>
@@ -27,18 +27,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{route('/')}}" class="btn btn-muted btn-block">
+                            <a href="{{route('adminIndex')}}" class="btn btn-muted btn-block">
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
-                        <div class="col-md-6 ml-auto">
+                        {{-- <div class="col-md-6 ml-auto">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search Users...">
                                 <div class="input-group-append">
                                     <button class="btn btn-info">Search</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </section>

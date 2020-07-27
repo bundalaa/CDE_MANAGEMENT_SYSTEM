@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
-                    <i class="fa fa-user" aria-hidden="true"></i> Students
+                    <i class="fa fa-users" aria-hidden="true"></i> Students
                 </h1>
             </div>
         </div>
@@ -21,17 +21,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('/')}}" class="btn btn-muted btn-block">
-                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                            <a href="{{url('adminIndex')}}" class="btn btn-muted btn-block">
+                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
-                        </div>
-                        <div class="col-md-6 ml-auto">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Users...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-info">Search</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,9 +40,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>Team</th>
-                                            <th></th>
+                                            <th>Student Name</th>
+                                         <th>Registration No.</th>
+                                         <th>Year of study</th>
+                                         <th>Degree of programme</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,11 +59,9 @@
                                              @php
                                              $number++;
                                          @endphp
-                                            {{-- @php
-                                            $teams = Team::get();
-                                        @endphp
-                                        <td>{{ $teams['name'] }}</td>
-                                            <td>{{ $teams->id }}</td> --}}
+                                           <td></td>
+                                           <td></td>
+                                           <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

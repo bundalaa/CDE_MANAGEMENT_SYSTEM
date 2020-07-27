@@ -29,8 +29,6 @@
                         <td>{{ $challenge->name }}</td>
                         <p>
                         <td>{{ $challenge->description }}
-                            <span id="dots">...</span><span id="more"></span></p>
-             <button onclick="myFunction()" id="myBtn" class="bg-info rounded-pill">Read more</button>
                         </td>
                         <td>
                             <a href="{{ route('getidentifiedchallenges',[$challenge->id])}}" class="btn btn-secondary">

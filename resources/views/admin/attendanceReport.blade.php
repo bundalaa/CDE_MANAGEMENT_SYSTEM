@@ -17,7 +17,7 @@
     @endforeach
 </select>
                     <div class="input-group-append">
-                        <button class="btn btn-info">Search</button>
+                        <button class="btn btn-info">Select Attendance Date</button>
                     </div>
                 </div>
             </div>
