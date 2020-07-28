@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="{{route('/')}}" class="nav-link">Home</a>
+                        <a href="{{route('adminIndex')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="{{route('viewprogress')}}" class="nav-link">Dashboard</a>

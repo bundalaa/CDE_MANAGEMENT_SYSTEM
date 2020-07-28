@@ -23,13 +23,10 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container">
            
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <i class="navbar-toggler-icon"></i>
-            </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="dashboard" class="nav-link">Challeng Owner</a>
+                        <a href="dashboard" class="nav-link">CHALLANGE OWNER</a>
                     </li>
                     <!-- <li class="nav-item px-2">
                         <a href="upload" class="nav-link">Project Status</a>

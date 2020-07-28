@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::view('progress','admin/progress');
-
-
-
-
 
 Route::get('AboutUS', function () {
     return view('AboutUS');
@@ -53,12 +48,7 @@ Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 
-
-
 Route::get('chart-js', 'ChartController@index');
-
-
-
 
 // Create file upload form
 Route::get('/upload-file', 'FileUpload@createForm');
@@ -67,62 +57,14 @@ Route::get('/upload-file', 'FileUpload@createForm');
 Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 
 
-
-Route::get('login', 'AuthController@index');
-Route::post('post-login', 'AuthController@postLogin'); 
-Route::get('registration', 'AuthController@registration');
-Route::post('post-registration', 'AuthController@postRegistration'); 
-Route::get('dashboard', 'AuthController@dashboard'); 
-Route::get('logout', 'AuthController@logout');
+ 
 
 
-
-
-
-
-Route::get('file', 'MultipleFileController@index');
-
-Route::post('save', 'MultipleFileController@save')->name('file.save');
-
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-// Route::prefix('admin')->name('admin.')->group(function(){
-//     Route::resource('/index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
-// });
-
-
-// Route::prefix('student')->name('student.')->group(function(){
-//     Route::resource('/index', 'StudentController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
-// });
-
-
-
-
-
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-
-
-// return view('publication');
-
-
-
+// Route::get('dashboard', 'AuthController@dashboard'); 
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
+    Route::resource('/admin-index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 Route::prefix('student')->name('student.')->group(function(){
     Route::resource('/index', 'StudentController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
@@ -134,8 +76,9 @@ Route::prefix('supervisor')->name('supervisor.')->group(function(){
     Route::resource('/index', 'SupervisorController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 
+//////administrator Module
 // User Routes
-Route::get('/','UserController@getLatestUsers')->name('/');
+Route::get('adminIndex','UserController@getLatestUsers')->name('adminIndex');
 Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
 Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
@@ -223,7 +166,7 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 // Route::post('/permission', 'PermissionController@assignPermission');
 
 
-//// student module
+// student module
 Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
 Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
@@ -234,9 +177,4 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
-
-
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
+///end of administrator module

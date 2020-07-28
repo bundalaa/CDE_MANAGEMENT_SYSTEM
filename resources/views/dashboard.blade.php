@@ -72,11 +72,11 @@
         .list-wrapper{
             padding: 1em;
          }
-
+/* 
         .navbar-nav{
 
             /*background: #ffa23b;*/
-        }
+        /* } */ */
         .nav-item-heading{
             border-bottom: 1px solid #fff8b3;
             border-bottom-left-radius: 8px;

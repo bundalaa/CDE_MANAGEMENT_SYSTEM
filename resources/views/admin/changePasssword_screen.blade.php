@@ -18,8 +18,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('index')}}" class="btn btn-muted btn-block">
-                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
+                            <a href="{{url('adminIndex')}}" class="btn btn-muted btn-block">
+                                <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
                     </div>
