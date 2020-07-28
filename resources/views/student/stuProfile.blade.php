@@ -33,7 +33,7 @@
                             <a href="studentHome" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="FypConfirm" class="nav-link">Confirm Fyp</a>
+                            <a href="StudentProjectView" class="nav-link">Projects</a>
                         </li>
                         <li class="nav-item px-2">
                             <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,7 +43,7 @@
                             <a href="StudenSchedule" class="nav-link">Schedule</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="StudentProjectView" class="nav-link">Projects</a>
+                            <a href="StudentTeamView" class="nav-link">Team</a>
                         </li>
                      </ul>
                      <ul class="navbar-nav ml-auto">
@@ -124,7 +124,7 @@
              <br><br><br>
              <div class="content" style="text-align: center;">
             <h3>Edit your profile</h3>
-            <form method="post" action="route('student.stunProfile', $user)">
+            <form method="post" action="stunProfile">
                 {{ csrf_field() }}
                 <div class="form-group">
                 <input type="text" name="name"  value="{{ $user->name }}" placeholder="Name"/>
@@ -144,7 +144,7 @@
          </div>
          <footer id="footer" class="bg-dark">
             <div class="py-3 text-center">
-                <p> &copy;20<?php echo date('y');?> Copyright Udsm <span id="year"></span>, All rights reserved</>
+                <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
             </div>
         </footer>
         </div>

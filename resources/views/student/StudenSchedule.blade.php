@@ -36,7 +36,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="FypConfirm" class="nav-link">Confirm Fyp</a>
+                        <a href="StudentProjectView" class="nav-link">Projects</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -46,38 +46,72 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentTeamView" class="nav-link">Team</a>
                     </li>
                  </ul>
-                 <ul class="navbar-nav ml-auto">
-                   <!-- Messages Dropdown Menu -->
-                 <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-comments"></i>
-                   <span class="badge badge-danger navbar-badge">3</span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                        </a>
-                     </div>
-                 </li>
-                <!-- Notifications Dropdown Menu -->
-               <li class="nav-item dropdown">
-               <a class="nav-link" data-toggle="dropdown" href="#">
-               <i class="fas fa-bell"></i>
-              <span class="badge badge-danger navbar-badge">5</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                   <ul class="navbar-nav ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Messages</span>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
+                          <!-- Message Start -->
+                          <div class="media">
+
+
+                          </div>
+                          <!-- Message End -->
                         </a>
-              </div>
-             </li>
-                </ul>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                      </div>
+                    </li>
+                <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fas fa-bell"></i>
+              <span class="badge badge-warning navbar-badge"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+          </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
@@ -133,7 +167,7 @@
     </div>
     <footer id="footer" class="bg-dark">
         <div class="py-3 text-center">
-        <p> &copy;20<?php echo date('y');?> Copyright Udsm <span id="year"></span>, All rights reserved</>
+        <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
         </div>
     </footer>
      </div>

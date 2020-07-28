@@ -211,4 +211,14 @@ class UserController extends Controller
         return redirect('user-screen')
             ->with('message', 'User deleted successfully');
     }
+    ///student module
+
+
+    public function edit(User $user)
+    {
+        $user = Auth::user();
+        return view('student.stuProfile', compact('user'));
+
+    }
+
 }
