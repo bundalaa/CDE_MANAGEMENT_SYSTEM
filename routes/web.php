@@ -129,11 +129,11 @@ Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
 Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
 Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
-Route::get('FypConfirm', 'StudentController@confirm')->name('FypConfirm');
 Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProjectView');
+Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamView');
 
-Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
-Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
+Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
+
 
 
 

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
+<title>Team</title>
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/student-css/student.css')}}">
-    <title>Upload report</title>
+    <title>Projects</title>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
@@ -39,12 +39,11 @@
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
                     </li>
-
                     <li class="nav-item px-2">
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link active">Team</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
@@ -143,85 +142,97 @@
             </div>
         </div>
     </nav>
-    <div id="page-container">
+  <div id="page-container">
     <section id="dashboard" class="py-2">
         <div class="container">
-            <i class="fas fa-upload fa-3x"></i>
-            <span class="display-4 text-info">Upload Report</span>
+            <i class="fas fa-users fa-3x"></i>
+            <span class="display-4 text-info">Teams</span>
         </div>
     </section>
- <div id="content-wrap">
-<!--contents-->
-<br><br>
-<p style="text-align:center">The upload of reports includes all practical training PT and final year projects reports that will be needed
-    for assessment.</p>
-<div class="container">
-    <div class="card md-5" style="width: 100%">
-    <div class="card header text-center">
-  Weekly and Final Reports can be uploaded here
-</div>
- <div class="card-body">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            @if ($message = Session::get('success'))
-
-                <div class="alert alert-success alert-block">
-
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-
-                    <strong>{{ $message }}</strong>
-
-                </div>
-            @endif
-
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-  <p>Click on the "Choose File" button to upload a file:</p>
-        <form action="studentReport" method="post" enctype="multipart/form-data">
-            @csrf
-        <div class="form-group">
-             <label>Title:</label>
-     <input type="text" name="title" class="form-control" placeholder="project title">
+    <div id="content-wrap">
+    <!--contents-->
+     <p class="text-justify">This allows you as student to view your project team members and the name of the name of the
+         supervisor assigned to lead you throughout the project completion.This will help the student to know the project to
+         work and the team members.
+     </p>
+    <section class="content">
+        <!-- Default box -->
+        <div class="card ml-auto">
+          <div class="card-header">
+            <h3 class="card-title" style="text-align: center">Project Team</h3>
           </div>
-          <div class="form-group">
-            <label>Subtitle:</label>
-    <input type="text" name="subtitle" class="form-control" placeholder="report category">
-         </div>
-    <div class="form-group">
-    <label>Description:</label>
-   <input type="text" name="description" class="form-control" placeholder="report level">
-    </div>
-     <p>Upload Here:</p>
-    <input type="file"  name="file">Upload file in pdf or docx
+          <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Project Name
+                        </th>
+                        <th>
+                            Team Members
+                        </th>
+                        <th>
+                            Supervisor Name
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <a>
+                                water Bill management system
+                            </a>
+                            <br/>
+                            <small>
+                                Created 01.01.2020
+                            </small>
+                        </td>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user"></i>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="fas fa-user"></i>
+                                </li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a>
+                                John, Agustine
+                            </a>
+                            <br/>
 
-    <div class="mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
+                        </td>
+                    </tbody>
+                    </table>
+                  </div>
+                 </div>
+            </section>
+                    </div>
+   <footer id="footer" class="bg-dark">
+    <div class="py-3 text-center">
+    <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
     </div>
-  </form>
+</footer>
 </div>
- </div>
-</div>
-</div>
-</div>
-
-<footer id="footer" class="bg-dark">
-        <div class="py-3 text-center">
-        <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
-        </div>
-    </footer>
-</div>
-   <!-- Jquery CDN -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<!-- Jquery CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- Bootstrap JS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
- </body>
- </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha256-OFRAJNoaD8L3Br5lglV7VyLRf0itmoBzWUoM+Sji4/8=" crossorigin="anonymous"></script>
+</body>
+</html>
