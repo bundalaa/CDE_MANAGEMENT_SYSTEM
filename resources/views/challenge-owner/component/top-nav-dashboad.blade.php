@@ -17,12 +17,12 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
 </head>
 <body>
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container">
-           
+
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <i class="navbar-toggler-icon"></i>
             </button>
@@ -44,8 +44,8 @@
                         <a href="publication" class="nav-link">Notification</a>
                     </li>-->
 
-                </ul>             
-                    
+                </ul>
+
                 <ul class="navbar-nav ml-auto">
                 @guest
 

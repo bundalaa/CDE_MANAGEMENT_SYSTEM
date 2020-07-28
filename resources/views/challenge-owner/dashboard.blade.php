@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
     <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
 
     <style>
-     
+
         /*** Left Nav ***/
         .nav-link.active{
             background: #D1F2EB !important;
@@ -102,15 +102,15 @@
 <div class="container-fluid">
       <div class="row">
 
-      @include('ChallengeOwner.components.dashboad-left-nav')
+      @include('Challenge-owner.component.dashboad-left-nav')
 
           <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
-           
-         
 
 
-      @include('ChallengeOwner.components.top-nav-dashboad')
+
+
+      @include('Challenge-owner.component.top-nav-dashboad')
 
               <!-- Content -->
               <main class="py-4">
@@ -126,35 +126,29 @@
         <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
-  
+
         <h2>Feeback</h2>
         <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-     
+
         <h2>Publication</h2>
         <p>Here you can see our publications about material related to what we are doing and other  education materials...</p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
+
       <h2>Upoload-Challenge</h2>
         <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
+
         <h2>Feeback</h2>
         <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
+
                                   </div>
                               </div>
                           </div>
 
-
                         </div>
 
-
-                       
-
-
-   
                     </div>
               </main>
               <footer id="footer" class="bg-dark" style="width:100%; float:right; margin-left:0; color:white" >

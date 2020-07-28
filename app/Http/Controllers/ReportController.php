@@ -17,40 +17,14 @@ class ReportController extends Controller
         $reports=Report::all();
 
         return view('supervisor.reports',[
-            'reports'=>$reports
-        ]);
+            'reports'=>$reports]);
     }
 
-        public function downloadReport($file)
+    public function downloadReport($file)
         {
           return response()->download('public/storage/files/'.$file);
         }
 
-    public function getReports()
-    {
-        $report = Report::all();
-
-        if (REQ::is('api/*'))
-            return response()->json(['Report' => $report], 201);
-        //for web route
-        return view('welcome',);
-    }
-
-    public function getReport($reportId)
-    {
-        $report = Report::find($reportId);
-
-        if (!$report) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Report not found']);
-        }
-
-        if (REQ::is('api/*'))
-            return response()->json(['Report' => $report]);
-
-        ///web route
-        return view();
-    }
 
     public function postReport(Request $request)
     {

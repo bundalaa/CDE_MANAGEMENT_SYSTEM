@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,12 +16,12 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
 </head>
 <body>
 <div id="page-container">
 
-@include('challeng-owner.component.top_nav')
+@include('challenge-owner.component.top_nav')
 
 <div id="content-wrap">
 
@@ -32,7 +32,7 @@
       <p>CDE is a new education method which intends to enable students to identify problem in the communities and find the concrete solution,Aimed at enhancing a scalable working skills such as problem solving and team collaboration skills.</p>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -62,7 +62,7 @@ document.write(new Date().getFullYear());
 </div>
 
 
-   
+
 
     <!-- Jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -71,4 +71,4 @@ document.write(new Date().getFullYear());
 
 </body>
 </html>
-
+ --}}

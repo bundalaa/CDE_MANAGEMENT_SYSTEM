@@ -39,6 +39,12 @@ class AuthServiceProvider extends ServiceProvider
             $user->hasRole('student');
         });
 
+         //geti la kuangalia user kama ni admin
+         Gate::define('isChallengeOwner', function ($user) {
+            $user->hasRole('challengeOwner');
+        });
+
+
 
 
         $this->registerPolicies();

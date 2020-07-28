@@ -30,7 +30,7 @@ class Report extends Model
     }
     public function comments()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 
 }

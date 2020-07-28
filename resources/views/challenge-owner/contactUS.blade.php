@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     </head>
     <style>
-    
+
 /* Float four columns side by side */
 .column {
   float: left;
@@ -42,7 +42,7 @@
 }
     </style>
     <body>
-	@include('ChallengeOwner.components.top-nav')
+	@include('Challenge-owner.component.top-nav')
 
     <div class="container">
 
@@ -60,12 +60,9 @@
     </div>
   </div>
 
-
-
-    
   <div class="column">
     <div class="card">
-     
+
     <h3>Contact US</h3>
     @if(Session::has('success'))
        <div class="alert alert-success">
@@ -94,11 +91,6 @@
     {!! Form::close() !!}
 </div>
 </div>
-
-
-
     </div>
-
-    
     </body>
     </html>

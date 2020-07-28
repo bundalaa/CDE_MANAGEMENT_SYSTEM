@@ -24,7 +24,7 @@
     </style>
 </head>
 <style>
-    
+
     /* Float four columns side by side */
     .column {
       float: right;
@@ -33,17 +33,17 @@
       margin-top: 20px;
       margin-left: __autoload;
     }
-    
+
     /* Remove extra left and right margins, due to padding */
     .row {margin: 0 -5px;}
-    
+
     /* Clear floats after the columns */
     .row:after {
       content: "";
       display: table;
       clear: both;
     }
-    
+
     /* Responsive columns */
     @media screen and (max-width: 600px) {
       .column {
@@ -52,7 +52,7 @@
         margin-bottom: 20px;
       }
     }
-    
+
     /* Style the counter cards */
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -64,7 +64,7 @@
 <body>
 
 
-@include('ChallengeOwner.components.top-nav')
+@include('Challenge-owner.component.top-nav')
 
 
 <div class="container">

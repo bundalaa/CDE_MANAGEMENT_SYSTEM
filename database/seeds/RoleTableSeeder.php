@@ -28,10 +28,10 @@ class RoleTableSeeder extends Seeder
             'description'=>'supervisor',
             'permission' =>''
         ]);
-        //  Role::create([
-        //     'name'=> 'challengeOwner',
-        //     'description'=>'challenge owner',
-        //     'permission' =>''
-        // ]);
+         Role::create([
+            'name'=> 'challengeOwner',
+            'description'=>'challenge owner',
+            'permission' =>''
+        ]);
     }
 }

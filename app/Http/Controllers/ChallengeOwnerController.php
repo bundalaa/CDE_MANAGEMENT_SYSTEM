@@ -20,4 +20,8 @@ class ChallengeOwnerController extends Controller
         $challengeowners = ChallengeOwner::get();
         return view('admin.users.challengeOwner',['challengeowners'=>$challengeowners]);
     }
+    public function challengeOwnerHome()
+    {
+        return view('challenge-owner.homePage');
+    }
 }

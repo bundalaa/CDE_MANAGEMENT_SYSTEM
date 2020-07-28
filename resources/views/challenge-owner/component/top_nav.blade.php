@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
 </head>
 <body>
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
@@ -42,51 +42,9 @@
                         <a href="publication" class="nav-link">Publication</a>
                     </li>
                 </ul>
-                <ul>
-                <li class="nav-item px-3">
-                        <a href="#" class="nav-link">
-                            <i id="notification" class="fa fa-envelope"
-                style="padding-right: 10px;color:#797D7F">
-                <span class="badge bg-danger">3</span></i></a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    
-                <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
-                        <a href="/" class="nav-link" style="color:blue">Join Us</a>
-                    </li>
-                    <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
-                        <a href="/" class="nav-link" style="color:blue">Sign in</a>
-                    </li>
-
-                    <!-- <li class="nav-item dropdown mr-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-user"></i> Welcome
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-circle"></i> Profile
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <hr class="solid">
-                            <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-times"></i> Logout
-                            </a>
-                        </div>
-                    </li> -->
-                
-                </ul>
-            </div>
         </div>
     </nav>
 
-
-   
 
     <!-- Jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

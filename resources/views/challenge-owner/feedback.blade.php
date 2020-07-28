@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/home.css')}}">
     <title>Home</title>
-    
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
@@ -45,7 +45,7 @@
 </head>
 <body>
 
-@include('ChallengeOwner.components.top-nav')
+@include('Challenge-owner.component.top-nav')
 
 
 <div id="page-container">
@@ -62,15 +62,15 @@
       <canvas id="pie-chart"></canvas>
     </div>
   </div>
- 
+
   <!-- javascript -->
- 
+
    <script>
   $(function(){
       //get the pie chart canvas
       var cData = JSON.parse(`<?php echo $chart_data ?? ''; ?>`);
       var ctx = $("#pie-chart");
- 
+
       //pie chart data
       var data = {
         labels: cData.label,
@@ -100,7 +100,7 @@
           }
         ]
       };
- 
+
       //options
       var options = {
         responsive: true,
@@ -120,14 +120,14 @@
           }
         }
       };
- 
+
       //create Pie Chart class object
       var chart1 = new Chart(ctx, {
         type: "pie",
         data: data,
         options: options
       });
- 
+
   });
 </script>
 </div>
@@ -136,8 +136,8 @@
   </div>
 </div>
 </div>
-   
-   
+
+
 
 <div id="content-wrap">
 <div class="container-md">
@@ -198,7 +198,7 @@ document.write(new Date().getFullYear());
     var pieChart = new Chart(pieChartCanvas, {
       type: 'pie',
       data: pieData,
-      options: pieOptions      
+      options: pieOptions
     })
 </script> -->
 </body>

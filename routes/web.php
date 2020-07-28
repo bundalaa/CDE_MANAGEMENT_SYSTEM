@@ -16,18 +16,22 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('AboutUS', function () {
-    return view('AboutUS');
+    return view('challenge-owner.AboutUS');
 });
 
-Route::get('/', function () {
-    return view('homePg');
+//challenge Owner route
+Route::get('challengeownerHome','ChallengeOwnerController@challengeownerHome')->name('challengeownerHome');
+
+Route::get('upload', function () {
+    return view('challenge-owner.file-upload');
 });
 
 Route::get('publication', function () {
-    return view('publication');
+    return view('challenge-owner.publication');
 });
+
 Route::get('feedback', function () {
-    return view('feedback');
+    return view('challenge-owner.feedback');
 });
 
 Route::get('contact-us', 'ContactUSController@contactUS');
@@ -42,12 +46,12 @@ Route::get('/upload-file', 'FileUpload@createForm');
 // Store file
 Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 
-Route::get('login', 'AuthController@index');
-Route::post('post-login', 'AuthController@postLogin');
-Route::get('registration', 'AuthController@registration');
-Route::post('post-registration', 'AuthController@postRegistration');
-Route::get('dashboard', 'AuthController@dashboard');
-Route::get('logout', 'AuthController@logout');
+// Route::get('login', 'AuthController@index');
+// Route::post('post-login', 'AuthController@postLogin');
+// Route::get('registration', 'AuthController@registration');
+// Route::post('post-registration', 'AuthController@postRegistration');
+// Route::get('dashboard', 'AuthController@dashboard');
+// Route::get('logout', 'AuthController@logout')->name('logout');
 
 Route::get('file', 'MultipleFileController@index');
 
@@ -153,7 +157,6 @@ Route::get('getAttendanceReport', 'AttendanceController@getAttendanceReport')->n
 Route::post('addAttendance','AttendanceController@postAttendance')->name('addAttendance');
 Route::get('getReport/{id}', 'AttendanceController@getReport')->name('getReport');
 
-
 // challengeProgressForm route
 Route::get('view-projectProgressForm','ProjectProgressController@viewProgressForm')->name('view-projectProgressForm');
 
@@ -164,6 +167,8 @@ Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadR
 //Permission route
 Route::get('permission', 'PermissionController@assign')->name('permission');
 // Route::post('/permission', 'PermissionController@assignPermission');
+
+////End of admin and supervisor routes
 
 
 //// student module
@@ -177,6 +182,11 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
-////End of admin and supervisor routes
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
