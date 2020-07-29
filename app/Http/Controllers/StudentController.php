@@ -18,18 +18,12 @@ class StudentController extends Controller
     {
         return view('student.studentHome');
     }
-    public function stunschedule()
-    {
-      return view('student.StudenSchedule');
-    }
+
     public function stunUpload()
     {
      return view('student.studentReport');
     }
-    public function getProj()
-    {
-      return view('student.StudentProjectView');
-    }
+   
     public function teamView()
     {
       return view('student.StundentTeamView');

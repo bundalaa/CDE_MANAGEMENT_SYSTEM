@@ -10,14 +10,12 @@ class Report extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title','subtitle','description','file',
+      'title','subtitle','description','file','supervisor_id','team_id',
     ];
 
     protected $dates = [
         'deleted_at'
     ];
-
-
     //Relationships
 
     public function team()
@@ -26,7 +24,7 @@ class Report extends Model
     }
     public function supervisor()
     {
-        return $this->belongsTo(Supervisor::class);
+    return $this->belongsTo(Supervisor::class);
     }
     public function comments()
     {

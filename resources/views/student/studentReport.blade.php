@@ -34,7 +34,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>

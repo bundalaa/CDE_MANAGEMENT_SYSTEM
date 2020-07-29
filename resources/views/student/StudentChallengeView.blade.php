@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{URL::to('css/student-css/student.css')}}">
-    <title>Project</title>
+    <title>Challenge</title>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -145,8 +145,8 @@
     <div id="page-container">
     <section id="dashboard" class="py-2">
         <div class="container">
-            <i class="fas fa-laptop fa-3x"></i>
-            <span class="display-4 text-info">Projects</span>
+            {{-- <i class="fas fa-laptop fa-3x"></i> --}}
+            <span class="display-4 text-info">Challenge</span>
         </div>
     </section>
     <div id="content-wrap">

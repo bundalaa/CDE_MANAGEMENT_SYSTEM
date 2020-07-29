@@ -15,8 +15,10 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            // $table->bigInteger('team_id');
-            // $table->bigInteger('supervisor_id');
+            $table->bigInteger('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->bigInteger('supervisor_id')->unsigned();
+            $table->foreign('supervisor_id')->references('id')->on('supervisors');
             $table->string('title');
             $table->string('subtitle');
             $table->string('description');

@@ -45,5 +45,10 @@ class CommentController extends Controller
         return back();
 
     }
+    /// student module
+    public function stundMessage()
+    {
+      return view('student.StudentSendMessage');
+    }
 
 }

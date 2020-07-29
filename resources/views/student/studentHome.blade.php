@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -54,7 +54,14 @@
                         <span class="badge badge-danger navbar-badge">3</span>
                       </a>
                       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="row">
+                        <div class="col-lg-6">
                         <span class="dropdown-item dropdown-header">Messages</span>
+                        </div>
+                        <div class="col-lg-6">
+                        <a href="StudentSendMessage">New Message</a>
+                        </div>
+                        </div>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                           <!-- Message Start -->

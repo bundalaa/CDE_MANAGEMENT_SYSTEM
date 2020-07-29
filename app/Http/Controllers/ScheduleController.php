@@ -39,5 +39,10 @@ class ScheduleController extends Controller
                 return redirect('view-schedule')->with('Schedule deleted successfuly');
         }
 
-
+  /// student module
+    public function stunschedule()
+    {
+        $schedules = Schedule::get();
+      return view('student.StudenSchedule',['schedules'=>$schedules]);
+    }
 }
