@@ -63,7 +63,7 @@ class UserController extends Controller
         foreach ($latestusers as $user) {
             $user->roles->first;
         }
-        return view('admin.adminIndex', ['latestusers' => $latestusers]);
+        return view('admin.admin_index', ['latestusers' => $latestusers]);
         // return response()->json(['user'=>$user],201);
     }
 
