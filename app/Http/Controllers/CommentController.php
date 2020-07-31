@@ -1,16 +1,16 @@
 <?php
 
-   
+
 
 namespace App\Http\Controllers;
 
-   
+
 
 use Illuminate\Http\Request;
 
 use App\Comment;
 
-   
+
 
 class CommentController extends Controller
 
@@ -38,20 +38,15 @@ class CommentController extends Controller
 
         ]);
 
-   
-
         $input = $request->all();
-
         $input['user_id'] = auth()->user()->id;
-
-    
-
         Comment::create($input);
-
-   
-
         return back();
-
     }
 
+/// student module
+public function stundMessage()
+{
+  return view('student.StudentSendMessage');
+}
 }

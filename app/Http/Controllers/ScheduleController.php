@@ -22,51 +22,10 @@ class ScheduleController extends Controller
     ->with('message','schedule successfully updated');
     }
 
-    public function putSchedule(Request $request, $scheduleId)
-    {
-        $schedule = Schedule::find($scheduleId);
-
-        if (!$schedule) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Schedule not found']);
-        }
-        $validator = Validator::make($request->all(), [
-            'description' => 'required',
-            'timestamp' => 'required',
-
-        ]);
-        if ($validator->fails()) {
-            if (REQ::is('api/*'))
-                return response()->json(['errors' => $validator->errors(),], 400);
-        }
-        $schedule->update([
-            'timestamp' => $request->input('timestamp'),
-            'description' => $request->input('description'),
-
-        ]);
-
-        if (REQ::is('api/*'))
-            return response()->json(['Schedule' => $schedule]);
-
-        //for web route
-        return view();
-    }
-
-    public function deleteSchedule($scheduleId)
-    {
-        $schedule = Schedule::find($scheduleId);
-
-        if (!$schedule) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Schedule not found']);
-        }
-
-        $schedule->delete();
-        if (REQ::is('api/*'))
-            return response()->json(['message' => 'Schedule deleted successfully']);
-
-        ///web route
-        return view();
-    }
-
+   /// student module
+   public function stunschedule()
+   {
+       $schedules = Schedule::get();
+     return view('student.StudenSchedule',['schedules'=>$schedules]);
+   }
 }

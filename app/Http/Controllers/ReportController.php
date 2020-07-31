@@ -55,8 +55,8 @@ class ReportController extends Controller
     public function postReport(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'supervisor_id' => 'required',
-            // 'team_id' => 'required',
+            'supervisor_id' => 'required',
+            'team_id' => 'required',
             'title' => 'required',
             'subtitle'=>'required',
             'description' => 'required',
@@ -74,6 +74,8 @@ class ReportController extends Controller
 
             $data->file=$filename;
         }
+        $data->supervisor_id=request('supervisor_id');
+        $data->team_id=request('team_id');
         $data->title=$request->title;
         $data->subtitle=$request->subtitle;
         $data->description=$request->description;
