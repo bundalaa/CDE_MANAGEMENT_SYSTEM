@@ -60,7 +60,7 @@ Route::post('save', 'MultipleFileController@save')->name('file.save');
 
 ////admn and supervisor routes
 Route::prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
+    Route::resource('/admin-index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 Route::prefix('student')->name('student.')->group(function(){
     Route::resource('/index', 'StudentController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
@@ -72,6 +72,7 @@ Route::prefix('supervisor')->name('supervisor.')->group(function(){
     Route::resource('/index', 'SupervisorController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 
+//////administrator Module
 // User Routes
 Route::get('adminIndex','UserController@getLatestUsers')->name('adminIndex');
 Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
@@ -171,7 +172,7 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 ////End of admin and supervisor routes
 
 
-//// student module
+// student module
 Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
 Route::get('StudenSchedule', 'ScheduleController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
