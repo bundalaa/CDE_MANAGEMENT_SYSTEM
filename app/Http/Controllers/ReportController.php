@@ -18,6 +18,7 @@ class ReportController extends Controller
 
         return view('supervisor.reports',[
             'reports'=>$reports]);
+
     }
 
     public function downloadReport($file)
@@ -48,8 +49,8 @@ class ReportController extends Controller
 
             $data->file=$filename;
         }
-        $data->supervisor_id=request('supervisor_id');
-        $data->team_id=request('team_id');
+        $data->supervisor_id=$request->supervisor_id;
+        $data->team_id=$request->team_id;
         $data->title=$request->title;
         $data->subtitle=$request->subtitle;
         $data->description=$request->description;

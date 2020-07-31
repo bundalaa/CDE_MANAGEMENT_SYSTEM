@@ -9,6 +9,7 @@ use App\Supervisor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -214,11 +215,30 @@ class UserController extends Controller
     ///student module
 
 
-    public function edit(User $user)
+    public function edit()
     {
-        $user = Auth::user();
-        return view('student.stuProfile', compact('user'));
+        $user =Auth::user();
+        return view('student.stuProfile',['user'=>$user]);
 
+    }
+    public function AddProfile(request $request)
+    {
+      $this->validate($request,[
+       'name'=>'required',
+       'email'=>'required',
+       'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      $user =Auth::user();
+      $user->name=$request->name;
+      $user->email=$request->email;
+      if($request->file('avatar')){
+        $file=$request->file('avatar');
+        $file->move(public_path().'/profile/',$file->getClientOriginalName());
+       $url= URL::to("/stuProfile").'/profile/'.$file->getClientOriginalName();
+      }
+      $user->avatar=$url;
+      $user->save();
+      return redirect('stuProfile')->with('response','Profile Added successfully');
     }
 
 }

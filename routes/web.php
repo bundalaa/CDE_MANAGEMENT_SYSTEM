@@ -183,6 +183,7 @@ Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamVi
 Route::get('StudentSendMessage','CommentController@stundMessage')->name('StudentSendMessage');
 
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
+Route::post('/Addprofile','UserController@AddProfile');
 
 
 
