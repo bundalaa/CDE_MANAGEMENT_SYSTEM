@@ -114,12 +114,12 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                             @if(Auth::User()->avatar!='/profile/avatar.jpg')
+                            <img src="{{url('profile/avatar.jpg')}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -188,6 +188,10 @@
   <p>Click on the "Choose File" button to upload a file:</p>
         <form action="studentReport" method="post" enctype="multipart/form-data">
             @csrf
+        <div class="form-group">
+            <input type="hidden" name="team_id" />
+            <input type="hidden" name="supervisor_id"/>
+             </div>
         <div class="form-group">
              <label>Title:</label>
      <input type="text" name="title" class="form-control" placeholder="project title">
