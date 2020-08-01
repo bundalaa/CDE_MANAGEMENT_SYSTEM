@@ -1,7 +1,4 @@
 @extends('layouts.supervisorMenu')
-@push('script')
-<script src="{{ asset('/js/custom/comment.js') }}"></script>
-@endpush
 @section('content')
 <header id="dashboard" class="pt-4 pb-3">
         <div class="container pt-5 pb-0">
@@ -14,6 +11,16 @@
             </div>
         </div>
     </header>
+    @if ($message = Session::get('success'))
+
+    <div class="alert alert-success alert-block">
+
+        <button type="button" class="close" data-dismiss="alert">×</button>
+
+        <strong>{{ $message }}</strong>
+
+    </div>
+    @endif
 
     <div id="page-container">
         <div id="content-wrap">

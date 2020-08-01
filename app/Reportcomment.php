@@ -5,20 +5,22 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Status extends Model
+class Reportcomment extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name','task_id'
+      'body','report_id','supervisor_id'
     ];
 
     protected $dates = [
         'deleted_at'
     ];
+     //Relationships
 
-    //relationships
-    public function task(){
-        return $this->hasOne(Task::class);
-    }
+     public function report()
+     {
+         return $this->belongsTo(Report::class);
+     }
 }
+

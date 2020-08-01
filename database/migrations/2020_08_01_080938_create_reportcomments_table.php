@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateReportcommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('reportcomments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->bigInteger('identified_challenge_id');
-            $table->bigInteger('status_id');
+            $table->bigInteger('report_id');
+            $table->string('body');
 
             $table->softDeletes();
             $table->timestamps();
@@ -31,6 +30,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('reportcomments');
     }
 }

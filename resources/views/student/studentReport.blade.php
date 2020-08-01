@@ -189,12 +189,15 @@
         <form action="studentReport" method="post" enctype="multipart/form-data">
             @csrf
         <div class="form-group">
-            <input type="hidden" name="team_id" />
-            <input type="hidden" name="supervisor_id"/>
              </div>
         <div class="form-group">
-             <label>Title:</label>
-     <input type="text" name="title" class="form-control" placeholder="project title">
+             <label>Team Name:</label>
+     {{-- <input type="text" name="title" class="form-control" placeholder="project title"> --}}
+     <select style="color: #000;" name="team_id" class="form-control">
+        @foreach($teams as $team)
+    <option selected value={{$team['id']}}>{{$team->identifiedChallenge['name']}}</option>
+        @endforeach
+    </select>
           </div>
           <div class="form-group">
             <label>Subtitle:</label>

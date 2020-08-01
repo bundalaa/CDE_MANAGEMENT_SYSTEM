@@ -95,7 +95,7 @@
                                                 {{-- @php
                                                     $role=Role::where('id',$user['role_id'])->first();
                                                 @endphp --}}
-                                                <select style="color: #000;" name="role" class="form-control">
+                                                <select style="color: #000;" name="role_id" class="form-control">
                                                     @foreach($roles as $role)
                                                     <option selected value="{{$role->id}}">{{$role['name']}}</option>
                                                     @endforeach

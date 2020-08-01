@@ -21,10 +21,11 @@
    <section class="content">
     <div class="container-fluid">
       <div class="row">
+        @foreach($identifiedchallenges as $identifiedchallenge)
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Water Quality</h3>
+            <h3 class="card-title">{{$identifiedchallenge->name}}</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -38,7 +39,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach($tasks as $task)
+                    @foreach($identifiedchallenge->tasks as $task)
                   <tr>
                   <td>{{$task->id}}</td>
                   <td>{{$task->name}}</td>
@@ -50,7 +51,23 @@
                         {{$stat->name}}
                       </div>
                     </td>
-                    <td><span class="badge bg-danger">55%</span></td>
+                    <td>
+                    @if($task->status_id == 1)
+                        <span class="badge bg-danger">20%</span>
+                    @endif
+                    @if($task->status_id == 2)
+                            <span class="badge bg-danger">40%</span>
+                        @endif
+                        @if($task->status_id == 3)
+                                <span class="badge bg-danger">60%</span>
+                            @endif
+                            @if($task->status_id == 4)
+                                    <span class="badge bg-danger">80%</span>
+                                @endif
+                                @if($task->status_id == 5)
+                                        <span class="badge bg-danger">100%</span>
+                                    @endif
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -58,6 +75,7 @@
             </div>
           </div>
         </div>
+        @endforeach
       </div>
           <!-- /.card -->
           {{-- <div class="card">
@@ -165,6 +183,6 @@
           {{-- </div> --}}
         <!-- /.col -->
       </div>
-   
+
 
       @endsection

@@ -26,9 +26,9 @@ class Report extends Model
     {
     return $this->belongsTo(Supervisor::class);
     }
-    public function comments()
+    public function reportcomments()
     {
-        return $this->hasMany(Comment::class)->whereNull('parent_id');
+        return $this->hasMany(Reportcomment::class);
     }
 
 }

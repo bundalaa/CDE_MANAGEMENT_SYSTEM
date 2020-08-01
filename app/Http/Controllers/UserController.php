@@ -75,13 +75,13 @@ class UserController extends Controller
             'email' => 'required|unique:users',
             'role_id' => 'required'
         ]);
-        // return response()->json(['re'=>$request]);
+
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-
+        $user->password = Hash::make("12345678");
         $user->save();
+
         $role = Role::find($request['role_id']);
         if (!$role) {
             return redirect('createuser')
@@ -156,17 +156,20 @@ class UserController extends Controller
         return view('admin.editUser_screen', ['user' => $user,'roles' => $roles]);
     }
 
+
     //update user
     public function updateUser(Request $request)
     {
         $user = User::where('id', $request['id'])->first();
         $user->name = $request['name'];
         $user->email = $request['email'];
-
+        $role = Role::find($request['role_id']);
+        $user->roles()->sync($role);
         $user->save();
 
-        return redirect('/')->with('message', 'user updated successfully');
+        return redirect('adminIndex')->with('message', 'user updated successfully');
     }
+
 
     //edit admn Profile
     public function profile()
@@ -181,7 +184,7 @@ class UserController extends Controller
         $users->name = $request['name'];
         $users->email = $request['email'];
         $users->save();
-        return redirect('profile')
+        return redirect('userprofile')
             ->with('message', 'successfully');
     }
 
@@ -198,7 +201,7 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $file->move(public_path('/images/avatars/'), $filename);
         }
-        return redirect('profile');
+        return redirect('userprofile');
     }
 
     //delete user function

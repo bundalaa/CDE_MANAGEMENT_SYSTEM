@@ -80,7 +80,7 @@ Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
 // Route::get('viewedituser','UserController@viewEditUser')->name('viewedituser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
-Route::get('profile','UserController@profile')->name('profile');
+Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
 Route::post('edituserprofile','UserController@updateUserProfile')->name('edituserprofile');
 Route::get('user-screen','UserController@getUsers')->name('user-screen');
@@ -92,7 +92,7 @@ Route::post('changepassword','UserController@changePassword')->name('changepassw
 Route::get('viewcoordinatorscreen','UserController@viewCoordinators')->name('viewcoordinatorscreen');
 Route::get('getCoordinator','CoordinatorController@getCoordinator')->name('getCoordinator');
 Route::get('view-notification','CoordinatorController@viewNotification')->name('view-notification');
-Route::get('view-publication', 'CoordinatorController@viewPublication')->name('view-publication');
+Route::get('view-newChallenge', 'CoordinatorController@viewNewChallenge')->name('view-newChallenge');
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
@@ -158,12 +158,17 @@ Route::get('getAttendanceReport', 'AttendanceController@getAttendanceReport')->n
 Route::post('addAttendance','AttendanceController@postAttendance')->name('addAttendance');
 Route::get('getReport/{id}', 'AttendanceController@getReport')->name('getReport');
 
+
 // challengeProgressForm route
 Route::get('view-projectProgressForm','ProjectProgressController@viewProgressForm')->name('view-projectProgressForm');
 
 //Report route
 Route::get('view-report', 'ReportController@viewReport')->name('view-report');
+Route::get('get1Report{id}', 'ReportController@get1Report')->name('get1Report');
+Route::post('postCommentReport/{id}', 'ReportController@postCommentReport')->name('postCommentReport');
 Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadReport');
+Route::get('markReadNotification', 'ReportController@markReadNotification')->name('markReadNotification');
+
 
 //Permission route
 Route::get('permission', 'PermissionController@assign')->name('permission');
