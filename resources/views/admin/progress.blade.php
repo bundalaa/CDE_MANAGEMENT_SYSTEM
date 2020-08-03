@@ -53,7 +53,7 @@
                     </td>
                     <td>
                     @if($task->status_id == 1)
-                        <span class="badge bg-danger">20%</span>
+                        <span class="badge bg-danger">0%</span>
                     @endif
                     @if($task->status_id == 2)
                             <span class="badge bg-danger">40%</span>

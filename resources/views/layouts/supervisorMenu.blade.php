@@ -10,6 +10,8 @@
      <!-- Bootstrap CSS LOCAL -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <!--external css link-->
+     <script src="{{ asset('/css/custom/custom.css') }}"></script>
+
      <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin-css/home.css') }}">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -120,7 +122,11 @@
 </div>
 
 @yield('scripts')
-<!-- Jquery CDN -->
+{{-- custom js --}}
+<script src="{{ asset('/js/custom/comment.js') }}"></script>
+
+{{-- custom js ends here --}}
+{{-- <!-- Jquery CDN --> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <!-- Bootstrap JS CDN -->
