@@ -9,6 +9,8 @@ use App\Supervisor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -214,11 +216,62 @@ class UserController extends Controller
     ///student module
 
 
-    public function edit(User $user)
+    public function edit()
     {
-        $user = Auth::user();
-        return view('student.stuProfile', compact('user'));
+        $user =Auth::user();
+        return view('student.stuProfile',['user'=>$user]);
+
+    }
+    public function AddProfile(request $request)
+    {
+      $this->validate($request,[
+
+       'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      $user =Auth::user();
+      if($request->hasFile('avatar')){
+        $avatar=$request->file('avatar');
+        $avatar->move(public_path().'/profile/',$avatar->getClientOriginalName());
+    //    $url= URL::to("/stuProfile").'/profile/'.$file->getClientOriginalName();
+      $user->avatar=$avatar;
+      $user->save();
+      return redirect('stuProfile')->with('response','Profile Added successfully');
+      }
+    }
+    public function stupassword(){
+        return view('student.studentChangePassword');
+    }
+    public function ChangeStudent(request $request)
+    {
+     //validation
+     $rules = [
+        'old_pass' => 'required',
+        'new_pass' => 'required',
+        'confirm_pass' => 'required|same:new_pass'
+    ];
+    $error_messages = [
+        'confirm_pass.same' => 'New  password and confirm password must match'
+    ];
+    $validator = validator($request->all(), $rules, $error_messages);
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+    $user = User::find(auth()->user()->id);
+    if (Hash::check($request['old_pass'], Auth::User()->password)) {
+        $user->password = $request['new_pass'];
+        $user->save();
+        return redirect('/password')
+            ->with('message', 'Password changed successfully');
+    } else {
+        return redirect()
+            ->back()->with('message', 'You entered wrong password');
+    }
+}
 
     }
 
-}
+
+
+
+
+

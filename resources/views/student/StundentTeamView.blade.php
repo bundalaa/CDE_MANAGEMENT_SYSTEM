@@ -51,10 +51,17 @@
                     <li class="nav-item dropdown">
                       <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
+                        <span class="badge badge-danger navbar-badge"></span>
                       </a>
                       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Messages</span>
+                        <div class="row">
+                            <div class="col-lg-6">
+                            <span class="dropdown-item dropdown-header">Messages</span>
+                            </div>
+                            <div class="col-lg-6">
+                            <a href="StudentSendMessage">New Message</a>
+                            </div>
+                            </div>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                           <!-- Message Start -->
@@ -113,18 +120,18 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                            @if(Auth::User()->avatar!='/profile/avatar5.png')
+                             <img src="{{url('profile/avatar5.png')}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
+                            <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
                             <hr class="solid">
@@ -184,7 +191,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            1
+                            #
                         </td>
                         <td>
                             <a>

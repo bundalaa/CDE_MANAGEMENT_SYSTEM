@@ -51,7 +51,7 @@
                     <li class="nav-item dropdown">
                       <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
+                        <span class="badge badge-danger navbar-badge"></span>
                       </a>
                       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="row">
@@ -119,13 +119,12 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            {{-- <i class="fas fa-user-circle"></i> Welcome {{Auth::user()->name}} --}}
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                            @if(Auth::User()->avatar!='/profile/avatar5.png')
+                            <img src="{{url('profile/avatar5.png')}}"  alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -134,9 +133,6 @@
                             <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
-                            {{-- <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-times"></i> Logout
-                            </a> --}}
                             <hr class="solid">
                               <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();

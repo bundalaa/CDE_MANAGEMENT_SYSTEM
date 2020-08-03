@@ -49,13 +49,12 @@
                  <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            {{-- <i class="fas fa-user-circle"></i> Welcome {{Auth::user()->name}} --}}
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                            @if(Auth::User()->avatar!='/profile/avatar5.png')
+                            <img src="{{url('profile/avatar5.png')}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -64,9 +63,6 @@
                             <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
-                            {{-- <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-times"></i> Logout
-                            </a> --}}
                             <hr class="solid">
                               <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
@@ -85,36 +81,32 @@
     <div id="page-container">
     <section id="dashboard" class="py-1">
         <div class="container">
-            {{-- <i class="fas fa-comment fa-3x"></i> --}}
+            <i class="fas fa-inbox fa-3x"></i>
             <span class="display-4 text-info">Message</span>
         </div>
     </section>
  <div id="content-wrap">
-    <div class="row">
-        <div class="col-lg-6">
-          <div class="recent">
-              &nbsp;
-            <h3>Send a message</h3>
-          </div>
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm pull-right">
+     &nbsp;
+   <div class="row justify-content-center">
+    <div class="col-md-7">
+    <div class="card">
+        <div class="card-header bg-primary">{{ __('Send a message') }}</div>
+        <div class="card-body">
+          <form action="" method="post" role="form" class="">
             <div class="form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-              <div class="validation"></div>
-            </div>
+              <input type="text" name="name"  id="name" placeholder="Your Name" class="form-control"/>
+              </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validation"></div>
-            </div>
+              <input type="text"  name="subject" id="subject" placeholder="Subject" class="form-control"/>
+           </div>
             <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validation"></div>
+              <textarea  name="message" rows="5" data-rule="required"  placeholder="Message" class="form-control"></textarea>
             </div>
-
-            <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+         <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
           </form>
         </div>
-
+    </div>
+    </div>
 
     </div>
 

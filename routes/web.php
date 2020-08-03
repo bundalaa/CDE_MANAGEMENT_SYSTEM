@@ -182,8 +182,10 @@ Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamVi
 Route::get('StudentSendMessage','CommentController@stundMessage')->name('StudentSendMessage');
 
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
+Route::post('/Addprofile','UserController@AddProfile');
 
-
+Route::get('/password','UserController@stupassword')->name('/password');
+Route::post('changeStuPassword','UserController@ChangeStudent')->name('changeStudPassword');
 
 Route::get('/', function () {
     return view('welcome');

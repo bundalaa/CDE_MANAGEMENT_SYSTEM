@@ -117,7 +117,7 @@
           </li>
         </ul>
 
-         <ul class="navbar-nav ml-auto">
+              <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown mr-3">
                             <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
 
@@ -154,126 +154,70 @@
             <section id="dashboard" class="py-1">
                 <div class="container">
                     <i class="fas fa-edit fa-3x"></i>
-                    <span class="display-4 text-info">Edit profile</span>
+                    <span class="display-4 text-info">Edit password</span>
                 </div>
             </section>
-         <div id="content-wrap">
-          @extends('layouts.app')
-             @section('content')
-             <div class="container">
-                 <div class="row">
-                     <div class="col-md-8 col-md-offset-2">
 
-                        @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+            <div id="content-wrap">
+                @extends('layouts.app')
+                @section('content')
+                <div class="row justify-content-center">
+                <div class="col-md-8">
+                <section id="body-panel" class="py-4">
+                    <div class="container">
+                        <div class="row pt-1">
+                            <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
+                                <div class="card" id="card-table">
+                                    <div class="card-header">
+                                        <h4>Change Password</h4>
+                                    </div>
+                                    @if (session('message'))
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-success">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                {{ session('message') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                    <div class="card-body px-5">
+                                    <form action="changeStuPassword" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                            <div class="form-group">
+                                                <label for="Current password"></label>
+                                                <input type="password" name="old_pass" id="password"
+                                                    class="form-control p-4" placeholder="Current Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="New Password"></label>
+                                                <input type="password" name="new_pass" id="password-2"
+                                                    class="form-control p-4" placeholder="New Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Confirm password"></label>
+                                                <input type="password" name="confirm_pass" id="password-3"
+                                                    class="form-control p-4" placeholder="Confirm Password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" name="submit" id="submit" class="btn btn-primary col-md-4">Save </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-                    @if ($message = Session::get('response'))
-
-                    <div class="alert alert-success alert-block">
-
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-
-                        <strong>{{ $message }}</strong>
-               </div>
-                @endif
-                <div class="col-md-3">
-                    <a href="/password" class="btn btn-success btn-block">
-                        <i class="fas fa-lock text-light"></i> Change Password
-                    </a>
+                    </div>
+                </section>
                 </div>
-                &nbsp;
-                <div class="col-md-12">
-                     <div class="card">
-                            <div class="card-header bg-primary">{{ __('Profile') }}</div>
-
-                            <div class="card-body">
-                            <form method="POST" action="{{'/Addprofile'}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Enter Name') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{ $user->name }}"
-                                        required autocomplete="name" autofocus>
-
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('EMail Address') }}</label>
-
-                                    <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}"
-                                         required autocomplete="email" autofocus>
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="profile_picture" class="col-md-4 col-form-label text-md-right">{{ __('profile picture') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror"
-                                        name="avatar">
-
-                                        @error('profile_picture')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            {{ __('Add Profile') }}
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </form>
-                         </div>
-                     </div>
                 </div>
-                 </div>
-                 <div class="panel-body">
-                    <div class="col-md-14">
-                    <br><br><br>
-                    <img src="{{url('profile/avatar5.png')}}" class="avatar" alt="profile">
-                    <br><br>
-                    <p class="lead">{{$user->name}}</p>
-                    <br>
-                    <p class="lead">{{$user->email}}</p>
-                     </div>
-                     <div class="col-md-8">
-
-                     </div>
-                 </div>
-             </div>
-
-         </div>
-         <footer id="footer" class="bg-dark">
-            <div class="py-3 text-center">
-                <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
             </div>
-        </footer>
-        </div>
-        @endsection
-    </body>
-</html>
+            <footer id="footer" class="bg-dark">
+                <div class="py-3 text-center">
+                    <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+                </div>
+            </footer>
+            </div>
+            @endsection
+        </body>
+   </html>
