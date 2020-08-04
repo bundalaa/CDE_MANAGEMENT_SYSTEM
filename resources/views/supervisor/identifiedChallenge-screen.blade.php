@@ -1,4 +1,3 @@
-
 @extends('layouts.supervisorMenu')
 @section('content')
     <header id="dashboard" class="pt-4 pb-3">
@@ -40,6 +39,7 @@
                                             <th>Description</th>
                                             <th>Status</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,6 +59,11 @@
                                             <i class="fas fa-angle-double-right"></i>Update Sub Challenge
                                         </a>
                                     </td>
+                                      <td>
+                                        <a href="{{route('viewFillProgress',[$identifiedChallenge->id])}}" class="btn btn-info">
+                                            <i class="fas fa-angle-double-right"></i>Fill progress
+                                        </a>
+                                      </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -74,9 +74,9 @@
                                             <a href="{{route('viewaddstudentpage',[$teams->id])}}" class="btn btn-secondary">
                                                 <i class="fas fa-angle-double-right"></i> Add Students
                                             </a>
-                                        {{-- <a href="{{route('viewteamDetail',[$teams->id])}}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> Details
-                                                </a> --}}
+                                        <a href="{{route('viewteamDetail',[$teams->id])}}" class="btn btn-info">
+                                                    <i class="fas fa-angle-double-right"></i> Team Details
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach

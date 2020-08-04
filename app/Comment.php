@@ -1,16 +1,16 @@
 <?php
 
-  
+
 
 namespace App;
 
-  
+
 
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-  
+
 
 class Comment extends Model
 
@@ -20,7 +20,7 @@ class Comment extends Model
 
     protected $dates = ['deleted_at'];
 
-   
+
 
     /**
 
@@ -32,9 +32,9 @@ class Comment extends Model
 
      */
 
-    protected $fillable = ['user_id', 'post_id', 'parent_id', 'body', 'commentable_id','commentable_type','description',];
+    protected $fillable = ['user_id', 'report_id', 'parent_id', 'body', 'commentable_id','commentable_type','description',];
 
-   
+
 
     /**
 
@@ -53,8 +53,6 @@ class Comment extends Model
         return $this->belongsTo(User::class);
 
     }
-
-   
 
     /**
 

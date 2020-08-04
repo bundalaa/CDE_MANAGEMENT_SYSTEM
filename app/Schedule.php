@@ -11,7 +11,7 @@ class Schedule extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','taskdate',
+        'title','taskdate'
     ];
 
     protected $dates = [

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Attendance;
 use App\AttendanceDateReport;
+use App\Report;
 use App\Student;
 use App\Supervisor;
 use App\User;
@@ -49,8 +50,14 @@ class AttendanceController extends Controller
     public function getAttendanceReport()
     {
         $reports = AttendanceDateReport::all();
-        $report = AttendanceDateReport::get()->last()->load(['attendance', 'attendance.student','attendance.student.user']);
 
+        $report = AttendanceDateReport::get()->last();
+
+        if($report){
+            $report = $report->load(['attendance', 'attendance.student','attendance.student.user']);
+        }
+        else
+        $report = null;
 
         return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
     }

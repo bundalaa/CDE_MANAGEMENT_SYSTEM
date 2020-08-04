@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="FypConfirm" class="nav-link">Confirm Fyp</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,49 +43,88 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentTeamView" class="nav-link">Team</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
-                   <!-- Messages Dropdown Menu -->
-                 <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="projects">
-                    <i class="fas fa-comments"></i>
-                   <span class="badge badge-danger navbar-badge">3</span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                        </a>
-                     </div>
-                 </li>
-                <!-- Notifications Dropdown Menu -->
-               <li class="nav-item dropdown">
-               <a class="nav-link" data-toggle="dropdown" href="#">
-               <i class="fas fa-bell"></i>
-              <span class="badge badge-danger navbar-badge">5</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <!-- Messages Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="row">
+                        <div class="col-lg-6">
+                        <span class="dropdown-item dropdown-header">Messages</span>
+                        </div>
+                        <div class="col-lg-6">
+                        <a href="StudentSendMessage">New Message</a>
+                        </div>
+                        </div>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-              </div>
-             </li>
-                </ul>
+                          <!-- Message Start -->
+                          <div class="media">
 
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                      </div>
+                    </li>
+            <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fas fa-bell"></i>
+              <span class="badge badge-warning navbar-badge"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+          </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            {{-- <i class="fas fa-user-circle"></i> Welcome {{Auth::user()->name}} --}}
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                            @if(Auth::User()->avatar!='/profile/avatar.jpg')
+                            <img src="{{url('profile/avatar.jpg')}}"  alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -130,33 +169,47 @@
   <div class="row">
     <div class="col-sm-4">
       <h3>Uplaod Report</h3>
-      <p class="text-justify">This functionality allows you as student to upload reports including weekly and
-          final reports for PT and Fyp</p>
+      <p class="text-justify">This functionality allows you as student to upload reports including weekly, mid reports,
+         or final reports for final year projects and any other related reports under supervision of CDE coordination
+        team.</p>
 
     </div>
     <div class="col-sm-4">
       <h3>Schedule</h3>
-      <p class="text-justify">This functionality allows you as student to view schedule</p>
+      <p class="text-justify">This functionality allows you as student to view schedule for different
+      tasks or activities that will  fall under category day, week, month in form of calendar. This shows
+      also the start date and end date for each task or activity throughout the project or any other related
+      activities.
+      </p>
 
     </div>
     <div class="col-sm-4">
-        <h3>Projects</h3>
-        <p class="text-justify">This functionality allows you as student to view and read publication of projects conducted
-            last years students under CDE.
+        <h3>Team</h3>
+        <p class="text-justify">This functionality allows you as student to view the project problem
+             title your are  registered to, know the team members you will be working with them throughout
+             the project and the one who will be supervising you during the project.
         </p>
 
       </div>
       <div class="col-sm-4">
-        <h3>Confirm FYP</h3>
-        <p class="text-justify">This functionality allows you as student to confirm to continue with problem challenges
-            obtained under CDE during practical training which based on collection of challenges in
-            the society as your final year project.
+        <h3>Projects</h3>
+        <p class="text-justify">This functionality allows you as student to view list of project problem title and
+        confirm to continue with the problem title obtained during data collection which based onthe society challenges and work
+        on it as your final year project under CDE.
         </p>
   </div>
   <div class="col-sm-4">
     <h3>Comment</h3>
-    <p class="text-justify">This functionality allows you as student to view any comment from the
-        supervisor
+    <p class="text-justify">This functionality allows you as student to view comment from the
+        supervisor related to the supervision of the project and be able to replay to the comment.
+    </p>
+
+  </div>
+  <div class="col-sm-4">
+    <h3>Notification</h3>
+    <p class="text-justify">This functionality allows you as student to view any notification from the
+        supervisor related to the supervision of the project and be able to see.
+
     </p>
 
   </div>
@@ -166,7 +219,7 @@
 </div>
 <footer id="footer" class="bg-dark">
     <div class="py-3 text-center">
-        <p> &copy;20<?php echo date('y');?> Copyright Udsm <span id="year"></span>, All rights reserved</>
+        <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
     </div>
 </footer>
 </div>

@@ -42,7 +42,7 @@ class LoginController extends Controller
 
     public function redirectTo(){
         if(Auth::user()-> hasRole ('admin')){
-             $this->redirectTo = route('/');
+             $this->redirectTo = route('adminIndex');
              return $this->redirectTo;
         }
         elseif(Auth::user()-> hasRole('supervisor')){
@@ -54,7 +54,7 @@ class LoginController extends Controller
              return $this->redirectTo;
         }
         elseif(Auth::user()-> hasRole('challengeowner')){
-            $this->redirectTo = route('challengeownerHome');
+            $this->redirectTo = route('homePage');
              return $this->redirectTo;
         }
     }

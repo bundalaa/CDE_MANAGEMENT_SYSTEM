@@ -17,12 +17,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="adminIndex" class="btn btn-muted btn-block">
+                            <a href="{{route('adminIndex')}}" class="btn btn-muted btn-block">
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Dashboard
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="{{url('getchangepassword')}}" class="btn btn-success btn-block">
+                            <a href="{{route('getchangepassword')}}" class="btn btn-success btn-block">
                                 <i class="fas fa-lock text-light"></i> Change Password
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                                     <h4>Edit Profile</h4>
                                 </div>
                                 <div class="card-body px-5">
-                                    <form action="{{url('edituserprofile')}}" method="POST">
+                                    <form action="{{route('edituserprofile')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="Username"></label>
@@ -94,7 +94,7 @@
                             <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:100px;margin-left:10px;height:100px;border-radius:50%">
 
                             @endif
-                        <form action="{{url('update-avatar')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('update-avatar')}}" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                     <label for="img">Select image:</label>
                           <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">

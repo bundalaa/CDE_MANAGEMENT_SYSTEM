@@ -79,4 +79,10 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
         $challenge->delete();
             return redirect('viewchallenge')->with('Challenge deleted successfuly');
     }
+
+    ///student module
+    public function getProj()
+    {
+      return view('student.StudentChallengeView');
+    }
 }

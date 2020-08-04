@@ -62,30 +62,25 @@
                                          <th>Student Name</th>
                                          <th>Registration No.</th>
                                          <th>Year of study</th>
-                                         <th>Degree of program</th>
+                                         <th>Degree of programme</th>
                                          <th></th>
                                          <th></th>
                                      </tr>
                                  </thead>
                                  <tbody>
                                 @foreach ($students as $student)
-                                    {{-- @php
-                                    $student = User::where('id',$user_id)->first();
-                                @endphp --}}
                                    <tr>
                                     <td>
-                                        {{$number}}
+                                        {{$loop->index + 1}}
                                     </td>
                                     <td>
-                                       {{-- {{ $student->name }} --}}
+                                       {{ $student->user->name }}
                                     </td>
                                    <td>
+                                    {{ $student->registration_number}}
                                    </td>
-                                    @php
-                                        $number++;
-                                    @endphp
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $student->year_of_study}}</td>
+                                    <td>{{ $student->degree_programme}}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>

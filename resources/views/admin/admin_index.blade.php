@@ -70,7 +70,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> Details
+                                                    <i class="fas fa-angle-double-right"></i> Update User
                                                 </a>
                                             </td>
                                             <td>

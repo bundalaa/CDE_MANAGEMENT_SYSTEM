@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOMEPAGE</title>
-    <link rel="stylesheet" href="{{URL to::('homePage.css')}}">
+    {{-- <link rel="stylesheet" href="{{URL to::('homePage.css')}}"> --}}
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
@@ -43,7 +43,7 @@
                     <li class="nav-item px-2">
                         <a href="#" class="nav-link">Reports</a>
                     </li>
-                    
+
                 </ul>
 
                 <ul class="navbar-nav ml-auto">

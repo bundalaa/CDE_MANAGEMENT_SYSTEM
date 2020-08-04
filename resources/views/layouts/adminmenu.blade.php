@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel</title>
+    {{-- <link rel="stylesheet" href="jquery.datetimepicker.min.css"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/> --}}
      <!-- Bootstrap CSS LOCAL -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <!--external css link-->
      <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin-css/home.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ URL::to('css/main.css') }}">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
@@ -50,39 +53,12 @@
                         <a href="{{route('view-schedule')}}" class="nav-link">Fill Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{route('view-publication')}}" class="nav-link">Publications</a>
+                        <a href="{{route('view-newChallenge')}}" class="nav-link">New Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="{{route('getAttendanceReport')}}" class="nav-link">Attendance Report</a>
                     </li>
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Messages Dropdown Menu -->
-                        <li class="nav-item dropdown">
-                          <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i id="notification" class="far fa-comments">
-                              <span class="badge navbar-badge">3</span>
-                            </i>
-                            {{-- <span class="badge badge-danger">3</span> --}}
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <a href="#" class="dropdown-item">
-                              <!-- Message Start -->
-                              <div class="media">
-                                <div class="media-body">
-                                  <h3 class="dropdown-item-title">
-                                    MORUWASA company
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                  </h3>
-                                  <p class="text-sm">Got some problem...</p>
-                                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                              </div>
-                              <!-- Message End -->
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                          </div>
-                        </li>
+
                         <!-- Notifications Dropdown Menu -->
                         <li class="nav-item dropdown">
                           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -120,7 +96,7 @@
                               @endif
                           </a>
                           <div class="dropdown-menu">
-                          <a href="{{url('profile')}}" class="dropdown-item">
+                          <a href="{{route('userprofile')}}" class="dropdown-item">
                                   <i class="fas fa-user-circle"></i> Profile
                               </a>
                               <hr class="solid">

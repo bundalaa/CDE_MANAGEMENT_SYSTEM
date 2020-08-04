@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\ProjectProgress;
 use Illuminate\Http\Request;
 
-class ProjectProgressController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewProgressForm()
+    public function index()
     {
-        return view('supervisor.projectProgress');
+        //
     }
 
     /**
@@ -41,10 +40,10 @@ class ProjectProgressController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProjectProgress  $projectProgress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProjectProgress $projectProgress)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class ProjectProgressController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProjectProgress  $projectProgress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectProgress $projectProgress)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class ProjectProgressController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProjectProgress  $projectProgress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectProgress $projectProgress)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class ProjectProgressController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProjectProgress  $projectProgress
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectProgress $projectProgress)
+    public function destroy($id)
     {
         //
     }

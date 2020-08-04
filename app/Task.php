@@ -10,7 +10,7 @@ class Task extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','identified_challenge_id','status'
+        'name','identified_challenge_id','status_id'
     ];
 
     protected $dates = [
@@ -18,10 +18,10 @@ class Task extends Model
     ];
 
     //relationships
-    public function IdentifiedChallenges(){
-        return $this->hasMany(IdentifiedChallenge::class);
+    public function identifiedChallenge(){
+        return $this->belongsTo(IdentifiedChallenge::class);
     }
     public function status(){
-        $this->hasMany(Status::class);
+        return $this->belongsTo(Status::class);
     }
 }

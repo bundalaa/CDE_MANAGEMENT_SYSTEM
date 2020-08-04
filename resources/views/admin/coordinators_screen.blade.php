@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
-                    <i class="fa fa-user" aria-hidden="true"></i> Coordinators
+                    <i class="fa fa-users" aria-hidden="true"></i> Coordinators
                 </h1>
             </div>
         </div>
@@ -37,21 +37,25 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
+                                            <th>Biography</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                         $number = 1;
                                     @endphp
-                                        @foreach($coordinators as $coordinators)
+                                        @foreach($coordinators as $coordinator)
                                         <tr>
                                             <td>
                                                 {{$number}}
                                             </td>
-                                             <td>{{ $coordinators->name }}</td>
+                                             <td>{{ $coordinator->name }}</td>
                                              @php
                                              $number++;
                                          @endphp
+                                         <td></td>
+                                         <td></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

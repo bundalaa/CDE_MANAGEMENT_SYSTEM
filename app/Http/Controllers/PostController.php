@@ -1,16 +1,16 @@
 <?php
 
-   
+
 
 namespace App\Http\Controllers;
 
-   
+
 
 use Illuminate\Http\Request;
 
 use App\Post;
 
-   
+
 
 class PostController extends Controller
 
@@ -32,13 +32,11 @@ class PostController extends Controller
 
         $posts = Post::all();
 
-    
+
 
         return view('posts.index', compact('posts'));
 
     }
-
-   
 
     /**
 
@@ -58,7 +56,7 @@ class PostController extends Controller
 
     }
 
-    
+
 
     /**
 
@@ -84,17 +82,14 @@ class PostController extends Controller
 
         ]);
 
-    
 
         Post::create($request->all());
-
-    
 
         return redirect()->route('posts.index');
 
     }
 
-    
+
 
     /**
 

@@ -11,7 +11,16 @@
             </div>
         </div>
     </header>
-
+    @if (session('message'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                {{ session('message') }}
+            </div>
+        </div>
+    </div>
+@endif
     <div id="page-container">
         <div id="content-wrap">
             <section id="admin-panel" class="py-4">
@@ -63,7 +72,7 @@
                                             <td>
                                                 <input type="text" name="student_id[]" value="{{$student->id}}" hidden>
                                                 <div class="form-group">
-                                                    <select id="cars" name="status[]">
+                                                    <select id="cars" name="status[]"  class="custom-select custom-select-sm mb-3">
                                                         <option value="0">Absent</option>
                                                         <option value="1">Present</option>
                                                         </select>
@@ -73,9 +82,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-
-
-
                                     </tbody>
                                 </table>
                                   <div class="ml-auto mr-3 mb-3">

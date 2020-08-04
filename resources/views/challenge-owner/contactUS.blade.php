@@ -2,7 +2,24 @@
     <html>
     <head>
     <title>Contact US</title>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
   <style>
+=======
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    </head>
+    <style>
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+  margin-top: 1px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
 
 /*contactus*/
 
@@ -46,7 +63,11 @@
   </head>
   
     <body>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
 	@include('challenge-owner.components.top-nav')
+=======
+	@include('Challenge-owner.component.top-nav')
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
 
     <div class="container">
 
@@ -67,12 +88,9 @@
     </div>
   </div>
 
-
-
-    
   <div class="column">
     <div class="card">
-     
+
     <h3>Contact US</h3>
     @if(Session::has('success'))
        <div class="alert alert-success">
@@ -101,6 +119,7 @@
     {!! Form::close() !!}
 </div>
 </div>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
     </div>
     </div>
 <footer id="footer" class="bg-dark" style="margin-top:30px;color:white" >
@@ -111,8 +130,8 @@ document.write(new Date().getFullYear());
 </div>
 </footer>
 
+=======
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
     </div>
-
-    
     </body>
     </html>

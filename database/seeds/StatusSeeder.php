@@ -17,13 +17,13 @@ class StatusSeeder extends Seeder
             'name'=> 'pending',
         ]);
          Status::create([
-            'name'=> 'stage-one',
+            'name'=> 'stage one',
         ]);
          Status::create([
-            'name'=> 'stage-two',
+            'name'=> 'stage two',
         ]);
          Status::create([
-            'name'=> 'stage-three',
+            'name'=> 'stage three',
         ]);
         Status::create([
             'name'=> 'completed',

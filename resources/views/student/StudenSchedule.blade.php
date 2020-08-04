@@ -36,7 +36,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="FypConfirm" class="nav-link">Confirm Fyp</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -46,48 +46,82 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentProjectView" class="nav-link">Projects</a>
+                        <a href="StudentTeamView" class="nav-link">Team</a>
                     </li>
                  </ul>
-                 <ul class="navbar-nav ml-auto">
-                   <!-- Messages Dropdown Menu -->
-                 <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="fas fa-comments"></i>
-                   <span class="badge badge-danger navbar-badge">3</span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                        </a>
-                     </div>
-                 </li>
-                <!-- Notifications Dropdown Menu -->
-               <li class="nav-item dropdown">
-               <a class="nav-link" data-toggle="dropdown" href="#">
-               <i class="fas fa-bell"></i>
-              <span class="badge badge-danger navbar-badge">5</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                   <ul class="navbar-nav ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Messages</span>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
+                          <!-- Message Start -->
+                          <div class="media">
+
+
+                          </div>
+                          <!-- Message End -->
                         </a>
-              </div>
-             </li>
-                </ul>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                          <!-- Message Start -->
+                          <div class="media">
+
+                          </div>
+                          <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                      </div>
+                    </li>
+                <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fas fa-bell"></i>
+              <span class="badge badge-warning navbar-badge"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+          </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (auth()->user())
-                            @if(Auth::User()->avatar!='/images/default-avatar.png')
-                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (Auth::user())
+                            @if(Auth::User()->avatar!='/profile/avatar.jpg')
+                            <img src="{{url('profile/avatar.jpg')}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -133,7 +167,7 @@
     </div>
     <footer id="footer" class="bg-dark">
         <div class="py-3 text-center">
-        <p> &copy;20<?php echo date('y');?> Copyright Udsm <span id="year"></span>, All rights reserved</>
+        <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
         </div>
     </footer>
      </div>
@@ -166,65 +200,16 @@
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
-        events: [
-          {
-            title: 'All Day Event',
-            start: new Date(y, m, 1),
-            allDay: true
-          },
-          {
-            title: 'Long Event',
-            start: '2020-06-07',
-            end: '2020-06-10'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2020-06-09T16:00:00'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2020-06-16T16:00:00'
-          },
-          {
-            title: 'Conference',
-            start: '2020-06-11',
-            end: '2020-06-13'
-          },
-          {
-            title: 'Meeting',
-            start: '2020-06-12T10:30:00',
-            end: '2020-06-12T12:30:00'
-          },
-          {
-            title: 'Lunch',
-            start: '2020-06-12T12:00:00'
-          },
-          {
-            title: 'Meeting',
-            start: '2020-06-12T14:30:00'
-          },
-          {
-            title: 'Happy Hour',
-            start: '2020-06-12T17:30:00'
-          },
-          {
-            title: 'Dinner',
-            start: '2020-06-12T20:00:00'
-          },
-        //   {
-        //     title: 'Birthday Party',
-        //     start: '2020-06-13T07:00:00'
-        //   },
-          {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: '2020-06-28'
-          }
-        ]
+        events:  [
+                 @foreach($schedules as $schedule)
+                     {
+                 title : '{{$schedule->title }}',
+                 start : '{{ $schedule->taskdate }}',
+
+                  },
+                 @endforeach
+                    ]
       });
-      events:'',
 
       calendar.render();
 

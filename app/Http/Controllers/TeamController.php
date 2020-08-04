@@ -8,6 +8,7 @@ use App\Supervisor;
 use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as REQ;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
@@ -24,9 +25,10 @@ class TeamController extends Controller
         return view('supervisor.createteam',['challenges'=>$challenges,'supervisors'=>$supervisors]);
     }
 
-    public function teamTeamDetails($id)
+    public function teamDetails($id)
     {
-        $students = Student::where('team_id',$id)->first();
+        // return $id;
+        $students = Student::where('team_id',$id)->get();
         // dd($students);
         return view('supervisor.teamDetails', ['id' => $id, 'students' => $students]);
     }
@@ -42,14 +44,27 @@ class TeamController extends Controller
     }
     public function createTeam(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'supervisor_id' => 'required',
-            'identified_challenge_id' => 'required'
+            'identified_challenge_id' => 'required|unique:teams'
         ]);
+        if($validator->fails())
+        {
+         return Redirect()->back()->withInput()->withErrors($validator);
+
+        }
+        $identifiedChallenge = IdentifiedChallenge::find($request->identified_challenge_id);
+        if(! $identifiedChallenge){
+            return redirect('viewteam')->with('success','challenge not found');
+        }
         $team = new Team();
         $team->supervisor_id = $request['supervisor_id'];
         $team->identified_challenge_id = $request['identified_challenge_id'];
         $team->save();
+
+        $identifiedChallenge->update([
+            'status'=>1,
+        ]);
         return redirect('viewteam')
             ->with('message', 'Team created successfully');
     }
@@ -84,7 +99,7 @@ class TeamController extends Controller
 
         $student->save();
         //dd($student);
-        return redirect('viewteamDetail/{id}')
+        return redirect()->route('viewteamDetail',$request->team_id)
             ->with('message', 'student added successfully');
     }
 }

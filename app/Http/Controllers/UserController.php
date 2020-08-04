@@ -9,6 +9,7 @@ use App\Supervisor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -35,7 +36,7 @@ class UserController extends Controller
     public function viewCoordinators()
     {
         $coordinators = User::whereHas('roles', function ($role) {
-            $role->where('name', 'coordinator');
+            $role->where('name', 'admin');
         })->get();
         return view('admin.coordinators_screen', ['coordinators' => $coordinators]);
     }
@@ -62,7 +63,7 @@ class UserController extends Controller
         foreach ($latestusers as $user) {
             $user->roles->first;
         }
-        return view('admin.index', ['latestusers' => $latestusers]);
+        return view('admin.admin_index', ['latestusers' => $latestusers]);
         // return response()->json(['user'=>$user],201);
     }
 
@@ -74,13 +75,13 @@ class UserController extends Controller
             'email' => 'required|unique:users',
             'role_id' => 'required'
         ]);
-        // return response()->json(['re'=>$request]);
+
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-
+        $user->password = Hash::make("12345678");
         $user->save();
+
         $role = Role::find($request['role_id']);
         if (!$role) {
             return redirect('createuser')
@@ -155,15 +156,20 @@ class UserController extends Controller
         return view('admin.editUser_screen', ['user' => $user,'roles' => $roles]);
     }
 
+
     //update user
     public function updateUser(Request $request)
     {
-        $users = User::where('id', $request['id'])->first();
-        $users->name = $request['name'];
-        $users->role_id = $request['role'];
-        $users->save();
-        return redirect('/')->with('message', 'user updated successfully');
+        $user = User::where('id', $request['id'])->first();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $role = Role::find($request['role_id']);
+        $user->roles()->sync($role);
+        $user->save();
+
+        return redirect('adminIndex')->with('message', 'user updated successfully');
     }
+
 
     //edit admn Profile
     public function profile()
@@ -178,7 +184,7 @@ class UserController extends Controller
         $users->name = $request['name'];
         $users->email = $request['email'];
         $users->save();
-        return redirect('profile')
+        return redirect('userprofile')
             ->with('message', 'successfully');
     }
 
@@ -195,7 +201,7 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $file->move(public_path('/images/avatars/'), $filename);
         }
-        return redirect('profile');
+        return redirect('userprofile');
     }
 
     //delete user function
@@ -209,4 +215,33 @@ class UserController extends Controller
         return redirect('user-screen')
             ->with('message', 'User deleted successfully');
     }
+    ///student module
+
+
+    public function edit()
+    {
+        $user =Auth::user();
+        return view('student.stuProfile',['user'=>$user]);
+
+    }
+    public function AddProfile(request $request)
+    {
+      $this->validate($request,[
+       'name'=>'required',
+       'email'=>'required',
+       'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+      $user =Auth::user();
+      $user->name=$request->name;
+      $user->email=$request->email;
+      if($request->file('avatar')){
+        $file=$request->file('avatar');
+        $file->move(public_path().'/profile/',$file->getClientOriginalName());
+       $url= URL::to("/stuProfile").'/profile/'.$file->getClientOriginalName();
+      }
+      $user->avatar=$url;
+      $user->save();
+      return redirect('stuProfile')->with('response','Profile Added successfully');
+    }
+
 }

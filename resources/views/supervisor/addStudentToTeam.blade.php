@@ -38,9 +38,7 @@
                         @php
                             $student = User::where('id',$item->user_id)->first();
                         @endphp
-
                             <option value="{{$student['id']}}">{{$student['name']}}</option>
-
                     @endforeach
                 </select>
             </div>
@@ -52,67 +50,3 @@
        @endsection
 
 
-
-
-
-
-
-
-
-
-
-
-
-{{--
-       <div class="card-subtitle mt-2">
-        <div class="col-md-12 ml-auto">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Students...">
-                <div class="input-group-append">
-                    <button class="btn btn-info">Search</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card-body ">
-          <table class="table table-striped">
-             <thead class="thead-dark">
-                 <tr>
-                     <th>
-                        #
-                     </th>
-                     <th>Student_Name</th>
-                     <th></th>
-                 </tr>
-             </thead>
-             <tbody>
-
-                    @php
-                    $number = 1;
-                @endphp
-           @foreach($students as $student)
-               <tr>
-                <td>
-                    {{$number}}
-                </td>
-                <td scope="row">
-                   {{ $student->name }}
-                </td>
-               <td><form action="{{route('addStudentToTeam')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-               <input type="text" name="student_id" value="{{$student->id}}"
-                hidden>
-                <input type="text" name="team_id" value="{{$team->id}}"
-                hidden>
-<button type="submit" class="btn btn-info mb-2" style="float: right">Add Student</button>
-             </form>
-               </td>
-                @php
-                    $number++;
-                @endphp
-            </tr>
-               @endforeach
-            </tbody>
-
-         </table>
-        </div> --}}

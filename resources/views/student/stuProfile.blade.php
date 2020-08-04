@@ -33,7 +33,7 @@
                             <a href="studentHome" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="FypConfirm" class="nav-link">Confirm Fyp</a>
+                            <a href="StudentChallengeView" class="nav-link">Challenge</a>
                         </li>
                         <li class="nav-item px-2">
                             <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,7 +43,7 @@
                             <a href="StudenSchedule" class="nav-link">Schedule</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="StudentProjectView" class="nav-link">Projects</a>
+                            <a href="StudentTeamView" class="nav-link">Team</a>
                         </li>
                      </ul>
                      <ul class="navbar-nav ml-auto">
@@ -78,25 +78,22 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown mr-3">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                {{-- <i class="fas fa-user-circle"></i> Welcome {{Auth::user()->name}} --}}
-                                @if (auth()->user())
-                                @if(Auth::User()->avatar!='/images/default-avatar.png')
-                                <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+
+                                @if (Auth::user())
+                                @if(Auth::User()->avatar!='/profile/avatar.jpg')
+                            <img src="{{url('profile/avatar.jpg')}}"  alt="" style="width:30px;height:30px;border-radius:50%">
 
                                 @else
-                                <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                                <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
                                 @endif
                                  Welcome {{auth()->user()->name}}
                                 @endif
                             </a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">
+                                <a href="stuProfile" class="dropdown-item">
                                     <i class="fas fa-user-circle"></i> Profile
                                 </a>
-                                {{-- <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-times"></i> Logout
-                                </a> --}}
                                 <hr class="solid">
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
@@ -120,33 +117,112 @@
                 </div>
             </section>
          <div id="content-wrap">
-             &nbsp;
-             <br><br><br>
-             <div class="content" style="text-align: center;">
-            <h3>Edit your profile</h3>
-            <form method="post" action="route('student.stunProfile', $user)">
-                {{ csrf_field() }}
-                <div class="form-group">
-                <input type="text" name="name"  value="{{ $user->name }}" placeholder="Name"/>
-                </div>
-                <div class="form-group">
-                <input type="email" name="email"  value="{{ $user->email }}" placeholder="Email"/>
-                </div>
-                <div class="form-group">
-                <input type="password" name="password" placeholder="Password"/>
-                </div>
-                <div class="form-group">
-                <input type="password" name="password_confirmation" placeholder="Password-confirmation"/>
-                </div>
-                <button type="submit">Send</button>
-            </form>
-        </div>
+          @extends('layouts.app')
+             @section('content')
+             <div class="container">
+                 <div class="row">
+                     <div class="col-md-8 col-md-offset-2">
+
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('response'))
+
+                    <div class="alert alert-success alert-block">
+
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <strong>{{ $message }}</strong>
+               </div>
+                @endif
+
+                        <div class="card">
+                            <div class="card-header bg-primary">{{ __('Profile') }}</div>
+
+                            <div class="card-body">
+                            <form method="POST" action="{{'/Addprofile'}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Enter Name') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{ $user->name }}"
+                                        required autocomplete="name" autofocus>
+
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('EMail Address') }}</label>
+
+                                    <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}"
+                                         required autocomplete="email" autofocus>
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="profile_picture" class="col-md-4 col-form-label text-md-right">{{ __('profile picture') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror"
+                                        name="avatar">
+
+                                        @error('profile_picture')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            {{ __('Add Profile') }}
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </form>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="panel-body">
+                     <div class="col-md-4">
+                    <img src="{{url('profile/avatar.jpg')}}" class="avatar" alt="profile">
+                    <p class="lead">{{$user->name}}</p>
+                    <p class="lead">{{$user->email}}</p>
+                     </div>
+                     <div class="col-md-8">
+
+                     </div>
+                 </div>
+             </div>
+
          </div>
          <footer id="footer" class="bg-dark">
             <div class="py-3 text-center">
-                <p> &copy;20<?php echo date('y');?> Copyright Udsm <span id="year"></span>, All rights reserved</>
+                <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
             </div>
         </footer>
         </div>
+        @endsection
     </body>
 </html>

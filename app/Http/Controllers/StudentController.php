@@ -18,21 +18,15 @@ class StudentController extends Controller
     {
         return view('student.studentHome');
     }
-    public function stunschedule()
-    {
-      return view('student.StudenSchedule');
-    }
+
     public function stunUpload()
     {
      return view('student.studentReport');
     }
-    public function confirm()
+   
+    public function teamView()
     {
-      return view('student.FypConfirm');
-    }
-    public function getProj()
-    {
-      return view('student.StundentProjectView');
+      return view('student.StundentTeamView');
     }
     public function __construct()
     {
@@ -43,7 +37,23 @@ class StudentController extends Controller
     {
         $user = Auth::user();
         return view('student.stuProfile', compact('user'));
-        
+
+    }
+    public function update(User $user)
+    {
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
+        ]);
+
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->password = bcrypt(request('password'));
+
+        $user->save();
+
+        return back();
     }
 
 }

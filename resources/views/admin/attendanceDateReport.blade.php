@@ -29,7 +29,7 @@
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" placeholder="Search Attendance per date...">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-info">Search</button>
+                                                        <button class="btn btn-info">Select Attendance Date</button>
                                                     </div>
                                                 </div>
                                             </div>

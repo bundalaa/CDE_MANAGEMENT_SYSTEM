@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('status', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-
-            $table->softDeletes();
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->longText('body');
+            $table->bigInteger('supervisor_id');
+            $table->bigInteger('report_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status');
+        Schema::dropIfExists('comments');
     }
 }

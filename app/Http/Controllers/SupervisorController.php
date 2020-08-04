@@ -16,11 +16,20 @@ class SupervisorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-            return view('supervisor.supervisorHome');
+    public function index()
+    {
+        return view('supervisor.supervisorHome');
     }
-
-
-
-
+    public function inboxMessage()
+    {
+        return view('supervisor.inboxmessage');
+    }
+    public function composeMessage()
+    {
+        return view('supervisor.compose');
+    }
+    public function readMessage()
+    {
+        return view('supervisor.readmessage');
+    }
 }

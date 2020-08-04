@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Coordinator;
+use App\IdentifiedChallenge;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
@@ -11,20 +13,32 @@ class CoordinatorController extends Controller
 {
     public function viewProjectProgress()
     {
-        return view('admin.progress',);
+        $identifiedchallenges = IdentifiedChallenge::all();
+
+        foreach ($identifiedchallenges as $identifiedchallenge) {
+            $identifiedchallenge->tasks;
+        }
+
+        // $admin = auth()->user()->coordinator;
+
+        // if(!$admin){
+        //    return  redirect('/');
+        // }
+
+        return view('admin.progress', ['identifiedchallenges' => $identifiedchallenges]);
     }
     public function viewNotification()
     {
         return view('welcome',);
     }
-    public function viewPublication()
+    public function viewNewChallenge()
     {
-        return view('admin.publication',);
+        return view('admin.newchallenge',);
     }
     public function viewCoordinators()
     {
         $coordinators = Coordinator::get();
-        return view('admin.users.coordinator',['coordinators'=>$coordinators]);
+        return view('admin.users.coordinator', ['coordinators' => $coordinators]);
     }
     public function postCoordinator(Request $request)
     {
@@ -34,16 +48,16 @@ class CoordinatorController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-           redirect('/');
-        $Coordinator = new Coordinator();
-        $Coordinator->username = $request->input('username');
-        $Coordinator->password = $request->input('password');
-        $Coordinator->save();
+            redirect('/');
+            $Coordinator = new Coordinator();
+            $Coordinator->username = $request->input('username');
+            $Coordinator->password = $request->input('password');
+            $Coordinator->save();
 
-        //for web route
-        return view('/home');
+            //for web route
+            return view('/home');
+        }
     }
-}
 
     public function putCoordinator(Request $request, $coordinatorId)
     {

@@ -54,8 +54,9 @@
                                     <h4>Edit Sub Challenge</h4>
                                 </div>
                                 <div class="card-body px-5">
-                                <form action="{{route('editidentifiedchallenge-screen')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{route('editidentifiedchallenge-screen', $identifiedChallenge->id)}}" method="post" enctype="multipart/form-data">
                                         @csrf
+                                        {{-- @method('UPDATE') --}}
                                         <div class="form-group">
                                             <label for="Sub Challenge">Sub Challenge</label>
                                             <div class="input-group">
