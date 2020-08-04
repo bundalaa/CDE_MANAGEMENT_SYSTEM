@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
 
     <div id="page-container">
 
-@include('ChallengeOwner.components.top-nav')
+@include('challenge-owner.components.top-nav')
 
 <div id="content-wrap">
 
@@ -36,24 +37,30 @@
   
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h2>Upoload-Challenge</h2>
+      <div class="col-md-3">
+        <h2> What we do</h2>
         <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      
       </div>
-      <div class="col-md-4">
-        <h2>Feeback</h2>
+
+      <div class="col-md-3">
+        <h2>Our history</h2>
+        <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
+        
+      </div>
+      <div class="col-md-3">
+       <strong> <h2>Our Mission</h2></strong>
         <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        
       </div>
-      <div class="col-md-4">
-        <h2>Publication</h2>
-        <p>Here you can see our publications about material related to what we are doing and other  education materials...</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      <div class="col-md-3">
+        <strong> <h2>Our Vision</h2></strong>
+        <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
+        
       </div>
     </div>
 </div>
-<footer id="footer" class="bg-dark" style="margin-top:520px;color:white" >
+<footer id="footer" class="bg-dark" style="margin-top:106px;color:white" >
 <div class="py-2 text-center">
 <p> &copyright Udsm <span id="year"></span><script>
 document.write(new Date().getFullYear());
@@ -61,9 +68,6 @@ document.write(new Date().getFullYear());
 </div>
 </footer>
 </div>
-
-
-   
 
     <!-- Jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

@@ -115,5 +115,10 @@ class FeedbackController extends Controller
 
         ///web route
         return view();
+
+    }
+    //challengeOwner module
+    public function feedback(){
+        return view('challenge-owner.feedback');
     }
 }

@@ -13,7 +13,7 @@
    </div>
 <hr id="line">
    <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 26%">
-    Cde Management Platform
+    Cde Information Manegent System
 </h2 ></div>
     <hr style="margin: 0"px>
                <div class="mycard">

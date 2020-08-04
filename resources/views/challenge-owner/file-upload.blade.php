@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    
-    <meta charset="utf-8">
+
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -90,19 +89,24 @@
         .left-menu-link {
             color: #eeeeee !important;
         }
+        .card{
+          height: 300px;
+          background-color:gray ;
+        }
         /*** [[End]] Left Nav ***/
 
     </style>
-</head>
-
-
+<head>
+ 
+<body>
 <body style="background:  #e6ecf0; width:100%">
 
 <div id="app">
+
 <div class="container-fluid">
       <div class="row">
 
-      @include('ChallengeOwner.components.dashboad-left-nav')
+      @include('challenge-owner.components.left-nav')
 
           <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
@@ -110,54 +114,47 @@
          
 
 
-      @include('ChallengeOwner.components.top-nav-dashboad')
+      @include('challenge-owner.components.top-nav-dashboad')
 
-              <!-- Content -->
-              <main class="py-4">
-                  <div class="row justify-content-center">
-                      <div class="col-md-12">
+         
+<div class="container">
 
-                          <div class="card" style="margin:5px;">
-                              <!-- HealthCare provider heading -->
-                              <div class="card-header">
-                                  <div class="row">
-<div>
-        <h2>Upoload-Challenge</h2>
-        <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-  
-        <h2>Feeback</h2>
-        <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-     
-        <h2>Publication</h2>
-        <p>Here you can see our publications about material related to what we are doing and other  education materials...</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
-      <h2>Upoload-Challenge</h2>
-        <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
-        <h2>Feeback</h2>
-        <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-   
-                                  </div>
-                              </div>
-                          </div>
+<div class="card" style="margin:30px ;">
 
+<div class="container mt-5" >
+        <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
+          <h3 class="text-center mb-5">Upload your Challenge</h3>
+            @csrf
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>{{ $message }}</strong>
+            </div>
+          @endif
 
-                        </div>
+          @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
 
+            <div class="custom-file " >
+                <input type="file" name="file" class="custom-file-input" id="chooseFile" >
+                <label class="custom-file-label" for="chooseFile">Select file</label>
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4" style="width: 20%; " >
+                Upload Files
+            </button>
 
-                       
-
-
-   
-                    </div>
-              </main>
-              <footer id="footer" class="bg-dark" style="width:100%; float:right; margin-left:0; color:white" >
+        </form>
+        
+    </div>
+</div>
+</div>
+<footer id="footer" class="bg-dark" style="color:white; margin-top:344px" >
 <div class="py-2 text-center">
 <p> &copyright Udsm <span id="year"></span><script>
 document.write(new Date().getFullYear());
@@ -166,7 +163,17 @@ document.write(new Date().getFullYear());
 </footer>
 </div>
 </div>
+      </div>
+</div>
+
+    <script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+
 
 </body>
 </html>
-

@@ -14,16 +14,18 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 
 Route::get('AboutUS', function () {
-    return view('AboutUS');
+    return view('ChallengeOwner.AboutUS');
 });
 
-
-Route::get('/', function () {
-    return view('homePg');
+Route::get('/', function(){
+    return view('welcome');
 });
+// Route::get('/home', function () {
+//     return view('ChallengeOwner.homePg');
+// });
 
 
 // Route::get('/', function () {
@@ -34,14 +36,9 @@ Route::get('/', function () {
 //     return view('file-upload');
 // });
 
-Route::get('publication', function () {
-    return view('publication');
-});
-Route::get('feedback', function () {
-    return view('feedback');
-}); 
 
 
+Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
 Route::get('contact-us', 'ContactUSController@contactUS');
 
@@ -60,7 +57,7 @@ Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
  
 
 
-// Route::get('dashboard', 'AuthController@dashboard'); 
+Route::get('dashboard', 'AuthController@dashboard'); 
 
 
 Route::prefix('admin')->name('admin.')->group(function(){

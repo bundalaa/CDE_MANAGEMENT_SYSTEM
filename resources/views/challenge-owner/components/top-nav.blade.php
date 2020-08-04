@@ -32,15 +32,6 @@
                     <li class="nav-item active px-2">
                         <a href="/" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item px-2">
-                        <a href="upload-file" class="nav-link">Upload-Challenge</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="feedback" class="nav-link">Feedback</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="publication" class="nav-link">Publication</a>
-                    </li>
                     
                     <li class="nav-item px-2">
                         <a href="AboutUS" class="nav-link">About US</a>
@@ -53,34 +44,24 @@
                 </ul>
           
                 <ul class="navbar-nav ml-auto">
-                    
+                   
+                
                 <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="/registration" class="nav-link" style="color:blue">Join Us</a>
+                        <a href="{{ route('login')}}">Sign in</a>
+
                     </li>
                     <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="/login" class="nav-link" style="color:blue">Sign in</a>
-                    </li>
-
-                    <!-- <li class="nav-item dropdown mr-3">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-user"></i> Welcome
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user-circle"></i> Profile
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <hr class="solid">
-                            <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-times"></i> Logout
-                            </a>
-                        </div>
-                    </li> -->
                 
+                    <a href="{{ route('register')}}">Sign up</a>
+                
+            
+                
+                    </li>
+                    </ul>
+                </ul>
+      
                 </ul>
             </div>
         </div>
