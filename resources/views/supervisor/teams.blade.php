@@ -18,7 +18,7 @@
 
     <div id="page-container">
         <div id="content-wrap">
-            <section id="add" class="py-4 bg-light">
+            {{-- <section id="add" class="py-4 bg-light">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 ml-auto">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             @if (session('message'))
             <div class="row">
                 <div class="col-md-12">
@@ -57,26 +57,34 @@
                                             <th>Name</th>
                                             <th>Supervisor</th>
                                             <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($teams as $teams)
+                                        @foreach($teams as $index=>$team)
                                         <tr>
-                                        <td>{{ $teams->id }}</td>
+                                        <td>{{ $index+1 }}</td>
                                         <td>
-                                            @php
-                                                $challenge = IdentifiedChallenge::where('id',$teams->identified_challenge_id )->first();
-                                                $supervisor = User::where('id',$teams->supervisor_id )->first();
-                                            @endphp
-                                            {{ $challenge['name'] }}</td>
-                                        <td>{{ $supervisor['name']}}</td>
+                                            {{-- @php
+                                                $challenge = IdentifiedChallenge::where('id',$team->identified_challenge_id )->first();
+                                                $supervisor = User::where('id',$team->supervisor_id )->first();
+                                            @endphp --}}
+                                            {{ $team->identifiedChallenge['name'] }}</td>
+                                        <td>{{ $team->supervisor->user['name']}}</td>
                                         <td>
-                                            <a href="{{route('viewaddstudentpage',[$teams->id])}}" class="btn btn-secondary">
-                                                <i class="fas fa-angle-double-right"></i> Add Students
+                                            <a href="{{route('viewaddstudentpage',[$team->id])}}" class="btn btn-secondary">
+                                                <i class="fas fa-plus"></i> Add Students
                                             </a>
-                                        <a href="{{route('viewteamDetail',[$teams->id])}}" class="btn btn-info">
+                                        </td>
+                                        <td><a href="{{route('viewteamDetail',[$team->id])}}" class="btn btn-info">
                                                     <i class="fas fa-angle-double-right"></i> Team Details
                                                 </a>
+                                        </td>
+                                                <td>
+                                                    <a href="{{route('geteditteam',[$team->id])}}" class="btn btn-info">
+                                                        <i class="fas fa-edit"></i> Update Team
+                                                    </a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -22,27 +22,6 @@
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Sub Challenges
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
-                                <i class="fas fa-trash-alt text-light"></i> Delete Sub Challenge</button>
-                                                   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-        </div>
-        <div class="modal-body"> Do you want to delete this Sub Challenge? </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-        <form action="{{route('deleteSubChallenge', [$identifiedChallenge['id']])}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-secondary">YES</button>
-        </form>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <section id="admin-panel" class="py-4">

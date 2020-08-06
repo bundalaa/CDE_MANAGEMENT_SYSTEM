@@ -7,7 +7,7 @@
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>login</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -16,7 +16,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin-css/home.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/student-css/student.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/student-css/student.css') }}" rel="stylesheet"> --}}
+    @stack('head')
 </head>
 <body>
     <div id="app">

@@ -50,11 +50,11 @@
                                         <td>{{ $challenge->name }}</td>
                                         <td>{{ $challenge->description }}</td>
                                         <td><a href="{{route('viewchallengedetail',[$challenge->id])}}" class="btn btn-info">
-                                            <i class="fas fa-angle-double-right"></i> Update Challenge
+                                            <i class="fas fa-edit"></i> Update Challenge
                                         </a>
                                     </td>
                                         <td><a href="{{route('viewaddidentifiedchallenge',[$challenge->id])}}" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i> Add Sub Challenge
+                                            <i class="fas fa-plus"></i> Add Sub Challenge
                                         </a>
                                     </td>
                                     <td><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">

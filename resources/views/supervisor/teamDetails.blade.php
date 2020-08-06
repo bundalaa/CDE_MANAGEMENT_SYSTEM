@@ -31,6 +31,11 @@
             </div>
         @endif
             <div class="row pb-3">
+                <div class="col-md-3">
+                    <a href="{{route('viewteam')}}" class="btn btn-muted btn-block">
+                        <i class="fas fa-arrow-circle-left text-dark"></i> Back To Team
+                    </a>
+                </div>
                 <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
             <div class="card p-4" id="card-table">
                         <div class="card-header">
@@ -49,7 +54,7 @@
                             @endphp
                                <b style="text-transform:uppercase;" class="text-info">{{$supervisor['name']}}</b>
                             </h4>
-                            <h4>Maximum number of member: 10</h4></div>
+                           </div>
                         </div>
                     </div>
                         <div class="card-body ">

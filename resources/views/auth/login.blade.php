@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('head')
+<link href="{{ asset('css/Auth/custom.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,8 +12,8 @@
 <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="130" width="130"
     style="margin-left: 37%">
    <div class="card-title">
-    <h1
-    style="color:grey;font-size:23px;margin-left: 15%">UNIVERSITY OF DAR ES SALAAM</h1>
+    <h1 class="cvjdhcjhd"
+    style="color:grey;margin-left: 15%; ">UNIVERSITY OF DAR ES SALAAM</h1>
    </div>
 <hr id="line">
    <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 26%">
@@ -32,13 +36,13 @@
                                   </div>
                                 </div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            </div>
                             @if($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @enderror
                         </div>
+                    </div>
                     </div>
                     <div class="form-group row">
                         <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -51,8 +55,6 @@
                                   </div>
                                 </div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            </div>
-
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -60,7 +62,7 @@
                             @enderror
                         </div>
                     </div>
-
+               </div>
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
