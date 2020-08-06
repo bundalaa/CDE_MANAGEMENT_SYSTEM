@@ -56,7 +56,7 @@ class AuthController extends Controller
     {
  
       if(Auth::check()){
-        return view('ChallengeOwner.dashboard');
+        return view('challenge-owner.dashboard');
       }
        return Redirect::to("login")->withSuccess('Opps! You do not have access');
     }

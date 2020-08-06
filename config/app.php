@@ -231,7 +231,24 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Image' => Intervention\Image\Facades\Image::class,
       
+        'providers' => [
 
+    
+
+        
+            // Barryvdh\DomPDF\ServiceProvider::class,
+        
+        ],
+        
+          
+        
+        'aliases' => [
+        
+        
+        
+                // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        
+        ]
 
     ],
 

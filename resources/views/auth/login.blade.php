@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('challenge-owner.components.top-nav')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
