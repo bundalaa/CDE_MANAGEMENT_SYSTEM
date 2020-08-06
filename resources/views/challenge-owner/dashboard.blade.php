@@ -72,7 +72,7 @@
         .list-wrapper{
             padding: 1em;
          }
-/* 
+/*
         .navbar-nav{
 
             /*background: #ffa23b;*/
@@ -102,23 +102,12 @@
 <div class="container-fluid">
       <div class="row">
 
-<<<<<<< HEAD:resources/views/challenge-owner/dashboard.blade.php
-      @include('challenge-owner.components.left-nav')
-=======
       @include('Challenge-owner.component.dashboad-left-nav')
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/dashboard.blade.php
 
           <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
 
-
-<<<<<<< HEAD:resources/views/challenge-owner/dashboard.blade.php
-      @include('challenge-owner.components.top-nav-dashboad')
-=======
-
-
       @include('Challenge-owner.component.top-nav-dashboad')
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/dashboard.blade.php
 
               <!-- Content -->
               <div class="container">
@@ -161,7 +150,7 @@
                     </div>
               </main>
               </div>
-          
+
               <footer id="footer" class="bg-dark" style="width:100%; float:right; margin-top:18px; color:white" >
 <div class="py-2 text-center">
 <p> &copyright Udsm <span id="year"></span><script>

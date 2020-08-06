@@ -1,29 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD:resources/views/challenge-owner/feedback.blade.php
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- title {{ config('app.name', 'Laravel') }} -->
-    <title>Challenge owner</title>
-
-    <!-- Scripts {{ config('app.name', 'Laravel') }} -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/widgets.css') }}" rel="stylesheet">
-
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -49,9 +26,8 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/feedback.blade.php
     <style>
-     
+
         /*** Left Nav ***/
         .nav-link.active{
             background: #D1F2EB !important;
@@ -99,7 +75,7 @@
         .list-wrapper{
             padding: 1em;
          }
-/* 
+/*
         .navbar-nav{
 
             /*background: #ffa23b;*/
@@ -127,8 +103,7 @@
 
 </head>
 <body>
-
-<<<<<<< HEAD:resources/views/challenge-owner/feedback.blade.php
+{{--
 <body style="background:  #e6ecf0; width:100%">
 
 <div id="app">
@@ -138,16 +113,12 @@
 
       @include('challenge-owner.components.left-nav')
 
-          <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
+          <div class="col-lg-9" style="padding-left:0; padding-right: 0;"> --}}
 
-           
-         
 
 
       @include('challenge-owner.components.top-nav-dashboad')
-=======
 @include('Challenge-owner.component.top-nav')
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/feedback.blade.php
 
 
 <div id="page-container">
