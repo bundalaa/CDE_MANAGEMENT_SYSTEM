@@ -4,9 +4,9 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>
+                    <h2>
                         <i class="fa fa-refresh fa-spin text-dark"></i> Fill Progress of <span class="text-info">{{$identifiedChallenge['name']}}</span>
-                    </h1>
+                    </h2>
                 </div>
             </div>
         </div>
@@ -16,8 +16,8 @@
             <div class="container">
             <form action="{{route('postFillProgress')}}" method="post">
                 @csrf
-                <h2>Select Task Status </h2>
-                <table class="table table-dark table-striped">
+                {{-- <h2>Select Task Status </h2> --}}
+                <table class="table table-dark table-striped mt-5">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -45,6 +45,7 @@
                 </table>
                </form>
         </div>
+        <button type="submit" class="btn btn-info" style="margin-left: 600px">Save changes</button>
         @endsection
 
         @section('scripts')

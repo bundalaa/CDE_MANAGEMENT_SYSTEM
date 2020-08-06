@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
+
     public function viewaddstudentpage($id)
     {
         $students = Student::where('team_id',$id)->get();
 
         return view('supervisor.addStudentToTeam',['id'=> $id,'students'=>$students]);
     }
+
     public function viewCreateTeam()
     {
         $challenges=IdentifiedChallenge::all();
@@ -36,12 +38,25 @@ class TeamController extends Controller
     public function viewTeam()
     {
         $teams = Team::all();
+
+        foreach ($teams as $team) {
+            $team->identifiedChallenge;
+            $team->supervisor;
+        }
+
         return view('supervisor.teams', ['teams' => $teams]);
     }
+
     public function getEditTeam()
     {
-        return view('supervisor.teamDetail',);
+        $team = Team::all();
+
+        foreach ($team as $team) {
+            $team->identifiedChallenge;
+        }
+        return view('supervisor.teamDetail',['team'=>$team]);
     }
+
     public function createTeam(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -55,11 +70,15 @@ class TeamController extends Controller
         }
         $identifiedChallenge = IdentifiedChallenge::find($request->identified_challenge_id);
         if(! $identifiedChallenge){
-            return redirect('viewteam')->with('success','challenge not found');
+            return back()->with('success','challenge not found');
+        }
+        $supervisor = Supervisor::find($request->supervisor_id);
+         if(!$supervisor){
+       return back()->with('success','supervisor not found');
         }
         $team = new Team();
-        $team->supervisor_id = $request['supervisor_id'];
-        $team->identified_challenge_id = $request['identified_challenge_id'];
+        $team->supervisor_id = $supervisor->id;
+        $team->identified_challenge_id = $identifiedChallenge->id;
         $team->save();
 
         $identifiedChallenge->update([
@@ -69,22 +88,24 @@ class TeamController extends Controller
             ->with('message', 'Team created successfully');
     }
 
+    public function updateTeam(Request $request){
+        $team = Team::where('id',$request['id'])->first();
+        $team->identified_challenge_id=$request['identified_challenge_id'];
+        $team->save();
+return redirect('viewteam')->with('message','Team updated successfully');
+    }
+
     public function deleteTeam($teamId)
     {
-        $team = Team::find($teamId);
+        $team = IdentifiedChallenge::find($teamId);
 
         if (!$team) {
-            if (REQ::is('api/*'))
-                return response()->json(['error' => 'Team not found']);
+            return back()->withErrors('Team not found');
         }
-
         $team->delete();
-        if (REQ::is('api/*'))
-            return response()->json(['message' => 'Team deleted successfully']);
-
-        ///web route
-        return view();
+        return redirect('viewteam')->with('Team deleted successfuly');
     }
+
 
     public function addStudentToTeam(Request $request)
     {
@@ -102,4 +123,5 @@ class TeamController extends Controller
         return redirect()->route('viewteamDetail',$request->team_id)
             ->with('message', 'student added successfully');
     }
+
 }

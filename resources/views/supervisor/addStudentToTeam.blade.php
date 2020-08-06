@@ -20,8 +20,13 @@
     <div id="page-container">
         <div id="content-wrap">
 <div class="container">
+    <div class="col-md-3 pt-2">
+        <a href="{{route('viewteam')}}" class="btn btn-muted btn-block">
+            <i class="fas fa-arrow-circle-left text-dark"></i> Back To Team
+        </a>
+    </div>
     <br>
-<h3 >Add Students To a Team:
+<h3>Add Students To a Team:
 @php
     $challenged = Team::where('id',$id)->first();
     $challenges = IdentifiedChallenge::where('id',$challenged['identified_challenge_id'])->first();

@@ -79,7 +79,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = Hash::make("12345678");
+        $user->password = "12345678";
         $user->save();
 
         $role = Role::find($request['role_id']);
@@ -185,7 +185,7 @@ class UserController extends Controller
         $users->email = $request['email'];
         $users->save();
         return redirect('userprofile')
-            ->with('message', 'successfully');
+            ->with('message', 'user profile updated successfully');
     }
 
     //update avatar

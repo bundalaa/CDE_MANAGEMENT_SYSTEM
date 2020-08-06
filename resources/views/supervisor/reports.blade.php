@@ -24,7 +24,7 @@
 
     <div id="page-container">
         <div id="content-wrap">
-            <section id="add" class="py-4 bg-light">7
+            <section id="add" class="py-4 bg-light">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-            </section>  
+            </section>
             <section id="admin-panel">
                 <div class="container">
                     <div class="row py-4">
@@ -52,7 +52,7 @@
         </div>
 
         <div class="well" style="padding: 18px">
-        <button class="btn btn-primary btn-open" onclick="commentOpen()">Leave a comment</button>
+        <button class="btn btn-info btn-open" onclick="commentOpen()">Leave a comment</button>
         <button class="btn btn-danger btn-close" style="display:none;" onclick="commentClose()">Cancel</button>
         </div>
        <form id="comment" action="{{route('postCommentReport',$report->id)}}" style="display: none;" method="POST" enctype="multipart/form-data">

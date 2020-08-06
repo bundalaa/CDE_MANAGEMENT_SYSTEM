@@ -16,22 +16,18 @@ class RoleTableSeeder extends Seeder
         Role::create([
             'name'=> 'admin',
             'description'=>'coordinator',
-            'permission' =>''
         ]);
          Role::create([
             'name'=> 'student',
             'description'=>'student',
-            'permission' =>''
         ]);
          Role::create([
             'name'=> 'supervisor',
             'description'=>'supervisor',
-            'permission' =>''
         ]);
-         Role::create([
-            'name'=> 'challengeOwner',
-            'description'=>'challenge owner',
-            'permission' =>''
-        ]);
+        //  Role::create([
+        //     'name'=> 'challengeOwner',
+        //     'description'=>'challenge owner',
+        // ]);
     }
 }

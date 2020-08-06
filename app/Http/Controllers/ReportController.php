@@ -54,13 +54,11 @@ if(!$report){
         if($validator->fails())
         {
          return Redirect()->back()->withInput()->withErrors($validator);
-
         }
-
         $team = Team::find($request->team_id);
-if(!$team){
-    return back()->with('success','team not found');
-}
+        if(!$team){
+        return back()->with('success','team not found');
+             }
 // dd($team);
 $supervisor = Supervisor::find($team->supervisor_id);
 if(!$supervisor){

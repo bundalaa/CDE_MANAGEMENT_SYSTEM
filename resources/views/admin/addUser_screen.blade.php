@@ -94,7 +94,7 @@
                                             </span>
                                         @endif
                                         </div>
-                                        <input name="password" type="text" value="12345678" hidden>
+                                        <input name="password" type="text"  hidden>
                                         <div class="form-group">
                                             <label for="name"></label>
                                             <div class="input-group">

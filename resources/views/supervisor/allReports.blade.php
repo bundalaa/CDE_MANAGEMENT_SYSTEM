@@ -36,26 +36,30 @@
                 </div>
             </section>
             <section id="admin-panel">
-                    <div class="row m-4">
-                        <h2 >Lists of Reports</h2>
-                                    <div class="table-responsive mailbox-messages">
-                                        <table class="table table-hover ">
-                                    <tbody>
-                                    @foreach($reports as $report)
-                                  <tr>
-                                    <td>
-                                      {{$report->id}}
-                                    </td>
-                                    <td><i class="fas fa-file mr-2"></i>
-                                    </td>
-                                <td class="mailbox-name"><a href="{{route('get1Report',[$report->id])}}">{{$report->title}}</a></td>
-                                <td class="mailbox-subject"><b>{{$report->description}}</b> -Trying to click to open new Report...
-                                    </td>
-                                  </tr>
-                                  @endforeach
-                                  </tbody>
-                                </table>
+                    <div class="row m-2">
+                        <div class="card col-md-12 d-flex justify-content-center flex-wrap flex-column" id="card-table">
+                            <div class="card-header">
+                                <h4>List of Reports</h1>
+                            </div>
+                                <div class="table-responsive mailbox-messages">
+                                    <table class="table table-striped">
+                                <tbody>
+                                @foreach($reports as $report)
+                              <tr>
+                                <td>
+                                  {{$report->id}}
+                                </td>
+                                <td><i class="fas fa-file mr-2"></i>
+                                </td>
+                            <td class="mailbox-name"><a href="{{route('get1Report',[$report->id])}}">{{$report->title}}</a></td>
+                            <td class="mailbox-subject"><b>{{$report->description}}</b> -Trying to click to open new Report...
+                                </td>
+                              </tr>
+                              @endforeach
+                            </tbody>
+                        </table>
                    </div>
+                        </div>
                 </div>
             </section>
         </div>

@@ -56,12 +56,12 @@
                                         @endif
                                             </td>
                                         <td><a href="{{route('viewidentifiedchallengedetail',[$identifiedChallenge->id])}}" class="btn btn-secondary">
-                                            <i class="fas fa-angle-double-right"></i>Update Sub Challenge
+                                            <i class="fas fa-edit"></i>Update Sub Challenge
                                         </a>
                                     </td>
                                       <td>
                                         <a href="{{route('viewFillProgress',[$identifiedChallenge->id])}}" class="btn btn-info">
-                                            <i class="fas fa-angle-double-right"></i>Fill progress
+                                            <i class="fa fa-plus-circle"></i>Fill progress
                                         </a>
                                       </td>
                                         </tr>

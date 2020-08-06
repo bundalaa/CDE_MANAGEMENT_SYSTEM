@@ -20,16 +20,10 @@ class SupervisorController extends Controller
     {
         return view('supervisor.supervisorHome');
     }
-    public function inboxMessage()
+
+    public function profile()
     {
-        return view('supervisor.inboxmessage');
+        return view('supervisor.profile');
     }
-    public function composeMessage()
-    {
-        return view('supervisor.compose');
-    }
-    public function readMessage()
-    {
-        return view('supervisor.readmessage');
-    }
+
 }

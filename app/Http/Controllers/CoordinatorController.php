@@ -19,12 +19,6 @@ class CoordinatorController extends Controller
             $identifiedchallenge->tasks;
         }
 
-        // $admin = auth()->user()->coordinator;
-
-        // if(!$admin){
-        //    return  redirect('/');
-        // }
-
         return view('admin.progress', ['identifiedchallenges' => $identifiedchallenges]);
     }
     public function viewNotification()

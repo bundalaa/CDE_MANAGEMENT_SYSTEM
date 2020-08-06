@@ -66,7 +66,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                             {{$user->roles[0]->name}}
+                                             {{-- {{$user->roles[0]->name}} --}}
                                             </td>
                                             <td>
                                                 <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">

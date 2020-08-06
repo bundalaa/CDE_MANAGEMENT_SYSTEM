@@ -109,6 +109,8 @@ Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('vi
 
 //supervisor route
 Route::get('viewsupervisorsscreen','UserController@viewSupervisors')->name('viewsupervisorsscreen');
+Route::get('supervisorHome','SupervisorController@index')->name('supervisorHome');
+Route::get('supervisorprofile','SupervisorController@profile')->name('supervisorprofile');
 
 //challenge controller
 Route::post('addChallenge','ChallengeController@addChallenges')->name('addChallenge');
@@ -125,6 +127,7 @@ Route::post('addidentifiedchallenges','IdentifiedChallengeController@addIdentifi
 Route::get('supervisorHome','IdentifiedChallengeController@index')->name('supervisorHome');
 Route::delete('deleteSubChallenge/{id}','IdentifiedChallengeController@deleteIdentifiedChallenge')->name('deleteSubChallenge');
 Route::post('editidentifiedchallenge-screen','IdentifiedChallengeController@updateidentifiedChallenge')->name('editidentifiedchallenge-screen');
+Route::post('editidentifiedchallenge-screen/{id}','IdentifiedChallengeController@updateidentifiedChallenge')->name('editidentifiedchallenge-screen');
 Route::get('viewidentifiedchallenges','IdentifiedChallengeController@viewIdentifiedChallenges')->name('viewidentifiedchallenges');
 Route::get('viewidentifiedchallengedetail/{id}','IdentifiedChallengeController@viewIdentifiedChallengeDetail')->name('viewidentifiedchallengedetail');
 
@@ -140,11 +143,13 @@ Route::get('viewcreateteam','TeamController@viewCreateTeam')->name('viewcreatete
 Route::get('viewteam','TeamController@viewTeam')->name('viewteam');
 Route::get('viewteamDetail/{id}','TeamController@teamTeamDetails')->name('viewteamDetail');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
-Route::get('editteam/{id}','TeamController@getEditTeam')->name('editteam');
+Route::get('geteditteam/{id}','TeamController@getEditTeam')->name('geteditteam');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
 Route::get('viewaddStudentToTeam/{id}','TeamController@viewaddStudentToTeam')->name('viewaddStudentToTeam');
 Route::post('addStudentToTeam','TeamController@addStudentToTeam')->name('addStudentToTeam');
 Route::get('viewaddstudentpage/{id}','TeamController@viewaddstudentpage')->name('viewaddstudentpage');
+Route::delete('deleteTeam/{id}','TeamController@deleteTeam')->name('deleteTeam');
+Route::post('editteam/{id}','TeamController@updateTeam')->name('editteam');
 
 
 // Task/Schedule route

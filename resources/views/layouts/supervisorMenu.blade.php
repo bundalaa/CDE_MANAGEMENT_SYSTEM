@@ -97,7 +97,7 @@
                               @endif
                           </a>
                           <div class="dropdown-menu">
-                          <a href="{{route('userprofile')}}" class="dropdown-item">
+                          <a href="{{route('supervisorprofile')}}" class="dropdown-item">
                                   <i class="fas fa-user-circle"></i> Profile
                               </a>
                               <hr class="solid">
