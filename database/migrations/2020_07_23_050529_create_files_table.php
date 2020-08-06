@@ -12,6 +12,8 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('file_path')->nullable();
+            $table->bigInteger('challengeOwner_id');
+
             $table->timestamps();
         });
     }

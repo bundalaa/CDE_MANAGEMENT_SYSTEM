@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,7 @@
 <body>
 <div id="page-container">
 
-<<<<<<< HEAD
-@include('challenge-owner.components.top-nav')
-=======
 @include('challenge-owner.component.top_nav')
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2
 
 <div id="content-wrap">
 
@@ -75,4 +71,4 @@ document.write(new Date().getFullYear());
 
 </body>
 </html>
- --}}
+

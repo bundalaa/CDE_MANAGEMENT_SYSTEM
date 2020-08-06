@@ -30,6 +30,15 @@ class FileUpload extends Controller
             ->with('success','File has been uploaded succesfully.')
             ->with('file', $fileName);
         }
-   }
+    }
+
+    //     public function viewNewChallenge()
+    // {
+    //     $newchallenges=File::all();
+
+    //     return view('admin.newchallenge',[
+    //         'newchallenges'=>$newchallenges]);
+    // }
+
 
 }

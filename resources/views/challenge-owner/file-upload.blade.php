@@ -95,6 +95,7 @@
 
             <div class="custom-file">
                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
+            <input type="text" name="challengeOwner_id" value="{{$challengeOwner->id}}">
                 <label class="custom-file-label" for="chooseFile">Select file</label>
             </div>
 

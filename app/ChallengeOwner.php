@@ -10,7 +10,7 @@ class ChallengeOwner extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','emailAddress','description','identified_id'
+        'name','emailAddress','description',
     ];
 
     protected $dates = [
@@ -18,17 +18,17 @@ class ChallengeOwner extends Model
     ];
 
 //relationships
-   public function suggestions()
+   public function comments()
     {
     return $this->hasMany(Suggestion::class);
     }
-    public function challengeSegment()
+    public function uploadedChallengeFiles()
     {
-        return $this->hasMany(ChallengeSegment::class);
+        return $this->hasMany(File::class);
     }
     public function Identifiedchallenges()
     {
-        return $this->hasOne(IdentifiedChallenge::class);
+        return $this->hasMany(IdentifiedChallenge::class);
     }
     public function teams()
     {
