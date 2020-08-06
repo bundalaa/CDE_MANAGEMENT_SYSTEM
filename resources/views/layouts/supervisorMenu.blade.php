@@ -66,7 +66,7 @@
                             </i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header" style="padding-left:50px"> Notifications</span>
+                            <span class="dropdown-item dropdown-header" style="padding-left:90px"> Notifications</span>
                             <div class="dropdown-divider"></div>
                           <a href="{{route('markReadNotification')}}" class="dropdown-item">
                                 @foreach(auth()->user()->unreadNotifications as $index=>$notification)
@@ -80,7 +80,7 @@
                                      @endforeach
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a>
                           </div>
                         </li>
                         <li class="nav-item dropdown ml-5" >
