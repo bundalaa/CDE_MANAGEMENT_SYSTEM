@@ -8,7 +8,7 @@ use App\File;
 class FileUpload extends Controller
 {
   public function createForm(){
-    return view('file-upload');
+    return view('challenge-owner.file-upload');
   }
 
   public function fileUpload(Request $req){
@@ -27,7 +27,7 @@ class FileUpload extends Controller
             $fileModel->save();
 
             return back()
-            ->with('success','File has been uploaded.')
+            ->with('success','File has been uploaded succesfully.')
             ->with('file', $fileName);
         }
    }

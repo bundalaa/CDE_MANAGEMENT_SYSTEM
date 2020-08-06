@@ -15,7 +15,7 @@
 
 </head>
 <body>
-@include('ChallengeOwner.components.top-nav')
+@include('challenge-owner.components.top-nav')
 
 
 <div class="container-fluid">

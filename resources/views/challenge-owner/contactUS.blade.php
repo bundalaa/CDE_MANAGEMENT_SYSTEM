@@ -2,6 +2,9 @@
     <html>
     <head>
     <title>Contact US</title>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
+  <style>
+=======
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     </head>
     <style>
@@ -16,47 +19,72 @@
 
 /* Remove extra left and right margins, due to padding */
 .row {margin: 0 -5px;}
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+/*contactus*/
 
-/* Responsive columns */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+    margin-top: 1px;
   }
-}
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+  }
 
-/* Style the counter cards */
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  margin-top: 10px;
-  background-color: #f1f1f1;
-}
-    </style>
+
+  </style>  
+  </head>
+  
     <body>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
+	@include('challenge-owner.components.top-nav')
+=======
 	@include('Challenge-owner.component.top-nav')
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
 
     <div class="container">
 
     <div class="row">
     <div class="column">
     <div class="card">
-      <h3>Card 1</h3>
-      <p>Some text</p>
-      <p>Some text</p>
+      <h3>CDE DETAILS</h3>
+      <p><strong>Email:</strong> cde@ac.tz</p>
+      <p>Phone:</p>
+      <p>PO Box:</p>
+      <p>Fax:</p>
+      <p>Address:Sayansi Kijitonyama (Dar es Salaam)</p>
     </div>
     <div class="card">
-      <h3>Card 1</h3>
-      <p>Some text</p>
-      <p>Some text</p>
+    <div class="col-md-3">            
+  <a href="https://dlab.or.tz/"><img src="images/coict.png" class="img-rounded" alt="Cinque Terre" width="500px" height="300PX"> </a>
+</div>
     </div>
   </div>
 
@@ -91,6 +119,19 @@
     {!! Form::close() !!}
 </div>
 </div>
+<<<<<<< HEAD:resources/views/challenge-owner/contactUS.blade.php
+    </div>
+    </div>
+<footer id="footer" class="bg-dark" style="margin-top:30px;color:white" >
+<div class="py-2 text-center">
+<p> &copyright Udsm <span id="year"></span><script>
+document.write(new Date().getFullYear());
+</script>, All rights reserved</p>
+</div>
+</footer>
+
+=======
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/contactUS.blade.php
     </div>
     </body>
     </html>

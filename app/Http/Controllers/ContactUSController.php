@@ -29,7 +29,7 @@ class ContactUSController extends Controller
 
     {
 
-        return view('contactUS');
+        return view('challenge-owner.contactUS');
 
     }
 

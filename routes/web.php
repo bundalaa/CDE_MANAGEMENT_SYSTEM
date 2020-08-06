@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('AboutUS', function () {
+    return view('ChallengeOwner.AboutUS');
+});
+
+Route::get('/', function(){
+    return view('welcome');
 
 Route::get('AboutUS', function () {
     return view('challenge-owner.AboutUS');
@@ -25,6 +33,22 @@ Route::get('challengeownerHome','ChallengeOwnerController@challengeownerHome')->
 Route::get('upload', function () {
     return view('challenge-owner.file-upload');
 });
+// Route::get('/home', function () {
+//     return view('ChallengeOwner.homePg');
+// });
+
+
+// Route::get('/', function () {
+//     return view('top-nav');
+// });
+
+// Route::get('upload', function () {
+//     return view('file-upload');
+// });
+
+
+
+Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
 Route::get('publication', function () {
     return view('challenge-owner.publication');
@@ -55,6 +79,7 @@ Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 
 Route::get('file', 'MultipleFileController@index');
 
+Route::get('dashboard', 'AuthController@dashboard'); 
 Route::post('save', 'MultipleFileController@save')->name('file.save');
 
 

@@ -23,7 +23,11 @@
 
     <div id="page-container">
 
+<<<<<<< HEAD:resources/views/challenge-owner/AboutUS.blade.php
+@include('challenge-owner.components.top-nav')
+=======
 @include('challenge-owner.component.top-nav')
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/AboutUS.blade.php
 
 <div id="content-wrap">
 
@@ -37,26 +41,39 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h2> Our Mission</h2>
+      <div class="col-md-3">
+        <h2> What we do</h2>
+        <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
+      
+      </div>
+
+      <div class="col-md-3">
+        <h2>Our history</h2>
         <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
 
       </div>
-      <div class="col-md-4">
-       <strong> <h2>Our Vision</h2></strong>
+      <div class="col-md-3">
+       <strong> <h2>Our Mission</h2></strong>
         <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
 
       </div>
+<<<<<<< HEAD:resources/views/challenge-owner/AboutUS.blade.php
+      <div class="col-md-3">
+        <strong> <h2>Our Vision</h2></strong>
+        <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
+        
+=======
       <div class="col-md-4">
         <h2>Our Partiners</h2>
         <p>Dlab Tanzania </p>
         <p>University of Dar-es-salaam College of Informaton and Communction Technology(COICT) </p>
         <p>Here you can see our publications about </p>
 
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/AboutUS.blade.php
       </div>
     </div>
 </div>
-<footer id="footer" class="bg-dark" style="margin-top:520px;color:white" >
+<footer id="footer" class="bg-dark" style="margin-top:106px;color:white" >
 <div class="py-2 text-center">
 <p> &copyright Udsm <span id="year"></span><script>
 document.write(new Date().getFullYear());
@@ -65,9 +82,12 @@ document.write(new Date().getFullYear());
 </footer>
 </div>
 
+<<<<<<< HEAD:resources/views/challenge-owner/AboutUS.blade.php
+=======
 
 
 
+>>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/AboutUS.blade.php
     <!-- Jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- Bootstrap JS CDN -->
