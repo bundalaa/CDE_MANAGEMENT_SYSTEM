@@ -131,10 +131,8 @@
                                                 </div>
                                            <div>
                                                 <h2>Approved Status </h2>
-                                                <p>This section will help you as our customer to get the
-                                                    progress/project status and you will be able to write back your
-                                                    comment about the progress and if you have some changes you can
-                                                    add as a comment... </p>
+                                                <p>This section will help you as our customer to know the approved project and rejected project
+                                                     </p>
                                                 <p><a class="btn btn-secondary" href="#" role="button">View details
                                                         &raquo;</a></p>
                                           </div>
@@ -142,17 +140,12 @@
                                           <div>
                                                
                                                 <h2>Project Status</h2>
-                                                <p>In this section you can upload your Challenge/Problem and will
-                                                    reach us then we will come up with concrete solution of your
-                                                    challenge/problem... </p>
+                                                <p>In tis section as a challenge owner you will be able to view the status of the current project and you can reply back by leaving a commect </p>
                                                 <p><a class="btn btn-secondary" href="feedback" role="button">View details
                                                         &raquo;</a></p>
                                                         </div>
                                                 <h2>Report Summary</h2>
-                                                <p>This section will help you as our customer to get the
-                                                    progress/project status and you will be able to write back your
-                                                    comment about the progress and if you have some changes you can
-                                                    add as a comment... </p>
+                                                <p>Here you will be able to view the summary of the project from start to cunrrent state, this will help you as our cutomer to know the progress of the project  </p>
                                                 <p><a class="btn btn-secondary" href="#" role="button">View details
                                                         &raquo;</a></p>
 

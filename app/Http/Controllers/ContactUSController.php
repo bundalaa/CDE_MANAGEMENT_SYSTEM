@@ -65,5 +65,11 @@ class ContactUSController extends Controller
         return back()->with('success', 'Thanks for contacting us!');
 
     }
+    
+    public function challengeOwnerProfile(){
 
+        return view('challenge-owner.Profile');
+        
+        }
+        
 }

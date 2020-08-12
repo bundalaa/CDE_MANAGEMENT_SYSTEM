@@ -44,6 +44,7 @@ Route::get('contact-us', 'ContactUSController@contactUS');
 
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
+Route::get('challenge/owner/profile', 'ContactUSController@challengeOwnerProfile');
 
 // Route::get('chart-js', 'ChartController@index');
 
@@ -52,6 +53,10 @@ Route::get('/upload-file', 'FileUpload@createForm');
 
 // Store file
 Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
+
+//=====================================retrive data======================//
+//retrive data
+Route::get('view-records','StudViewController@retrive'); 
 
 //========================download===================================================
 Route::get('reportsummary','HomeController@generatePDF')->name('reportsummary');

@@ -120,6 +120,18 @@
                                                 <form action="{{route('fileUpload')}}" method="post"
                                                     enctype="multipart/form-data">
                                                     <h3 class="text-center mb-5">Upload Problem Statement File</h3>
+                                                    <div style="display: none;">
+                                                    <label >
+                                                            email</label>
+                                                        <input type="text" name="email"
+                                                        class="form-control" value="{{Auth::user()->email}}">
+                                                        <label>
+                                                            name</label>
+                                                        <input type="text" name="sender_name" 
+                                                        class="form-control" value="{{Auth::user()->name}}">
+                                                        
+                                           
+                                                    </div>
                                                     @csrf
                                                     @if ($message = Session::get('success'))
                                                     <div class="alert alert-success">
@@ -144,6 +156,8 @@
                                                         <label class="custom-file-label" for="chooseFile">Select
                                                             file</label>
                                                     </div>
+
+                                                         
 
                                                     <button type="submit" name="submit"
                                                         class="btn btn-primary btn-block mt-4">
