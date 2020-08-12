@@ -11,3 +11,15 @@ class File extends Model
         'file_path'
     ];
 }
+
+
+// 'challengeOwner_id',
+
+// ];
+
+// ///relationships
+// public function challengeOwner()
+// {
+//     return $this->belongsTo(File::class);
+// }
+// }

@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
 Route::get('AboutUS', function () {
     return view('ChallengeOwner.AboutUS');
@@ -192,5 +191,16 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
+<<<<<<< HEAD
 ///end of administrator module
 Route::get('chart', 'graphController@index');
+=======
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 3bd438947136e66c943ca0b4f8b46338359adbbd

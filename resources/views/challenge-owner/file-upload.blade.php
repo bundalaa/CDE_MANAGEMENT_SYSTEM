@@ -96,7 +96,6 @@
 
 <body>
 
-    <body style="background:  #e6ecf0; width:100%">
 
         <div id="app">
             <div class="container-fluid">
