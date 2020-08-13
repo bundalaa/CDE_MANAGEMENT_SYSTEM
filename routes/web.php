@@ -1,8 +1,10 @@
 <?php
 
 use App\ProjectProgress;
+use App\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('AboutUS', function () {
     return view('ChallengeOwner.AboutUS');
@@ -41,8 +51,6 @@ Route::get('upload', function () {
 // Route::get('upload', function () {
 //     return view('file-upload');
 // });
-
-
 
 Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
@@ -75,7 +83,7 @@ Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 
 Route::get('file', 'MultipleFileController@index');
 
-Route::get('dashboard', 'AuthController@dashboard');
+Route::get('dashboard', 'AuthController@dashboard')->name('dashboard');
 Route::post('save', 'MultipleFileController@save')->name('file.save');
 
 
@@ -99,7 +107,6 @@ Route::get('adminIndex','UserController@getLatestUsers')->name('adminIndex');
 Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
 Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
-// Route::get('viewedituser','UserController@viewEditUser')->name('viewedituser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
 Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
@@ -108,18 +115,20 @@ Route::get('user-screen','UserController@getUsers')->name('user-screen');
 Route::delete('deleteUser/{id}','UserController@deleteUser')->name('deleteUser');
 Route::get('getchangepassword','UserController@getChangePassword')->name('getchangepassword');
 Route::post('changepassword','UserController@changePassword')->name('changepassword');
+Route::get('/user/pdf','UserController@createPDF');
+
 
 //coordinator route
 Route::get('viewcoordinatorscreen','UserController@viewCoordinators')->name('viewcoordinatorscreen');
 Route::get('getCoordinator','CoordinatorController@getCoordinator')->name('getCoordinator');
 Route::get('view-notification','CoordinatorController@viewNotification')->name('view-notification');
-Route::get('view-newChallenge', 'CoordinatorController@viewNewChallenge')->name('view-newChallenge');
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
 Route::get('inboxmessageA','CoordinatorController@InboxMessageA')->name('inboxmessageA');
-Route::get('composemessageA','CoordinatorController@ComposeMessageA')->name('composemessageA');
+Route::get('composemessageA/{id}','CoordinatorController@ComposeMessageA')->name('composemessageA');
 Route::get('readmessageA','CoordinatorController@ReadMessageA')->name('readmessageA');
+Route::post('postCommentMessage/{id}', 'CoordinatorController@postCommentMessage')->name('postCommentMessage');
 
 //supervisor route
 Route::get('viewsupervisorsscreen','UserController@viewSupervisors')->name('viewsupervisorsscreen');
@@ -136,6 +145,12 @@ Route::post('editchallenge-screen/{id}','ChallengeController@updateChallenge')->
 Route::delete('deleteChallenge/{id}','ChallengeController@deleteChallenge')->name('deleteChallenge');
 Route::get('getidentifiedchallenges/{id}','ChallengeController@getIdentifiedChallenges')->name('getidentifiedchallenges');
 Route::get('viewFillProgress/{id}','IdentifiedChallengeController@viewFillProgress')->name('viewFillProgress');
+Route::get('newchallenge','FileUpload@viewNewChallenge')->name('newchallenge');
+Route::get('get1newchallenge/{id}', 'FileUpload@get1newchallenge')->name('get1newchallenge');
+Route::get('markReadNotify', 'FileUpload@markReadNotify')->name('markReadNotify');
+Route::get('downloadNewChallenge/{id}', 'FileUpload@downloadNewChallenge')->name('downloadNewChallenge');
+Route::post('postCommentChallenge/{id}', 'FileUpload@postCommentChallenge')->name('postCommentChallenge');
+
 
 //IdentifiedChallenge controller
 Route::post('addidentifiedchallenges','IdentifiedChallengeController@addIdentifiedChallenges')->name('addidentifiedchallenges');
@@ -146,7 +161,7 @@ Route::get('viewidentifiedchallengedetail/{id}','IdentifiedChallengeController@v
 Route::post('postFillProgress','IdentifiedChallengeController@postFillProgress')->name('postFillProgress');
 
 //challenge Owner route
-Route::get('challengeowners','ChallengeOwnerController@index')->name('challengeowners');
+Route::get('viewChallengeOwners','UserController@viewChallengeOwners')->name('viewChallengeOwners');
 
 //student route
 Route::get('viewstudentsscreen','UserController@viewStudents')->name('viewstudentsscreen');
@@ -175,16 +190,19 @@ Route::get('view-attendance', 'AttendanceController@viewAttendancePage')->name('
 Route::get('getAttendanceReport', 'AttendanceController@getAttendanceReport')->name('getAttendanceReport');
 Route::post('addAttendance','AttendanceController@postAttendance')->name('addAttendance');
 Route::get('getReport/{id}', 'AttendanceController@getReport')->name('getReport');
+Route::get('/attendance/pdf','AttendanceController@createPDF');
 
 
-// challengeProgressForm route
-Route::get('view-projectProgressForm','ProjectProgressController@viewProgressForm')->name('view-projectProgressForm');
+
+// contact us route
+Route::get('contactUs','CoordinatorController@contactUs')->name('contactUs');
+
 
 //Report route
 Route::get('view-report', 'ReportController@viewReport')->name('view-report');
-Route::get('get1Report{id}', 'ReportController@get1Report')->name('get1Report');
+Route::get('get1Report/{id}', 'ReportController@get1Report')->name('get1Report');
 Route::post('postCommentReport/{id}', 'ReportController@postCommentReport')->name('postCommentReport');
-Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadReport');
+Route::get('downloadReport/{id}', 'ReportController@downloadReport')->name('downloadReport');
 Route::get('markReadNotification', 'ReportController@markReadNotification')->name('markReadNotification');
 
 
@@ -209,11 +227,3 @@ Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserControll
 Route::post('/Addprofile','UserController@AddProfile');
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

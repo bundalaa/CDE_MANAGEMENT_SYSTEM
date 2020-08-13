@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\ContactUS;
-
+use App\Coordinator;
+use Illuminate\Support\Facades\Auth;
 
 class ContactUSController extends Controller
 
@@ -28,9 +29,8 @@ class ContactUSController extends Controller
     public function contactUS()
 
     {
-
-        return view('challenge-owner.contactUS');
-
+        $coordinators = Coordinator::all();
+        return view('challenge-owner.contactUS',['coordinators'=>$coordinators]);
     }
 
 
@@ -54,16 +54,25 @@ class ContactUSController extends Controller
 
         		'email' => 'required|email',
 
-        		'message' => 'required'
+                'message' => 'required',
 
-        	]);
+                'coordinator_id' => 'required'
 
+            ]);
+
+            $coordinator = Coordinator::find($request->coordinator_id);
+
+            if(!$coordinator){
+          return back()->with('success','coordinator not found');
+               }
 
         ContactUS::create($request->all());
 
+        $details=[ 'data'=>'New message' ];
+
+        $coordinator->user->notify(new \App\Notifications\fileuploadNotification($details));
 
         return back()->with('success', 'Thanks for contacting us!');
-
     }
 
 }

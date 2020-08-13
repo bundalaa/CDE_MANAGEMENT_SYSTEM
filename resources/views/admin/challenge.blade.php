@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
-                    <i class="display-4 text-dark"></i> Challenges
+                    <i class="fas fa-folder-open  text-dark"></i> Challenges
                 </h1>
             </div>
         </div>
@@ -13,12 +13,20 @@
 </header>
     <div id="page-container">
         <div id="content-wrap">
-            <table class="table table-striped m-0 p-0">
-                <thead class="thead-dark">
+            <section id="admin-panel" class="py-4">
+                <div class="container">
+                    <div class="row pb-3">
+                        <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
+                            <div class="card" id="card-table">
+                                <div class="card-header">
+                                    <h4>Challenges</h4>
+                                </div>
+            <table class="table table-striped">
+                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -39,6 +47,18 @@
                     @endforeach
                 </tbody>
               </table>
+                <nav class="ml-4">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        {{$challenges->links()}}
+                                    </div>
+                                </div>
+                               </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
             @endsection
-   
+

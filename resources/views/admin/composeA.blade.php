@@ -1,4 +1,4 @@
-@extends('layouts.supervisorMenu')
+@extends('layouts.adminMenu')
 @section('content')
 <header id="dashboard" class="pt-4 pb-3">
     <div class="container pt-5 pb-0">
@@ -17,63 +17,34 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-3">
-          <a href="{{route('composemessageA')}}" class="btn btn-info btn-block mb-3">Compose</a>
+          <div class="container">
+            <div class="col-md-12">
+                <form action="{{route('postCommentMessage',$contact->id)}}" method="POST">
+                    @csrf
+                    <input type="text" name="coordinator_id" value="{{$user->id}}" hidden>
+                    <div class="card card-primary card-outline mt-4">
 
-          <div class="card">
-            <div class="card-header">
+                        <!-- /.card-header -->
+                        <div class="card-body">
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                </button>
-              </div>
+                          <div class="form-group">
+                              <textarea id="compose-textarea" name="body" class="form-control" style="height: 300px">
+
+                              </textarea>
+                          </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                          <div class="float-right">
+                            <button type="submit" class="btn btn-info"><i class="far fa-envelope"></i> Send</button>
+                          </div>
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                </form>
+                  <!-- /.card -->
             </div>
-            <div class="card-body p-0">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item active">
-                <a href="{{route('inboxmessageA')}}" class="nav-link">
-                    <i class="fas fa-inbox text-info"></i> Inbox
-                    <span class="badge bg-secondary float-right">12</span>
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h3 class="card-title">Compose New Message</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <div class="form-group">
-                    <input class="form-control" placeholder="To:">
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Subject:">
-                  </div>
-                  <div class="form-group">
-                      <textarea id="compose-textarea" class="form-control" style="height: 300px">
-
-                      </textarea>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <div class="float-right">
-                    <button type="submit" class="btn btn-info"><i class="far fa-envelope"></i> Send</button>
-                  </div>
-                </div>
-                <!-- /.card-footer -->
-              </div>
-              <!-- /.card -->
-        </div>
-        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>

@@ -1,5 +1,6 @@
 <?php
 
+use App\ChallengeOwner;
 use App\Coordinator;
 use App\Role;
 use App\Student;
@@ -23,7 +24,7 @@ class UserTableSeeder extends Seeder
         $adminRole = Role::where('name' , 'admin')->first();
         $studentRole = Role::where('name' , 'student')->first();
         $supervisorRole = Role::where('name' , 'supervisor')->first();
-        // $challengeOwnerRole = Role::where('name' , 'challengeOwner')->first();
+        $challengeOwnerRole = Role::where('name' , 'challengeOwner')->first();
 
         $admin = User::create([
             'name'=>'Elizabeth',
@@ -56,13 +57,14 @@ class UserTableSeeder extends Seeder
             ]);
         $supervisor->roles()->attach($supervisorRole);
 
-
-        // $challengeOwner = User::create([
-        //     'name'=>'DAWASA comp',
-        //     'email'=>'challengeOwner@gmail.com',
-        //     'password' => ('12345678'),
-        //     'role_id' =>4
-        // ]);
-        // $challengeOwner->roles()->attach($challengeOwnerRole);
+        $challengeOwner = User::create([
+            'name'=>'DAWASA comp',
+            'email'=>'challengeOwner@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        ChallengeOwner::create([
+            'user_id'=>$challengeOwner->id
+            ]);
+        $challengeOwner->roles()->attach($challengeOwnerRole);
     }
 }

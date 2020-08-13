@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
-                        <i class="far fa-address-book text-dark"></i> Dashboard
+                        <i class="fa fa-dashboard text-dark"></i> Dashboard
                     </h1>
                 </div>
             </div>

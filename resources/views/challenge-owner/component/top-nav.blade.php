@@ -19,6 +19,9 @@
 
 </head>
 <body>
+    @php
+        use App\Role;
+    @endphp
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container">
             <a href="/" class="navbar-brand">
@@ -32,9 +35,6 @@
                     <li class="nav-item active px-2">
                         <a href="/" class="nav-link">Home</a>
                     </li>
-<<<<<<< HEAD:resources/views/challenge-owner/components/top-nav.blade.php
-                    
-=======
                     <li class="nav-item px-2">
                         <a href="upload-file" class="nav-link">Upload-Challenge</a>
                     </li>
@@ -45,7 +45,6 @@
                         <a href="publication" class="nav-link">Publication</a>
                     </li>
 
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/challenge-owner/component/top-nav.blade.php
                     <li class="nav-item px-2">
                         <a href="AboutUS" class="nav-link">About US</a>
                     </li>
@@ -57,38 +56,34 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD:resources/views/challenge-owner/components/top-nav.blade.php
-                   
-                
-                <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
-                        <a href="{{ route('login')}}">Sign in</a>
-
-=======
-                    @if (Route::has('login'))
+                   @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/home') }}">Home</a>
+
+                            @if(Auth::user()-> hasRole ('admin'))
+                            <a href="{{ route('adminIndex') }}">Home</a>
+                            @endif
+
+                             @if(Auth::user()-> hasRole ('supervisor'))
+                             <a href="{{ route('supervisorHome') }}">Home</a>
+                             @endif
+
+                             @if(Auth::user()-> hasRole ('student'))
+                             <a href="{{ route('studentHome') }}">Home</a>
+                             @endif
+
+                            @if(Auth::user()-> hasRole ('challengeOwner'))
+                            <a href="{{ route('dashboard') }}">Home</a>
+                            @endif
+
                             @else
                     <li class="nav-item active px-2">
                         <a href="{{ route('login') }}">Sign in</a>
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/challenge-owner/component/top-nav.blade.php
                     </li>
                     <li class="nav-item active px-2">
-<<<<<<< HEAD:resources/views/challenge-owner/components/top-nav.blade.php
-                
-                    <a href="{{ route('register')}}">Sign up</a>
-                
-            
-                
-                    </li>
-                    </ul>
-                </ul>
-      
-=======
                         @if (Route::has('register'))
                         <a href="{{ route('register') }}">Sign up</a>
                     @endif
-                @endauth
+                 @endauth
                 @endif
 
             </li>
@@ -112,7 +107,6 @@
                         </div>
                     </li> -->
 
->>>>>>> 4eaf2b8a2919f60a04439ebed12107d4f95449d2:resources/views/challenge-owner/component/top-nav.blade.php
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
-                        <i class="fa fa-calender text-dark"></i> Schedule
+                        <i class="fa fa-calendar text-dark"></i> Schedule
                     </h1>
                 </div>
             </div>

@@ -104,6 +104,9 @@
     {!! Form::label('Message:') !!}
     {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Enter Message']) !!}
     <span class="text-danger">{{ $errors->first('message') }}</span>
+    @foreach($coordinators as $coordinator)
+    <input type="text" name="coordinator_id" value="{{$coordinator->id}}" hidden>
+    @endforeach
     </div>
     <div class="form-group" style="text-align: center;">
     <button class="btn btn-success">Submit</button>

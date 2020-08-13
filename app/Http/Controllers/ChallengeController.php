@@ -12,14 +12,14 @@ class ChallengeController extends Controller
 {
     public function getChallenge()
     {
-        $challenges = Challenge::get();
+        $challenges = Challenge::paginate(10);
       return view('admin.challenge',['challenges'=>$challenges]);
     }
 
     public function getIdentifiedChallenges($id)
     {
         $challenge = Challenge::where('id', $id)->first();
-        $identifiedChallenges = IdentifiedChallenge::get();
+        $identifiedChallenges = IdentifiedChallenge::paginate(10);
       return view('admin.viewIdentifiedChallenge-screen',['challenge'=>$challenge,'identifiedChallenges'=>$identifiedChallenges]);
     }
 

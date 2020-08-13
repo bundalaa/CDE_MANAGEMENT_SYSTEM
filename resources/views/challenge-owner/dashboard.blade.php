@@ -107,7 +107,7 @@
           <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
 
 
-      @include('Challenge-owner.component.top-nav-dashboad')
+      {{-- @include('Challenge-owner.component.top-nav-dashboad') --}}
 
               <!-- Content -->
               <div class="container">

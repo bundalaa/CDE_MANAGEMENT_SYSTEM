@@ -97,7 +97,7 @@ return redirect('viewteam')->with('message','Team updated successfully');
 
     public function deleteTeam($teamId)
     {
-        $team = IdentifiedChallenge::find($teamId);
+        $team = Team::find($teamId);
 
         if (!$team) {
             return back()->withErrors('Team not found');

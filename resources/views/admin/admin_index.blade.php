@@ -5,6 +5,7 @@
     use App\Student;
     use App\Coordinator;
     use App\Supervisor;
+    use App\ChallengeOwner;
 @endphp
     <header id="dashboard" class="pt-5 pb-3">
         <div class="container  pt-3 pb-0">
@@ -66,7 +67,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
-                                             {{-- {{$user->roles[0]->name}} --}}
+                                             {{$user->roles[0]->name}}
                                             </td>
                                             <td>
                                                 <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">
@@ -139,6 +140,19 @@
                                    @endphp
                                     </h4>
                                 <a href="{{route('viewstudentsscreen')}}" class="btn btn-secondary">View</a>
+                                </div>
+                            </div>
+                            <div class="card mb-3 bg-light text-center border-info">
+                                <div class="card-body">
+                                    <h3 class="text-muted">Challenge Owners</h3>
+                                    <h4 class="display-4 text-muted">
+                                        <i class="fas fa-users"></i>
+                                        @php
+                                        $challengeOwners=ChallengeOwner::get();
+                                      echo count($challengeOwners);
+                                   @endphp
+                                    </h4>
+                                <a href="{{route('viewChallengeOwners')}}" class="btn btn-secondary">View</a>
                                 </div>
                             </div>
                     </div>

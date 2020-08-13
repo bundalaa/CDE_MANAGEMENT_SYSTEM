@@ -7,6 +7,7 @@ use App\AttendanceDateReport;
 use App\Report;
 use App\Student;
 use App\Supervisor;
+use PDF;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -68,4 +69,18 @@ class AttendanceController extends Controller
         $report = AttendanceDateReport::find($id)->load(['attendance', 'attendance.student','attendance.student.user']);
         return view('admin.attendanceReport', ['report' => $report,'reports'=>$reports]);
     }
+     // Generate PDF
+     public function createPDF() {
+        // retreive all records from db
+        set_time_limit(0);
+        $data = Attendance::all();
+        // share data to view
+        view()->share('report',$data);
+
+        $pdf = PDF::loadView('admin/attendancepdf_view', $data);
+        // dd($pdf);
+
+        // download PDF file with download method
+        return $pdf->download('attendance_pdf_file.pdf');
+      }
 }

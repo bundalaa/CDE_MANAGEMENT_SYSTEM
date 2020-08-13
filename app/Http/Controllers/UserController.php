@@ -7,11 +7,14 @@ use App\Role;
 use App\Student;
 use App\Supervisor;
 use App\User;
+use Dompdf\Adapter\PDFLib;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+
 
 
 class UserController extends Controller
@@ -20,7 +23,7 @@ class UserController extends Controller
     {
         $students = User::whereHas('roles', function ($role) {
             $role->where('name', 'student');
-        })->get();
+        })->paginate(10);
         foreach($students as $student){
            $student->student;
         }
@@ -30,20 +33,28 @@ class UserController extends Controller
     {
         $supervisors = User::whereHas('roles', function ($role) {
             $role->where('name', 'supervisor');
-        })->get();
+        })->paginate(10);
         return view('admin.supervisors_screen', ['supervisors' => $supervisors]);
+    }
+
+    public function viewChallengeOwners()
+    {
+        $challengeOwners = User::whereHas('roles', function ($role) {
+            $role->where('name', 'challengeOwner');
+        })->paginate(10);
+        return view('admin.challengeOwner', ['challengeOwners' => $challengeOwners]);
     }
     public function viewCoordinators()
     {
         $coordinators = User::whereHas('roles', function ($role) {
             $role->where('name', 'admin');
-        })->get();
+        })->paginate(10);
         return view('admin.coordinators_screen', ['coordinators' => $coordinators]);
     }
     //get all users function
     public function getUsers()
     {
-        $users = User::paginate(15);
+        $users = User::get();
         foreach ($users as $user) {
             $user->roles;
         }
@@ -243,5 +254,20 @@ class UserController extends Controller
       $user->save();
       return redirect('stuProfile')->with('response','Profile Added successfully');
     }
+
+    // Generate PDF
+    public function createPDF() {
+        // retreive all records from db
+        set_time_limit(0);
+        $data = User::all();
+        // share data to view
+        view()->share('users',$data);
+
+        $pdf = PDF::loadView('admin/userpdf_view', $data);
+        // dd($pdf);
+
+        // download PDF file with download method
+        return $pdf->download('user_pdf_file.pdf');
+      }
 
 }
