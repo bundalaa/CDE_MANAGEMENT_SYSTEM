@@ -72,7 +72,7 @@ class FileUpload extends Controller
         public function viewNewChallenge()
     {
         $newchallenges = File::get();
-       
+
         return view('admin.newchallenge',['newchallenges'=>$newchallenges]);
     }
 

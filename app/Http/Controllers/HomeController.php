@@ -30,5 +30,25 @@ class HomeController extends Controller
 
         return view('contact');
     }
-}
+    public function generatePDF(){
+    
+    {
 
+        return view('challenge-owner.ReportSummary');
+
+    }
+
+    {
+
+        $data = ['title' => 'Welcome to HDTuto.com'];
+
+        // $pdf = PDF::loadView('MyPDF', $data);
+
+  
+
+        // return $pdf->download('itsolutionstuff.pdf');
+
+     }
+
+}
+}

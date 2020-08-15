@@ -26,7 +26,7 @@
         <li class="nav-item  list-unstyled">
         <a href="upload-file" class="nav-link left-menu-link">
                 <i class="far fa-bell"> </i>
-                        Approved/rejected Project(s) </a>
+                        Approved Project </a>
                   
         </li>
 
@@ -47,19 +47,19 @@
 
         <li class="nav-item  list-unstyled">
             <a class="nav-link left-menu-link"
-               href="#">
+               href="/reportsummary">
                 <i class="fas fa-book-reader"> </i>
                 Report Summary
             </a>
         </li>
         
-        <li class="nav-item  list-unstyled">
+        <!-- <li class="nav-item  list-unstyled">
             <a class="nav-link left-menu-link"
-               href="#">
+               href="/notification">
                 <i class="far fa-bell"> </i>
                 Notification
             </a>
-        </li>
+        </li> -->
         
 
 
@@ -68,18 +68,11 @@
         
         <li class="nav-item  list-unstyled">
             <a class="nav-link left-menu-link"
-               href="#">
+               href="challenge/owner/profile">
                 <i class="fa fa-user-circle"> </i>
                 Profile
             </a>
         </li>
-        <li class="nav-item  list-unstyled">
-            <a class="nav-link left-menu-link"
-               href="#">
-                <i class="fa fa-cog"> </i>
-                Setting
-            </a>
-        </li><li class="nav-item  list-unstyled">
             <a class="nav-link left-menu-link"
                href="/">
                <i class="fa fa-key" aria-hidden="true"></i>

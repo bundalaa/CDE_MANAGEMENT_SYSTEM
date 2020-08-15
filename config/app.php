@@ -231,9 +231,31 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Image' => Intervention\Image\Facades\Image::class,
+<<<<<<< HEAD
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
+=======
+      
+        'providers' => [
+
+    
+
+        
+            // Barryvdh\DomPDF\ServiceProvider::class,
+        
+        ],
+        
+          
+        
+        'aliases' => [
+        
+        
+        
+                // 'PDF' => Barryvdh\DomPDF\Facade::class,
+        
+        ]
+>>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
     ],
 
