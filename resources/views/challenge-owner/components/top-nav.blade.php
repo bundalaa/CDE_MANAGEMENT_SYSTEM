@@ -50,34 +50,22 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
-                    <class="navbar-nav">
-                        <li class="nav-item active px-2">
+    
+                    @if (Route::has('login'))
+                @auth
+                <a href="{{ url('/welcome') }}">Home</a>
+                @else
+                    <li class="nav-item active px-2">
                             <a href="{{ route('login')}}">Sign in</a>
                         </li>
-                </ul>
-                </ul>
-
-
-                @if (Route::has('login'))
-                @auth
-                <a href="{{ url('/home') }}">Home</a>
-                @else
-
-                <li class="nav-item active px-2">
+                 <li class="nav-item active px-2">
+                 @if (Route::has('register'))
                     <a href="{{ route('register')}}">Sign up</a>
-
-
-
-                </li>
-                </ul>
-                </ul>
-
+                   @endif
                 @endauth
                 @endif
-
                 </li>
                 </ul>
-
                 </ul>
             </div>
         </div>

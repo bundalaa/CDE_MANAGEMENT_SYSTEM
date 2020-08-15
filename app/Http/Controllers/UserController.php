@@ -135,8 +135,7 @@ class UserController extends Controller
         if (Hash::check($request['old-pass'], Auth::User()->password)) {
             $user->password = $request['new-pass'];
             $user->save();
-            return redirect('/')
-                ->with('message', 'Password changed successfully');
+            return redirect()->back()->with('message', 'Password changed successfully');
         } else {
             return redirect()
                 ->back()->with('message', 'You entered wrong password');
@@ -242,6 +241,33 @@ class UserController extends Controller
       $user->avatar=$url;
       $user->save();
       return redirect('stuProfile')->with('response','Profile Added successfully');
+    }
+    //challenge owner
+    public function ChallengeOwnerPassword(Request $request)
+    {
+        // $users = User::where('id', auth()->user()->id)->first();
+        // $users->name = $request['name'];
+        // $users->email = $request['email'];
+        $rules = [
+            'old-pass' => 'required',
+            'new-pass' => 'required',
+            'confirm-pass' => 'required|same:new-pass'
+        ];
+        $error_messages = [
+            'confirm-pass.same' => 'New  password and confirm password must match'
+        ];
+        $validator = validator($request->all(), $rules, $error_messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $user = User::find(auth()->user()->id);
+        if (Hash::check($request['old-pass'], Auth::User()->password)) {
+            $user->password = $request['new-pass'];
+            $user->save();
+            return redirect()->back()->with('message', 'Password changed successfully');
+        } else {
+            return redirect()->back()->with('message', 'You entered wrong password');
+        }
     }
 
 }

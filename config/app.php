@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
         Intervention\Image\ImageServiceProvider::class,
-
+        App\PDF::class
     ],
 
     /*
@@ -231,25 +231,24 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Image' => Intervention\Image\Facades\Image::class,
       
+
+       
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,
+        'ExcelReport' => Jimmyjs\ReportGenerator\Facades\ExcelReportFacade::class,
+        'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class,
         'providers' => [
 
-    
+            Barryvdh\DomPDF\ServiceProvider::class,
+            ],
 
-        
-            // Barryvdh\DomPDF\ServiceProvider::class,
-        
-        ],
-        
-          
-        
-        'aliases' => [
-        
-        
-        
-                // 'PDF' => Barryvdh\DomPDF\Facade::class,
-        
-        ]
+           'aliases' => [
+
+            'PDF' => Barryvdh\DomPDF\Facade::class,
+            ]
+
 
     ],
+
 
 ];

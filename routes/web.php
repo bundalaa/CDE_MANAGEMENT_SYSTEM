@@ -35,7 +35,10 @@ Route::get('/', function(){
 //     return view('file-upload');
 // });
 
+//======================pdf report summary=============================//
 
+Route::get('pdfview',array('as'=>'pdfview','uses'=> 'FeedbackController@pdfview'));
+//======================pdf report summary  END=============================//
 
 Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
@@ -44,6 +47,7 @@ Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 Route::get('challenge/owner/profile', 'ContactUSController@challengeOwnerProfile');
+Route::post('/PasswordChange','UserController@ChallengeOwnerPassword')->name('PasswordChange');
 
 // Route::get('chart-js', 'ChartController@index');
 
@@ -191,10 +195,8 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
-<<<<<<< HEAD
 ///end of administrator module
 Route::get('chart', 'graphController@index');
-=======
 
 Route::get('/', function () {
     return view('welcome');
@@ -202,5 +204,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 3bd438947136e66c943ca0b4f8b46338359adbbd
+Route::get('/welcome', 'HomeController@index')->name('welcome');
