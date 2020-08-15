@@ -45,14 +45,11 @@ Route::get('/', function(){
 //     return view('file-upload');
 // });
 
-<<<<<<< HEAD
 //======================pdf report summary=============================//
 
 Route::get('pdfview',array('as'=>'pdfview','uses'=> 'FeedbackController@pdfview'));
 //======================pdf report summary  END=============================//
 
-=======
->>>>>>> 7a329f113d1e60d186930e4713a7bc1ce87be7d3
 Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
 Route::get('contact-us', 'ContactUSController@contactUS');
@@ -235,10 +232,7 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 7a329f113d1e60d186930e4713a7bc1ce87be7d3
 ///end of administrator module
 Route::get('chart', 'graphController@index');
 
@@ -247,10 +241,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-<<<<<<< HEAD
-
-Route::get('/welcome', 'HomeController@index')->name('welcome');
-=======
 Route::get('/home', 'HomeController@index')->name('home');
 
->>>>>>> 7a329f113d1e60d186930e4713a7bc1ce87be7d3
