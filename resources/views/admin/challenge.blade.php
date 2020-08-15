@@ -19,7 +19,14 @@
                         <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
                             <div class="card" id="card-table">
                                 <div class="card-header">
-                                    <h4>Challenges</h4>
+                                   <div class="row">
+                                       <div class="col-6">
+                                        <h4>Challenges</h4>
+                                       </div>
+                                       <div class="col-6">
+                                        <a class="btn btn-primary float-right" href="{{URL::to('/challenge/pdf') }}">Export to PDF</a>
+                                       </div>
+                                   </div>
                                 </div>
             <table class="table table-striped">
                  <thead class="thead-dark">

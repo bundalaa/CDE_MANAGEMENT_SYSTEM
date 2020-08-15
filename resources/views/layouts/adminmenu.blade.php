@@ -77,7 +77,7 @@
                             {{-- <span class="badge badge-danger navbar-badge">15</span> --}}
                           </a>
                           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header" style="padding-left:50px">Notifications</span>
+                            <span class="dropdown-item dropdown-header" style="padding-left:40px">Notifications</span>
                             <div class="dropdown-divider"></div>
                             <a href="{{route('markReadNotify')}}" class="dropdown-item">
                                 @foreach(auth()->user()->unreadNotifications as $index=>$notification)
@@ -87,6 +87,8 @@
                               <span class="float-right text-muted text-sm">
                                 {{ $notification->created_at->diffForHumans() }}
                               </span>
+                              <div class="dropdown-divider"></div>
+
                               @endif
                               @endforeach
                             </a>

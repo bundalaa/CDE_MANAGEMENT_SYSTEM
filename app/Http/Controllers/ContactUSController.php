@@ -60,17 +60,17 @@ class ContactUSController extends Controller
 
             ]);
 
-            $coordinator = Coordinator::find($request->coordinator_id);
+        //     $coordinator = Coordinator::find($request->coordinator_id);
 
-            if(!$coordinator){
-          return back()->with('success','coordinator not found');
-               }
+        //     if(!$coordinator){
+        //   return back()->with('success','coordinator not found');
+        //        }
 
         ContactUS::create($request->all());
 
-        $details=[ 'data'=>'New message' ];
+        // $details=[ 'data'=>'New message' ];
 
-        $coordinator->user->notify(new \App\Notifications\fileuploadNotification($details));
+        // $coordinator->user->notify(new \App\Notifications\fileuploadNotification($details));
 
         return back()->with('success', 'Thanks for contacting us!');
     }

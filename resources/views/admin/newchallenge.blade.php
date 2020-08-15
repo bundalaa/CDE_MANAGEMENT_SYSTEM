@@ -1,5 +1,5 @@
 @php
-    use App\ChallengeOwner;
+    use App\User;
 @endphp
 @extends('layouts.adminmenu')
 @section('content')
@@ -56,21 +56,24 @@
                                 </td>
                             <td class="mailbox-name"><i class="fas fa-file mr-2"></i><a href="{{route('get1newchallenge',[$newchallenge->id])}}">{{$newchallenge->name}}</a> -Trying to click to open new Challenge...</td>
                             <td class="mailbox-subject">
+                                @php
+                                    $challengeOwner = User::where('id',$newchallenge->challengeOwner_id)->first();
+                                @endphp
                                 <b>
-
+                                    {{$challengeOwner->name}}
                                  </b>
                                 </td>
                               </tr>
                               @endforeach
                             </tbody>
                         </table>
-                         <nav class="ml-4">
+                         {{-- <nav class="ml-4">
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         {{$newchallenges->links()}}
                                     </div>
                                 </div>
-                               </nav>
+                               </nav> --}}
                    </div>
                         </div>
                 </div>

@@ -16,7 +16,7 @@ class CoordinatorController extends Controller
 {
     public function viewProjectProgress()
     {
-        $identifiedchallenges = IdentifiedChallenge::all();
+        $identifiedchallenges = IdentifiedChallenge::paginate(4);
 
         foreach ($identifiedchallenges as $identifiedchallenge) {
             $identifiedchallenge->tasks;
@@ -24,10 +24,7 @@ class CoordinatorController extends Controller
 
         return view('admin.progress', ['identifiedchallenges' => $identifiedchallenges]);
     }
-    public function viewNotification()
-    {
-        return view('welcome',);
-    }
+
     public function viewNewChallenge()
     {
         return view('admin.newchallenge',);
@@ -76,27 +73,27 @@ if(!$contact){
 
     }
 
-    public function postCommentMessage(Request $request, $contactId)
-    {
-        // dd($contactId);
-        $validator = Validator::make($request->all(), [
-            'body' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return Redirect()->back()->withInput()->withErrors($validator);
-        }
-        $contactUs = ContactUs::find($contactId);
-        if (!$contactUs) {
-                return back()->with(['success' => 'Message not found']);
-        }
-        $comment = new Messagecomment();
-        $comment->body = $request->body;
-        $comment->coordinator_id=$request['coordinator_id'];
+    // public function postCommentMessage(Request $request, $contactUsId)
+    // {
+    //     // dd($contactUsId);
+    //     $validator = Validator::make($request->all(), [
+    //         'body' => 'required',
+    //     ]);
+    //     if ($validator->fails()) {
+    //         return Redirect()->back()->withInput()->withErrors($validator);
+    //     }
+    //     $contactUs = ContactUs::find($contactUsId);
+    //     if (!$contactUs) {
+    //             return back()->with(['success' => 'Message not found']);
+    //     }
+    //     $comment = new Messagecomment();
+    //     $comment->body = $request->body;
+    //     $comment->coordinator_id=$request['coordinator_id'];
 
-        $contactUs->messagecomments()->save($comment);
-        return redirect('adminIndex')
-        ->with('success', 'message added successfully');
-    }
+    //     $contactUs->messagecomments()->save($comment);
+    //     return redirect('adminIndex')
+    //     ->with('success', 'message added successfully');
+    // }
 
     }
 

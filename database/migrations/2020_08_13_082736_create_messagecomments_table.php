@@ -16,7 +16,7 @@ class CreateMessagecommentsTable extends Migration
         Schema::create('messagecomments', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('contactus_id');
+            $table->bigInteger('contact_us_id');
             $table->bigInteger('coordinator_id');
             $table->string('body');
 

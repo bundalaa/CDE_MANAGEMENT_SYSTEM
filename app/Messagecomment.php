@@ -10,7 +10,7 @@ class Messagecomment extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'body','contactus_id','coordinator_id'
+      'body','contact_us_id','coordinator_id'
     ];
 
     protected $dates = [

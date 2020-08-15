@@ -54,7 +54,7 @@ class UserController extends Controller
     //get all users function
     public function getUsers()
     {
-        $users = User::get();
+        $users = User::table('users')->get();
         foreach ($users as $user) {
             $user->roles;
         }

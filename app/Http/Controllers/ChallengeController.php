@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Challenge;
 use App\IdentifiedChallenge;
 use Illuminate\Http\Request;
+use PDF;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
 
@@ -79,6 +80,21 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
         $challenge->delete();
             return redirect('viewchallenge')->with('Challenge deleted successfuly');
     }
+
+      // Generate PDF
+      public function createPDF() {
+        // retreive all records from db
+        set_time_limit(0);
+        $data = Challenge::all();
+        // share data to view
+        view()->share('Challenges',$data);
+
+        $pdf = PDF::loadView('admin/Challengepdf_view', $data);
+        // dd($pdf);
+
+        // download PDF file with download method
+        return $pdf->download('challenge_pdf_file.pdf');
+      }
 
     ///student module
     public function getProj()

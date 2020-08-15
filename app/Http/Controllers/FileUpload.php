@@ -71,10 +71,9 @@ class FileUpload extends Controller
 
         public function viewNewChallenge()
     {
-        $newchallenges = File::paginate(10);
-        $contact = ContactUS::paginate(10);
-
-        return view('admin.newchallenge',['newchallenges'=>$newchallenges,'contact'=>$contact]);
+        $newchallenges = File::get();
+       
+        return view('admin.newchallenge',['newchallenges'=>$newchallenges]);
     }
 
 

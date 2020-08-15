@@ -150,7 +150,7 @@ Route::get('get1newchallenge/{id}', 'FileUpload@get1newchallenge')->name('get1ne
 Route::get('markReadNotify', 'FileUpload@markReadNotify')->name('markReadNotify');
 Route::get('downloadNewChallenge/{id}', 'FileUpload@downloadNewChallenge')->name('downloadNewChallenge');
 Route::post('postCommentChallenge/{id}', 'FileUpload@postCommentChallenge')->name('postCommentChallenge');
-
+Route::get('/challenge/pdf','ChallengeController@createPDF');
 
 //IdentifiedChallenge controller
 Route::post('addidentifiedchallenges','IdentifiedChallengeController@addIdentifiedChallenges')->name('addidentifiedchallenges');
@@ -159,6 +159,7 @@ Route::post('editidentifiedchallenge-screen/{id}','IdentifiedChallengeController
 Route::get('viewidentifiedchallenges','IdentifiedChallengeController@viewIdentifiedChallenges')->name('viewidentifiedchallenges');
 Route::get('viewidentifiedchallengedetail/{id}','IdentifiedChallengeController@viewIdentifiedChallengeDetail')->name('viewidentifiedchallengedetail');
 Route::post('postFillProgress','IdentifiedChallengeController@postFillProgress')->name('postFillProgress');
+Route::get('getTaskProgressDateReport','IdentifiedChallengeController@getTaskProgressDateReport')->name('getTaskProgressDateReport');
 
 //challenge Owner route
 Route::get('viewChallengeOwners','UserController@viewChallengeOwners')->name('viewChallengeOwners');
