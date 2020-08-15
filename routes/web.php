@@ -63,26 +63,23 @@ Route::post('/upload-file', 'FileUpload@fileUpload')->name('fileUpload');
 
 //=====================================retrive data======================//
 //retrive data
-Route::get('view-records','StudViewController@retrive'); 
+Route::get('view-records','StudViewController@retrive');
 
 //========================download===================================================
 Route::get('reportsummary','HomeController@generatePDF')->name('reportsummary');
- 
+
 ///////===============================notification=======================================
 //=======================================================================================//
 Route::get('send-notification', 'NotificationController@sendOfferNotification');
 
-<<<<<<< HEAD
 Route::get('dashboard', 'AuthController@dashboard')->name('dashboard');
 Route::post('save', 'MultipleFileController@save')->name('file.save');
-=======
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
 
 #=====================================END notification================================
 
 
-Route::get('dashboard', 'AuthController@dashboard'); 
+Route::get('dashboard', 'AuthController@dashboard');
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -119,7 +116,6 @@ Route::get('/user/pdf','UserController@createPDF');
 Route::get('viewcoordinatorscreen','UserController@viewCoordinators')->name('viewcoordinatorscreen');
 Route::get('getCoordinator','CoordinatorController@getCoordinator')->name('getCoordinator');
 Route::get('view-notification','CoordinatorController@viewNotification')->name('view-notification');
-<<<<<<< HEAD
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
@@ -127,13 +123,11 @@ Route::get('inboxmessageA','CoordinatorController@InboxMessageA')->name('inboxme
 Route::get('composemessageA/{id}','CoordinatorController@ComposeMessageA')->name('composemessageA');
 Route::get('readmessageA','CoordinatorController@ReadMessageA')->name('readmessageA');
 Route::post('postCommentMessage/{id}', 'CoordinatorController@postCommentMessage')->name('postCommentMessage');
-=======
 Route::get('view-publication', 'CoordinatorController@viewPublication')->name('view-publication');
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
 
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
 //supervisor route
 Route::get('viewsupervisorsscreen','UserController@viewSupervisors')->name('viewsupervisorsscreen');
@@ -149,7 +143,6 @@ Route::get('viewaddidentifiedchallenge/{id}','ChallengeController@viewaddidentif
 Route::post('editchallenge-screen','ChallengeController@updateChallenge')->name('editchallenge-screen');
 Route::delete('deleteChallenge/{id}','ChallengeController@deleteChallenge')->name('deleteChallenge');
 Route::get('getidentifiedchallenges/{id}','ChallengeController@getIdentifiedChallenges')->name('getidentifiedchallenges');
-<<<<<<< HEAD
 Route::get('viewFillProgress/{id}','IdentifiedChallengeController@viewFillProgress')->name('viewFillProgress');
 Route::get('newchallenge','FileUpload@viewNewChallenge')->name('newchallenge');
 Route::get('get1newchallenge/{id}', 'FileUpload@get1newchallenge')->name('get1newchallenge');
@@ -157,8 +150,6 @@ Route::get('markReadNotify', 'FileUpload@markReadNotify')->name('markReadNotify'
 Route::get('downloadNewChallenge/{id}', 'FileUpload@downloadNewChallenge')->name('downloadNewChallenge');
 Route::post('postCommentChallenge/{id}', 'FileUpload@postCommentChallenge')->name('postCommentChallenge');
 Route::get('/challenge/pdf','ChallengeController@createPDF');
-=======
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
 //IdentifiedChallenge controller
 Route::post('addidentifiedchallenges','IdentifiedChallengeController@addIdentifiedChallenges')->name('addidentifiedchallenges');
@@ -168,12 +159,9 @@ Route::post('editidentifiedchallenge-screen','IdentifiedChallengeController@upda
 Route::post('editidentifiedchallenge-screen/{id}','IdentifiedChallengeController@updateidentifiedChallenge')->name('editidentifiedchallenge-screen');
 Route::get('viewidentifiedchallenges','IdentifiedChallengeController@viewIdentifiedChallenges')->name('viewidentifiedchallenges');
 Route::get('viewidentifiedchallengedetail/{id}','IdentifiedChallengeController@viewIdentifiedChallengeDetail')->name('viewidentifiedchallengedetail');
-<<<<<<< HEAD
 Route::post('postFillProgress','IdentifiedChallengeController@postFillProgress')->name('postFillProgress');
 Route::get('getTaskProgressDateReport','IdentifiedChallengeController@getTaskProgressDateReport')->name('getTaskProgressDateReport');
-=======
 
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
 //challenge Owner route
 Route::get('viewChallengeOwners','UserController@viewChallengeOwners')->name('viewChallengeOwners');
@@ -215,15 +203,12 @@ Route::get('contactUs','CoordinatorController@contactUs')->name('contactUs');
 
 //Report route
 Route::get('view-report', 'ReportController@viewReport')->name('view-report');
-<<<<<<< HEAD
 Route::get('get1Report/{id}', 'ReportController@get1Report')->name('get1Report');
 Route::post('postCommentReport/{id}', 'ReportController@postCommentReport')->name('postCommentReport');
 Route::get('downloadReport/{id}', 'ReportController@downloadReport')->name('downloadReport');
 Route::get('markReadNotification', 'ReportController@markReadNotification')->name('markReadNotification');
 
-=======
 Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadReport');
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
 
 //Permission route
 Route::get('permission', 'PermissionController@assign')->name('permission');
@@ -241,19 +226,14 @@ Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProj
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
 Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 ///end of administrator module
 Route::get('chart', 'graphController@index');
-=======
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 3bd438947136e66c943ca0b4f8b46338359adbbd
->>>>>>> 2e71f0909bc4c2f9e58c8c995036eabaf56a6636
+
