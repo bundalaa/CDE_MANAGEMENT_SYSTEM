@@ -13,12 +13,12 @@
 <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="130" width="130"
     style="margin-left: 37%">
    <div class="card-title">
-    <h1 class="cvjdhcjhd"
-    style="color:grey;margin-left: 15%; ">UNIVERSITY OF DAR ES SALAAM</h1>
+    <h1
+    style="color:grey;margin-left: 17%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
    </div>
 <hr id="line">
-   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 26%">
-    Cde Information Manegent System
+   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 19%">
+    Cde Information Management System
 </h2 ></div>
     <hr style="margin: 0"px>
                <div class="mycard">
@@ -78,7 +78,7 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" >
                                 {{ __('Login') }}
                             </button>
 
@@ -89,6 +89,8 @@
                             @endif
                         </div>
                     </div>
+                    <div class="text-center">If you have an account?
+                        <a class="small" href="{{ __('register')}}">Sign Up</a></div>
                 </form>
             </div></div>
             </div>

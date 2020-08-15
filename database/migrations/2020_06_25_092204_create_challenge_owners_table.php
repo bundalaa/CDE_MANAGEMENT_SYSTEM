@@ -16,7 +16,8 @@ class CreateChallengeOwnersTable extends Migration
         Schema::create('challenge_owners', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            
+            $table->string('description')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

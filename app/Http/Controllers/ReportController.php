@@ -39,7 +39,7 @@ if(!$report){
 
     public function downloadReport($file)
         {
-          return response()->download('public/storage/files/'.$file);
+          return response()->download(public_path('/files/uploadedReports/').$file);
         }
 
 
@@ -68,7 +68,7 @@ if(!$supervisor){
         if ($request->file('file')) {
             $file=$request->file('file');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file->move('public/storage/reports',$filename);
+            $request->file->move(public_path('/files/uploadedReports/'),$filename);
 
             $data->file=$filename;
         }

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
-                    <i class="fas fa-folder-open text-dark"></i> {{$challenge['name']}} Challenge
+                    <i class="fas fa-folder-open text-dark"></i> {{$challenge['name']}} 
                     </h1>
                 </div>
             </div>
@@ -60,7 +60,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                                  <nav class="ml-4">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        {{$identifiedChallenges->links()}}
+                                    </div>
+                                </div>
+                               </nav>
                             </div>
                         </div>
                     </div>

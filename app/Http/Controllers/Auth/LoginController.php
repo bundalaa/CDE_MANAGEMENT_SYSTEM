@@ -53,8 +53,8 @@ class LoginController extends Controller
             $this->redirectTo = route('studentHome');
              return $this->redirectTo;
         }
-        elseif(Auth::user()-> hasRole('challengeowner')){
-            $this->redirectTo = route('homePage');
+        elseif(Auth::user()-> hasRole('challengeOwner')){
+            $this->redirectTo = route('dashboard');
              return $this->redirectTo;
         }
     }

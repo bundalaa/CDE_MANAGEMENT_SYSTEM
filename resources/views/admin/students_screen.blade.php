@@ -1,9 +1,5 @@
 @extends('layouts.adminmenu')
 @section('content')
-@php
-    // use App\Role;
-    use App\Team;
-@endphp
 <header id="dashboard" class="pt-3 pb-3">
     <div class="container pt-5 pb-0">
         <div class="row">
@@ -21,7 +17,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{url('adminIndex')}}" class="btn btn-muted btn-block">
+                            <a href="{{route('adminIndex')}}" class="btn btn-muted btn-block">
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
@@ -66,13 +62,13 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                               {{-- <nav class="ml-4">
+                               <nav class="ml-4">
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        {{$users->links()}}
+                                        {{$students->links()}}
                                     </div>
                                 </div>
-                               </nav> --}}
+                               </nav>
                             </div>
                         </div>
                     </div>

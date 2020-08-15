@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-xl navbar-dark bg-dark py-0 fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark py-0 px-5 fixed-top">
         <div class="container">
             <a href="{{url('supervisorHome')}}" class="navbar-brand">
                 <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="40" width="45">
@@ -41,7 +41,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
+                    <li class="nav-item px-2">
                         <a href="{{route('supervisorHome')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
@@ -66,7 +66,7 @@
                             </i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header" style="padding-left:90px"> Notifications</span>
+                            <span class="dropdown-item dropdown-header" style="padding-left:40px"> Notifications</span>
                             <div class="dropdown-divider"></div>
                           <a href="{{route('markReadNotification')}}" class="dropdown-item">
                                 @foreach(auth()->user()->unreadNotifications as $index=>$notification)
@@ -79,8 +79,8 @@
                                     @endif
                                      @endforeach
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a>
+                            {{-- <div class="dropdown-divider"></div> --}}
+                            {{-- <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a> --}}
                           </div>
                         </li>
                         <li class="nav-item dropdown ml-5" >
@@ -122,10 +122,11 @@
 </div>
 
 @yield('scripts')
+
 {{-- custom js --}}
 <script src="{{ asset('/js/custom/comment.js') }}"></script>
-
 {{-- custom js ends here --}}
+
 {{-- <!-- Jquery CDN --> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>

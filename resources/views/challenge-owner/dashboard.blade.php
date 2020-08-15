@@ -74,7 +74,7 @@
         padding: 1em;
     }
 
-    /* 
+    /*
         .navbar-nav{
 
             /*background: #ffa23b;*/
@@ -138,7 +138,7 @@
                                           </div>
 
                                           <div>
-                                               
+
                                                 <h2>Project Status</h2>
                                                 <p>In tis section as a challenge owner you will be able to view the status of the current project and you can reply back by leaving a commect </p>
                                                 <p><a class="btn btn-secondary" href="feedback" role="button">View details

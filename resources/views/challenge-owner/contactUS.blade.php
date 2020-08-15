@@ -3,6 +3,8 @@
 
 <head>
     <title>Contact US</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    </head>
     <style>
     /*contactus*/
 
@@ -19,6 +21,40 @@
         margin: 0 -5px;
     }
 
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+    margin-top: 1px;
+  }
+
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+  }
     /* Clear floats after the columns */
     .row:after {
         content: "";
@@ -89,7 +125,7 @@
                         Email']) !!}
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
-                    
+
                     <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
                         {!! Form::label('Message:') !!}
                         {!! Form::textarea('message', old('message'), ['class'=>'form-control',

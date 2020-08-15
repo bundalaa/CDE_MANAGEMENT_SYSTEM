@@ -31,14 +31,17 @@
                                 <i class="fas fa-arrow-circle-left text-dark"></i> Back To Home
                             </a>
                         </div>
-                        {{-- <div class="col-md-6 ml-auto">
+                        <div class="col-md-6 ml-auto">
+                        {{-- <form action="/search" method="POST" role="search">
+                                {{ csrf_field() }}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Users...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-info">Search</button>
-                                </div>
+                                <input type="text" class="form-control"  name="q" placeholder="Search Users...">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info" type="submit">Search</button>
+                                    </div>
                             </div>
-                        </div> --}}
+                            </form> --}}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -48,16 +51,22 @@
                         <div class="col-md-12">
                             <div class="card" id="card-table">
                                 <div class="card-header">
-                                    <h4>Latest Users</h1>
+                                   <div class="row">
+                                       <div class="col-6">
+                                        <h4>Latest Users</h1>
+                                       </div>
+                                       <div class="col-6">
+                                        <a class="btn btn-primary float-right" href="{{URL::to('/user/pdf') }}">Export to PDF</a>
+                                       </div>
+                                   </div>
                                 </div>
-                                <table class="table table-striped">
+                                <table id="myTable" class="table table-striped">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,22 +78,17 @@
                                             <td>
                                         {{$user->roles[0]->name}}
                                             </td>
-                                            <td>
-                                                <a href="{{ route("editUser", [$user->id]) }}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> Update User
-                                                </a>
-                                            </td>
                                         </tr>
-                                        @endforeach
+                                        @endforeach 
                                     </tbody>
                                 </table>
-                               <nav class="ml-4">
+                               {{-- <nav class="ml-4">
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         {{$users->links()}}
                                     </div>
                                 </div>
-                               </nav>
+                               </nav> --}}
                             </div>
                         </div>
                     </div>

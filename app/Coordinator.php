@@ -29,5 +29,10 @@ class Coordinator extends Model
     {
         return $this->hasMany(Feedback::class);
     }
+    
+    public function Reports()
+    {
+        return $this->hasMany(File::class);
+    }
 
 }

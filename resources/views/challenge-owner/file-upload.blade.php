@@ -72,7 +72,7 @@
     padding: 1em;
 }
 
-/* 
+/*
         .navbar-nav{
 
             /*background: #ffa23b;*/
@@ -126,10 +126,10 @@
                                                         class="form-control" value="{{Auth::user()->email}}">
                                                         <label>
                                                             name</label>
-                                                        <input type="text" name="sender_name" 
+                                                        <input type="text" name="sender_name"
                                                         class="form-control" value="{{Auth::user()->name}}">
-                                                        
-                                           
+
+
                                                     </div>
                                                     @csrf
                                                     @if ($message = Session::get('success'))
@@ -139,7 +139,7 @@
                                                     @endif
 
                                                     @if (count($errors) > 0)
-                                                    
+
                                                     <div class="alert alert-danger">
                                                         <ul>
                                                             @foreach ($errors->all() as $error)
@@ -156,7 +156,7 @@
                                                             file</label>
                                                     </div>
 
-                                                         
+
 
                                                     <button type="submit" name="submit"
                                                         class="btn btn-primary btn-block mt-4">

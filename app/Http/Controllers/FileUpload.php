@@ -2,45 +2,111 @@
 
 namespace App\Http\Controllers;
 
+use App\ChallengeComment;
+use App\ChallengeOwner;
+use App\ContactUS;
+use App\Coordinator;
 use Illuminate\Http\Request;
 use App\File;
+use App\User;
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class FileUpload extends Controller
 {
   public function createForm(){
-    return view('challenge-owner.file-upload');
+    $coordinators = Coordinator::all();
+    $user = Auth::user();
+    return view('challenge-owner.file-upload',['coordinators'=>$coordinators,'user'=>$user]);
   }
 
-  public function fileUpload(Request $req){
-        $req->validate([
+  public function fileUpload(Request $request){
+        $request->validate([
         'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:2048'
         ]);
 
-        $fileModel = new File;
+        $coordinator = Coordinator::find($request->coordinator_id);
 
-        if($req->file()) {
-            $fileName = time().'_'.$req->file->getClientOriginalName();
-            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
-            $fileModel->sender_name=$req->input('sender_name');
-            $fileModel->email=$req->input('email');
-          
-            $fileModel->name = time().'_'.$req->file->getClientOriginalName();
-            $fileModel->file_path = '/storage/' . $filePath;
+        if(!$coordinator){
+      return back()->with('success','coordinator not found');
+           }
+         $fileModel = new File;
+        if ($request->file('file')) {
+            $file=$request->file('file');
+            $filename=time().'.'.$file->getClientOriginalExtension();
+            $request->file->move(public_path('/files/uploadedChallenges/'),$filename);
+            $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+
+            $fileModel ->file=$filename;
+        }
+            $fileModel->challengeOwner_id=$request['challengeOwner_id'];
+
+            $fileModel->coordinator_id=$request['coordinator_id'];
+
             $fileModel->save();
+
+            $details=[ 'data'=>'New challenge' ];
+
+            $coordinator->user->notify(new \App\Notifications\fileuploadNotification($details));
 
             return back()
             ->with('success','File has been uploaded succesfully.')
-            ->with('file', $fileName);
-        }
+            ->with('file', $filename);
+
     }
 
-    //     public function viewNewChallenge()
-    // {
-    //     $newchallenges=File::all();
 
-    //     return view('admin.newchallenge',[
-    //         'newchallenges'=>$newchallenges]);
-    // }
+     public function downloadNewChallenge($file)
+        {
+          return response()->download(public_path('/files/uploadedChallenges/').$file);
+        }
 
+
+    public function markReadNotify(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect('newchallenge');
+    }
+
+
+        public function viewNewChallenge()
+    {
+        $newchallenges = File::get();
+
+        return view('admin.newchallenge',['newchallenges'=>$newchallenges]);
+    }
+
+
+    public function get1newchallenge($id)
+    {
+        $newchallenge=File::find($id);
+if(!$newchallenge){
+    return back()->with('success','newchallenge not found');
+}
+$user = Auth::user();
+return view('admin.viewNewchallenge1',[
+    'newchallenge'=>$newchallenge,'user'=>$user]);
+    }
+
+
+    public function postCommentChallenge(Request $request, $challengeId)
+    {
+        $validator = Validator::make($request->all(), [
+            'body' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return Redirect()->back()->withInput()->withErrors($validator);
+        }
+        $File = File::find($challengeId);
+        if (!$File) {
+                return back()->with(['success' => 'File not found']);
+        }
+        $comment = new ChallengeComment();
+        $comment->body = $request->body;
+        $comment->coordinator_id=$request['coordinator_id'];
+        $File->challengecomments()->save($comment);
+        return redirect('newchallenge')
+        ->with('success', 'comment added successfully');
+    }
 
 }

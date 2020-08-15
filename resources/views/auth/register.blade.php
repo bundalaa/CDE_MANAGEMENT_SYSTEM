@@ -68,6 +68,8 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="text-center">Already i have an account?
+                            <a class="small" href="{{ __('login')}}">Sign In</a></div>
                     </form>
                 </div>
             </div>

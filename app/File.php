@@ -7,19 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class File extends Model
 {
     protected $fillable = [
-        'name',
-        'file_path'
+        'file',
+        'challengeOwner_id',
+        'name'
     ];
+
+
+
+// ///relationships
+public function challengeOwner()
+{
+    return $this->belongsTo(ChallengeOwner::class);
+}
+public function coordinator()
+    {
+    return $this->belongsTo(Coordinator::class);
+    }
+    public function challengecomments()
+    {
+        return $this->hasMany(Challengecomment::class);
+    }
 }
 
 
-// 'challengeOwner_id',
 
-// ];
 
-// ///relationships
-// public function challengeOwner()
-// {
-//     return $this->belongsTo(File::class);
-// }
-// }

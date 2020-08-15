@@ -40,7 +40,7 @@
                     <div class="row py-4">
                         <div class="col-sm-6 col-lg-3">
                              <p>
-            <iframe src="{{url('public/storage/reports/'.$report->file)}}" style="width: 1100px;height: 500px;"></iframe>
+            <iframe src="{{url('files/uploadedReports/'.$report->file)}}" style="width: 1100px;height: 500px;"></iframe>
             </p>
            <div class="card" style="width: 1100px;border: 0px solid rgb(0 0 0 / 2%);
            ">
@@ -59,8 +59,7 @@
         @csrf
        <input type="text" name="user_id" value="{{auth()->user()->id}}" hidden>
                             <div id="show">
-                                <div class="card card-primary card-outline" style="border: 0px solid rgb(0 0 0 / 2%);
-                                ">
+                                <div class="card card-primary card-outline" style="border: 0px solid rgb(0 0 0 / 2%);">
                                     <div class="card-body" style="display: contents;">
                                       <div class="form-group">
                                           <textarea id="compose-textarea" class="form-control" style="height: 100px" name="body">
@@ -76,10 +75,7 @@
                                   </div>
                             </div>
                         </form>
-
-
-
-           </div>
+                            </div>
                         </div>
                 </div>
             </section>

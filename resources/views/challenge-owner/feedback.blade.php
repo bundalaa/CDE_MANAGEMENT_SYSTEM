@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <style>
     /*** Left Nav ***/
     .nav-link.active {
@@ -105,7 +105,7 @@
         padding: 1em;
     }
 
-    /* 
+    /*
         .navbar-nav{
 
             /*background: #ffa23b;*/
@@ -171,7 +171,7 @@
                                     </div>
                                     </div>
                                     </div>
-                            
+
 
                             <div id="content-wrap">
                                 <div class="container-md"  style="margin-bottom:27px;">
@@ -182,30 +182,30 @@
                     @endif
                                 {!! Form::open(['route'=>'contactus.store']) !!}
 
-                                       
+
                                     <div style="display: none;" class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                        
+
                                     <input type="text" name="name" value=" {{ Auth::user()->name }}" class="form-control" id="" placeholder="Enter Employee Name">
-                                    
+
                                     <input type="email" name="email" value=" {{ Auth::user()->email }}" class="form-control" id="" placeholder="Enter Employee Name">
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
-                    
+
                                         <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
                         {!! Form::label('Write your comment(s) and submit:') !!}
                         {!! Form::textarea('message', old('message'), ['class'=>'form-control',
                         'placeholder'=>'Enter Message', 'rows'=>'5']) !!}
                         <span class="text-danger">{{ $errors->first('message') }}</span>
                     </div>
-                                        
+
                                         <button type="submit" class="btn btn-info">Submit</button>
                                         {!! Form::close() !!}
 
                                 </div>
                                 </div>
-                                   
-                                   
-                               
+
+
+
                             </div>
                             <footer id="footer" class="bg-dark" style="color:white">
                                 <div class="py-2 text-center">

@@ -10,7 +10,7 @@ class ChallengeOwner extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name','emailAddress','description',
+        'user_id','description',
     ];
 
     protected $dates = [
@@ -33,5 +33,9 @@ class ChallengeOwner extends Model
     public function teams()
     {
         return $this->hasMany(Team::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
