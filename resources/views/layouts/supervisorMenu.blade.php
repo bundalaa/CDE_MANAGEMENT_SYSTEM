@@ -10,6 +10,8 @@
      <!-- Bootstrap CSS LOCAL -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <!--external css link-->
+     <script src="{{ asset('/css/custom/custom.css') }}"></script>
+
      <link rel="stylesheet" type="text/css" href="{{ URL::to('css/admin-css/home.css') }}">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -29,7 +31,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-xl navbar-dark bg-dark py-0 fixed-top">
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark py-0 px-5 fixed-top">
         <div class="container">
             <a href="{{url('supervisorHome')}}" class="navbar-brand">
                 <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="40" width="45">
@@ -39,7 +41,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
+                    <li class="nav-item px-2">
                         <a href="{{route('supervisorHome')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
@@ -64,7 +66,7 @@
                             </i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header" style="padding-left:50px"> Notifications</span>
+                            <span class="dropdown-item dropdown-header" style="padding-left:40px"> Notifications</span>
                             <div class="dropdown-divider"></div>
                           <a href="{{route('markReadNotification')}}" class="dropdown-item">
                                 @foreach(auth()->user()->unreadNotifications as $index=>$notification)
@@ -77,8 +79,8 @@
                                     @endif
                                      @endforeach
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            {{-- <div class="dropdown-divider"></div> --}}
+                            {{-- <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a> --}}
                           </div>
                         </li>
                        <ul  class="navbar-nav ml-auto" style="padding-left: 430px">
@@ -91,26 +93,25 @@
                                 @else
                                 <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
-                                @endif
-                                 Welcome {{auth()->user()->name}}
-                                @endif
-                            </a>
-                            <div class="dropdown-menu">
-                            <a href="{{route('userprofile')}}" class="dropdown-item">
-                                    <i class="fas fa-user-circle"></i> Profile
-                                </a>
-                                <hr class="solid">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt    "></i> {{ __('Logout') }}
-                             </a>
-                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                 @csrf
-                             </form>
-                            </div>
-                        </li>
-                       </ul>
+                              @endif
+                               Welcome {{auth()->user()->name}}
+                              @endif
+                          </a>
+                          <div class="dropdown-menu">
+                          <a href="{{route('supervisorprofile')}}" class="dropdown-item">
+                                  <i class="fas fa-user-circle"></i> Profile
+                              </a>
+                              <hr class="solid">
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                              <i class="fas fa-sign-out-alt    "></i> {{ __('Logout') }}
+                           </a>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                               @csrf
+                           </form>
+                          </div>
+                      </li>
                       </ul>
     </nav>
     @yield('content')
@@ -122,7 +123,12 @@
 </div>
 
 @yield('scripts')
-<!-- Jquery CDN -->
+
+{{-- custom js --}}
+<script src="{{ asset('/js/custom/comment.js') }}"></script>
+{{-- custom js ends here --}}
+
+{{-- <!-- Jquery CDN --> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <!-- Bootstrap JS CDN -->

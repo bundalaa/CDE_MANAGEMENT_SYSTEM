@@ -5,9 +5,10 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="text-info">
-                    <i class="far fa-address-book text-dark"></i>  Attendance Report
+                    <i class="far fa-address-card text-dark"></i>  Attendance Report
                 </h1>
             </div>
+
             <div class="col-md-6 ml-auto">
                 <div class="input-group">
 <select name="date" id="date" onChange="onChange(this)">
@@ -36,8 +37,14 @@
                         <div class="col-md-12 d-flex justify-content-center flex-wrap flex-column">
                             <div class="card" id="card-table">
                                 <div class="card-header">
-                                    <h4>Class Attendance | <span class="text-info">{{$report->created_at}}</span></h1>
+                                   <div class="row">
+                                    <div class="col-6"> <h4>Class Attendance | <span class="text-info">{{$report->created_at}}</span></h1></div>
+                                        <div class="col-6">
+                                            <a class="btn btn-primary float-right" href="{{URL::to('/attendance/pdf') }}">Export to PDF</a>
+                                           </div>
+                                   </div>
                                 </div>
+
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                         <tr>

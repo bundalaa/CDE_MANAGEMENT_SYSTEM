@@ -79,5 +79,9 @@ public function setPasswordAttribute($password)
   {
       return $this->hasOne(Student::class,'user_id');
   }
+  public function challengeOwner()
+  {
+      return $this->hasOne(ChallengeOwner::class,'user_id');
+  }
 
 }

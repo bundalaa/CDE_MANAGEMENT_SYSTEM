@@ -40,7 +40,7 @@ if(!$report){
 
     public function downloadReport($file)
         {
-          return response()->download('public/storage/files/'.$file);
+          return response()->download(public_path('/files/uploadedReports/').$file);
         }
 
 
@@ -55,13 +55,11 @@ if(!$report){
         if($validator->fails())
         {
          return Redirect()->back()->withInput()->withErrors($validator);
-
         }
-
         $team = Team::find($request->team_id);
-if(!$team){
-    return back()->with('success','team not found');
-}
+        if(!$team){
+        return back()->with('success','team not found');
+             }
 // dd($team);
 $supervisor = Supervisor::find($team->supervisor_id);
 if(!$supervisor){
@@ -71,7 +69,7 @@ if(!$supervisor){
         if ($request->file('file')) {
             $file=$request->file('file');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file->move('public/storage/reports',$filename);
+            $request->file->move(public_path('/files/uploadedReports/'),$filename);
 
             $data->file=$filename;
         }

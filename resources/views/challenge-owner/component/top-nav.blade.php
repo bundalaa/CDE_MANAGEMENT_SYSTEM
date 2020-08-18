@@ -19,6 +19,9 @@
 
 </head>
 <body>
+    @php
+        use App\Role;
+    @endphp
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container">
             <a href="/" class="navbar-brand">
@@ -53,9 +56,25 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
-                    @if (Route::has('login'))
+                   @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/home') }}">Home</a>
+
+                            @if(Auth::user()-> hasRole ('admin'))
+                            <a href="{{ route('adminIndex') }}">Home</a>
+                            @endif
+
+                             @if(Auth::user()-> hasRole ('supervisor'))
+                             <a href="{{ route('supervisorHome') }}">Home</a>
+                             @endif
+
+                             @if(Auth::user()-> hasRole ('student'))
+                             <a href="{{ route('studentHome') }}">Home</a>
+                             @endif
+
+                            @if(Auth::user()-> hasRole ('challengeOwner'))
+                            <a href="{{ route('dashboard') }}">Home</a>
+                            @endif
+
                             @else
                     <li class="nav-item active px-2">
                         <a href="{{ route('login') }}">Sign in</a>
@@ -64,7 +83,7 @@
                         @if (Route::has('register'))
                         <a href="{{ route('register') }}">Sign up</a>
                     @endif
-                @endauth
+                 @endauth
                 @endif
 
             </li>

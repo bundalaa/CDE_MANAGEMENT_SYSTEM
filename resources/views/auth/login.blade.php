@@ -1,4 +1,9 @@
 @extends('layouts.app')
+<!-- @include('challenge-owner.components.top-nav') -->
+
+@push('head')
+<link href="{{ asset('css/Auth/custom.css') }}" rel="stylesheet">
+@endpush
 
 @section('content')
 <div class="container">
@@ -9,10 +14,10 @@
     style="margin-left: 37%">
    <div class="card-title">
     <h1
-    style="color:grey;font-size:23px;margin-left: 15%">UNIVERSITY OF DAR ES SALAAM</h1>
+    style="color:grey;margin-left: 17%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
    </div>
 <hr id="line">
-   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 26%">
+   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 19%">
     Cde Information Management System
 </h2 ></div>
     <hr style="margin: 0"px>
@@ -32,13 +37,13 @@
                                   </div>
                                 </div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            </div>
                             @if($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @enderror
                         </div>
+                    </div>
                     </div>
                     <div class="form-group row">
                         <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -51,8 +56,6 @@
                                   </div>
                                 </div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            </div>
-
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -60,7 +63,7 @@
                             @enderror
                         </div>
                     </div>
-
+               </div>
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
@@ -75,7 +78,7 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" >
                                 {{ __('Login') }}
                             </button>
 
@@ -86,6 +89,8 @@
                             @endif
                         </div>
                     </div>
+                    <div class="text-center">If you have an account?
+                        <a class="small" href="{{ __('register')}}">Sign Up</a></div>
                 </form>
             </div></div>
             </div>

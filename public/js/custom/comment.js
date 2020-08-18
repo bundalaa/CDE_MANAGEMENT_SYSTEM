@@ -1,7 +1,7 @@
-function commentfunction(id){
-    $('#comment'+id).css('display','unset');
-    $('.open'+id).css('display', 'none');
-    $('.close'+id).css('display', 'unset');
+function commentOpen(){
+    $('#comment').css('display','unset');
+    $('.btn-close').css('display', 'unset');
+    $('.btn-open').css('display', 'none');
 
     // $('#open'+id).css('display','unset');
 
@@ -9,10 +9,11 @@ function commentfunction(id){
 }
 
 
-function commentClose(id){
-    $('#comment'+id).css('display','none');
-    $('.open'+id).css('display', 'unset');
-    $('.close'+id).css('display', 'none');
+function commentClose(){
+    $('#comment').css('display','none');
+    $('.btn-close').css('display', 'none');
+    $('.btn-open').css('display', 'unset');
+    // $('.close').css('display', 'none');
 
 
 }

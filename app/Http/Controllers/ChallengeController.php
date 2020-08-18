@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Challenge;
 use App\IdentifiedChallenge;
 use Illuminate\Http\Request;
+use PDF;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
 
@@ -12,14 +13,14 @@ class ChallengeController extends Controller
 {
     public function getChallenge()
     {
-        $challenges = Challenge::get();
+        $challenges = Challenge::paginate(10);
       return view('admin.challenge',['challenges'=>$challenges]);
     }
 
     public function getIdentifiedChallenges($id)
     {
         $challenge = Challenge::where('id', $id)->first();
-        $identifiedChallenges = IdentifiedChallenge::get();
+        $identifiedChallenges = IdentifiedChallenge::paginate(10);
       return view('admin.viewIdentifiedChallenge-screen',['challenge'=>$challenge,'identifiedChallenges'=>$identifiedChallenges]);
     }
 
@@ -79,6 +80,21 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
         $challenge->delete();
             return redirect('viewchallenge')->with('Challenge deleted successfuly');
     }
+
+      // Generate PDF
+      public function createPDF() {
+        // retreive all records from db
+        set_time_limit(0);
+        $data = Challenge::all();
+        // share data to view
+        view()->share('Challenges',$data);
+
+        $pdf = PDF::loadView('admin/Challengepdf_view', $data);
+        // dd($pdf);
+
+        // download PDF file with download method
+        return $pdf->download('challenge_pdf_file.pdf');
+      }
 
     ///student module
     public function getProj()

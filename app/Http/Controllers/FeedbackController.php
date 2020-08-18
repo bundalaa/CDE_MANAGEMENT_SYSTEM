@@ -6,6 +6,9 @@ use App\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
+use Illuminate\Support\Facades\DB;
+
+use Barryvdh\DomPDF\Facade as PDF;
 
 class FeedbackController extends Controller
 {
@@ -115,5 +118,34 @@ class FeedbackController extends Controller
 
         ///web route
         return view();
+
     }
+    //challengeOwner module
+
+    
+    //Project status
+    public function feedback(){
+        $feedbacks= DB::table('identified_challenges')->get();
+        view()->share('feedbacks', $feedbacks);
+        return view('challenge-owner.feedback');
+    }
+
+
+  //report summary
+
+public function pdfview(Request $request )
+{
+
+    $feedbacks = DB::table("identified_challenges")->get();
+    view()->share('feedbacks',$feedbacks);
+
+
+    if($request->has('download')){
+        $pdf = PDF::loadView('challenge-owner.pdfview');
+        return $pdf->download('pdfview.pdf');
+    }
+
+
+    return view('challenge-owner.pdfview');
+}
 }

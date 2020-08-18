@@ -1,0 +1,33 @@
+.cvjdhcjhd{
+    font-size: 23px;
+}
+
+
+@media only screen and (max-width: 825px) and  (min-width: 768px){
+
+    .cvjdhcjhd{
+    font-size: 17px;
+}
+
+}
+
+
+@media only screen and (max-width: 768px) and  (min-width: 425px){
+
+    .cvjdhcjhd{
+    font-size: 15px;
+}
+
+}
+
+
+
+@media only screen and (max-width: 425px) and  (min-width: 0px){
+
+    .cvjdhcjhd{
+    font-size: 13px;
+}
+
+}
+
+

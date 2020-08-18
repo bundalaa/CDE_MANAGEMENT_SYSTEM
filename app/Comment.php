@@ -32,7 +32,7 @@ class Comment extends Model
 
      */
 
-    protected $fillable = ['user_id', 'report_id', 'parent_id', 'body', 'commentable_id','commentable_type','description',];
+    protected $fillable = [ 'body', 'challengeOwner_id'];
 
 
 
@@ -46,11 +46,11 @@ class Comment extends Model
 
      */
 
-    public function user()
+    public function challengeOwner()
 
     {
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(ChallengeOwner::class);
 
     }
 
@@ -64,12 +64,5 @@ class Comment extends Model
 
      */
 
-    public function replies()
-
-    {
-
-        return $this->hasMany(Comment::class, 'parent_id');
-
-    }
 
 }

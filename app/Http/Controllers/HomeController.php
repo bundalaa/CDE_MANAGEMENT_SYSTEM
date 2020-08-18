@@ -23,12 +23,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('challenge-owner.dashboard');
     }
 
     public function showContactus(){
 
         return view('contact');
     }
-}
+    public function generatePDF(){
+    
+    {
 
+        return view('challenge-owner.ReportSummary');
+
+    }
+
+    {
+
+        $data = ['title' => 'Welcome to HDTuto.com'];
+
+        // $pdf = PDF::loadView('MyPDF', $data);
+
+  
+
+        // return $pdf->download('itsolutionstuff.pdf');
+
+     }
+
+}
+}

@@ -7,11 +7,14 @@ use App\Role;
 use App\Student;
 use App\Supervisor;
 use App\User;
+use Dompdf\Adapter\PDFLib;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+
 
 
 class UserController extends Controller
@@ -20,7 +23,7 @@ class UserController extends Controller
     {
         $students = User::whereHas('roles', function ($role) {
             $role->where('name', 'student');
-        })->get();
+        })->paginate(10);
         foreach($students as $student){
            $student->student;
         }
@@ -30,20 +33,28 @@ class UserController extends Controller
     {
         $supervisors = User::whereHas('roles', function ($role) {
             $role->where('name', 'supervisor');
-        })->get();
+        })->paginate(10);
         return view('admin.supervisors_screen', ['supervisors' => $supervisors]);
+    }
+
+    public function viewChallengeOwners()
+    {
+        $challengeOwners = User::whereHas('roles', function ($role) {
+            $role->where('name', 'challengeOwner');
+        })->paginate(10);
+        return view('admin.challengeOwner', ['challengeOwners' => $challengeOwners]);
     }
     public function viewCoordinators()
     {
         $coordinators = User::whereHas('roles', function ($role) {
             $role->where('name', 'admin');
-        })->get();
+        })->paginate(10);
         return view('admin.coordinators_screen', ['coordinators' => $coordinators]);
     }
     //get all users function
     public function getUsers()
     {
-        $users = User::paginate(15);
+        $users = User::table('users')->get();
         foreach ($users as $user) {
             $user->roles;
         }
@@ -79,7 +90,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = Hash::make("12345678");
+        $user->password = "12345678";
         $user->save();
 
         $role = Role::find($request['role_id']);
@@ -135,8 +146,7 @@ class UserController extends Controller
         if (Hash::check($request['old-pass'], Auth::User()->password)) {
             $user->password = $request['new-pass'];
             $user->save();
-            return redirect('/')
-                ->with('message', 'Password changed successfully');
+            return redirect()->back()->with('message', 'Password changed successfully');
         } else {
             return redirect()
                 ->back()->with('message', 'You entered wrong password');
@@ -185,7 +195,7 @@ class UserController extends Controller
         $users->email = $request['email'];
         $users->save();
         return redirect('userprofile')
-            ->with('message', 'successfully');
+            ->with('message', 'user profile updated successfully');
     }
 
     //update avatar
@@ -285,8 +295,52 @@ class UserController extends Controller
             ->back()->with('message', 'You entered wrong password');
     }
 }
-
+    //challenge owner
+    public function ChallengeOwnerPassword(Request $request)
+    {
+        // $users = User::where('id', auth()->user()->id)->first();
+        // $users->name = $request['name'];
+        // $users->email = $request['email'];
+        $rules = [
+            'old-pass' => 'required',
+            'new-pass' => 'required',
+            'confirm-pass' => 'required|same:new-pass'
+        ];
+        $error_messages = [
+            'confirm-pass.same' => 'New  password and confirm password must match'
+        ];
+        $validator = validator($request->all(), $rules, $error_messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $user = User::find(auth()->user()->id);
+        if (Hash::check($request['old-pass'], Auth::User()->password)) {
+            $user->password = $request['new-pass'];
+            $user->save();
+            return redirect()->back()->with('message', 'Password changed successfully');
+        } else {
+            return redirect()->back()->with('message', 'You entered wrong password');
+        }
     }
+
+    // Generate PDF
+    public function createPDF() {
+        // retreive all records from db
+        set_time_limit(0);
+        $data = User::all();
+        // share data to view
+        view()->share('users',$data);
+
+        $pdf = PDF::loadView('admin/userpdf_view', $data);
+        // dd($pdf);
+
+        // download PDF file with download method
+        return $pdf->download('user_pdf_file.pdf');
+      }
+
+}
+
+    
 
 
 

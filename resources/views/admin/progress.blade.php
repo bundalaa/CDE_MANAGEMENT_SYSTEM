@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1 class="text-info">
-                        <i class="far fa-address-book text-dark"></i> Dashboard
+                        <i class="fa fa-dashboard text-dark"></i> Dashboard
                     </h1>
                 </div>
             </div>
@@ -23,7 +23,7 @@
       <div class="row">
         @foreach($identifiedchallenges as $identifiedchallenge)
         <div class="col-md-6">
-          <div class="card">
+          <div class="card mt-5">
             <div class="card-header">
             <h3 class="card-title">{{$identifiedchallenge->name}}</h3>
             </div>
@@ -53,7 +53,7 @@
                     </td>
                     <td>
                     @if($task->status_id == 1)
-                        <span class="badge bg-danger">20%</span>
+                        <span class="badge bg-danger">0%</span>
                     @endif
                     @if($task->status_id == 2)
                             <span class="badge bg-danger">40%</span>
@@ -72,116 +72,19 @@
                   @endforeach
                 </tbody>
               </table>
+               <nav class="ml-4">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        {{$identifiedchallenges->links()}}
+                                    </div>
+                         </div>
+                    </nav>
             </div>
           </div>
         </div>
         @endforeach
       </div>
-          <!-- /.card -->
-          {{-- <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Pyroll System</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Task</th>
-                    <th>Progress</th>
-                    <th style="width: 40px">Label</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($tasks as $task)
-                <tr>
-                <td>{{$task->id}}</td>
-                <td>{{$task->status->name}}</td>
-                  <td>
-                    <div class="progress progress-xs">
-                        {{$task->status->name}}
-                    </div>
-                  </td>
-                  <td><span class="badge bg-danger">55%</span></td>
-                </tr>
-                @endforeach
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">opras</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($tasks as $task)
-                  <tr>
-                  <td>{{$task->id}}</td>
-                  <td>{{$task->status->name}}</td>
-                    <td>
-                      <div class="progress progress-xs">
-                        {{$task->status->name}}
-                      </div>
-                    </td>
-                    <td><span class="badge bg-danger">55%</span></td>
-                  </tr>
-                  @endforeach
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- /.card -->
-            <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Online Attendance</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($tasks as $task)
-                    <tr>
-                    <td>{{$task->id}}</td>
-                    <td>{{$task->status->name}}</td>
-                      <td>
-                        <div class="progress progress-xs">
-                            {{$task->status->name}}
-                        </div>
-                      </td>
-                      <td><span class="badge bg-danger">55%</span></td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div> --}}
-            <!-- /.card -->
-          {{-- </div> --}}
-        <!-- /.col -->
+
       </div>
 
 

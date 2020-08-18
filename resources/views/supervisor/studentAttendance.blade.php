@@ -84,7 +84,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                  <div class="ml-auto mr-3 mb-3">
+                                  <div class="mr-auto ml-3 mb-3">
                                     <button class="btn btn-info px-3" type="submit"><i class="fas fa-save"></i> Save</button>
                                 </div>
 

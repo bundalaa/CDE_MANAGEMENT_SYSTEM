@@ -94,14 +94,4 @@ class IdentifiedChallengeController extends Controller
         return redirect('supervisorHome')->with('message', 'Sub Challenge updated successfully');
     }
 
-    public function deleteIdentifiedChallenge($identifiedChallengeId)
-    {
-        $identifiedChallenge = IdentifiedChallenge::find($identifiedChallengeId);
-
-        if (!$identifiedChallenge) {
-            return back()->withErrors('IdentifiedChallenge not found');
-        }
-        $identifiedChallenge->delete();
-        return redirect('viewidentifiedchallenges')->with('IdentifiedChallenge deleted successfuly');
-    }
 }
