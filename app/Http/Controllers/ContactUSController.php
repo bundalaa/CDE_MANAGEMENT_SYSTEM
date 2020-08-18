@@ -45,9 +45,8 @@ class ContactUSController extends Controller
      */
 
     public function contactUSPost(Request $request)
-
     {
-
+        // dd($request);
         $this->validate($request, [
 
         		'name' => 'required',
@@ -56,7 +55,7 @@ class ContactUSController extends Controller
 
                 'message' => 'required',
 
-                'coordinator_id' => 'required'
+                // 'coordinator_id' => 'required'
 
             ]);
 
@@ -65,7 +64,6 @@ class ContactUSController extends Controller
         //     if(!$coordinator){
         //   return back()->with('success','coordinator not found');
         //        }
-
         ContactUS::create($request->all());
 
         // $details=[ 'data'=>'New message' ];

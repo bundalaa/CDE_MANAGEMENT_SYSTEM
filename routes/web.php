@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('AboutUS', function () {
-    return view('ChallengeOwner.AboutUS');
+    return view('challenge-owner.AboutUS');
 });
 
 Route::get('/', function(){
@@ -79,7 +79,7 @@ Route::post('save', 'MultipleFileController@save')->name('file.save');
 #=====================================END notification================================
 
 
-Route::get('dashboard', 'AuthController@dashboard');
+// Route::get('dashboard', 'AuthController@dashboard');
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -102,7 +102,7 @@ Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
 Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
-Route::get('profile','UserController@profile')->name('profile');
+Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
 Route::post('edituserprofile','UserController@updateUserProfile')->name('edituserprofile');
 Route::get('user-screen','UserController@getUsers')->name('user-screen');
@@ -172,7 +172,7 @@ Route::get('viewstudentsscreen','UserController@viewStudents')->name('viewstuden
 //team route
 Route::get('viewcreateteam','TeamController@viewCreateTeam')->name('viewcreateteam');
 Route::get('viewteam','TeamController@viewTeam')->name('viewteam');
-Route::get('viewteamDetail/{id}','TeamController@teamTeamDetails')->name('viewteamDetail');
+Route::get('viewteamDetail/{id}','TeamController@teamDetails')->name('viewteamDetail');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
 Route::get('geteditteam/{id}','TeamController@getEditTeam')->name('geteditteam');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
@@ -185,8 +185,11 @@ Route::post('editteam/{id}','TeamController@updateTeam')->name('editteam');
 
 // Task/Schedule route
 Route::get('view-schedule', 'ScheduleController@getSchedules')->name('view-schedule');
-Route::post('schedule','ScheduleController@postSchedule')->name('schedule');
+Route::post('add-schedule','ScheduleController@postSchedule')->name('add-schedule');
 Route::post('schedules','ScheduleController@editSchedule')->name('schedules');
+Route::get('deleteSchedule/{id}','ScheduleController@deleteSchedule')->name('deleteSchedule');
+
+
 
 // Attendance route
 Route::get('view-attendance', 'AttendanceController@viewAttendancePage')->name('view-attendance');

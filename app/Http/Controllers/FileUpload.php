@@ -25,9 +25,7 @@ class FileUpload extends Controller
         $request->validate([
         'file' => 'required|mimes:csv,txt,xlx,png,xls,docx,pdf|max:2048'
         ]);
-
         $coordinator = Coordinator::find($request->coordinator_id);
-
         if(!$coordinator){
       return back()->with('success','coordinator not found');
            }

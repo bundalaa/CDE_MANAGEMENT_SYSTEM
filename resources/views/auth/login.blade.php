@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<!-- @include('challenge-owner.components.top-nav') -->
+ @include('challenge-owner.components.top-nav')
 
 @push('head')
 <link href="{{ asset('css/Auth/custom.css') }}" rel="stylesheet">
@@ -10,14 +10,15 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
+                <div class="card-header" style="text-align: center;font-size:15px">{{ __('Login') }}</div>
 <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="130" width="130"
-    style="margin-left: 37%">
+    style="margin-left: 40%">
    <div class="card-title">
     <h1
     style="color:grey;margin-left: 17%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
    </div>
 <hr id="line">
-   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 19%">
+   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%">
     Cde Information Management System
 </h2 ></div>
     <hr style="margin: 0"px>

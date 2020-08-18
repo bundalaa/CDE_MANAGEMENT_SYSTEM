@@ -8,9 +8,9 @@
               font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
             .tg .tg-0lax{text-align:left;vertical-align:top}
             </style>
-    </head> 
+    </head>
     <body>
-        <h2 style="text-align: center"><b>List of Users</b></h2>
+        <h2 style="text-align: center;color:rgb(161, 212, 246)"><b>LIST OF USERS</b></h2>
                                     <table class="tg" style="padding-left:20%">
                                         <thead class="tg-0lax">
                                             <tr>

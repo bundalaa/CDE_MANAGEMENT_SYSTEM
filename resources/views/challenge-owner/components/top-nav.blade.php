@@ -34,8 +34,8 @@
                 <i class="navbar-toggler-icon"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item active px-2">
+                <ul class="navbar-nav" style="list-style-type: none;">
+                    <li class="nav-item px-2">
                         <a href="/" class="nav-link">Home</a>
 
 
@@ -45,32 +45,35 @@
                     <li class="nav-item px-2">
                         <a href="contact-us" class="nav-link">Contact Us</a>
                     </li>
-
-
                 </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <class="navbar-nav">
+                <ul style="list-style-type: none;" class="navbar-nav ml-auto">
+                    <div class="navbar-nav">
+                        @if (Route::has('login'))
+                        @auth
+                        @if(Auth::user()-> hasRole ('admin'))
+                        <a href="{{ route('adminIndex') }}">Home</a>
+                        @endif
+                        @if(Auth::user()-> hasRole ('supervisor'))
+                        <a href="{{ route('supervisorHome') }}">Home</a>
+                        @endif
+                        @if(Auth::user()-> hasRole ('student'))
+                        <a href="{{ route('studentHome') }}">Home</a>
+                        @endif
+                        @if(Auth::user()-> hasRole ('challengeOwner'))
+                        <a href="{{ route('dashboard') }}">Home</a>
+                        @endif
+                        @else
                         <li class="nav-item active px-2">
                             <a href="{{ route('login')}}">Sign in</a>
                         </li>
+                        <li class="nav-item active px-2">
+                            <a href="{{ route('register')}}">Sign up</a>
+                        </li>
                 </ul>
+                {{-- </ul>
+
                 </ul>
-
-
-                @if (Route::has('login'))
-                @auth
-                <a href="{{ url('/home') }}">Home</a>
-                @else
-
-                <li class="nav-item active px-2">
-                    <a href="{{ route('register')}}">Sign up</a>
-
-
-
-                </li>
-                </ul>
-                </ul>
+                </ul> --}}
 
                 @endauth
                 @endif

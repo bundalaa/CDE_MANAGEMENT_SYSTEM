@@ -45,11 +45,92 @@ class UserTableSeeder extends Seeder
             'user_id'=>$student->id
             ]);
         $student->roles()->attach($studentRole);
+        $student = User::create([
+            'name'=>'Khadija Hussein',
+            'email'=>'khadija@gmail.com',
+            'password' => ('12345678'),
+        ]);
+         Student::create([
+            'user_id'=>$student->id
+            ]);
+        $student->roles()->attach($studentRole);
+        $student = User::create([
+            'name'=>'Haji mlipoteo',
+            'email'=>'haji@gmail.com',
+            'password' => ('12345678'),
+        ]);
+         Student::create([
+            'user_id'=>$student->id
+            ]);
+        $student->roles()->attach($studentRole);
+        $student = User::create([
+            'name'=>'Neema mwaipopo',
+            'email'=>'neema@gmail.com',
+            'password' => ('12345678'),
+        ]);
+         Student::create([
+            'user_id'=>$student->id
+            ]);
+        $student->roles()->attach($studentRole);
+        $student = User::create([
+            'name'=>'Cleopatra kileo',
+            'email'=>'cleopatra@gmail.com',
+            'password' => ('12345678'),
+        ]);
+         Student::create([
+            'user_id'=>$student->id
+            ]);
+        $student->roles()->attach($studentRole);
         // $student->student()->save($student);
 
         $supervisor = User::create([
-            'name'=>'miss Rahma',
+            'name'=>'Miss. Rahma',
             'email'=>'supervisor@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        Supervisor::create([
+            'user_id'=>$supervisor->id
+            ]);
+        $supervisor->roles()->attach($supervisorRole);
+        $supervisor = User::create([
+            'name'=>'Miss. Maimuna',
+            'email'=>'maimuna@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        Supervisor::create([
+            'user_id'=>$supervisor->id
+            ]);
+        $supervisor->roles()->attach($supervisorRole);
+        $supervisor = User::create([
+            'name'=>'Miss. Nawal',
+            'email'=>'nawal@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        Supervisor::create([
+            'user_id'=>$supervisor->id
+            ]);
+        $supervisor->roles()->attach($supervisorRole);
+        $supervisor = User::create([
+            'name'=>'Mr. Waziri',
+            'email'=>'waziri@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        Supervisor::create([
+            'user_id'=>$supervisor->id
+            ]);
+        $supervisor->roles()->attach($supervisorRole);
+        $supervisor = User::create([
+            'name'=>'Miss. Pudensiana',
+            'email'=>'pudensiana@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        Supervisor::create([
+            'user_id'=>$supervisor->id
+            ]);
+        $supervisor->roles()->attach($supervisorRole);
+        $supervisor = User::create([
+            'name'=>'Mr. Michael',
+            'email'=>'michael@gmail.com',
             'password' => ('12345678'),
         ]);
         Supervisor::create([
@@ -60,6 +141,33 @@ class UserTableSeeder extends Seeder
         $challengeOwner = User::create([
             'name'=>'DAWASA comp',
             'email'=>'challengeOwner@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        ChallengeOwner::create([
+            'user_id'=>$challengeOwner->id
+            ]);
+        $challengeOwner->roles()->attach($challengeOwnerRole);
+        $challengeOwner = User::create([
+            'name'=>'Ewura comp',
+            'email'=>'ewura@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        ChallengeOwner::create([
+            'user_id'=>$challengeOwner->id
+            ]);
+        $challengeOwner->roles()->attach($challengeOwnerRole);
+        $challengeOwner = User::create([
+            'name'=>'Rita',
+            'email'=>'rita@gmail.com',
+            'password' => ('12345678'),
+        ]);
+        ChallengeOwner::create([
+            'user_id'=>$challengeOwner->id
+            ]);
+        $challengeOwner->roles()->attach($challengeOwnerRole);
+        $challengeOwner = User::create([
+            'name'=>'Tanesco comp',
+            'email'=>'tanesco@gmail.com',
             'password' => ('12345678'),
         ]);
         ChallengeOwner::create([
