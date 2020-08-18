@@ -72,7 +72,7 @@ public function setPasswordAttribute($password)
 
   public function supervisor()
   {
-      return $this->hasOne(Supervisor::class,'user_id');
+      return $this->hasOne(Supervisor::class);
   }
 
   public function student()

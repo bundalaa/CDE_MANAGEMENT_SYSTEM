@@ -14,6 +14,27 @@
         </div>
     </div>
 </header>
+@if ($message = Session::get('success'))
+
+<div class="alert alert-success alert-block">
+
+    <button type="button" class="close" data-dismiss="alert">×</button>
+
+    <strong>{{ $message }}</strong>
+
+</div>
+@endif
+
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
 <div id="page-container">
     <div id="content-wrap">
@@ -52,13 +73,8 @@
                                                 </button>
                                             </div>
                                             <select style="color: #000;" name="supervisor_id" class="form-control" id="">
-                             @php
-                                 $supervisors = User::whereHas('roles',function($role){
-                                 $role->where('name','supervisor');
-                                   })->get();
-                             @endphp
-                             @foreach ($supervisors as $supervisors)
-                                            <option value="{{$supervisors->id}}"> {{$supervisors->name}} </option>
+                             @foreach ($supervisors as $supervisor)
+                                            <option value="{{$supervisor->id}}"> {{$supervisor->user->name}} </option>
                              @endforeach
                                             </select>
                                         </div>

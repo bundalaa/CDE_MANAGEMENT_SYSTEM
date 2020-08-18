@@ -230,7 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Image' => Intervention\Image\Facades\Image::class,
-      
+
 
 
     ],

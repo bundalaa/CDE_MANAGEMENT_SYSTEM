@@ -16,46 +16,157 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+#page-container{
+ background-color: whitesmoke;
 
+}
+</style>
 </head>
 <body>
 <div id="page-container">
 
-@include('challenge-owner.component.top-nav')
+@include('layouts.homeNav')
 <div id="content-wrap">
-
-    <main role="main">
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-0">Welcome Challenge Driven Education Management System,(CDEMS)</h1>
-          <p>CDE is a new education method which intends to enable students to identify problem in the communities and find the concrete solution,Aimed at enhancing a scalable working skills such as problem solving and team collaboration skills.</p>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Upoload-Challenge</h2>
-            <p>In this section you can upload your Challenge/Problem and will reach us then we will come up with concrete solution of your challenge/problem... </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Feeback</h2>
-            <p>This section will help you as our customer to get the progress/project status and you will be able to write back your comment about the progress and if you have some changes you can add as a comment... </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Publication</h2>
-            <p>Here you can see our publications about material related to what we are doing and other  education materials...</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="item">
+            <img src="{{URL::asset('/images/homepage.jpg')}}" alt="" style="width:100%; height:400px;">
         </div>
     </div>
-    <footer id="footer" class="bg-dark" style="margin-top:520px;color:white" >
-    <div class="py-2 text-center">
-    <p> &copyright Udsm <span id="year"></span><script>
-    document.write(new Date().getFullYear());
-    </script>, All rights reserved</p>
+    {{-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{{URL::asset('/images/det_pic.jpg')}}" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 style="color: black;">First caption</h5>
+                <p style="color:black;">We serve with Quality</p>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="{{URL::asset('/images/pic1.jpg')}}" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="{{URL::asset('/images/pic1.jpg')}}" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div> --}}
+      <div class="row">
+      <div class="col-lg-6">
+      <div class="main_bg"><!-- start main -->
+        <div class="container">
+            <div class="about row">
+                <h2>About us</h2>
+                <p class="text-justify">Challenge-Driven Education(CDE) is an education for sustainable development approach, which aims to prepare students to work with global challenges and to bring value to society by direct impact.The Challenge Driven education introduced at University of Dar es salaam within
+                    engineering education in collaboration with the Royal Institute of Technology,KHT in Stockholm.</p>
+                <p class="text-justify">In Challenge-Driven Education the idea is to provide students opportunities collaborate with societal stakeholders on developing solutions to various societal challenges.The Challenge Driven Education collaborate with society to provide solution to different challenges.</p>
+                {{-- <a href="single-page.html" class="fa-btn btn-1 btn-1e">read more</a> --}}
+            </div>
+        </div>
+    </div>
+      </div>
+      <div class="col-lg-6">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if ($message = Session::get('response'))
+
+    <div class="alert alert-success alert-block">
+
+        <button type="button" class="close" data-dismiss="alert">×</button>
+
+        <strong>{{ $message }}</strong>
+    </div>
+   @endif
+        <div class="contact-form">
+          <h2>Contact Us</h2>
+            <form action="ContactMessage" method="post">
+                @csrf
+              <div>
+                <span>name</span>
+                <span><input type="name" name="name" class="form-control" id="userName"></span>
+              </div>
+              <div>
+                <span>e-mail</span>
+                <span><input type="email" name="email" class="form-control" id="inputEmail3"></span>
+              </div>
+              <div>
+                <span>message</span>
+                <span><textarea name="message" class="form-control"></textarea></span>
+              </div>
+             <div>
+
+                <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+            </div>
+            </form>
+          </div>
+      </div>
+      <div class="col-lg-6">
+        <h2>Location</h2>
+        <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=collenge%20of%20information%20and%20communication%20technologies&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+       </div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+      </div>
+      <div class="col-lg-6">
+        <blockquote class="quote-box">
+            <p class="quotation-mark">
+              “
+            </p>
+            <p class="quote-text">
+                Challenge Driven Education is an approach to increase students’ impact to community.
+            </p>
+            <p class="quotation-mark">
+                ,,
+              </p>
+            <hr>
+          </blockquote>
+      </div>
+      </div>
+      <div class="container">
+          <h1>Our Partners</h1>
+          <div class="row" style="">
+            <div class="col-md-3">
+                <a href="https://www.udsm.ac.tz/">
+                <img src="{{URL::asset('/images/logo.png')}}" class="img-rounded" alt="Cinque Terre" width="150" height="130"></a>
+            </div>
+            <div class="col-md-3">
+                <a href="https://www.udsm.ac.tz/">
+                <img src="{{URL::asset('/images/udcti.jpg')}}" class="img-rounded" alt="Cinque Terre" width="150" height="130"></a>
+            </div>
+            <div class="col-md-3">
+                <a href="https://dlab.or.tz/">
+                <img src="{{URL::asset('/images/dlab.png')}}" class="img-rounded" alt="Cinque Terre" width="150" height="130"></a>
+            </div>
+            <div class="col-md-3">
+                <a href="https://y4chub.tech">
+                <img src="{{URL::asset('/images/y4c.png')}}" class="img-rounded" alt="Cinque Terre" width="150" height="130"></a>
+            </div>
+        </div>
+      </div>
+     <br>
+    </div>
+    <footer id="footer" class="bg-dark">
+        <div class="py-3 text-center">
+        <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+        </div>
+        </footer>
     </div>
     </footer>
     </div>

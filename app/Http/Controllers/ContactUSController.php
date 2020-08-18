@@ -66,4 +66,22 @@ class ContactUSController extends Controller
 
     }
 
+    //homepage contact us
+    public function SendContactMessage(request $request)
+    {
+        $data=request()->validate([
+
+            'name' => 'required',
+
+            'email' => 'required|email',
+
+            'message' => 'required|max:400',
+
+        ]);
+        ContactUS::create($request->all());
+        return  redirect()->back()->with('response','Your message has been sent successfully, Thanks for contacting us!.');
+
+
+    }
+
 }

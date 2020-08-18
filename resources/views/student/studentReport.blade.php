@@ -34,7 +34,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -44,7 +44,7 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link">Teams</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
@@ -121,12 +121,12 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (Auth::user())
-                             @if(Auth::User()->avatar!='/profile/avatar5.png')
-                            <img src="{{url('profile/avatar5.png')}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (auth()->user())
+                              @if(Auth::User()->avatar!='/images/default-avatar.png')
+                              <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -160,10 +160,10 @@
  <div id="content-wrap">
 <!--contents-->
 <br>
-<p style="text-align: center">The upload reports includes all practical training PT and final year projects reports that will be needed
-    for assessment.</p>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<p style="text-align: center">The upload reports includes reports during data collection and final year projects done by students
+    under supervision of CDE.</p>
+
+
             @if ($message = Session::get('success'))
 
                 <div class="alert alert-success alert-block">
@@ -185,22 +185,21 @@
                     </ul>
                 </div>
             @endif
-
-    <div class="col-md-12">
+    <div class="row">
+    <div class="col-lg-6">
     <div class="card">
-        <div class="card-header bg-primary">{{ __('Weekly and Final project reports can be uploaded here') }}</div>
+    <div class="card-header bg-primary">{{ __('Weekly and Final project reports can be uploaded here') }}</div>
    <div class="card-body">
    <form action="studentReport" method="post" enctype="multipart/form-data">
             @csrf
         <div class="form-group">
-            <input type="hidden" name="team_id" value="1" />
-        </div>
-        <div class="form-group">
-        <input type="hidden" name="supervisor_id" value="2"/>
-             </div>
-        <div class="form-group">
-             <label>Title:</label>
-     <input type="text" name="title" class="form-control" placeholder="project title">
+        <label>Team Name:</label>
+     {{-- <input type="text" name="title" class="form-control" placeholder="project title"> --}}
+      <select style="color: #000" name="team_id" class="form-control">
+        @foreach($teams as $team)
+     <option selected value={{$team['id']}}>{{$team->identifiedChallenge['name']}}</option>
+        @endforeach
+    </select>
           </div>
           <div class="form-group">
             <label>Subtitle:</label>
@@ -219,6 +218,31 @@
   </form>
 </div>
 </div>
+</div>
+<div class="col-lg-6">
+    <table class="table table-bordered">
+     <thead>
+     {{-- <th>Description</th>
+     <th>Date created</th> --}}
+     <th>Report File</th>
+     <th>Action</th>
+     </thead>
+     <tbody>
+    @foreach($reports as $down)
+    <tr>
+    {{-- <td>{{$down->title}}</td>
+    <td>{{$down->created_at}}</td> --}}
+    <td>{{$down->file}}</td>
+    <td>
+    <a href="public/storage/reports/{{$down->file}}" download="{{$down->file}}">
+            <button type="button" class="btn btn-primary">
+            <i class="fas fa-download">Download</i></button>
+        </a>
+    </td>
+    </tr>
+    @endforeach
+     </tbody>
+    </table>
 </div>
 </div>
 </div>

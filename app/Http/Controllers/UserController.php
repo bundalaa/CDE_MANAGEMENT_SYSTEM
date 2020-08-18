@@ -9,7 +9,6 @@ use App\Supervisor;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -64,7 +63,7 @@ class UserController extends Controller
         foreach ($latestusers as $user) {
             $user->roles->first;
         }
-        return view('admin.adminIndex', ['latestusers' => $latestusers]);
+        return view('admin.admin_index', ['latestusers' => $latestusers]);
         // return response()->json(['user'=>$user],201);
     }
 
@@ -76,13 +75,13 @@ class UserController extends Controller
             'email' => 'required|unique:users',
             'role_id' => 'required'
         ]);
-        // return response()->json(['re'=>$request]);
+
         $user = new User();
         $user->name = $request['name'];
         $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-
+        $user->password = Hash::make("12345678");
         $user->save();
+
         $role = Role::find($request['role_id']);
         if (!$role) {
             return redirect('createuser')
@@ -157,17 +156,20 @@ class UserController extends Controller
         return view('admin.editUser_screen', ['user' => $user,'roles' => $roles]);
     }
 
+
     //update user
     public function updateUser(Request $request)
     {
         $user = User::where('id', $request['id'])->first();
         $user->name = $request['name'];
         $user->email = $request['email'];
-
+        $role = Role::find($request['role_id']);
+        $user->roles()->sync($role);
         $user->save();
 
-        return redirect('/')->with('message', 'user updated successfully');
+        return redirect('adminIndex')->with('message', 'user updated successfully');
     }
+
 
     //edit admn Profile
     public function profile()
@@ -182,7 +184,7 @@ class UserController extends Controller
         $users->name = $request['name'];
         $users->email = $request['email'];
         $users->save();
-        return redirect('profile')
+        return redirect('userprofile')
             ->with('message', 'successfully');
     }
 
@@ -199,7 +201,7 @@ class UserController extends Controller
             $file = $request->file('avatar');
             $file->move(public_path('/images/avatars/'), $filename);
         }
-        return redirect('profile');
+        return redirect('userprofile');
     }
 
     //delete user function
@@ -213,31 +215,47 @@ class UserController extends Controller
         return redirect('user-screen')
             ->with('message', 'User deleted successfully');
     }
-    ///student module
 
+
+    ///student module
 
     public function edit()
     {
-        $user =Auth::user();
-        return view('student.stuProfile',['user'=>$user]);
+        return view('student.stuProfile');
 
     }
     public function AddProfile(request $request)
     {
       $this->validate($request,[
 
-       'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+       'avatar'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
-      $user =Auth::user();
+      $user = User::where('id', auth()->user()->id)->first();
       if($request->hasFile('avatar')){
         $avatar=$request->file('avatar');
-        $avatar->move(public_path().'/profile/',$avatar->getClientOriginalName());
-    //    $url= URL::to("/stuProfile").'/profile/'.$file->getClientOriginalName();
-      $user->avatar=$avatar;
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+      $user->avatar=$filename;
       $user->save();
+      $file = $request->file('avatar');
+      $file->move(public_path('/images/avatars/'), $filename);
       return redirect('stuProfile')->with('response','Profile Added successfully');
       }
+      $users = User::where('id', auth()->user()->id)->first();
+      $users->name = $request['name'];
+      $users->email = $request['email'];
+      $users->save();
+      return redirect('stuProfile')->with('response', 'successfully edit');
     }
+    // public function deletePicture(user $id)
+    // {
+    //     $user = User::find($id);
+    //     if (!$user) {
+    //         return Redirect::back()->withErrors('user not found');
+    //     }
+    //     $user->delete();
+    //     return redirect('user-screen')
+    //         ->with('message', 'User deleted successfully');
+    // }
     public function stupassword(){
         return view('student.studentChangePassword');
     }

@@ -27,11 +27,6 @@
                                 <i class="fas fa-plus text-dark"></i> Create user
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            {{-- <a href="{{route('usermanagement')}}" class="btn btn-outline-info btn-block">
-                                <i class="fas fa-plus text-dark"></i> User management
-                            </a> --}}
-                        </div>
                     </div>
                 </div>
             </section>

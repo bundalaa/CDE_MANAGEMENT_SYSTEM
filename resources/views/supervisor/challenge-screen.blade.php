@@ -49,15 +49,15 @@
                                         <td>{{ $challenge->id }}</td>
                                         <td>{{ $challenge->name }}</td>
                                         <td>{{ $challenge->description }}</td>
-                                        <td><a href="{{route('viewchallengedetail',[$challenge->id])}}" class="btn btn-info">
+                                        <td style="width:200px"><a href="{{route('viewchallengedetail',[$challenge->id])}}" class="btn btn-info">
                                             <i class="fas fa-angle-double-right"></i> Update Challenge
                                         </a>
                                     </td>
-                                        <td><a href="{{route('viewaddidentifiedchallenge',[$challenge->id])}}" class="btn btn-secondary">
+                                        <td style="width:200px"><a href="{{route('viewaddidentifiedchallenge',[$challenge->id])}}" class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Add Sub Challenge
                                         </a>
                                     </td>
-                                    <td><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">
+                                    <td style="width:200px"><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">
                                         <i class="fas fa-angle-double-right"></i> view Sub Challenge
                                     </a>
                                 </td>

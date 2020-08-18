@@ -10,7 +10,7 @@ class Report extends Model
     use SoftDeletes;
 
     protected $fillable = [
-      'title','subtitle','description','file','supervisor_id','team_id',
+      'team_id','supervisor_id','subtitle','description','file',
     ];
 
     protected $dates = [
@@ -26,9 +26,9 @@ class Report extends Model
     {
     return $this->belongsTo(Supervisor::class);
     }
-    public function comments()
+    public function reportcomments()
     {
-        return $this->hasMany(Comment::class)->whereNull('parent_id');
+        return $this->hasMany(Reportcomment::class);
     }
 
 }

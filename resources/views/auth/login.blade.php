@@ -13,7 +13,7 @@
    </div>
 <hr id="line">
    <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 26%">
-    Cde Management Platform
+    Cde Information Management System
 </h2 ></div>
     <hr style="margin: 0"px>
                <div class="mycard">
@@ -33,9 +33,9 @@
                                 </div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             </div>
-                            @error('email')
+                            @if($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @enderror
                         </div>

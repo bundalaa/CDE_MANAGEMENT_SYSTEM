@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Student;
+use App\Team;
+use App\Supervisor;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -23,10 +25,12 @@ class StudentController extends Controller
     {
      return view('student.studentReport');
     }
-   
+
     public function teamView()
     {
-      return view('student.StundentTeamView');
+        $supervisor=Supervisor::all();
+        $teams = Team::all();
+      return view('student.StundentTeamView',['teams'=>$teams],['supervisor'=>$supervisor]);
     }
     public function __construct()
     {

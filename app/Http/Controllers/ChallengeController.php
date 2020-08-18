@@ -83,6 +83,10 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
     ///student module
     public function getProj()
     {
-      return view('student.StudentChallengeView');
+        $challenges=Challenge::all();
+      return view('student.StudentChallengeView',[
+          
+        'challenges'=>$challenges
+      ]);
     }
 }

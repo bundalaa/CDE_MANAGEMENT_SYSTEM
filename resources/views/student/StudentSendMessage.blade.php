@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,18 +43,52 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link">Teams</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                 <li class="nav-item dropdown">
+                    <a class="nav-link"  href="StudentSendMessage">
+                    <i class="fas fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge"></span>
+                     </a>
+                 </li>
+            <!-- Notifications Dropdown Menu -->
+           <li class="nav-item dropdown">
+           <a class="nav-link" data-toggle="dropdown" href="#">
+           <i id="notification" class="fas fa-bell">
+           <span class="badge badge-danger navbar-badge">{{Auth::user()->Notifications->count()}}</span>
+           </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+           <span class="dropdown-item dropdown-header">Notifications</span>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+         </li>
+         </ul>
+            <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (Auth::user())
-                            @if(Auth::User()->avatar!='/profile/avatar5.png')
-                            <img src="{{url('profile/avatar5.png')}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (auth()->user())
+                            @if(Auth::User()->avatar!='/images/default-avatar.png')
+                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
@@ -87,14 +121,33 @@
     </section>
  <div id="content-wrap">
      &nbsp;
-   <div class="row justify-content-center">
-    <div class="col-md-7">
-    <div class="card">
+        @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                 <ul>
+                  @foreach ($errors->all() as $error)
+                 <li>{{ $error }}</li>
+                 @endforeach
+                 </ul>
+                        </div>
+                    @endif
+                @if ($message = Session::get('response'))
+
+                <div class="alert alert-success alert-block">
+
+                 <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+                 </div>
+           @endif
+     <div class="row justify-content-center">
+    <div class="col-lg-6">
+     <div class="card">
         <div class="card-header bg-primary">{{ __('Send a message') }}</div>
         <div class="card-body">
-          <form action="" method="post" role="form" class="">
+          <form action="/sendMessage" method="post" role="form" class="">
+            @csrf
             <div class="form-group">
-              <input type="text" name="name"  id="name" placeholder="Your Name" class="form-control"/>
+              <input type="text" name="name"  id="name" placeholder="Your Name" value="{{Auth::user()->name}}" class="form-control"/>
               </div>
             <div class="form-group">
               <input type="text"  name="subject" id="subject" placeholder="Subject" class="form-control"/>

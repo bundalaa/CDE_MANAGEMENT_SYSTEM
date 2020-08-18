@@ -19,6 +19,6 @@ class Status extends Model
 
     //relationships
     public function task(){
-        return $this->belongsTo(Task::class);
+        return $this->hasOne(Task::class);
     }
 }

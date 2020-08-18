@@ -60,7 +60,7 @@ Route::post('save', 'MultipleFileController@save')->name('file.save');
 
 ////admn and supervisor routes
 Route::prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
+    Route::resource('/admin-index', 'AdminController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 Route::prefix('student')->name('student.')->group(function(){
     Route::resource('/index', 'StudentController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
@@ -72,6 +72,7 @@ Route::prefix('supervisor')->name('supervisor.')->group(function(){
     Route::resource('/index', 'SupervisorController' , ['except' => ['show' , 'create' ,'store' , 'edit' , 'destroy' , 'update']]);
 });
 
+//////administrator Module
 // User Routes
 Route::get('adminIndex','UserController@getLatestUsers')->name('adminIndex');
 Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
@@ -79,7 +80,7 @@ Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
 // Route::get('viewedituser','UserController@viewEditUser')->name('viewedituser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
-Route::get('profile','UserController@profile')->name('profile');
+Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
 Route::post('edituserprofile','UserController@updateUserProfile')->name('edituserprofile');
 Route::get('user-screen','UserController@getUsers')->name('user-screen');
@@ -91,7 +92,7 @@ Route::post('changepassword','UserController@changePassword')->name('changepassw
 Route::get('viewcoordinatorscreen','UserController@viewCoordinators')->name('viewcoordinatorscreen');
 Route::get('getCoordinator','CoordinatorController@getCoordinator')->name('getCoordinator');
 Route::get('view-notification','CoordinatorController@viewNotification')->name('view-notification');
-Route::get('view-publication', 'CoordinatorController@viewPublication')->name('view-publication');
+Route::get('view-newChallenge', 'CoordinatorController@viewNewChallenge')->name('view-newChallenge');
 Route::get('viewprogress','CoordinatorController@viewProjectProgress')->name('viewprogress');
 Route::get('getchallenge','ChallengeController@getChallenge')->name('getchallenge');
 Route::get('viewcoordinator','CoordinatorController@viewCoordinators')->name('viewcoordinators');
@@ -157,12 +158,17 @@ Route::get('getAttendanceReport', 'AttendanceController@getAttendanceReport')->n
 Route::post('addAttendance','AttendanceController@postAttendance')->name('addAttendance');
 Route::get('getReport/{id}', 'AttendanceController@getReport')->name('getReport');
 
+
 // challengeProgressForm route
 Route::get('view-projectProgressForm','ProjectProgressController@viewProgressForm')->name('view-projectProgressForm');
 
 //Report route
 Route::get('view-report', 'ReportController@viewReport')->name('view-report');
+Route::get('get1Report{id}', 'ReportController@get1Report')->name('get1Report');
+Route::post('postCommentReport/{id}', 'ReportController@postCommentReport')->name('postCommentReport');
 Route::get('downloadReport{id}', 'ReportController@readReport')->name('downloadReport');
+Route::get('markReadNotification', 'ReportController@markReadNotification')->name('markReadNotification');
+
 
 //Permission route
 Route::get('permission', 'PermissionController@assign')->name('permission');
@@ -171,21 +177,25 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 ////End of admin and supervisor routes
 
 
-//// student module
+// student module
 Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
 Route::get('StudenSchedule', 'ScheduleController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
 Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
+Route::get('getviewAlldownload','ReportController@download')->name('report');
 Route::get('StudentChallengeView', 'ChallengeController@getProj')->name('StudentChallengeView');
 Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamView');
 
-Route::get('StudentSendMessage','CommentController@stundMessage')->name('StudentSendMessage');
+Route::get('StudentSendMessage','ContactController@stundMessage')->name('StudentSendMessage');
+Route::post('/sendMessage','ContactController@sendSMS')->name('sendMessage');
 
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
 Route::post('/Addprofile','UserController@AddProfile');
+Route::delete('deletePicture/{id}','UserController@deleteicture')->name('deletePicture');
 
 Route::get('/password','UserController@stupassword')->name('/password');
 Route::post('changeStuPassword','UserController@ChangeStudent')->name('changeStudPassword');
+Route::post('ContactMessage','ContactUSController@SendContactMessage')->name('ContactMessage');
 
 Route::get('/', function () {
     return view('welcome');

@@ -18,10 +18,10 @@ class Task extends Model
     ];
 
     //relationships
-    public function IdentifiedChallenges(){
-        return $this->hasMany(IdentifiedChallenge::class);
+    public function identifiedChallenge(){
+        return $this->belongsTo(IdentifiedChallenge::class);
     }
     public function status(){
-        return $this->hasOne(Status::class);
+        return $this->belongsTo(Status::class);
     }
 }

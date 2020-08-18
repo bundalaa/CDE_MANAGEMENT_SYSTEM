@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Coordinator;
+use App\IdentifiedChallenge;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,30 +11,29 @@ use Illuminate\Support\Facades\Request as REQ;
 
 class CoordinatorController extends Controller
 {
-    public function inboxMessageA()
-    {
-        return view('admin.inboxmessageA');
-    }
-    public function composeMessageA()
-    {
-        return view('admin.composeA');
-    }
-    public function readMessageA()
-    {
-        return view('admin.readmessageA');
-    }
     public function viewProjectProgress()
     {
-        $tasks = Task::all();
-        return view('admin.progress', ['tasks' => $tasks]);
+        $identifiedchallenges = IdentifiedChallenge::all();
+
+        foreach ($identifiedchallenges as $identifiedchallenge) {
+            $identifiedchallenge->tasks;
+        }
+
+        // $admin = auth()->user()->coordinator;
+
+        // if(!$admin){
+        //    return  redirect('/');
+        // }
+
+        return view('admin.progress', ['identifiedchallenges' => $identifiedchallenges]);
     }
     public function viewNotification()
     {
         return view('welcome',);
     }
-    public function viewPublication()
+    public function viewNewChallenge()
     {
-        return view('admin.publication',);
+        return view('admin.newchallenge',);
     }
     public function viewCoordinators()
     {

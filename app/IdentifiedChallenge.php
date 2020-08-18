@@ -34,8 +34,8 @@ class IdentifiedChallenge extends Model
     // {
     //     return $this->morphMany('App\Comment', 'commentable');
     // }
-    public function task(){
-        $this->belongsTo(Task::class);
+    public function tasks(){
+      return  $this->hasMany(Task::class, 'identified_challenge_id');
     }
 
 }

@@ -11,7 +11,9 @@
             <div class="col-md-6 ml-auto">
                 <div class="input-group">
 <select name="date" id="date" onChange="onChange(this)">
+@if($report != null)
 <option value="{{$report->id}}">{{$report->attendance_date}}</option>
+@endif
 @foreach($reports as $theReport)
 <option value="{{$theReport->id}}">{{$theReport->attendance_date}}</option>
     @endforeach
@@ -25,6 +27,7 @@
     </div>
 </header>
 
+@if($report != null)
     <div id="page-container">
         <div id="content-wrap">
             <section id="admin-panel" class="py-4">
@@ -69,6 +72,7 @@
                 </div>
             </section>
         </div>
+        @endif
         <script>
             function onChange(report_id){
 
