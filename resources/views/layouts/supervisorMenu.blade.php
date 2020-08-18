@@ -83,14 +83,15 @@
                             {{-- <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a> --}}
                           </div>
                         </li>
-                        <li class="nav-item dropdown ml-5" >
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                              @if (auth()->user())
-                              @if(Auth::User()->avatar!='/images/default-avatar.png')
-                              <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                       <ul  class="navbar-nav ml-auto" style="padding-left: 430px">
+                        <li class="nav-item dropdown" >
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                @if (auth()->user())
+                                @if(Auth::User()->avatar!='/images/default-avatar.png')
+                                <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
-                              @else
-                              <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                                @else
+                                <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                               @endif
                                Welcome {{auth()->user()->name}}

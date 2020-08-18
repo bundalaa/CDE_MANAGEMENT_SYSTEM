@@ -134,6 +134,13 @@
 
 </head>
 <body style="background:  #e6ecf0; width:100%">
+
+
+
+@foreach ($feedbacks as $key => $feedback)
+<li class="chartData" style="display: none">{{ $feedback->name}}:{{$feedback->status}}:</li>
+@endforeach
+
         <div class="container-fluid">
             <div class="row">
 
@@ -152,6 +159,9 @@
         <div class="card">
                                  <div class="card-header">
                                         <h4><strong> Project Progress Summary</strong></h4>
+                                        <div style="float:right">
+                                                                        {{-- <a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success mb-2" >Export PDF</a> --}}
+                                                                        </div>
                                     </div>
                                     <div class="card-body">
 
@@ -230,6 +240,20 @@
                         <script src="dist/js/pages/dashboard2.js"></script>
 
 <script>
+    let chartData = document.querySelectorAll('.chartData');
+    let datas = ''
+    chartData.forEach(data => {
+        datas += (data.textContent)
+    })
+    let dataArray = datas.slice(0, -1).split(':')
+    let status = [], names = []
+    for(let i = 0; i < dataArray.length; i++) {
+       if (i % 2 == 0) {
+           names.push(dataArray[i])
+       }else {
+           status.push(Number(dataArray[i]))
+       }
+    }
     var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -237,12 +261,12 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: ['Data collection','System  Analysis', 'System design', 'Implementation', 'Testing'],
+        labels: names,
         datasets: [{
             label: 'Project tasks',
             backgroundColor: 'rgb(250, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [100,45,60,30,20,10,10]
+            data: status
         }]
     },
 

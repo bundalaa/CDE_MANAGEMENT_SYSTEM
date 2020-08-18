@@ -10,7 +10,7 @@ class Feedback extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'description', 'coordinator_id', 'challenge_id'
+        'email','subject','body'
     ];
 
     protected $dates = [

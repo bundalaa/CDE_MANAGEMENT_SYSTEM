@@ -73,10 +73,22 @@ class ContactUSController extends Controller
         return back()->with('success', 'Thanks for contacting us!');
     }
 
-    public function challengeOwnerProfile(){
+    //homepage contact us
+    public function SendContactMessage(request $request)
+    {
+        $data=request()->validate([
 
-        return view('challenge-owner.Profile');
+            'name' => 'required',
 
-        }
+            'email' => 'required|email',
+
+            'message' => 'required|max:400',
+
+        ]);
+        ContactUS::create($request->all());
+        return  redirect()->back()->with('response','Your message has been sent successfully, Thanks for contacting us!.');
+
+
+    }
 
 }

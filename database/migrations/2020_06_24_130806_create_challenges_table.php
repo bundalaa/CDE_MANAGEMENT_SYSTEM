@@ -16,8 +16,7 @@ class CreateChallengesTable extends Migration
         Schema::create('challenges', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-
+            $table->longText('description');
             $table->softDeletes();
             $table->timestamps();
         });

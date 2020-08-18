@@ -1,8 +1,9 @@
 @extends('layouts.app')
-@include('challenge-owner.components.top-nav')
+{{-- @include('challenge-owner.components.top-nav') --}}
+@include('layouts.homeNav')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">

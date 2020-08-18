@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="/" class="navbar-brand">
                 <img src="{{URL::asset('/images/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -77,10 +77,8 @@
 
                 @endauth
                 @endif
-
                 </li>
                 </ul>
-
                 </ul>
             </div>
         </div>

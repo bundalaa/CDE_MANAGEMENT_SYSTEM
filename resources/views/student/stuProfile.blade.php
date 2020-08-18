@@ -33,7 +33,7 @@
                             <a href="studentHome" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                            <a href="StudentChallengeView" class="nav-link">Challenges</a>
                         </li>
                         <li class="nav-item px-2">
                             <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,49 +43,55 @@
                             <a href="StudenSchedule" class="nav-link">Schedule</a>
                         </li>
                         <li class="nav-item px-2">
-                            <a href="StudentTeamView" class="nav-link">Team</a>
+                            <a href="StudentTeamView" class="nav-link">Teams</a>
                         </li>
                      </ul>
                      <ul class="navbar-nav ml-auto">
                        <!-- Messages Dropdown Menu -->
-                     <li class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="projects">
-                        <i class="fas fa-comments"></i>
-                       <span class="badge badge-danger navbar-badge">3</span>
-                         </a>
-                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <a href="#" class="dropdown-item">
-                                <!-- Message Start -->
-                            </a>
-                         </div>
-                     </li>
-                    <!-- Notifications Dropdown Menu -->
-                   <li class="nav-item dropdown">
-                   <a class="nav-link" data-toggle="dropdown" href="#">
-                   <i class="fas fa-bell"></i>
-                  <span class="badge badge-danger navbar-badge">5</span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
-                            </a>
-                  </div>
-                 </li>
-                    </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link"  href="StudentSendMessage">
+                          <i class="fas fa-comments"></i>
+                          <span class="badge badge-danger navbar-badge"></span>
+                        </a>
 
-                    <ul class="navbar-nav ml-auto">
+                      </li>
+                     <!-- Notifications Dropdown Menu -->
+           <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i id="notification" class="fas fa-bell">
+              <span class="badge navbar-badge">{{Auth::user()->Notifications->count() }}</span>
+              </i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+        </ul>
+
+         <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown mr-3">
                             <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
 
-                                @if (Auth::user())
-                                @if(Auth::User()->avatar!='/profile/avatar.jpg')
-                            <img src="{{url('profile/avatar.jpg')}}"  alt="" style="width:30px;height:30px;border-radius:50%">
+                             @if (auth()->user())
+                              @if(Auth::User()->avatar!='/images/default-avatar.png')
+                              <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}"  alt="" style="width:30px;height:30px;border-radius:50%">
 
                                 @else
-                                <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                                <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                                 @endif
                                  Welcome {{auth()->user()->name}}
                                 @endif
@@ -112,7 +118,7 @@
         <div id="page-container">
             <section id="dashboard" class="py-1">
                 <div class="container">
-                    <i class="fas fa-edit fa-3x"></i>
+                    <i class="fas fa-user-circle fa-3x"></i>
                     <span class="display-4 text-info">Edit profile</span>
                 </div>
             </section>
@@ -120,9 +126,18 @@
           @extends('layouts.app')
              @section('content')
              <div class="container">
-                 <div class="row">
-                     <div class="col-md-8 col-md-offset-2">
-
+                <div class="col-md-3">
+                    <a href="/password" class="btn btn-success btn-block">
+                        <i class="fas fa-lock text-light"></i> Change Password
+                    </a>
+                </div>
+                  &nbsp;
+                 <div class="row pb-1">
+                     <div class="col-md-9 mb-4 d-flex justify-content-center flex-wrap flex-column">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Edit Profile</h4>
+                            </div>
                         @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -139,84 +154,72 @@
                         <button type="button" class="close" data-dismiss="alert">×</button>
 
                         <strong>{{ $message }}</strong>
+                    </div>
+                  @endif
+
+                <div class="card-body px-5">
+                    <form action="/Addprofile" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="Username"></label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info">
+                                        <i class="far fa-user"></i>
+                                    </button>
+                                </div>
+                                <input type="text" name="name" id="username"
+                                    class="form-control p-4" placeholder="Username"
+                                    value="{{auth()->user()->name}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email"></label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary">
+                                        <i class="far fa-envelope"></i>
+                                    </button>
+                                </div>
+                                <input type="email" name="email" id="email" class="form-control p-4"
+                                    placeholder="Email address" value=" {{auth()->user()->email}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="submit" id="submit"
+                                class="form-control btn-info">
+                               Add Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
                </div>
-                @endif
+                </div>
+                 <div class="col-md-3 pl-5">
+                     @if(Auth::User()->avatar!='/images/default-avatar.png')
+                     <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:100px;margin-left:10px;height:100px;border-radius:50%">
 
-                        <div class="card">
-                            <div class="card-header bg-primary">{{ __('Profile') }}</div>
+                     @else
+                     <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:100px;margin-left:10px;height:100px;border-radius:50%">
 
-                            <div class="card-body">
-                            <form method="POST" action="{{'/Addprofile'}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Enter Name') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value=" {{ $user->name }}"
-                                        required autocomplete="name" autofocus>
-
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('EMail Address') }}</label>
-
-                                    <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}"
-                                         required autocomplete="email" autofocus>
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="profile_picture" class="col-md-4 col-form-label text-md-right">{{ __('profile picture') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror"
-                                        name="avatar">
-
-                                        @error('profile_picture')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            {{ __('Add Profile') }}
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </form>
+                     @endif
+                 <form action="/Addprofile" method="post" enctype="multipart/form-data">
+                    <div class="card-box"></div>
+                     <div class="form-group">
+                             <label for="img">Select image:</label>
+                   <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                   <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
+                   <input  class="form-control btn btn-info btn-block" type="submit">
                          </div>
-                     </div>
-                 </div>
-                 <div class="panel-body">
-                     <div class="col-md-4">
-                    <img src="{{url('profile/avatar.jpg')}}" class="avatar" alt="profile">
-                    <p class="lead">{{$user->name}}</p>
-                    <p class="lead">{{$user->email}}</p>
-                     </div>
-                     <div class="col-md-8">
-
-                     </div>
-                 </div>
+                         <div class="form-group">
+                             <input type="submit" class="form-control btn btn-warning btn-block"
+                            value="Delete Photo">
+                         </div>
+                     </form>
+                </div>
              </div>
-
-         </div>
+          </div>
          <footer id="footer" class="bg-dark">
             <div class="py-3 text-center">
                 <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>

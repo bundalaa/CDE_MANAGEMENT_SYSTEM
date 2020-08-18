@@ -1,12 +1,14 @@
 @extends('layouts.app')
- @include('challenge-owner.components.top-nav')
+ {{-- @include('challenge-owner.components.top-nav') --}}
+ @include('layouts.homeNav')
 
-@push('head')
+{{-- @push('head')
 <link href="{{ asset('css/Auth/custom.css') }}" rel="stylesheet">
-@endpush
+@endpush --}}
 
 @section('content')
-<div class="container">
+<div id="content-wrap">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -98,4 +100,8 @@
         </div>
     </div>
 </div>
+<br>
+
+</div>
+
 @endsection

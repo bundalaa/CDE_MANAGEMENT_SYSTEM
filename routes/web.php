@@ -52,6 +52,7 @@ Route::get('contact-us', 'ContactUSController@contactUS');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 Route::get('challenge/owner/profile', 'ContactUSController@challengeOwnerProfile');
+Route::post('/PasswordChange','UserController@ChallengeOwnerPassword')->name('PasswordChange');
 
 // Route::get('chart-js', 'ChartController@index');
 
@@ -223,20 +224,31 @@ Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
 Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
 Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
-Route::get('FypConfirm', 'StudentController@confirm')->name('FypConfirm');
-Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProjectView');
+Route::get('getviewAlldownload','ReportController@download')->name('report');
+Route::get('StudentChallengeView', 'ChallengeController@getProj')->name('StudentChallengeView');
+Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamView');
 
-Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
-Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
+Route::get('StudentSendMessage','ContactController@stundMessage')->name('StudentSendMessage');
+Route::post('/sendMessage','ContactController@sendSMS')->name('sendMessage');
+
+Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
+Route::post('/Addprofile','UserController@AddProfile');
+Route::delete('deletePicture/{id}','UserController@deleteicture')->name('deletePicture');
+
+Route::get('/password','UserController@stupassword')->name('/password');
+Route::post('changeStuPassword','UserController@ChangeStudent')->name('changeStudPassword');
+Route::post('ContactMessage','ContactUSController@SendContactMessage')->name('ContactMessage');
+
 
 
 ///end of administrator module
 Route::get('chart', 'graphController@index');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/welcome', 'HomeController@index')->name('welcome');

@@ -73,12 +73,12 @@
                 Profile
             </a>
         </li>
-            <a class="nav-link left-menu-link"
-               href="/">
+            <!-- <a class="nav-link left-menu-link"
+               href="/Profile">
                <i class="fa fa-key" aria-hidden="true"></i>
 
                 Change Password
-            </a>
+            </a> -->
         </li>
     </div>
 </div>
