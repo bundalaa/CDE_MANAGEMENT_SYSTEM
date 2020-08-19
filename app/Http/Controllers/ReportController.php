@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Team;
 use DB;
 use App\User;
+use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Support\Facades\Validator;
 

@@ -10,11 +10,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            // $table->string('name')->nullable();
-            // $table->string('email')->nullable();
-            // $table->string('sender_name')->nullable();
-
-            $table->string('file_path')->nullable();
+            $table->string('file')->nullable();
             $table->bigInteger('challengeOwner_id');
             $table->bigInteger('coordinator_id');
             $table->string('name');

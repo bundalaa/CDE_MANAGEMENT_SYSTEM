@@ -1,12 +1,24 @@
 @extends('layouts.app')
+{{-- @include('challenge-owner.components.top-nav') --}}
+@include('layouts.homeNav')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <div class="card-header" style="text-align: center;font-size:15px">{{ __('Register') }}</div>
+                <img src="{{URL::asset('/images/logos/logo.png')}}" alt="udsm logo" height="130" width="130"
+                style="margin-left: 40%">
+               <div class="card-title">
+                <h1
+                style="color:grey;margin-left: 16%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
+               </div>
+            <hr id="line">
+            <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%">
+                Cde Information Management System
+            </h2 ></div>
+            <div class="mycard">
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -72,6 +84,7 @@
                             <a class="small" href="{{ __('login')}}">Sign In</a></div>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     </div>

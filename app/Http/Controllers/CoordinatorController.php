@@ -6,9 +6,9 @@ use App\ContactUS;
 use App\Coordinator;
 use App\IdentifiedChallenge;
 use App\Messagecomment;
-use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
 
@@ -73,27 +73,41 @@ if(!$contact){
 
     }
 
-    // public function postCommentMessage(Request $request, $contactUsId)
-    // {
-    //     // dd($contactUsId);
-    //     $validator = Validator::make($request->all(), [
-    //         'body' => 'required',
-    //     ]);
-    //     if ($validator->fails()) {
-    //         return Redirect()->back()->withInput()->withErrors($validator);
-    //     }
-    //     $contactUs = ContactUs::find($contactUsId);
-    //     if (!$contactUs) {
-    //             return back()->with(['success' => 'Message not found']);
-    //     }
-    //     $comment = new Messagecomment();
-    //     $comment->body = $request->body;
-    //     $comment->coordinator_id=$request['coordinator_id'];
+    public function postCommentMessage(Request $request)
+    {
 
-    //     $contactUs->messagecomments()->save($comment);
-    //     return redirect('adminIndex')
-    //     ->with('success', 'message added successfully');
-    // }
+        // dd($contactUsId);
+        $validator = Validator::make($request->all(), [
+            'body' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return Redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $toEmail= $request->email;
+        $sender= 'CDE organization';
+        $userName = auth()->user();
+
+        $data = array('name'=>'CDE org','body'=>"thank you for contact us",'footer'=>"you receive this email from cde");
+
+        // Mail::send('email',$data,function($message) use ($toEmail,$sender,$userName){
+        //     $message->to($toEmail,$userName)->subject('we work on it');
+        //     $message->from('cde@gmail.com',$sender);
+        // });
+        return redirect()->route('adminIndex')->with('success','message added successfully');
+
+        // $contactUs = ContactUs::find($contactUsId);
+        // if (!$contactUs) {
+        //         return back()->with(['success' => 'Message not found']);
+        // }
+        // $comment = new Messagecomment();
+        // $comment->body = $request->body;
+        // $comment->coordinator_id=$request['coordinator_id'];
+
+        // $contactUs->messagecomments()->save($comment);
+        // return redirect('adminIndex')
+        // ->with('success', 'message added successfully');
+    }
 
     }
 

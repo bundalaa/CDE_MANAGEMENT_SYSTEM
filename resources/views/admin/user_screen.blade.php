@@ -32,15 +32,6 @@
                             </a>
                         </div>
                         <div class="col-md-6 ml-auto">
-                        {{-- <form action="/search" method="POST" role="search">
-                                {{ csrf_field() }}
-                            <div class="input-group">
-                                <input type="text" class="form-control"  name="q" placeholder="Search Users...">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-info" type="submit">Search</button>
-                                    </div>
-                            </div>
-                            </form> --}}
                         </div>
                     </div>
                 </div>
@@ -79,16 +70,9 @@
                                         {{$user->roles[0]->name}}
                                             </td>
                                         </tr>
-                                        @endforeach 
+                                        @endforeach
                                     </tbody>
                                 </table>
-                               {{-- <nav class="ml-4">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        {{$users->links()}}
-                                    </div>
-                                </div>
-                               </nav> --}}
                             </div>
                         </div>
                     </div>

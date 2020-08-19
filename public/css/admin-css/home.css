@@ -16,6 +16,12 @@ body {
     overflow: hidden;
 }
 
+/* #pagecontainer {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+} */
+
 #content-wrap {
     padding-bottom: 3rem;
     /* footer height */
@@ -197,7 +203,7 @@ footer .fab:hover {
 
 .mycard {
     background-color: #87CEEB;
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
     width: 100%;
 }

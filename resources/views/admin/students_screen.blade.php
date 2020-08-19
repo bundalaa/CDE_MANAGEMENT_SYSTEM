@@ -62,13 +62,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                               <nav class="ml-4">
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        {{$students->links()}}
-                                    </div>
-                                </div>
-                               </nav>
+                              
                             </div>
                         </div>
                     </div>
