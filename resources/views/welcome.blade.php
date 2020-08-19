@@ -169,7 +169,6 @@
         </div>
         </footer>
     </div>
-    </footer>
     </div>
 
   <!-- Jquery CDN -->

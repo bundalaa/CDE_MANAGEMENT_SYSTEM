@@ -19,7 +19,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
     <body>
-        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a href="studentHome" class="navbar-brand">
             <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -56,7 +56,7 @@
 
                       </li>
                      <!-- Notifications Dropdown Menu -->
-           <li class="nav-item dropdown">
+           {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i id="notification" class="fas fa-bell">
               <span class="badge navbar-badge">{{Auth::user()->Notifications->count() }}</span>
@@ -79,7 +79,7 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
         </ul>
 
          <ul class="navbar-nav ml-auto">
@@ -116,8 +116,8 @@
             </div>
         </nav>
         <div id="page-container">
-            <section id="dashboard" class="py-1">
-                <div class="container">
+            <section id="dashboard" class="pt-4 pb-3 ">
+                <div class="container pt-5 pb-0">
                     <i class="fas fa-user-circle fa-3x"></i>
                     <span class="display-4 text-info">Edit profile</span>
                 </div>
@@ -211,10 +211,6 @@
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
                    <input  class="form-control btn btn-info btn-block" type="submit">
-                         </div>
-                         <div class="form-group">
-                             <input type="submit" class="form-control btn btn-warning btn-block"
-                            value="Delete Photo">
                          </div>
                      </form>
                 </div>

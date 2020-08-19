@@ -1,6 +1,4 @@
 @extends('layouts.app')
-<!-- @include('challenge-owner.components.top-nav') -->
-
 @push('head')
 <link href="{{ asset('css/Auth/custom.css') }}" rel="stylesheet">
 @endpush

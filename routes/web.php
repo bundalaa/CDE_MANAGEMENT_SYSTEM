@@ -17,21 +17,21 @@ use Symfony\Component\Console\Input\Input;
 |
 */
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('AboutUS', function () {
     return view('ChallengeOwner.AboutUS');
 });
 
-Route::get('/', function(){
-    return view('welcome');
-});
+// Route::get('/', function(){
+//     return view('welcome');
+// });
 // Route::get('/home', function () {
 //     return view('ChallengeOwner.homePg');
 // });
@@ -104,6 +104,7 @@ Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
 Route::get('profile','UserController@profile')->name('profile');
+Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
 Route::post('edituserprofile','UserController@updateUserProfile')->name('edituserprofile');
 Route::get('user-screen','UserController@getUsers')->name('user-screen');
@@ -218,7 +219,7 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 
 // student module
 Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
-Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
+Route::get('StudenSchedule', 'ScheduleController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
 Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
 Route::get('getviewAlldownload','ReportController@download')->name('report');
@@ -229,7 +230,7 @@ Route::get('StudentSendMessage','ContactController@stundMessage')->name('Student
 Route::post('/sendMessage','ContactController@sendSMS')->name('sendMessage');
 
 Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
-Route::post('/Addprofile','UserController@AddProfile');
+Route::post('/Addprofile','UserController@AddProfile')->name('profile');
 Route::delete('deletePicture/{id}','UserController@deleteicture')->name('deletePicture');
 
 Route::get('/password','UserController@stupassword')->name('/password');
@@ -241,11 +242,10 @@ Route::post('ContactMessage','ContactUSController@SendContactMessage')->name('Co
 ///end of administrator module
 Route::get('chart', 'graphController@index');
 
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/welcome', 'HomeController@index')->name('welcome');
+Route::get('/home', 'HomeController@index')->name('home');
