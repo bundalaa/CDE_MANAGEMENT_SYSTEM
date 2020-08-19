@@ -4,7 +4,7 @@
     <div class="container pt-2 pb-0">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="text-info">
+                <h1 style="color: #2874A6">
                     <i class="fas fa-folder-open  text-dark"></i> Challenges
                 </h1>
             </div>
@@ -24,7 +24,7 @@
                                         <h4>Challenges</h4>
                                        </div>
                                        <div class="col-6">
-                                        <a class="btn btn-primary float-right" href="{{URL::to('/challenge/pdf') }}">Export to PDF</a>
+                                        <a class="btn btn float-right" href="{{URL::to('/challenge/pdf') }}" style="background-color: #2874A6">Export to PDF</a>
                                        </div>
                                    </div>
                                 </div>

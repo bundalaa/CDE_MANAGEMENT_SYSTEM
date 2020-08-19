@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>
-                        <i class="fa fa-refresh fa-spin text-dark"></i> Fill Progress of <span class="text-info">{{$identifiedChallenge['name']}}</span>
+                        <i class="fa fa-refresh fa-spin text-dark"></i> Fill Progress of <span style="color: #2874A6">{{$identifiedChallenge['name']}}</span>
                     </h2>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                       <select class="form-control" id="status_{{$task->id}}" name="{{$task->name}}" onchange="updateStatus('{{$task->id}}')">
                             <option value="">{{$task->status['name']}}</option>
                             @foreach($statuses as $status)
-                        <option value="{{$status->id}}">{{$status->name}}</option>
+                        <option value="{{$status->value}}">{{$status->name}}</option>
                         @endforeach
                           </select>
                       </td>
@@ -44,9 +44,7 @@
                   </tbody>
                 </table>
                </form>
-        </div>
-        <button type="submit" class="btn btn-info" style="margin-left: 600px">Save changes</button>
-        @endsection
+        </div>  @endsection
 
         @section('scripts')
             <script>

@@ -11,7 +11,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-users-cog text-dark"></i>Team Details
                     </h1>
                 </div>
@@ -52,7 +52,7 @@
                                 $supervisor = Supervisor::where('id',$id)->first();
                                 $supervisor = User::where('id',$supervisor['user_id'])->first();
                             @endphp
-                               <b style="text-transform:uppercase;" class="text-info">{{$supervisor['name']}}</b>
+                               <b style="text-transform:uppercase;" style="color: #2874A6">{{$supervisor['name']}}</b>
                             </h4>
                            </div>
                         </div>

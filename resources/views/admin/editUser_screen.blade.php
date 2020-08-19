@@ -104,7 +104,7 @@
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i> Save
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle"></i> Save
                                                 Changes
                                             </button>
                                         </div>

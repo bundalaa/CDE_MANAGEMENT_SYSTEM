@@ -3,6 +3,8 @@
 @include('layouts.homeNav')
 
 @section('content')
+<div id="page-container">
+
 <div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -15,7 +17,7 @@
                 style="color:grey;margin-left: 16%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
                </div>
             <hr id="line">
-            <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%">
+            <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%;color:#2874A6">
                 Cde Information Management System
             </h2 ></div>
             <div class="mycard">
@@ -81,12 +83,13 @@
                             </div>
                         </div>
                         <div class="text-center">Already i have an account?
-                            <a class="small" href="{{ __('login')}}">Sign In</a></div>
+                            <a class="small" href="{{ __('login')}}" style="color: black">Sign In</a></div>
                     </form>
                 </div>
             </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

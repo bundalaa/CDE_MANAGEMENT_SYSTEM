@@ -10,7 +10,7 @@
             </style>
     </head>
     <body>
-        <h2 style="text-align: center"><b>Student Attendance Reports</b></h2>
+        <h2 style="text-align: center;color: #2874A6"><b>Student Attendance Reports</b></h2>
                                     <table class="tg" style="padding-left:10%">
                                         <thead class="tg-0lax">
                                             <tr>

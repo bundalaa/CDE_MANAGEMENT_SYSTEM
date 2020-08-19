@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-book-open text-dark"></i> Reports
                     </h1>
                 </div>
@@ -45,14 +45,14 @@
            <div class="card" style="width: 1100px;border: 0px solid rgb(0 0 0 / 2%);
            ">
             <div class="card-header">
-            <h6 style="font-weight:bold" class="card-title">Team Name: <span class="text-info">{{$report->title}}</span></h6>
-            <h6 style="font-weight:bold" class="card-subtitle">Report Category: <span class="text-info">{{$report->subtitle}}</span></h6>
-            <h6 style="font-weight:bold" class="card-text">Report level: <span class="text-info">{{$report->description}}</span></h6>
+            <h6 style="font-weight:bold" class="card-title">Team Name: <span style="color: #2874A6">{{$report->title}}</span></h6>
+            <h6 style="font-weight:bold" class="card-subtitle">Report Category: <span style="color: #2874A6">{{$report->subtitle}}</span></h6>
+            <h6 style="font-weight:bold" class="card-text">Report level: <span style="color: #2874A6">{{$report->description}}</span></h6>
             {{-- <div><button type="submit" class="btn btn-info mb-2">Add Comment</button></div> --}}
         </div>
 
         <div class="well" style="padding: 18px">
-        <button class="btn btn-info btn-open" onclick="commentOpen()">Leave a comment</button>
+        <button class="btn btn btn-open" onclick="commentOpen()" style="background-color: #2874A6">Leave a comment</button>
         <button class="btn btn-danger btn-close" style="display:none;" onclick="commentClose()">Cancel</button>
         </div>
        <form id="comment" action="{{route('postCommentReport',$report->id)}}" style="display: none;" method="POST" enctype="multipart/form-data">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="card-footer">
                                       <div class="float-right">
-                                        <button type="submit" class="btn btn-info"><i class="far fa-envelope"></i> Send</button>
+                                        <button type="submit" class="btn btn" style="background-color: #2874A6"><i class="far fa-envelope text-light"></i> Send</button>
                                       </div>
                                     </div>
                                   </div>

@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active px-2">
-                        <a href="dashboard" class="nav-link">CHALLANGE OWNER</a>
+                        <a href="dashboard" class="nav-link">CHALLENGE OWNER</a>
                     </li>
 
                 </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coordinator;
 use App\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Support\Facades\DB;
 
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
@@ -122,12 +124,14 @@ class FeedbackController extends Controller
     }
     //challengeOwner module
 
-    
+
     //Project status
     public function feedback(){
+        $user = Auth::user();
+        $coordinators = Coordinator::all();
         $feedbacks= DB::table('identified_challenges')->get();
         view()->share('feedbacks', $feedbacks);
-        return view('challenge-owner.feedback');
+        return view('challenge-owner.feedback',['user'=>$user,'coordinators'=>$coordinators]);
     }
 
 

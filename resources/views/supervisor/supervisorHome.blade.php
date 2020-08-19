@@ -8,7 +8,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i style="font-size: 30px;" class="fa fa-home text-dark"></i> Home
                     </h1>
                 </div>
@@ -22,13 +22,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="viewcreatechallenge" class="btn btn-info btn-block">
-                                <i class="fas fa-plus text-dark"></i> Add challenge
+                            <a href="viewcreatechallenge" class="btn btn btn-block" style="background-color: #2874A6">
+                                <i class="fas fa-plus text-light"></i> Add challenge
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="viewcreateteam" class="btn btn-outline-info btn-block">
-                                <i class="fas fa-plus text-dark"></i> Create team
+                            <a href="viewcreateteam" class="btn btn-outline btn-block" style="background-color: #2874A6">
+                                <i class="fas fa-plus text-light"></i> Create team
                             </a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="card mb-3 bg-light text-center">
-                                <div class="card mb-3 bg-info text-light text-center">
+                                <div class="card mb-3  text-light text-center" style="background-color: #2874A6">
                                     <div class="card-body">
                                         <h3>Challenges</h3>
                                         <h4 class="display-4">
@@ -101,15 +101,15 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h3 class="text-info">Team</h3>
-                                    <h4 class="display-4 text-info">
+                                    <h3 style="color: #2874A6">Team</h3>
+                                    <h4 class="display-4" style="color: #2874A6">
                                         <i class="fas fa-users"></i>
                                         @php
                                             $team=Team::get();
                                           echo count($team);
                                        @endphp
                                     </h4>
-                                <a href="{{route('viewteam')}}" class="btn btn-outline-info">View</a>
+                                <a href="{{route('viewteam')}}" class="btn btn-outline-light" style="background-color: #2874A6">View</a>
                                 </div>
                             </div>
                         </div>

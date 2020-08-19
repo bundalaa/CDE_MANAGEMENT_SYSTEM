@@ -16,6 +16,8 @@ class CreateIdentifiedChallengesTable extends Migration
         Schema::create('identified_challenges', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('challenge_id');
+            // $table->bigInteger('comment_id')->nullable();
+            
             $table->string('name');
             $table->string('description');
             $table->integer('status')->default(0);

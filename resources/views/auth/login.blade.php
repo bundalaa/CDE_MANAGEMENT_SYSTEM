@@ -7,7 +7,8 @@
 @endpush --}}
 
 @section('content')
-<div id="content-wrap">
+<div id="page-container">
+    <div id="content-wrap">
 <div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -20,11 +21,11 @@
     style="color:grey;margin-left: 17%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
    </div>
 <hr id="line">
-   <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%">
+   <div class="card-subtitle"> <h2  style="font-size:20px;margin-left: 20%;color:#2874A6">
     Cde Information Management System
 </h2 ></div>
     <hr style="margin: 0"px>
-               <div class="mycard">
+               <div class="mycard" >
                    <div class="card-body">
 
                 <form method="POST" action="{{ route('login') }}" enctype="multipart/form-data">
@@ -86,14 +87,14 @@
                             </button>
 
                             @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}" style="color: black">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
                         </div>
                     </div>
                     <div class="text-center">If you have an account?
-                        <a class="small" href="{{ __('register')}}">Sign Up</a></div>
+                        <a class="small" href="{{ __('register')}}" style="color: black">Sign Up</a></div>
                 </form>
             </div></div>
             </div>
@@ -102,6 +103,8 @@
 </div>
 <br>
 
-</div>
+
 
 @endsection
+</div>
+</div>

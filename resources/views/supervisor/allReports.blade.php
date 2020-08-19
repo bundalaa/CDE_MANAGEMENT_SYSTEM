@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-book-open text-dark"></i> Reports
                     </h1>
                 </div>

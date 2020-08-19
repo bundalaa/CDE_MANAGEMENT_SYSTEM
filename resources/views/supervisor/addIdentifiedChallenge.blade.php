@@ -8,7 +8,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-folder-open text-dark"></i> Add Sub Challenge
                     </h1>
                 </div>
@@ -24,7 +24,7 @@
     $challenged = Challenge::where('id',$id)->first();
     $challenges = IdentifiedChallenge::where('id',$challenged['identified_challenge_id'])->first();
 @endphp
-   <b style="text-transform:uppercase;font-size: 15px" class="text-info">{{$challenged['name']}}</b>
+   <b style="text-transform:uppercase;font-size: 15px" style="color: #2874A6">{{$challenged['name']}}</b>
 </h2>
 <form action="{{route('addidentifiedchallenges')}}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -33,8 +33,8 @@
             <label for="Sub Challenge Title"></label>
             <div class="input-group">
                 <div class="input-group-append">
-                    <button class="btn btn-info">
-                        <i class="fas fa-folder-open"></i>
+                    <button class="btn btn" style="background-color: #2874A6">
+                        <i class="fas fa-folder-open text-light"></i>
                     </button>
                 </div>
                 <input type="text" name="name" id="title" class="form-control p-4"
@@ -45,8 +45,8 @@
             <label for="Sub Challenge Description"></label>
             <div class="input-group">
                 <div class="input-group-append">
-                    <button class="btn btn-info">
-                        <i class="fas fa-folder-open"></i>
+                    <button class="btn btn" style="background-color: #2874A6">
+                        <i class="fas fa-folder-open text-light"></i>
                     </button>
                 </div>
                 <input type="text" name="description" id="description" class="form-control p-4"
@@ -55,7 +55,7 @@
         </div>
         <div class="form-group">
             <button type="submit" name="submit" id="submit"
-                class="form-control btn-secondary"><i class="fas fa-check-circle"></i>
+                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i>
                 Save
                 Sub Challenge
             </button>

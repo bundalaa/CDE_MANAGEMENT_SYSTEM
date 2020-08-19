@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use App\ContactUS;
 use App\Coordinator;
 use App\IdentifiedChallenge;
+use App\Mailing;
+use App\User;
+
 use App\Messagecomment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request as REQ;
+use Illuminate\Support\Facades\session;
+use App\Mail\MailNotify;
+
+
+
+
+
+
 
 class CoordinatorController extends Controller
 {
@@ -73,40 +84,34 @@ if(!$contact){
 
     }
 
-    public function postCommentMessage(Request $request)
+    public function postCommentMessage(Request $request , $id)
     {
 
-        // dd($contactUsId);
-        $validator = Validator::make($request->all(), [
-            'body' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return Redirect()->back()->withInput()->withErrors($validator);
-        }
+        $contact = ContactUS::where('id', $id)->first();
 
-        $toEmail= $request->email;
-        $sender= 'CDE organization';
-        $userName = auth()->user();
+        $toEmail = $contact->email;
 
-        $data = array('name'=>'CDE org','body'=>"thank you for contact us",'footer'=>"you receive this email from cde");
+        $userName= $contact->name;
 
-        // Mail::send('email',$data,function($message) use ($toEmail,$sender,$userName){
-        //     $message->to($toEmail,$userName)->subject('we work on it');
-        //     $message->from('cde@gmail.com',$sender);
-        // });
-        return redirect()->route('adminIndex')->with('success','message added successfully');
+        $senderf=auth()->user()->name;
 
-        // $contactUs = ContactUs::find($contactUsId);
-        // if (!$contactUs) {
-        //         return back()->with(['success' => 'Message not found']);
-        // }
-        // $comment = new Messagecomment();
-        // $comment->body = $request->body;
-        // $comment->coordinator_id=$request['coordinator_id'];
+        $sender=$senderf;
 
-        // $contactUs->messagecomments()->save($comment);
-        // return redirect('adminIndex')
-        // ->with('success', 'message added successfully');
+
+
+       $data = array('name'=>$userName, "body" =>   $request['body'] ,
+
+                    "footer"=>"Thanks"
+                );
+
+       Mail::send('email', $data, function($message) use ($toEmail,$sender,$userName,$request) {
+
+       $message->to($toEmail,$userName)
+            ->subject('CDE ORGANISATION - '. $request['subject'].'');
+       $message->from('cdeorganisation@gmail.com',$sender);
+       });
+
+       return back()->with('message','message sent successifully');
     }
 
     }

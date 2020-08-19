@@ -49,9 +49,13 @@ Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
 Route::get('contact-us', 'ContactUSController@contactUS');
 
-Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@commentsPost']);
 
 Route::get('challenge/owner/profile', 'ContactUSController@challengeOwnerProfile');
+
+Route::get('approvedMessage','FileUpload@approvedMessage');
+
+
 Route::post('/PasswordChange','UserController@ChallengeOwnerPassword')->name('PasswordChange');
 
 // Route::get('chart-js', 'ChartController@index');

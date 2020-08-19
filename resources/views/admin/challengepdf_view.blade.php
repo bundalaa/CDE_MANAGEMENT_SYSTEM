@@ -10,7 +10,7 @@
             </style>
     </head>
     <body>
-        <h2 style="text-align: center"><b>List of Challenges</b></h2>
+        <h2 style="text-align: center;color: #2874A6"><b>List of Challenges</b></h2>
                                     <table class="tg" style="padding-left:10%">
                                         <thead class="tg-0lax">
                                             <tr>
