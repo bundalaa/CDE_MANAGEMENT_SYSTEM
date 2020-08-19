@@ -79,14 +79,14 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                    <nav class="ml-4">
-                                        <div class="row">
-                                            <div class="col-12 text-center">
-                                                {{$latestusers->links()}}
-                                            </div>
-                                        </div>
-                                       </nav>
                                 </table>
+                                <nav class="ml-4">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            {{$latestusers->links()}}
+                                        </div>
+                                    </div>
+                                   </nav>
                             </div>
                         </div>
                         <div class="col-md-3">

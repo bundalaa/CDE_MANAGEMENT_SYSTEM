@@ -39,6 +39,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>

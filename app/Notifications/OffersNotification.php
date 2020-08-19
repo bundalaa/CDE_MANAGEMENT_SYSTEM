@@ -41,7 +41,7 @@ class OffersNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)                    
+        return (new MailMessage)
             // ->name($this->offerData['name'])
             ->line($this->offerData['body'])
             ->action($this->offerData['offerText'], $this->offerData['offerUrl'])

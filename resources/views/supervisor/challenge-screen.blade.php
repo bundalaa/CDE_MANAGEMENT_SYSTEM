@@ -57,7 +57,7 @@
                                             <i class="fas fa-plus"></i> Add Sub Challenge
                                         </a>
                                     </td>
-                                    <td><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">
+                                    <td style="width:200px"><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">
                                         <i class="fas fa-angle-double-right"></i> view Sub Challenge
                                     </a>
                                 </td>

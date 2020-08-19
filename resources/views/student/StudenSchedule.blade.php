@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -36,7 +36,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -46,49 +46,21 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link">Teams</a>
                     </li>
                  </ul>
                    <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Messages</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="StudentSendMessage">
+                              <i class="fas fa-comments"></i>
+                              <span class="badge badge-danger navbar-badge"></span>
+                            </a>
 
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                      </div>
                     </li>
                 <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="fas fa-bell"></i>
               <span class="badge badge-warning navbar-badge"></span>
@@ -110,24 +82,23 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
           </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (Auth::user())
-                            @if(Auth::User()->avatar!='/profile/avatar.jpg')
-                            <img src="{{url('profile/avatar.jpg')}}" alt="" style="width:30px;height:30px;border-radius:50%">
-
-                            @else
-                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (auth()->user())
+                            @if(Auth::User()->avatar!='/images/default-avatar.png')
+                        <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                        @else
+                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
+                            <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
                             <hr class="solid">
@@ -146,8 +117,8 @@
         </div>
     </nav>
     <div id="page-container">
-    <section id="dashboard" class="py-2">
-        <div class="container">
+        <section id="dashboard" class="pt-4 pb-3 ">
+        <div class="container pt-5 pb-0">
             <i class="fas fa-calendar fa-3x"></i>
             <span class="display-4 text-info">Schedule</span>
         </div>

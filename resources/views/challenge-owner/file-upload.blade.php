@@ -118,16 +118,20 @@
                                             <div class="card-header">
                                                 <form action="{{route('fileUpload')}}" method="post"
                                                     enctype="multipart/form-data">
+                                                    @foreach($coordinators as $coordinator)
+                                            <input type="text" name="coordinator_id" value="{{$coordinator->id}}" hidden>
+                                            @endforeach
+                                            <input type="text" name="challengeOwner_id" value="{{$user->id}}" hidden>
                                                     <h3 class="text-center mb-5">Upload Problem Statement File</h3>
                                                     <div style="display: none;">
-                                                    <label >
+                                                    {{-- <label >
                                                             email</label>
                                                         <input type="text" name="email"
                                                         class="form-control" value="{{Auth::user()->email}}">
                                                         <label>
                                                             name</label>
                                                         <input type="text" name="sender_name"
-                                                        class="form-control" value="{{Auth::user()->name}}">
+                                                        class="form-control" value="{{Auth::user()->name}}"> --}}
 
 
                                                     </div>

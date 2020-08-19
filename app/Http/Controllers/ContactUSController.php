@@ -45,9 +45,8 @@ class ContactUSController extends Controller
      */
 
     public function contactUSPost(Request $request)
-
     {
-
+        // dd($request);
         $this->validate($request, [
 
         		'name' => 'required',
@@ -56,7 +55,7 @@ class ContactUSController extends Controller
 
                 'message' => 'required',
 
-                'coordinator_id' => 'required'
+                // 'coordinator_id' => 'required'
 
             ]);
 
@@ -65,7 +64,6 @@ class ContactUSController extends Controller
         //     if(!$coordinator){
         //   return back()->with('success','coordinator not found');
         //        }
-
         ContactUS::create($request->all());
 
         // $details=[ 'data'=>'New message' ];
@@ -75,10 +73,22 @@ class ContactUSController extends Controller
         return back()->with('success', 'Thanks for contacting us!');
     }
 
-    public function challengeOwnerProfile(){
+    //homepage contact us
+    public function SendContactMessage(request $request)
+    {
+        $data=request()->validate([
 
-        return view('challenge-owner.Profile');
+            'name' => 'required',
 
-        }
+            'email' => 'required|email',
+
+            'message' => 'required|max:400',
+
+        ]);
+        ContactUS::create($request->all());
+        return  redirect()->back()->with('response','Your message has been sent successfully, Thanks for contacting us!.');
+
+
+    }
 
 }

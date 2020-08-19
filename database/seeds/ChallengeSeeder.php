@@ -2,6 +2,7 @@
 
 use App\Challenge;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ChallengeSeeder extends Seeder
 {
@@ -12,6 +13,9 @@ class ChallengeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Challenge::class,5)->create();
+        DB::table('challenges')->insert([
+            'name' => 'Water Management',
+            'description' => 'Problem in water supply,production and quality',
+        ]);
     }
 }

@@ -8,7 +8,9 @@ use App\Reportcomment;
 use App\Supervisor;
 use Illuminate\Http\Request;
 use App\Team;
+use DB;
 use App\User;
+use Illuminate\Support\Facades\DB as FacadesDB;
 use Illuminate\Support\Facades\Request as REQ;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,8 +88,7 @@ if(!$supervisor){
         return  redirect()->back()->withSuccess('Great! file has been successfully uploaded.');
 
     }
-
-    public function postCommentReport(Request $request, $reportId)
+ public function postCommentReport(Request $request, $reportId)
     {
         $validator = Validator::make($request->all(), [
             'body' => 'required',
@@ -120,8 +121,9 @@ if(!$supervisor){
     // student module
     public function stunUpload()
     {
+        $reports=DB::table('reports')->get();
         $teams = Team::all();
-     return view('student.studentReport',['teams'=>$teams]);
+     return view('student.studentReport',['teams'=>$teams],compact('reports'));
     }
 
 

@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -34,7 +34,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,49 +43,19 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link active">Team</a>
+                        <a href="StudentTeamView" class="nav-link active">Teams</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Messages</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-
-                          </div>
-                          <!-- Message End -->
+                        <a class="nav-link" href="StudentSendMessage">
+                          <i class="fas fa-comments"></i>
+                          <span class="badge badge-danger navbar-badge"></span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                      </div>
                     </li>
                 <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="fas fa-bell"></i>
               <span class="badge badge-warning navbar-badge"></span>
@@ -107,24 +77,24 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
           </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (Auth::user())
-                            @if(Auth::User()->avatar!='/profile/avatar.jpg')
-                             <img src="{{url('profile/avatar.jpg')}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (auth()->user())
+                            @if(Auth::User()->avatar!='/images/default-avatar.png')
+                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
+                            <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
                             <hr class="solid">
@@ -143,15 +113,15 @@
         </div>
     </nav>
   <div id="page-container">
-    <section id="dashboard" class="py-2">
-        <div class="container">
+    <section id="dashboard" class="pt-4 pb-3 ">
+    <div class="container pt-5 pb-0">
             <i class="fas fa-users fa-3x"></i>
             <span class="display-4 text-info">Teams</span>
         </div>
     </section>
     <div id="content-wrap">
     <!--contents-->
-     <p class="text-justify">This allows you as student to view your project team members and the name of the name of the
+     <p style="margin-left: 5px">This allows you as student to view your project team members and the name of the name of the
          supervisor assigned to lead you throughout the project completion.This will help the student to know the project to
          work and the team members.
      </p>
@@ -161,69 +131,29 @@
           <div class="card-header">
             <h3 class="card-title" style="text-align: center">Project Team</h3>
           </div>
-          <div class="card-body p-0">
-            <table class="table table-striped projects">
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Project Name
-                        </th>
-                        <th>
-                            Team Members
-                        </th>
-                        <th>
-                            Supervisor Name
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            <a>
-                                water Bill management system
-                            </a>
-                            <br/>
-                            <small>
-                                Created 01.01.2020
-                            </small>
-                        </td>
-                        <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <i class="fas fa-user"></i>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fas fa-user"></i>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fas fa-user"></i>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fas fa-user"></i>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a>
-                                John, Agustine
-                            </a>
-                            <br/>
+          <div class="card-body p-0" style="margin-left: 5px">
+            <table class="table table-striped">
+                      <tr>
+                     <th>#</th>
+                    <th>Project Name</th>
+                    <th>Team Members</th>
+                    <th>Supervisor Name</th>
+              @foreach($teams as $key=>$team)
+                      </tr>
+                      <tr>
+                    <td>{{++$key}}</td>
+                    <td>{{$team->identifiedChallenge->name}}</td>
+                    <td>{{$team->supervisor->user_id}}</td>
+                    <td>{{$team->supervisor_id}}</td>
+                      </tr>
 
-                        </td>
-                    </tbody>
-                    </table>
+                @endforeach
+                </table>
                   </div>
                  </div>
             </section>
-                    </div>
+         </div>
+
    <footer id="footer" class="bg-dark">
     <div class="py-3 text-center">
     <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>

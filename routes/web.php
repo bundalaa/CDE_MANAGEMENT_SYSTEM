@@ -17,21 +17,21 @@ use Symfony\Component\Console\Input\Input;
 |
 */
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('AboutUS', function () {
-    return view('ChallengeOwner.AboutUS');
+    return view('challenge-owner.AboutUS');
 });
 
-Route::get('/', function(){
-    return view('welcome');
-});
+// Route::get('/', function(){
+//     return view('welcome');
+// });
 // Route::get('/home', function () {
 //     return view('ChallengeOwner.homePg');
 // });
@@ -44,11 +44,6 @@ Route::get('/', function(){
 // Route::get('upload', function () {
 //     return view('file-upload');
 // });
-
-//======================pdf report summary=============================//
-
-Route::get('pdfview',array('as'=>'pdfview','uses'=> 'FeedbackController@pdfview'));
-//======================pdf report summary  END=============================//
 
 Route::get('feedback','FeedbackController@feedback')->name('feedback');
 
@@ -85,7 +80,7 @@ Route::post('save', 'MultipleFileController@save')->name('file.save');
 #=====================================END notification================================
 
 
-Route::get('dashboard', 'AuthController@dashboard');
+// Route::get('dashboard', 'AuthController@dashboard');
 
 
 Route::prefix('admin')->name('admin.')->group(function(){
@@ -108,7 +103,7 @@ Route::post('editUserSave','UserController@updateUser')->name('editUserSave');
 Route::post('createnewuser','UserController@postUser')->name('createnewuser');
 Route::get('createuser','UserController@createUser')->name('createuser');
 Route::get('editUser/{id}','UserController@getEditUser')->name('editUser');
-Route::get('profile','UserController@profile')->name('profile');
+Route::get('userprofile','UserController@profile')->name('userprofile');
 Route::post('update-avatar','UserController@updateAvatar')->name('update-avatar');
 Route::post('edituserprofile','UserController@updateUserProfile')->name('edituserprofile');
 Route::get('user-screen','UserController@getUsers')->name('user-screen');
@@ -178,7 +173,7 @@ Route::get('viewstudentsscreen','UserController@viewStudents')->name('viewstuden
 //team route
 Route::get('viewcreateteam','TeamController@viewCreateTeam')->name('viewcreateteam');
 Route::get('viewteam','TeamController@viewTeam')->name('viewteam');
-Route::get('viewteamDetail/{id}','TeamController@teamTeamDetails')->name('viewteamDetail');
+Route::get('viewteamDetail/{id}','TeamController@teamDetails')->name('viewteamDetail');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
 Route::get('geteditteam/{id}','TeamController@getEditTeam')->name('geteditteam');
 Route::post('createteam','TeamController@createTeam')->name('createteam');
@@ -191,8 +186,11 @@ Route::post('editteam/{id}','TeamController@updateTeam')->name('editteam');
 
 // Task/Schedule route
 Route::get('view-schedule', 'ScheduleController@getSchedules')->name('view-schedule');
-Route::post('schedule','ScheduleController@postSchedule')->name('schedule');
+Route::post('add-schedule','ScheduleController@postSchedule')->name('add-schedule');
 Route::post('schedules','ScheduleController@editSchedule')->name('schedules');
+Route::get('deleteSchedule/{id}','ScheduleController@deleteSchedule')->name('deleteSchedule');
+
+
 
 // Attendance route
 Route::get('view-attendance', 'AttendanceController@viewAttendancePage')->name('view-attendance');
@@ -223,23 +221,33 @@ Route::get('permission', 'PermissionController@assign')->name('permission');
 
 // student module
 Route::get('studentHome', 'StudentController@stunhome')->name('studentHome');
-Route::get('StudenSchedule', 'StudentController@stunschedule')->name('StudenSchedule');
+Route::get('StudenSchedule', 'ScheduleController@stunschedule')->name('StudenSchedule');
 Route::get('studentReport', 'ReportController@stunUpload')->name('studentReport');
 Route::post('studentReport', 'ReportController@PostReport')->name('studentReport');
-Route::get('FypConfirm', 'StudentController@confirm')->name('FypConfirm');
-Route::get('StudentProjectView', 'StudentController@getProj')->name('StudentProjectView');
+Route::get('getviewAlldownload','ReportController@download')->name('report');
+Route::get('StudentChallengeView', 'ChallengeController@getProj')->name('StudentChallengeView');
+Route::get('StudentTeamView', 'StudentController@teamView')->name('StudentTeamView');
 
-Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'StudentController@edit']);
-Route::get('/studentReport/{id}','ReportController@show')->name('supervisor.reports');
+Route::get('StudentSendMessage','ContactController@stundMessage')->name('StudentSendMessage');
+Route::post('/sendMessage','ContactController@sendSMS')->name('sendMessage');
+
+Route::get('stuProfile',  ['as' => 'student.stuProfile', 'uses' => 'UserController@edit']);
+Route::post('/Addprofile','UserController@AddProfile')->name('profile');
+Route::delete('deletePicture/{id}','UserController@deleteicture')->name('deletePicture');
+
+Route::get('/password','UserController@stupassword')->name('/password');
+Route::post('changeStuPassword','UserController@ChangeStudent')->name('changeStudPassword');
+Route::post('ContactMessage','ContactUSController@SendContactMessage')->name('ContactMessage');
+
 
 
 ///end of administrator module
 Route::get('chart', 'graphController@index');
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home', 'HomeController@index')->name('home');

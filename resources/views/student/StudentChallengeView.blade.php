@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,49 +43,20 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link">Teams</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Messages</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                      </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="StudentSendMessage">
+                              <i class="fas fa-comments"></i>
+                              <span class="badge badge-danger navbar-badge"></span>
+                            </a>
+                        </li>
                 <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="fas fa-bell"></i>
               <span class="badge badge-warning navbar-badge"></span>
@@ -107,24 +78,23 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
           </ul>
-
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown mr-3">
+     <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            @if (Auth::user())
-                             @if(Auth::User()->avatar!='/profile/avatar.jpg')
-                            <img src="{{url('profile/avatar.jpg')}}"  alt="" style="width:30px;height:30px;border-radius:50%">
+                            @if (auth()->user())
+                            @if(Auth::User()->avatar!='/images/default-avatar.png')
+                            <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}"  alt="" style="width:30px;height:30px;border-radius:50%">
 
                             @else
-                            <img src="{{$user->avatar}}" alt="" style="width:30px;height:30px;border-radius:50%">
+                            <img src="{{asset(Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
                             @endif
                              Welcome {{auth()->user()->name}}
                             @endif
                         </a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
+                            <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
                             <hr class="solid">
@@ -143,21 +113,46 @@
         </div>
     </nav>
     <div id="page-container">
-    <section id="dashboard" class="py-2">
-        <div class="container">
-            {{-- <i class="fas fa-laptop fa-3x"></i> --}}
-            <span class="display-4 text-info">Challenge</span>
+     <section id="dashboard" class="pt-4 pb-3 ">
+     <div class="container pt-5 pb-0">
+        <i class="fas fa-list fa-3x"></i>
+        <span class="display-4 text-info">Challenges</span>
         </div>
     </section>
     <div id="content-wrap">
-
-            <p class="text-justify">This page allows you as student to view the list of project problem challenges and give you a
+     <p style="margin-left: 5px">This page allows you as student to view the list of project problem challenges and give you a
             chance to confirm which project you want to work or join.Review the list of the project problem title and
             choose one project that will be verified for you to work on it as final year project under supervision of CDE team.
             </p>
+     <div class="row justify-content-center">
+       <div class="col-md-10">
+            <div class="recent">
+              <h3 style="text-align: center">See the list of project problem</h3>
+            </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </thead>
+                    <tbody>
+                @foreach($challenges as $challenge_id=>$challenge)
+                   <tr>
+                 <td>{{++$challenge_id}}</td>
+                 <td>{{$challenge->name}}</td>
+                 <td>{{$challenge->description}}</td>
+                    </tr>
 
-            <div class="row">
-            <div class="col-lg-6">
+                 @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item dropdown-footer">See All</a> --}}
+
+
+        {{-- <div class="col-lg-6">
             <div class="recent">
             <div class="card">
                 <div class="card-body">
@@ -187,22 +182,7 @@
               </div>
             </div>
             </div>
-        </form>
-    <div class="col-lg-6">
-            <div class="recent">
-              <h3>See the list of project problem</h3>
-            </div>
-            <div class="card">
-            <div class="card-body" style="height: 90%">
-                {{-- @foreach($challenges as $challenge)
-                 {{$challenge->identified_challenge_id }},
-                 {{ $challenge->supervisor_id }},
-                 @endforeach --}}
-            </div>
-            <div class="dropdown-divider"></div>
-           <a href="#" class="dropdown-item dropdown-footer">See All</a>
-        </div>
-        </div>
+        </form> --}}
         </div>
 
     <footer id="footer" class="bg-dark">

@@ -60,13 +60,13 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                               <nav class="ml-4">
+                               {{-- <nav class="ml-4">
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         {{$supervisors->links()}}
                                     </div>
                                 </div>
-                               </nav>
+                               </nav> --}}
                             </div>
                         </div>
                     </div>

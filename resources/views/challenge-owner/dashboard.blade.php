@@ -122,7 +122,7 @@
                                         <div class="card-header">
                                             <div class="row">
                                                 <div>
-                                                    <h2>Upoload-Challenge</h2>
+                                                    <h2>Upload-Challenge</h2>
                                                     <p>In this section you can upload your Challenge/Problem and
                                                         will reach us then we will come up with concrete solution of
                                                         your challenge/problem... </p>

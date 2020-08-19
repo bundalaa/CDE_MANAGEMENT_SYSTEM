@@ -135,9 +135,9 @@
 </head>
 <body style="background:  #e6ecf0; width:100%">
 
-                       
 
-@foreach ($feedbacks as $key => $feedback) 
+
+@foreach ($feedbacks as $key => $feedback)
 <li class="chartData" style="display: none">{{ $feedback->name}}:{{$feedback->status}}:</li>
 @endforeach
 
@@ -160,7 +160,7 @@
                                  <div class="card-header">
                                         <h4><strong> Project Progress Summary</strong></h4>
                                         <div style="float:right">
-                                                                        <a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success mb-2" >Export PDF</a>
+                                                                        {{-- <a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success mb-2" >Export PDF</a> --}}
                                                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -270,12 +270,20 @@ var chart = new Chart(ctx, {
         }]
     },
 
+
     // Configuration options go here
     options: {
       title: {
             display: true,
             text: 'Feedback bar chart'
-        }
+        },
+        scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }
     }
 });
 </script>

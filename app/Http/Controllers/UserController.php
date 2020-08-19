@@ -54,7 +54,7 @@ class UserController extends Controller
     //get all users function
     public function getUsers()
     {
-        $users = User::table('users')->get();
+        $users = User::get();
         foreach ($users as $user) {
             $user->roles;
         }
@@ -225,34 +225,76 @@ class UserController extends Controller
         return redirect('user-screen')
             ->with('message', 'User deleted successfully');
     }
-    ///student module
 
+
+    ///student module
 
     public function edit()
     {
-        $user =Auth::user();
-        return view('student.stuProfile',['user'=>$user]);
+        return view('student.stuProfile');
 
     }
     public function AddProfile(request $request)
     {
       $this->validate($request,[
-       'name'=>'required',
-       'email'=>'required',
-       'avatar'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+       'avatar'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
       ]);
-      $user =Auth::user();
-      $user->name=$request->name;
-      $user->email=$request->email;
-      if($request->file('avatar')){
-        $file=$request->file('avatar');
-        $file->move(public_path().'/profile/',$file->getClientOriginalName());
-       $url= URL::to("/stuProfile").'/profile/'.$file->getClientOriginalName();
-      }
-      $user->avatar=$url;
+      $user = User::where('id', auth()->user()->id)->first();
+      if($request->hasFile('avatar')){
+        $avatar=$request->file('avatar');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+      $user->avatar=$filename;
       $user->save();
+      $file = $request->file('avatar');
+      $file->move(public_path('/images/avatars/'), $filename);
       return redirect('stuProfile')->with('response','Profile Added successfully');
+      }
+      $users = User::where('id', auth()->user()->id)->first();
+      $users->name = $request['name'];
+      $users->email = $request['email'];
+      $users->save();
+      return redirect('stuProfile')->with('response', 'successfully edit');
     }
+    // public function deletePicture(user $id)
+    // {
+    //     $user = User::find($id);
+    //     if (!$user) {
+    //         return Redirect::back()->withErrors('user not found');
+    //     }
+    //     $user->delete();
+    //     return redirect('user-screen')
+    //         ->with('message', 'User deleted successfully');
+    // }
+    public function stupassword(){
+        return view('student.studentChangePassword');
+    }
+    public function ChangeStudent(request $request)
+    {
+     //validation
+     $rules = [
+        'old_pass' => 'required',
+        'new_pass' => 'required',
+        'confirm_pass' => 'required|same:new_pass'
+    ];
+    $error_messages = [
+        'confirm_pass.same' => 'New  password and confirm password must match'
+    ];
+    $validator = validator($request->all(), $rules, $error_messages);
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+    $user = User::find(auth()->user()->id);
+    if (Hash::check($request['old_pass'], Auth::User()->password)) {
+        $user->password = $request['new_pass'];
+        $user->save();
+        return redirect('/password')
+            ->with('message', 'Password changed successfully');
+    } else {
+        return redirect()
+            ->back()->with('message', 'You entered wrong password');
+    }
+}
     //challenge owner
     public function ChallengeOwnerPassword(Request $request)
     {
@@ -297,3 +339,11 @@ class UserController extends Controller
       }
 
 }
+
+    
+
+
+
+
+
+

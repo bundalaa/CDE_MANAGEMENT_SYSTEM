@@ -1,5 +1,8 @@
 @extends('layouts.adminMenu')
 @section('content')
+@php
+    use App\ContactUs;
+@endphp
 <header id="dashboard" class="pt-4 pb-3">
     <div class="container pt-5 pb-0">
         <div class="row">
@@ -20,13 +23,21 @@
           <div class="container">
             <div class="col-md-12">
                 <form action="{{route('postCommentMessage',$contact->id)}}" method="POST">
+                    {{-- ,$contact->id) --}}
                     @csrf
-                    <input type="text" name="coordinator_id" value="{{$user->id}}" hidden>
+                    {{-- <input type="text" name="coordinator_id" value="{{$user->id}}" hidden> --}}
                     <div class="card card-primary card-outline mt-4">
 
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <div class="form-group">
 
+                                To: {{$contact['email']}}
+                                <input type="text" name="email" value="{{$contact['email']}}">
+                              </div>
+                              <div class="form-group">
+                                <input name="subject" class="form-control" placeholder="Subject:">
+                              </div>
                           <div class="form-group">
                               <textarea id="compose-textarea" name="body" class="form-control" style="height: 300px">
 

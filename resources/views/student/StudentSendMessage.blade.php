@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -33,7 +33,7 @@
                         <a href="studentHome" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentChallengeView" class="nav-link">Challenge</a>
+                        <a href="StudentChallengeView" class="nav-link">Challenges</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="studentReport" class="nav-link">Upload Report</a>
@@ -43,13 +43,46 @@
                         <a href="StudenSchedule" class="nav-link">Schedule</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="StudentTeamView" class="nav-link">Team</a>
+                        <a href="StudentTeamView" class="nav-link">Teams</a>
                     </li>
                  </ul>
                  <ul class="navbar-nav ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                 <li class="nav-item dropdown">
+                    <a class="nav-link"  href="StudentSendMessage">
+                    <i class="fas fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge"></span>
+                     </a>
+                 </li>
+            <!-- Notifications Dropdown Menu -->
+           {{-- <li class="nav-item dropdown">
+           <a class="nav-link" data-toggle="dropdown" href="#">
+           <i id="notification" class="fas fa-bell">
+           <span class="badge badge-danger navbar-badge">{{Auth::user()->Notifications->count()}}</span>
+           </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+           <span class="dropdown-item dropdown-header">Notifications</span>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item">
+
+           </a>
+           <div class="dropdown-divider"></div>
+           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+         </li> --}}
+         </ul>
+            <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            {{-- <i class="fas fa-user-circle"></i> Welcome {{Auth::user()->name}} --}}
                             @if (auth()->user())
                             @if(Auth::User()->avatar!='/images/default-avatar.png')
                             <img src="{{asset('/images/avatars/'.Auth::User()->avatar)}}" alt="" style="width:30px;height:30px;border-radius:50%">
@@ -64,9 +97,6 @@
                             <a href="stuProfile" class="dropdown-item">
                                 <i class="fas fa-user-circle"></i> Profile
                             </a>
-                            {{-- <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-times"></i> Logout
-                            </a> --}}
                             <hr class="solid">
                               <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
@@ -83,38 +113,53 @@
         </div>
     </nav>
     <div id="page-container">
-    <section id="dashboard" class="py-1">
-        <div class="container">
-            {{-- <i class="fas fa-comment fa-3x"></i> --}}
+        <section id="dashboard" class="pt-4 pb-3 ">
+        <div class="container pt-5 pb-0">
+            <i class="fas fa-inbox fa-3x"></i>
             <span class="display-4 text-info">Message</span>
         </div>
     </section>
  <div id="content-wrap">
-    <div class="row">
-        <div class="col-lg-6">
-          <div class="recent">
-              &nbsp;
-            <h3>Send a message</h3>
-          </div>
-          <div id="errormessage"></div>
-          <form action="" method="post" role="form" class="contactForm pull-right">
-            <div class="form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validation"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validation"></div>
-            </div>
+     &nbsp;
+        @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                 <ul>
+                  @foreach ($errors->all() as $error)
+                 <li>{{ $error }}</li>
+                 @endforeach
+                 </ul>
+                        </div>
+                    @endif
+                @if ($message = Session::get('response'))
 
-            <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+                <div class="alert alert-success alert-block">
+
+                 <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+                 </div>
+           @endif
+     <div class="row justify-content-center">
+    <div class="col-lg-6">
+     <div class="card">
+        <div class="card-header bg-primary">{{ __('Send a message') }}</div>
+        <div class="card-body">
+          <form action="/sendMessage" method="post" role="form" class="">
+            @csrf
+            <div class="form-group">
+              <input type="text" name="name"  id="name" placeholder="Your Name" value="{{Auth::user()->name}}" class="form-control"/>
+              </div>
+            <div class="form-group">
+              <input type="text"  name="subject" id="subject" placeholder="Subject" class="form-control"/>
+           </div>
+            <div class="form-group">
+              <textarea  name="message" rows="5" data-rule="required"  placeholder="Message" class="form-control"></textarea>
+            </div>
+         <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
           </form>
         </div>
-
+    </div>
+    </div>
 
     </div>
 

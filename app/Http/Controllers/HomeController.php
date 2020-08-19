@@ -23,15 +23,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('challenge-owner.dashboard');
+        return view('welcome');
     }
+    // public function index()
+    // {
+    //     return view('challenge-owner.dashboard');
+    // }
+
 
     public function showContactus(){
 
         return view('contact');
     }
     public function generatePDF(){
-    
+
     {
 
         return view('challenge-owner.ReportSummary');
@@ -44,7 +49,7 @@ class HomeController extends Controller
 
         // $pdf = PDF::loadView('MyPDF', $data);
 
-  
+
 
         // return $pdf->download('itsolutionstuff.pdf');
 
