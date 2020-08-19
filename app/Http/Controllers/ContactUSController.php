@@ -78,7 +78,7 @@ class ContactUSController extends Controller
     {
         $data=request()->validate([
 
-            'name' => 'required',
+            'name' => 'required|string',
 
             'email' => 'required|email',
 

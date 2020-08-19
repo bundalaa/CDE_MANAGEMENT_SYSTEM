@@ -125,7 +125,7 @@
  <div id="content-wrap">
 <!--contents-->
 <br>
-<p style="text-align: center">The upload reports includes reports during data collection and final year projects done by students
+<p style="text-align: left">The upload reports includes reports during data collection and final year projects done by students
     under supervision of CDE.</p>
 
 
@@ -175,7 +175,7 @@
    <input type="text" name="description" class="form-control" placeholder="report level">
     </div>
      <p>Upload Here:</p>
-    <input type="file"  name="file">Upload file in pdf or docx format
+    <input type="file"  name="file">Upload file in pdf, doc,docx format
 
     <div class="mt-3">
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -189,7 +189,7 @@
      <thead>
      {{-- <th>Description</th>
      <th>Date created</th> --}}
-     <th>Report File</th>
+     <th>Report File name</th>
      <th>Action</th>
      </thead>
      <tbody>

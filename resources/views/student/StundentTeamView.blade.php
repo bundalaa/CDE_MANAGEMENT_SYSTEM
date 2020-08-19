@@ -136,15 +136,15 @@
                       <tr>
                      <th>#</th>
                     <th>Project Name</th>
-                    <th>Team Members</th>
+                    {{-- <th>Team Members</th> --}}
                     <th>Supervisor Name</th>
-              @foreach($teams as $key=>$team)
+               @foreach($teams as $key=>$team)
                       </tr>
                       <tr>
                     <td>{{++$key}}</td>
                     <td>{{$team->identifiedChallenge->name}}</td>
-                    <td>{{$team->supervisor->user_id}}</td>
-                    <td>{{$team->supervisor_id}}</td>
+                    {{-- <td>{{$team->student->user->team_id}}</td> --}}
+                    <td>{{$team->supervisor->user->name}}</td>
                       </tr>
 
                 @endforeach
@@ -156,7 +156,7 @@
 
    <footer id="footer" class="bg-dark">
     <div class="py-3 text-center">
-    <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+    <p> &copy;Copyright Udsm<span id="year"></span> 20<?php echo date('y');?>, All rights reserved</>
     </div>
 </footer>
 </div>

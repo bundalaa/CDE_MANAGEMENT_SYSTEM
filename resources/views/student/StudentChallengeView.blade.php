@@ -120,14 +120,15 @@
         </div>
     </section>
     <div id="content-wrap">
-     <p style="margin-left: 5px">This page allows you as student to view the list of project problem challenges and give you a
-            chance to confirm which project you want to work or join.Review the list of the project problem title and
-            choose one project that will be verified for you to work on it as final year project under supervision of CDE team.
+     <p style="margin-left:7px">This page allows you as student to view the list of project problem challenges and give you a
+            chance to review the challenges collected during site visit.This list of the challenges helps students to review the
+             challenges collected from stakeholders.
+
             </p>
      <div class="row justify-content-center">
        <div class="col-md-10">
             <div class="recent">
-              <h3 style="text-align: center">See the list of project problem</h3>
+              <h3 style="text-align: center">The list of project problem</h3>
             </div>
                 <table class="table table-striped">
                     <thead>
@@ -141,6 +142,7 @@
                  <td>{{++$challenge_id}}</td>
                  <td>{{$challenge->name}}</td>
                  <td>{{$challenge->description}}</td>
+
                     </tr>
 
                  @endforeach

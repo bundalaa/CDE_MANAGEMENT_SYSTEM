@@ -51,7 +51,7 @@ if(!$report){
             'team_id' => 'required',
             'subtitle'=>'required',
             'description' => 'required',
-            'file' => 'required|mimes:doc,docx,pdf,txt|max:20400',
+            'file' => 'required|mimes:doc,docx,pdf|max:20400',
         ]);
         if($validator->fails())
         {

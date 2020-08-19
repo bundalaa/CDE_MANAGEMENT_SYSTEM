@@ -218,7 +218,7 @@
           </div>
          <footer id="footer" class="bg-dark">
             <div class="py-3 text-center">
-                <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+                <p> &copy;Copyright Udsm <span id="year"></span> 20<?php echo date('y');?>, All rights reserved</>
             </div>
         </footer>
         </div>
