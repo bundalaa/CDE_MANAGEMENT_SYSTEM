@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -55,7 +55,7 @@
                      </a>
                  </li>
             <!-- Notifications Dropdown Menu -->
-           <li class="nav-item dropdown">
+           {{-- <li class="nav-item dropdown">
            <a class="nav-link" data-toggle="dropdown" href="#">
            <i id="notification" class="fas fa-bell">
            <span class="badge badge-danger navbar-badge">{{Auth::user()->Notifications->count()}}</span>
@@ -78,7 +78,7 @@
            <div class="dropdown-divider"></div>
            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
-         </li>
+         </li> --}}
          </ul>
             <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
@@ -113,8 +113,8 @@
         </div>
     </nav>
     <div id="page-container">
-    <section id="dashboard" class="py-1">
-        <div class="container">
+        <section id="dashboard" class="pt-4 pb-3 ">
+        <div class="container pt-5 pb-0">
             <i class="fas fa-inbox fa-3x"></i>
             <span class="display-4 text-info">Message</span>
         </div>

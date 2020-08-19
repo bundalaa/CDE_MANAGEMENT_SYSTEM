@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -55,10 +55,10 @@
                       </a>
                     </li>
             <!-- Notifications Dropdown Menu -->
-           <li class="nav-item dropdown">
+           {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i id="notification" class="fas fa-bell">
-              {{-- <span class="badge navbar-badge">{{Auth::user()->Notifications->count() }}</span> --}}
+              <span class="badge navbar-badge">{{Auth::user()->Notifications->count() }}</span>
               </i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -78,7 +78,7 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
           </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown mr-3">
@@ -113,8 +113,8 @@
         </div>
     </nav>
     <div id="page-container">
-    <section id="dashboard" class="py-1">
-        <div class="container">
+    <section id="dashboard" class="pt-4 pb-3 ">
+        <div class="container pt-5 pb-0">
             <i class="fas fa-home fa-3x"></i>
             <span class="display-4 text-info">Home</span>
         </div>
@@ -122,7 +122,7 @@
  <div id="content-wrap">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="item">
-            <img src="{{URL::asset('/images/stun.jpg')}}" alt="" style="width:100%; height:500px;">
+            <img src="{{URL::asset('/images/study.jpg')}}" alt="" style="width:100%; height:500px;">
         <h1 class="carousel-caption bg-secondary">Welcome to student Page</h1>
         </div>
     </div>

@@ -5,6 +5,7 @@ use Auth;
 use App\Student;
 use App\Team;
 use App\Supervisor;
+use DB;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,9 @@ class StudentController extends Controller
 
     public function teamView()
     {
-        $supervisor=Supervisor::all();
-        $teams = Team::all();
-      return view('student.StundentTeamView',['teams'=>$teams],['supervisor'=>$supervisor]);
+        $teams=Team::all();
+
+return view('student.StundentTeamView',['teams'=>$teams]);
     }
     public function __construct()
     {

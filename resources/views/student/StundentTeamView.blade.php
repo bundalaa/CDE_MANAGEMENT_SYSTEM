@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
         <div class="container">
             <a href="studentHome" class="navbar-brand">
         <img src="{{URL::asset('/images/logos/logo.png')}} " alt="udsm logo" height="40" width="45">
@@ -49,50 +49,13 @@
                  <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fas fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge"></span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <div class="row">
-                            <div class="col-lg-6">
-                            <span class="dropdown-item dropdown-header">Messages</span>
-                            </div>
-                            <div class="col-lg-6">
-                            <a href="StudentSendMessage">New Message</a>
-                            </div>
-                            </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-
-                          </div>
-                          <!-- Message End -->
+                        <a class="nav-link" href="StudentSendMessage">
+                          <i class="fas fa-comments"></i>
+                          <span class="badge badge-danger navbar-badge"></span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <!-- Message Start -->
-                          <div class="media">
-
-                          </div>
-                          <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                      </div>
                     </li>
                 <!-- Notifications Dropdown Menu -->
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="fas fa-bell"></i>
               <span class="badge badge-warning navbar-badge"></span>
@@ -114,7 +77,7 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
-          </li>
+          </li> --}}
           </ul>
 
                 <ul class="navbar-nav ml-auto">
@@ -150,15 +113,15 @@
         </div>
     </nav>
   <div id="page-container">
-    <section id="dashboard" class="py-2">
-        <div class="container">
+    <section id="dashboard" class="pt-4 pb-3 ">
+    <div class="container pt-5 pb-0">
             <i class="fas fa-users fa-3x"></i>
             <span class="display-4 text-info">Teams</span>
         </div>
     </section>
     <div id="content-wrap">
     <!--contents-->
-     <p class="">This allows you as student to view your project team members and the name of the name of the
+     <p style="margin-left: 5px">This allows you as student to view your project team members and the name of the name of the
          supervisor assigned to lead you throughout the project completion.This will help the student to know the project to
          work and the team members.
      </p>
@@ -168,20 +131,20 @@
           <div class="card-header">
             <h3 class="card-title" style="text-align: center">Project Team</h3>
           </div>
-          <div class="card-body p-0">
+          <div class="card-body p-0" style="margin-left: 5px">
             <table class="table table-striped">
                       <tr>
                      <th>#</th>
                     <th>Project Name</th>
                     <th>Team Members</th>
                     <th>Supervisor Name</th>
-              @foreach ($teams as $key=>$team)
+              @foreach($teams as $key=>$team)
                       </tr>
                       <tr>
                     <td>{{++$key}}</td>
                     <td>{{$team->identifiedChallenge->name}}</td>
-                    <td>{{$team->supervisor_id}}</td>
                     <td>{{$team->supervisor->user_id}}</td>
+                    <td>{{$team->supervisor_id}}</td>
                       </tr>
 
                 @endforeach
