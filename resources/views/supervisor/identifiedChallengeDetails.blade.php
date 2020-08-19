@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>
-                        <i class="fas fa-edit text-dark"></i> Edit Sub Challenge: <b class="text-info" style="font-size: 15px;text-transform:uppercase">{{$identifiedChallenge['name']}}</b>
+                        <i class="fas fa-edit text-dark"></i> Edit Sub Challenge: <b style="color: #2874A6" style="font-size: 15px;text-transform:uppercase">{{$identifiedChallenge['name']}}</b>
                     </h2>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                                     </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i> Save
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i> Save
                                                 Changes
                                             </button>
                                         </div>

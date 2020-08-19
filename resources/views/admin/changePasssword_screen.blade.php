@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                        <i class="fa fa-lock text-dark" aria-hidden="true"></i></i> Password
                     </h1>
                 </div>
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i>
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle"></i>
                                                 Save
                                                 Changes
                                             </button>

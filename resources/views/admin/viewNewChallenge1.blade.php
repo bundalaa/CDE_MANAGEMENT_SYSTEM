@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-book-open text-dark"></i> New Challenges
                     </h1>
                 </div>
@@ -45,7 +45,7 @@
                    <div class="card" style="width: 1100px;border: 0px solid rgb(0 0 0 / 2%);
                    ">
                 <div class="well" style="padding: 18px">
-                <button class="btn btn-info btn-open" onclick="commentOpen()">Leave a comment</button>
+                <button class="btn btn btn-open" onclick="commentOpen()" style="color: #2874A6">Leave a comment</button>
                 <button class="btn btn-danger btn-close" style="display:none;" onclick="commentClose()">Cancel</button>
                 </div>
                <form id="comment" action="{{route('postCommentChallenge',$newchallenge->id)}}" style="display: none;" method="POST" enctype="multipart/form-data">
@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="card-footer">
                                               <div class="float-right">
-                                                <button type="submit" class="btn btn-info"><i class="far fa-envelope"></i> Send</button>
+                                                <button type="submit" class="btn btn" style="background-color: #2874A6"><i class="far fa-envelope"></i> Send</button>
                                               </div>
                                             </div>
                                           </div>

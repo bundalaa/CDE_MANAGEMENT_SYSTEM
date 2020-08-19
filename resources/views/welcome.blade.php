@@ -133,7 +133,7 @@
               </div>
              <div>
 
-                <div style="padding-top: 10px" class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+                <div style="padding-top: 10px" class="text-center"><button type="submit" class="btn btn btn-lg" style="background-color: #2874A6">Send Message</button></div>
             </div>
             </form>
           </div>

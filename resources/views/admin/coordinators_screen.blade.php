@@ -4,7 +4,7 @@
     <div class="container pt-5 pb-0">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="text-info">
+                <h1 style="color: #2874A6">
                     <i class="fa fa-users" aria-hidden="true"></i> Coordinators
                 </h1>
             </div>

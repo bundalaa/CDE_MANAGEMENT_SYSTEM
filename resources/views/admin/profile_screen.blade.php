@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-user-circle text-dark"></i> Edit Profile
                     </h1>
                 </div>
@@ -22,7 +22,7 @@
                             </a>
                         </div>
                         <div class="col-md-3">
-                            <a href="{{route('getchangepassword')}}" class="btn btn-success btn-block">
+                            <a href="{{route('getchangepassword')}}" class="btn btn btn-block" style="background-color: #2874A6">
                                 <i class="fas fa-lock text-light"></i> Change Password
                             </a>
                         </div>
@@ -54,8 +54,8 @@
                                             <label for="Username"></label>
                                             <div class="input-group">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info">
-                                                        <i class="far fa-user"></i>
+                                                    <button class="btn btn" style="background-color: #2874A6">
+                                                        <i class="far fa-user text-light"></i>
                                                     </button>
                                                 </div>
                                                 <input type="text" name="name" id="username"
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i>
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i>
                                                 Save
                                                 Changes
                                             </button>
@@ -100,7 +100,7 @@
                           <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">
                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
-                          <input  class="form-control btn btn-info btn-block" type="submit">
+                          <input  class="form-control btn btn btn-block" type="submit" style="background-color: #2874A6">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="form-control btn btn-danger btn-block"

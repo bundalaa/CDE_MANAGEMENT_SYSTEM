@@ -5,7 +5,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-folder-open text-dark"></i> Challenges
                     </h1>
                 </div>
@@ -49,16 +49,16 @@
                                         <td>{{ $challenge->id }}</td>
                                         <td>{{ $challenge->name }}</td>
                                         <td>{{ $challenge->description }}</td>
-                                        <td><a href="{{route('viewchallengedetail',[$challenge->id])}}" class="btn btn-info">
-                                            <i class="fas fa-edit"></i> Update Challenge
+                                        <td style="width: 200px"><a href="{{route('viewchallengedetail',[$challenge->id])}}" class="btn btn" style="background-color: #2874A6">
+                                            <i class="fas fa-edit text-light"></i> Update Challenge
                                         </a>
                                     </td>
-                                        <td><a href="{{route('viewaddidentifiedchallenge',[$challenge->id])}}" class="btn btn-secondary">
+                                        <td style="width: 200px"><a href="{{route('viewaddidentifiedchallenge',[$challenge->id])}}" class="btn btn-secondary">
                                             <i class="fas fa-plus"></i> Add Sub Challenge
                                         </a>
                                     </td>
-                                    <td style="width:200px"><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline-info btn-block">
-                                        <i class="fas fa-angle-double-right"></i> view Sub Challenge
+                                    <td style="width:200px"><a href="{{route('viewidentifiedchallenges')}}" class="btn btn-outline btn-block" style="background-color: #2874A6">
+                                        <i class="fas fa-angle-double-right text-light"></i> view Sub Challenge
                                     </a>
                                 </td>
                                         </tr>

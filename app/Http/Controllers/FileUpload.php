@@ -107,4 +107,14 @@ return view('admin.viewNewchallenge1',[
         ->with('success', 'comment added successfully');
     }
 
+
+    public function approvedMessage(){
+        $messages = ChallengeComment::all();
+        foreach($messages as $message){
+       $message->file;
+        }
+        // dd($messages);
+        return view('challenge-owner.approvalmessage',['messages'=>$messages]);
+    }
+
 }

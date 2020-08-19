@@ -5,8 +5,8 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
-                    <i class="fas fa-folder-open text-dark"></i> {{$challenge['name']}} 
+                    <h1 style="color: #2874A6">
+                    <i class="fas fa-folder-open text-dark"></i> {{$challenge['name']}}
                     </h1>
                 </div>
             </div>

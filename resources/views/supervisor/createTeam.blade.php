@@ -7,7 +7,7 @@
     <div class="container pt-5 pb-0">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="text-info">
+                <h1 style="color: #2874A6">
                     <i class="fas fa-users text-dark"></i> Create Team
                 </h1>
             </div>
@@ -52,7 +52,7 @@
                                         <label for="name"></label>
                                         <div class="input-group">
                                             <div class="input-group-append">
-                                                <button class="btn btn-info">
+                                                <button class="btn btn" style="background-color: #2874A6">
                                                    challenge
                                                 </button>
                                             </div>
@@ -67,7 +67,7 @@
                                         <label for="name"></label>
                                         <div class="input-group">
                                             <div class="input-group-append">
-                                                <button class="btn btn-info">
+                                                <button class="btn btn" style="background-color: #2874A6">
                                                     Supervisor
                                                 </button>
                                             </div>
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="form-group py-4">
                                         <button type="submit" name="submit" id="submit"
-                                            class="form-control btn-info"><i class="fas fa-check-circle"></i>
+                                            class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i>
                                            Submit
                                         </button>
                                     </div>

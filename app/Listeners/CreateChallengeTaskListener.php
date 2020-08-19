@@ -30,32 +30,32 @@ class CreateChallengeTaskListener
     Task::create([
         'name'=>'Gather Requirement',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     Task::create([
         'name'=>'UI Design',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     Task::create([
         'name'=>'Implementation',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     Task::create([
         'name'=>'System Testing',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     Task::create([
         'name'=>'First Version',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     Task::create([
         'name'=>'Final Version',
         'identified_challenge_id'=>$event->challenge->id,
-        'status_id'=>'1'
+        'status_id'=>'0'
     ]);
     }
 }

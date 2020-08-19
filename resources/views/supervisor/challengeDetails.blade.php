@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>
-                        <i class="fas fa-edit text-dark"></i> Edit Challenge: <b class="text-info" style="font-size: 15px;text-transform:uppercase">{{$challenge['name']}}</b>
+                        <i class="fas fa-edit text-dark"></i> Edit Challenge: <b style="color: #2874A6" style="font-size: 15px;text-transform:uppercase">{{$challenge['name']}}</b>
                     </h2>
                 </div>
             </div>
@@ -34,11 +34,11 @@
         </div>
         <div class="modal-body"> Do you want to delete this Challenge? </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+          <button type="button" class="btn btn" data-dismiss="modal" style="background-color: #2874A6">NO</button>
         <form action="{{route('deleteChallenge', [$challenge['id']])}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-secondary">YES</button>
+            <button type="submit" class="btn btn" style="background-color: #2874A6">YES</button>
         </form>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                     </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i> Save
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i> Save
                                                 Changes
                                             </button>
                                         </div>

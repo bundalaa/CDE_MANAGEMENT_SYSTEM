@@ -8,7 +8,7 @@
         <div class="container pt-5 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-users text-dark"></i> Teams
                     </h1>
                 </div>
@@ -73,17 +73,17 @@
                                             {{ $team->identifiedChallenge['name'] }}</td>
                                         <td>{{ $team->supervisor->user['name']}}</td>
                                         <td>
-                                            <a href="{{route('viewaddstudentpage',[$team->id])}}" class="btn btn-secondary">
-                                                <i class="fas fa-plus"></i> Add Students
+                                            <a href="{{route('viewaddstudentpage',[$team->id])}}" class="btn btn" style="background-color: #2874A6">
+                                                <i class="fas fa-plus text-light"></i> Add Students
                                             </a>
                                         </td>
-                                        <td><a href="{{route('viewteamDetail',[$team->id])}}" class="btn btn-info">
-                                                    <i class="fas fa-angle-double-right"></i> Team Details
+                                        <td><a href="{{route('viewteamDetail',[$team->id])}}" class="btn btn" style="background-color: #2874A6">
+                                                    <i class="fas fa-angle-double-right text-light"></i> Team Details
                                                 </a>
                                         </td>
                                                 <td>
-                                                    <a href="{{route('geteditteam',[$team->id])}}" class="btn btn-info">
-                                                        <i class="fas fa-edit"></i> Update Team
+                                                    <a href="{{route('geteditteam',[$team->id])}}" class="btn btn" style="background-color: #2874A6">
+                                                        <i class="fas fa-edit text-light"></i> Update Team
                                                     </a>
                                             </td>
                                         </tr>

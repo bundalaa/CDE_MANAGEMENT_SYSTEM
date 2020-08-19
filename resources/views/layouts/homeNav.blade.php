@@ -30,7 +30,7 @@
             <a href="/" class="navbar-brand">
         <img src="{{URL::asset('/images/logo.png')}} " alt="CIMS" height="40" width="45">
         </a>
-        <span style="color: steelblue;font-size:30px;font-weight:bold">CDE INFORMATION MANAGEMENT SYSTEM</span>
+        <span style="color: #2874A6;font-size:30px;font-weight:bold">CDEIMS</span>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <i class="navbar-toggler-icon"></i>
             </button>
@@ -54,11 +54,11 @@
                         @endif
                             @else
                     <li class="nav-item active px-2">
-                        <a href="{{ route('login') }}" class="btn btn-primary" class="nav-link" >Sign in</a>
+                        <a href="{{ route('login') }}" class="btn btn" class="nav-link" style="background-color: #2874A6">Sign in</a>
                     </li>
                     <li class="nav-item active px-2">
                         @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn btn-primary">Sign up</a>
+                        <a href="{{ route('register') }}" class="btn btn" style="background-color: #2874A6">Sign up</a>
                     @endif
                 @endauth
                 @endif

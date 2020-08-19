@@ -4,7 +4,7 @@
         <div class="container pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fas fa-user text-dark"></i> Add User
                     </h1>
                 </div>
@@ -64,8 +64,8 @@
                                             <label for="name"></label>
                                             <div class="input-group">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info">
-                                                        <i class="far fa-user"></i>
+                                                    <button class="btn btn" style="background-color: #2874A6">
+                                                        <i class="far fa-user text-light"></i>
                                                     </button>
                                                 </div>
                                                 <input type="text" name="name" id="name"
@@ -81,8 +81,8 @@
                                             <label for="Email"></label>
                                             <div class="input-group">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info">
-                                                        <i class="far fa-envelope"></i>
+                                                    <button class="btn btn" style="background-color: #2874A6">
+                                                        <i class="far fa-envelope text-light"></i>
                                                     </button>
                                                 </div>
                                                 <input type="email" name="email" id="email" class="form-control p-4"
@@ -99,7 +99,7 @@
                                             <label for="name"></label>
                                             <div class="input-group">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-info">
+                                                    <button class="btn btn text-light" style="background-color: #2874A6">
                                                         Role
                                                     </button>
                                                 </div>
@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" name="submit" id="submit"
-                                                class="form-control btn-info"><i class="fas fa-check-circle"></i>
+                                                class="form-control btn" style="background-color: #2874A6"><i class="fas fa-check-circle text-light"></i>
                                                 Save
                                                 Changes
                                             </button>
