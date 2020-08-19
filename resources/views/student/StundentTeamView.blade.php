@@ -116,7 +116,7 @@
     <section id="dashboard" class="pt-4 pb-3 ">
     <div class="container pt-5 pb-0">
             <i class="fas fa-users fa-3x"></i>
-            <span class="display-4 text-info">Teams</span>
+            <span class="display-4" style="color: #2874A6">Teams</span>
         </div>
     </section>
     <div id="content-wrap">
@@ -134,11 +134,13 @@
           <div class="card-body p-0" style="margin-left: 5px">
             <table class="table table-striped">
                       <tr>
+                    <thead style="background-color:#2874A6 ">
                      <th>#</th>
                     <th>Project Name</th>
                     {{-- <th>Team Members</th> --}}
                     <th>Supervisor Name</th>
                @foreach($teams as $key=>$team)
+            </thead>
                       </tr>
                       <tr>
                     <td>{{++$key}}</td>

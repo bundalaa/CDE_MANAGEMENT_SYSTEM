@@ -116,7 +116,7 @@
     <section id="dashboard" class="pt-4 pb-3 ">
         <div class="container pt-5 pb-0">
             <i class="fas fa-home fa-3x"></i>
-            <span class="display-4 text-info">Home</span>
+            <span class="display-4" style="color: #2874A6">Home</span>
         </div>
     </section>
  <div id="content-wrap">

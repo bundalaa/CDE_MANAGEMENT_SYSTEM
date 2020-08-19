@@ -116,7 +116,7 @@
      <section id="dashboard" class="pt-4 pb-3 ">
      <div class="container pt-5 pb-0">
         <i class="fas fa-list fa-3x"></i>
-        <span class="display-4 text-info">Challenges</span>
+        <span class="display-4" style="color: #2874A6">Challenges</span>
         </div>
     </section>
     <div id="content-wrap">
@@ -131,7 +131,7 @@
               <h3 style="text-align: center">The list of project problem</h3>
             </div>
                 <table class="table table-striped">
-                    <thead>
+                    <thead style="background-color: #2874A6">
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
