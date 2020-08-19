@@ -31,12 +31,6 @@
         </li>
 
         
-
-
-
-
-
-
         <li class="nav-item  list-unstyled">
             <a class="nav-link left-menu-link"
                href="/feedback">
@@ -52,16 +46,6 @@
                 Report Summary
             </a>
         </li>
-        
-        <!-- <li class="nav-item  list-unstyled">
-            <a class="nav-link left-menu-link"
-               href="/notification">
-                <i class="far fa-bell"> </i>
-                Notification
-            </a>
-        </li> -->
-        
-
 
         <h3 class="nav-item-heading">User Preferences </h3>
 
@@ -73,13 +57,23 @@
                 Profile
             </a>
         </li>
-            <!-- <a class="nav-link left-menu-link"
-               href="/Profile">
+            <a class="nav-link left-menu-link"
+               href="challenge/owner/profile">
                <i class="fa fa-key" aria-hidden="true"></i>
+                Change Password   
+            </a>
+            </li>
 
-                Change Password
-            </a> -->
+            <h3 class="nav-item-heading">Reach US</h3>
+ 
+            <li class="nav-item  list-unstyled">
+            <a class="nav-link left-menu-link"
+               href="contact-us">
+                <i class="fa fa-phone-square"> </i>
+                Contact US
+            </a>
         </li>
+        
     </div>
 </div>
 

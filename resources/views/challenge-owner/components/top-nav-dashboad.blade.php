@@ -53,11 +53,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/">
+                            <a class="dropdown-item" href="home">
                                 <i class="fa fa-lock-open"> </i>
                                 Logout
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="challenge/owner/profile">
                                 <i class="fa fa-key"> </i>
                                 Change Password
                             </a>

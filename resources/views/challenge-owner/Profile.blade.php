@@ -111,7 +111,7 @@
         .navbar-nav{
 
             /*background: #ffa23b;*/
-    /* } */
+ */
     */ .nav-item-heading {
         border-bottom: 1px solid #fff8b3;
         border-bottom-left-radius: 8px;
@@ -137,11 +137,11 @@
 </head>
 <body style="background:  #e6ecf0; width:100%">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row  ">
 
                     @include('challenge-owner.components.left-nav')
 
-                    <div class="col-lg-9" style="padding-left:0; padding-right: 0;">
+                    <div class="col-lg-9" style="padding-left:0; padding-right:0;">
 
 
 
@@ -155,7 +155,7 @@
 <hr>
 <div class="container bootstrap snippet">
     
-  		 <div class="col-sm-10"><h1>User name</h1></div>
+  	
            @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
@@ -174,8 +174,8 @@
                         <strong>{{ $message }}</strong>
                </div>
                 @endif
-          <div class="row">
-            
+          <div class="row ">
+          
     	   <div class="col-sm-9">
            <div class="tab-content">
             <div class="tab-pane active" id="home">
@@ -183,7 +183,7 @@
                         <div class="col-md-9 mb-4 d-flex justify-content-center flex-wrap flex-column">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Edit Profile</h4>
+                                    <h4>Edit your Profile</h4>
                                 </div>
                                 <div class="card-body px-5">
                                     <form action="/PasswordChange" method="POST">
@@ -268,20 +268,21 @@
         </div><!--/col-9-->
     </div><!--/row-->
 </div>
- 
-    <div>
-    <footer id="footer" class="bg-dark"
-                            style="width:100%; float:right; margin-top:0px; color:white">
-                            <div class="py-2 text-center">
-                                <p> &copyright Udsm <span id="year"></span>
-                                    <script>
-                                    document.write(new Date().getFullYear());
-                                    </script>, All rights reserved
-                                </p>
-                            </div>
-                        </footer>
+                    </div>
+
+                    <footer id="footer" class="bg-dark" style="width:100%; float:right; margin-top:0px; color:white">
+                        <div class="py-2 text-center">
+                            <p> &copyright Udsm <span id="year"></span>
+                                <script>
+                                document.write(new Date().getFullYear());
+                                </script>, All rights reserved
+                            </p>
                         </div>
-                        </div>
+                    </footer>
+                </div>
+            </div>
+
+
 
 </body>
 </html>

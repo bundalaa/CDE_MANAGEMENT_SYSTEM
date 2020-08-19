@@ -97,7 +97,7 @@
                 </div>
                 <div class="card">
                     <div class="col-md-3">
-                        <a href="https://dlab.or.tz/"><img src="images/coict.png" class="img-rounded" alt="Cinque Terre"
+                        <a href=""><img src="images/coict.png" class="img-rounded" alt="Cinque Terre"
                                 width="500px" height="300PX"> </a>
                     </div>
                 </div>
