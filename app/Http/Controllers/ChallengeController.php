@@ -78,7 +78,7 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
                return back()->withErrors('Challenge not found');
        }
         $challenge->delete();
-            return redirect('viewchallenge')->with('Challenge deleted successfuly');
+            return back()->with('Challenge deleted successfuly');
     }
 
       // Generate PDF
@@ -101,7 +101,7 @@ return redirect('supervisorHome')->with('message','Challenge updated successfull
     {
         $challenges=Challenge::all();
       return view('student.StudentChallengeView',[
-          
+
         'challenges'=>$challenges
       ]);
     }

@@ -20,10 +20,12 @@
    <!-- Main content -->
    <section class="content">
     <div class="container-fluid">
+        <b style="color: #2874A6;text-align:center;padding-top:2px;font-family: serif"><h2>Projects Progress</h2></b>
       <div class="row">
         @foreach($identifiedchallenges as $identifiedchallenge)
         <div class="col-md-6">
-          <div class="card mt-5">
+
+          <div class="card mt-2">
             <div class="card-header">
             <h3 class="card-title">{{$identifiedchallenge->name}}</h3>
             </div>

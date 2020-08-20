@@ -32,7 +32,7 @@
     $challenges = IdentifiedChallenge::where('id',$challenged['identified_challenge_id'])->first();
     $studented = Student::where('team_id',null)->get();
 @endphp
-   <b style="text-transform:uppercase;" class="text-info">{{$challenges['name']}}</b>
+   <b style="text-transform:uppercase;color: #2874A6">{{$challenges['name']}}</b>
 </h3>
 <form action="{{route('addStudentToTeam')}}" method="POST" enctype="multipart/form-data">
     @csrf

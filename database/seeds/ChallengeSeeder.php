@@ -14,8 +14,8 @@ class ChallengeSeeder extends Seeder
     public function run()
     {
         DB::table('challenges')->insert([
-            'name' => 'Water Management',
-            'description' => 'Problem in water supply,production and quality',
+            'name' => 'Loss of Water',
+            'description' => 'Problem of losing a lot of water through supplying and production',
         ]);
     }
 }

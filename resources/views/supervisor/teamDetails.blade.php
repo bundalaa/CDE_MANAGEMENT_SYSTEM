@@ -45,7 +45,7 @@
                             $challenged = Team::where('id',$id)->first();
                             $challenges = IdentifiedChallenge::where('id',$challenged['identified_challenge_id'])->first();
                         @endphp
-                           <b style="text-transform:uppercase;" class="text-info">{{$challenges['name']}}</b>
+                           <b style="text-transform:uppercase;color: #2874A6">{{$challenges['name']}}</b>
                            </h4>
                             <h4>Supervisor Name:
                                 @php

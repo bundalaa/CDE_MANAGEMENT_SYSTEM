@@ -44,6 +44,8 @@
                   </tbody>
                 </table>
                </form>
+               <button type="submit" class="btn btn mb-2" style="background-color: #2874A6">Save</button>
+
         </div>  @endsection
 
         @section('scripts')
