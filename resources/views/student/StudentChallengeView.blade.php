@@ -128,7 +128,7 @@
      <div class="row justify-content-center">
        <div class="col-md-10">
             <div class="recent">
-              <h3 style="text-align: center">The list of project problem</h3>
+              <h3 style="text-align: center">The list of challenges</h3>
             </div>
                 <table class="table table-striped">
                     <thead style="background-color: #2874A6">

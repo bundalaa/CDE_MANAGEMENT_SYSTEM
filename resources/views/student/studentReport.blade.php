@@ -125,7 +125,7 @@
  <div id="content-wrap">
 <!--contents-->
 <br>
-<p style="text-align: left">The upload reports includes reports during data collection and final year projects done by students
+<p style="text-align: left;margin-left:5px">The upload reports includes reports during data collection and final year projects done by students
     under supervision of CDE.</p>
 
 

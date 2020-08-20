@@ -131,7 +131,7 @@
           <div class="card-header">
             <h3 class="card-title" style="text-align: center">Project Team</h3>
           </div>
-          <div class="card-body p-0" style="margin-left: 5px">
+          <div class="card-body" style="margin-left: 5px">
             <table class="table table-striped">
                       <tr>
                     <thead style="background-color:#2874A6 ">
