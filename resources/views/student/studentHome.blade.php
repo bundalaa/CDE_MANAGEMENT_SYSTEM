@@ -116,14 +116,14 @@
     <section id="dashboard" class="pt-4 pb-3 ">
         <div class="container pt-5 pb-0">
             <i class="fas fa-home fa-3x"></i>
-            <span class="display-4 text-info">Home</span>
+            <span class="display-4" style="color: #2874A6">Home</span>
         </div>
     </section>
  <div id="content-wrap">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="item">
-            <img src="{{URL::asset('/images/study.jpg')}}" alt="" style="width:100%; height:500px;">
-        <h1 class="carousel-caption bg-secondary">Welcome to student Page</h1>
+            <img src="{{URL::asset('/images/group.jpg')}}" alt="" style="width:100%; height:500px;">
+        <h1 class="carousel-caption bg-secondary" style="color: black">Welcome to student Page</h1>
         </div>
     </div>
     {{-- <div class="jumbotron text-center">
@@ -135,7 +135,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h3>Uplaod Report</h3>
+      <h3>Upload Report</h3>
       <p class="text-justify">This functionality allows you as student to upload reports including weekly, mid reports,
          or final reports for final year projects and any other related reports under supervision of CDE coordination
         team.</p>
@@ -159,34 +159,34 @@
 
       </div>
       <div class="col-sm-4">
-        <h3>Projects</h3>
-        <p class="text-justify">This functionality allows you as student to view list of project problem title and
-        confirm to continue with the problem title obtained during data collection which based onthe society challenges and work
-        on it as your final year project under CDE.
+        <h3>Challenges</h3>
+        <p class="text-justify">This functionality allows you as student to view list of project problem titles
+         obtained during data collection which based on the society challenges and work on it as your final year project under
+          CDE to find the solutions.
         </p>
   </div>
   <div class="col-sm-4">
-    <h3>Comment</h3>
-    <p class="text-justify">This functionality allows you as student to view comment from the
+    <h3>Messages</h3>
+    <p class="text-justify">This functionality allows you as student to send message from the
         supervisor related to the supervision of the project and be able to replay to the comment.
     </p>
 
   </div>
-  <div class="col-sm-4">
+  {{-- <div class="col-sm-4">
     <h3>Notification</h3>
     <p class="text-justify">This functionality allows you as student to view any notification from the
         supervisor related to the supervision of the project and be able to see.
 
     </p>
 
-  </div>
+  </div> --}}
   </div>
 </div>
 
 </div>
 <footer id="footer" class="bg-dark">
     <div class="py-3 text-center">
-        <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+        <p> &copy;Copyright Udsm<span id="year"></span> 20<?php echo date('y');?>, All rights reserved</>
     </div>
 </footer>
 </div>

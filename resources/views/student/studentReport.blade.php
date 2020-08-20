@@ -119,13 +119,13 @@
         <section id="dashboard" class="pt-4 pb-3 ">
         <div class="container pt-5 pb-0">
             <i class="fas fa-upload fa-3x"></i>
-            <span class="display-4 text-info">Upload Report</span>
+            <span class="display-4" style="color: #2874A6">Upload Report</span>
         </div>
     </section>
  <div id="content-wrap">
 <!--contents-->
 <br>
-<p style="text-align: center">The upload reports includes reports during data collection and final year projects done by students
+<p style="text-align: left;margin-left:5px">The upload reports includes reports during data collection and final year projects done by students
     under supervision of CDE.</p>
 
 
@@ -153,7 +153,7 @@
     <div class="row" style="margin-left: 5px">
     <div class="col-lg-6">
     <div class="card">
-    <div class="card-header bg-primary">{{ __('Weekly and Final project reports can be uploaded here') }}</div>
+    <div class="card-header" style="background-color: #2874A6">{{ __('Weekly and Final project reports can be uploaded here') }}</div>
    <div class="card-body">
    <form action="studentReport" method="post" enctype="multipart/form-data">
             @csrf
@@ -175,10 +175,10 @@
    <input type="text" name="description" class="form-control" placeholder="report level">
     </div>
      <p>Upload Here:</p>
-    <input type="file"  name="file">Upload file in pdf or docx format
+    <input type="file"  name="file">Upload file in pdf, doc,docx format
 
     <div class="mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn" style="background-color: #2874A6">Submit</button>
     </div>
   </form>
 </div>
@@ -186,10 +186,10 @@
 </div>
 <div class="col-lg-6">
     <table class="table table-bordered">
-     <thead>
+     <thead style="background-color: #2874A6">
      {{-- <th>Description</th>
      <th>Date created</th> --}}
-     <th>Report File</th>
+     <th>Report File name</th>
      <th>Action</th>
      </thead>
      <tbody>
@@ -200,7 +200,7 @@
     <td>{{$down->file}}</td>
     <td>
     <a href="public/storage/reports/{{$down->file}}" download="{{$down->file}}">
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="" style="background-color: #2874A6">
             <i class="fas fa-download">Download</i></button>
         </a>
     </td>

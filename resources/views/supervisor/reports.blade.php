@@ -40,7 +40,7 @@
                     <div class="row py-4">
                         <div class="col-sm-6 col-lg-3">
                              <p>
-            <iframe src="{{url('files/uploadedReports/'.$report->file)}}" style="width: 1100px;height: 500px;"></iframe>
+            <iframe src="{{url('files/uploadedReports/'.$report->file)}}" style="width: 1100px;height: 300px;"></iframe>
             </p>
            <div class="card" style="width: 1100px;border: 0px solid rgb(0 0 0 / 2%);
            ">

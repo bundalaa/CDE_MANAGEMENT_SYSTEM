@@ -29,9 +29,10 @@ class StudentController extends Controller
 
     public function teamView()
     {
-        $teams=Team::all();
 
-return view('student.StundentTeamView',['teams'=>$teams]);
+        $teams = Team::all();
+
+  return view('student.StundentTeamView',['teams'=>$teams]);
     }
     public function __construct()
     {

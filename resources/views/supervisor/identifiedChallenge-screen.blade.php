@@ -55,11 +55,11 @@
                                             Assigned to a group
                                         @endif
                                             </td>
-                                        <td><a href="{{route('viewidentifiedchallengedetail',[$identifiedChallenge->id])}}" class="btn btn" style="background-color: #2874A6">
+                                        <td style="width: 300px"><a href="{{route('viewidentifiedchallengedetail',[$identifiedChallenge->id])}}" class="btn btn" style="background-color: #2874A6">
                                             <i class="fas fa-edit text-light"></i>Update Sub Challenge
                                         </a>
                                     </td>
-                                      <td>
+                                      <td style="width: 200px">
                                         <a href="{{route('viewFillProgress',[$identifiedChallenge->id])}}" class="btn btn" style="background-color: #2874A6">
                                             <i class="fa fa-plus-circle text-light"></i>Fill progress
                                         </a>

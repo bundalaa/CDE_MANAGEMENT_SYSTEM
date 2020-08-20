@@ -9,6 +9,9 @@
 @section('content')
 <div id="page-container">
     <div id="content-wrap">
+
+
+        {{--direct me to previous footer, just go ans open it   --}}
 <div class="container" style="padding-top: 20px">
     <div class="row justify-content-center">
         <div class="col-md-6">

@@ -116,21 +116,22 @@
      <section id="dashboard" class="pt-4 pb-3 ">
      <div class="container pt-5 pb-0">
         <i class="fas fa-list fa-3x"></i>
-        <span class="display-4 text-info">Challenges</span>
+        <span class="display-4" style="color: #2874A6">Challenges</span>
         </div>
     </section>
     <div id="content-wrap">
-     <p style="margin-left: 5px">This page allows you as student to view the list of project problem challenges and give you a
-            chance to confirm which project you want to work or join.Review the list of the project problem title and
-            choose one project that will be verified for you to work on it as final year project under supervision of CDE team.
+     <p style="margin-left:7px">This page allows you as student to view the list of project problem challenges and give you a
+            chance to review the challenges collected during site visit.This list of the challenges helps students to review the
+             challenges collected from stakeholders.
+
             </p>
      <div class="row justify-content-center">
        <div class="col-md-10">
             <div class="recent">
-              <h3 style="text-align: center">See the list of project problem</h3>
+              <h3 style="text-align: center">The list of challenges</h3>
             </div>
                 <table class="table table-striped">
-                    <thead>
+                    <thead style="background-color: #2874A6">
                         <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
@@ -141,6 +142,7 @@
                  <td>{{++$challenge_id}}</td>
                  <td>{{$challenge->name}}</td>
                  <td>{{$challenge->description}}</td>
+
                     </tr>
 
                  @endforeach

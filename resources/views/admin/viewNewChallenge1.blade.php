@@ -40,12 +40,12 @@
                     <div class="row py-4">
                         <div class="col-sm-6 col-lg-3">
                 <p>
-                    <iframe src="{{url('files/uploadedChallenges/'.$newchallenge->file)}}" style="width: 1100px;height: 1000px;"></iframe>
+                    <iframe src="{{url('files/uploadedChallenges/'.$newchallenge->file)}}" style="width: 1100px;height: 500px;"></iframe>
                     </p>
                    <div class="card" style="width: 1100px;border: 0px solid rgb(0 0 0 / 2%);
                    ">
                 <div class="well" style="padding: 18px">
-                <button class="btn btn btn-open" onclick="commentOpen()" style="color: #2874A6">Leave a comment</button>
+                <button class="btn btn btn-open" onclick="commentOpen()" style="background-color: #2874A6">Leave a comment</button>
                 <button class="btn btn-danger btn-close" style="display:none;" onclick="commentClose()">Cancel</button>
                 </div>
                <form id="comment" action="{{route('postCommentChallenge',$newchallenge->id)}}" style="display: none;" method="POST" enctype="multipart/form-data">

@@ -119,7 +119,7 @@
             <section id="dashboard" class="pt-4 pb-3 ">
             <div class="container pt-5 pb-0">
                     <i class="fas fa-lock fa-3x"></i>
-                    <span class="display-4 text-info">Edit password</span>
+                    <span class="display-4 " style="color: #2874A6">Edit password</span>
                 </div>
             </section>
 
@@ -165,7 +165,7 @@
                                                     class="form-control p-4" placeholder="Confirm Password" required>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" name="submit" id="submit" class="btn btn-primary col-md-4">Save </button>
+                                                <button type="submit" name="submit" id="submit" class="col-md-4" style="background-color: #2874A6">Save </button>
                                             </div>
                                         </form>
                                     </div>

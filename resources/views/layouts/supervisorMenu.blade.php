@@ -83,7 +83,7 @@
                             {{-- <a href="#" class="dropdown-item dropdown-footer" style="padding-left:60px">See All Notifications</a> --}}
                           </div>
                         </li>
-                       <ul  class="navbar-nav ml-auto" style="padding-left: 425px">
+                       <ul  class="navbar-nav ml-auto" style="padding-left: 400px">
                         <li class="nav-item dropdown" >
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 @if (auth()->user())

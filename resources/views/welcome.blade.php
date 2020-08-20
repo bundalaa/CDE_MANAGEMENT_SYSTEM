@@ -62,22 +62,26 @@
                 <p class="text-justify">In Challenge-Driven Education the idea is to provide students opportunities collaborate with societal stakeholders on developing solutions to various societal challenges.The Challenge Driven Education collaborate with society to provide solution to different challenges.</p>
                 {{-- <a href="single-page.html" class="fa-btn btn-1 btn-1e">read more</a> --}}
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <h2>Our history</h2>
-                        <p>In this section you can upload your Challenge/Problem and will reach us then we will
-                            come up with concrete solution of your challenge/problem... </p>
+                        <p class="text-justify">The Challenge Driven education at university of Dar es salaam, within the engeneering education started through collaboration with the KHT Royal institute of
+                            technology, Sweden. Previous collaborations between the two have been targeting research,development and PhD education.In 2014 the idea emerged to also collaborate on first and second cycle
+                            education,with the vision of mutual capacity building through joint development and implementation of challenge-driven education
+                            (CDE).The idea was to provide students from the two universities opportunities to collaborate with
+                            each other and societal stakeholders on developing solutions to various societal challenges in the two
+                            countries.</p>
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <strong>
                             <h2>Our Mission</h2>
                         </strong>
-                        <p>This section will help you as our customer to get the progress/project status and you
-                            will be able to write back your comment about the progress and if you have some
-                            changes you can add as a comment... </p>
+                        <p class="text-justify">To provide students from the university of Dar es salaam opportunities to collaborate with
+                            each other and societal stakeholders on developing solutions to various societal challenges in the
+                            country </p>
 
                     </div>
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <strong>
                             <h2>Our Vision</h2>
                         </strong>
@@ -85,7 +89,7 @@
                             will be able to write back your comment about the progress and if you have some
                             changes you can add as a comment... </p>
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

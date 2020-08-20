@@ -27,6 +27,7 @@ class Student extends Model
     }
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class,'user_id');
     }
+
 }

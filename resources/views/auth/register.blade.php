@@ -17,7 +17,7 @@
                 style="color:grey;margin-left: 16%;  font-size:23px">UNIVERSITY OF DAR ES SALAAM</h1>
                </div>
             <hr id="line">
-            <div class="card-subtitle"> <h2 class="text-primary" style="font-size:20px;margin-left: 20%;color:#2874A6">
+            <div class="card-subtitle"> <h2  style="font-size:20px;margin-left: 20%;color:#2874A6">
                 Cde Information Management System
             </h2 ></div>
             <div class="mycard">

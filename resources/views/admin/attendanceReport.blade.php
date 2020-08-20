@@ -27,10 +27,9 @@
         </div>
     </div>
 </header>
-
+<div id="page-container">
+    <div id="content-wrap">
 @if($report != null)
-    <div id="page-container">
-        <div id="content-wrap">
             <section id="admin-panel" class="py-4">
                 <div class="container">
                     <div class="row pb-3">
@@ -79,6 +78,7 @@
                 </div>
             </section>
         </div>
+    
         @endif
         <script>
             function onChange(report_id){

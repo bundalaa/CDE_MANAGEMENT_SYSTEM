@@ -75,7 +75,7 @@
                                                 Assigned to a group
                                             @endif
                                            </td>
-                                        <td><a href="{{route('viewidentifiedchallengedetail',[$identifiedChallenge->id])}}" class="btn btn-secondary">
+                                        <td style="width: 200px"><a href="{{route('viewidentifiedchallengedetail',[$identifiedChallenge->id])}}" class="btn btn-secondary">
                                             <i class="fas fa-angle-double-right"></i> Details
                                         </a>
                                     </td>

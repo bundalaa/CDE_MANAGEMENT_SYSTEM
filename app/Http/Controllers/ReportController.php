@@ -51,7 +51,7 @@ if(!$report){
             'team_id' => 'required',
             'subtitle'=>'required',
             'description' => 'required',
-            'file' => 'required|mimes:doc,docx,pdf,txt|max:20400',
+            'file' => 'required|mimes:doc,docx,pdf|max:20400',
         ]);
         if($validator->fails())
         {
@@ -107,7 +107,7 @@ if(!$supervisor){
         }
         $comment = new Reportcomment();
         $comment->body = $request->body;
-        $comment->supervisor_id = $user->supervisor->id;
+        // $comment->supervisor_id = $user->supervisor->id;
         $report->reportcomments()->save($comment);
         return redirect('view-report')
         ->with('success', 'comment added successfully');
