@@ -107,7 +107,7 @@ if(!$supervisor){
         }
         $comment = new Reportcomment();
         $comment->body = $request->body;
-        $comment->supervisor_id = $user->supervisor->id;
+        // $comment->supervisor_id = $user->supervisor->id;
         $report->reportcomments()->save($comment);
         return redirect('view-report')
         ->with('success', 'comment added successfully');
