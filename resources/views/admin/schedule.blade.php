@@ -4,7 +4,7 @@
         <div class="container pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1 style="color: #2874A6">
                         <i class="fa fa-calendar text-dark"></i> Schedule
                     </h1>
                 </div>
@@ -41,7 +41,7 @@
                         </div>
                         <input type="date" name="taskdate" class="date">
                     </div>
-                    <button type="submit" class="btn btn-info mb-2">Save</button>
+                    <button type="submit" class="btn btn mb-2" style="background-color: #2874A6">Save</button>
                   </form>
             </div>
 

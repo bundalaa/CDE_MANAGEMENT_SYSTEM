@@ -11,7 +11,7 @@
         <div class="container  pt-3 pb-0">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="text-info">
+                    <h1  style="color:#2874A6 ">
                         <i  class="fa fa-home text-dark" style="font-size: 30px;"></i> Home
                     </h1>
                 </div>
@@ -24,8 +24,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="{{route('createuser')}}" class="btn btn-outline-info btn-block">
-                                <i class="fas fa-plus text-dark"></i> Create user
+                            <a href="{{route('createuser')}}" class="btn btn-outline btn-block text-light" style="background-color: #2874A6">
+                                <i class="fas fa-plus text-light"></i> Create user
                             </a>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <nav class="ml-4">
+                                <nav class="ml-4" style="color: #2874A6">
                                     <div class="row">
                                         <div class="col-12 text-center">
                                             {{$latestusers->links()}}
@@ -92,31 +92,31 @@
                         <div class="col-md-3">
                             <div class="card mb-3 bg-light text-center">
                                 <div class="card-body">
-                                    <h3 class="text-info">Users</h3>
-                                    <h4 class="display-4 text-info">
+                                    <h3 style="color: #2874A6">Users</h3>
+                                    <h4 class="display-4" style="color: #2874A6">
                                         <i class="fas fa-users"></i>
                                          @php
                                           $user=User::get();
                                            echo count($user);
                                         @endphp
                                     </h4>
-                                <a href="{{route('user-screen')}}" class="btn btn-outline-info">View</a>
+                                <a href="{{route('user-screen')}}" class="btn btn-outline text-light" style="background-color: #2874A6">View</a>
                                 </div>
                             </div>
                             <div class="card mb-3 bg-light text-center">
                                 <div class="card-body">
-                                    <h3 class="text-info">Supervisors</h3>
-                                    <h4 class="display-4 text-info">
+                                    <h3 style="color: #2874A6">Supervisors</h3>
+                                    <h4 class="display-4" style="color: #2874A6">
                                         <i class="fas fa-users"></i>
                                         @php
                                $supervisor= Supervisor::get();
                                       echo count($supervisor);
                                    @endphp
                                     </h4>
-                                <a href="{{route('viewsupervisorsscreen')}}" class="btn btn-outline-info">View</a>
+                                <a href="{{route('viewsupervisorsscreen')}}" class="btn btn-outline text-light" style="background-color: #2874A6">View</a>
                                 </div>
                             </div>
-                            <div class="card mb-3 bg-info text-light text-center">
+                            <div class="card mb-3  text-light text-center" style="background-color: #2874A6">
                                 <div class="card-body">
                                     <h3>Coordinators</h3>
                                     <h4 class="display-4">
@@ -129,7 +129,7 @@
                                 <a href="{{route('viewcoordinatorscreen')}}" class="btn btn-outline-light">View</a>
                                 </div>
                             </div>
-                            <div class="card mb-3 bg-light text-center border-info">
+                            <div class="card mb-3 bg-light text-center border-primary">
                                 <div class="card-body">
                                     <h3 class="text-muted">Students</h3>
                                     <h4 class="display-4 text-muted">
@@ -142,7 +142,7 @@
                                 <a href="{{route('viewstudentsscreen')}}" class="btn btn-secondary">View</a>
                                 </div>
                             </div>
-                            <div class="card mb-3 bg-light text-center border-info">
+                            <div class="card mb-3 bg-light text-center border" style="color: #2874A6">
                                 <div class="card-body">
                                     <h3 class="text-muted">Challenge Owners</h3>
                                     <h4 class="display-4 text-muted">

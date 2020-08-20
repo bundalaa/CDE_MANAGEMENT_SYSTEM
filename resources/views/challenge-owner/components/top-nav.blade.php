@@ -35,15 +35,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav" style="list-style-type: none;">
-                    <li class="nav-item px-2">
-                        <a href="/" class="nav-link">Home</a>
+                    <li class="nav-item px-2" style="color:success">
+                      <h2 >  <a href="/" class="nav-link">CDEMS</a></h2>
 
-
-                    <li class="nav-item px-2">
-                        <a href="AboutUS" class="nav-link">About US</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a href="contact-us" class="nav-link">Contact Us</a>
                     </li>
                 </ul>
                 <ul style="list-style-type: none;" class="navbar-nav ml-auto">

@@ -90,5 +90,11 @@ class ContactUSController extends Controller
 
 
     }
+    
+    public function challengeOwnerProfile(){
+
+        return view('challenge-owner.Profile');
+
+        }
 
 }

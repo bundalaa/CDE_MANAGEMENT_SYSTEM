@@ -53,6 +53,13 @@ class Comment extends Model
         return $this->belongsTo(ChallengeOwner::class);
 
     }
+    public function identifiedchallengecomments()
+
+    {
+
+        return $this->belongsTo(IdentifiedChallenge::class);
+
+    }
 
     /**
 

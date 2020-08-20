@@ -5,20 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Status extends Model
+class Mailing extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name','task_id','value'
+        'email','subject','body'
     ];
 
     protected $dates = [
         'deleted_at'
     ];
-
-    //relationships
-    public function task(){
-        return $this->hasOne(Task::class);
-    }
 }

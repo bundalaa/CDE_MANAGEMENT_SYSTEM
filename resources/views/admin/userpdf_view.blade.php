@@ -10,7 +10,7 @@
             </style>
     </head>
     <body>
-        <h2 style="text-align: center;color:rgb(161, 212, 246)"><b>LIST OF USERS</b></h2>
+        <h2 style="text-align: center;color: #2874A6"><b>LIST OF USERS</b></h2>
                                     <table class="tg" style="padding-left:20%">
                                         <thead class="tg-0lax">
                                             <tr>

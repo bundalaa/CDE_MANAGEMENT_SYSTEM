@@ -74,6 +74,7 @@
 
         <main class="py-4">
             @yield('content')
+
         </main>
     </div>
     {{-- <footer id="footer" class="bg-dark mt-4">

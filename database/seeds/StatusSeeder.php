@@ -15,18 +15,23 @@ class StatusSeeder extends Seeder
         Status::truncate();
         Status::create([
             'name'=> 'pending',
+            'value'=>0
         ]);
          Status::create([
             'name'=> 'stage one',
+            'value'=>40
         ]);
          Status::create([
             'name'=> 'stage two',
+            'value'=>60
         ]);
          Status::create([
             'name'=> 'stage three',
+            'value'=>80
         ]);
         Status::create([
             'name'=> 'completed',
+            'value'=>100
         ]);
     }
 }

@@ -136,7 +136,7 @@
                                                 <p><a class="btn btn-secondary" href="/feedback" role="button">View details
                                                         &raquo;</a></p>
                                           </div>
-
+ 
                                           <div>
 
                                                 <h2>Project Status</h2>
@@ -144,8 +144,8 @@
                                                 <p><a class="btn btn-secondary" href="feedback" role="button">View details
                                                         &raquo;</a></p>
                                                         </div>
-                                                <h2>Report Summary</h2>
-                                                <p>Here you will be able to view the summary of the project from start to cunrrent state, this will help you as our cutomer to know the progress of the project  </p>
+                                                <h2>Profile</h2>
+                                                <p> in this section as chllenge owner you will be able to edit/change your details like user name, email and password and then you can save your changes </p>
                                                 <p><a class="btn btn-secondary" href="#" role="button">View details
                                                         &raquo;</a></p>
 

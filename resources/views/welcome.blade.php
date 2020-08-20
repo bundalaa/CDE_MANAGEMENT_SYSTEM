@@ -43,8 +43,7 @@
 </head>
 <body>
 <div id="page-container">
-
-@include('layouts.homeNav')
+@include('challenge-owner.components.top-nav')
 <div id="content-wrap">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="item">
@@ -129,7 +128,7 @@
               </div>
              <div>
 
-                <div style="padding-top: 10px" class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+                <div style="padding-top: 10px" class="text-center"><button type="submit" class="btn btn btn-lg" style="background-color: #2874A6">Send Message</button></div>
             </div>
             </form>
           </div>
