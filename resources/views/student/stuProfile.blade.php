@@ -119,7 +119,7 @@
             <section id="dashboard" class="pt-4 pb-3 ">
                 <div class="container pt-5 pb-0">
                     <i class="fas fa-user-circle fa-3x"></i>
-                    <span class="display-4 text-info">Edit profile</span>
+                    <span class="display-4" style="color: #2874A6">Edit profile</span>
                 </div>
             </section>
          <div id="content-wrap">
@@ -127,7 +127,7 @@
              @section('content')
              <div class="container">
                 <div class="col-md-3">
-                    <a href="/password" class="btn btn-success btn-block">
+                    <a href="/password" class="btn btn-block" style="background-color: #2874A6">
                         <i class="fas fa-lock text-light"></i> Change Password
                     </a>
                 </div>
@@ -187,7 +187,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" name="submit" id="submit"
-                                class="form-control btn-info">
+                                class="form-control" style="background-color: #2874A6">
                                Add Profile
                             </button>
                         </div>
@@ -210,7 +210,7 @@
                    <input type="file" id="avatarFile" name="avatar" class="form-control-file" style="padding-bottom:13px ">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                    <small id="fileHelp" class="form-text text-muted">Please upload a valid image file. Size of image should not be more than 2MB.</small>
-                   <input  class="form-control btn btn-info btn-block" type="submit">
+                   <input  class="form-control btn btn-info btn-block" type="submit" style="background-color: #2874A6">
                          </div>
                      </form>
                 </div>
@@ -218,7 +218,7 @@
           </div>
          <footer id="footer" class="bg-dark">
             <div class="py-3 text-center">
-                <p> &copy;Copyright Udsm <span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+                <p> &copy;Copyright Udsm <span id="year"></span> 20<?php echo date('y');?>, All rights reserved</>
             </div>
         </footer>
         </div>

@@ -116,7 +116,7 @@
     <section id="dashboard" class="pt-4 pb-3 ">
     <div class="container pt-5 pb-0">
             <i class="fas fa-users fa-3x"></i>
-            <span class="display-4 text-info">Teams</span>
+            <span class="display-4" style="color: #2874A6">Teams</span>
         </div>
     </section>
     <div id="content-wrap">
@@ -131,20 +131,22 @@
           <div class="card-header">
             <h3 class="card-title" style="text-align: center">Project Team</h3>
           </div>
-          <div class="card-body p-0" style="margin-left: 5px">
+          <div class="card-body" style="margin-left: 5px">
             <table class="table table-striped">
                       <tr>
+                    <thead style="background-color:#2874A6 ">
                      <th>#</th>
                     <th>Project Name</th>
-                    <th>Team Members</th>
+                    {{-- <th>Team Members</th> --}}
                     <th>Supervisor Name</th>
-              @foreach($teams as $key=>$team)
+               @foreach($teams as $key=>$team)
+            </thead>
                       </tr>
                       <tr>
                     <td>{{++$key}}</td>
                     <td>{{$team->identifiedChallenge->name}}</td>
-                    <td>{{$team->supervisor->user_id}}</td>
-                    <td>{{$team->supervisor_id}}</td>
+                    {{-- <td>{{$team->student->user->team_id}}</td> --}}
+                    <td>{{$team->supervisor->user->name}}</td>
                       </tr>
 
                 @endforeach
@@ -156,7 +158,7 @@
 
    <footer id="footer" class="bg-dark">
     <div class="py-3 text-center">
-    <p> &copy;Copyright Udsm<span id="year"></span>20<?php echo date('y');?>, All rights reserved</>
+    <p> &copy;Copyright Udsm<span id="year"></span> 20<?php echo date('y');?>, All rights reserved</>
     </div>
 </footer>
 </div>

@@ -83,5 +83,8 @@ public function setPasswordAttribute($password)
   {
       return $this->hasOne(ChallengeOwner::class,'user_id');
   }
-
+  public function team()
+  {
+      return $this->hasMany(Team::class);
+  }
 }

@@ -254,7 +254,7 @@ class UserController extends Controller
       $users->name = $request['name'];
       $users->email = $request['email'];
       $users->save();
-      return redirect('stuProfile')->with('response', 'successfully edit');
+      return redirect('stuProfile')->with('response', 'successfully edited');
     }
     // public function deletePicture(user $id)
     // {
@@ -340,7 +340,7 @@ class UserController extends Controller
 
 }
 
-    
+
 
 
 

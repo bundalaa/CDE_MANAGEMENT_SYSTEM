@@ -116,7 +116,7 @@
         <section id="dashboard" class="pt-4 pb-3 ">
         <div class="container pt-5 pb-0">
             <i class="fas fa-inbox fa-3x"></i>
-            <span class="display-4 text-info">Message</span>
+            <span class="display-4" style="color: #2874A6">Message</span>
         </div>
     </section>
  <div id="content-wrap">
@@ -142,7 +142,7 @@
      <div class="row justify-content-center">
     <div class="col-lg-6">
      <div class="card">
-        <div class="card-header bg-primary">{{ __('Send a message') }}</div>
+        <div class="card-header" style="background-color: #2874A6">{{ __('Send a message') }}</div>
         <div class="card-body">
           <form action="/sendMessage" method="post" role="form" class="">
             @csrf
@@ -155,7 +155,7 @@
             <div class="form-group">
               <textarea  name="message" rows="5" data-rule="required"  placeholder="Message" class="form-control"></textarea>
             </div>
-         <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
+         <div class="text-center"><button type="submit" class="btn btn-lg" style="background-color: #2874A6">Send Message</button></div>
           </form>
         </div>
     </div>
